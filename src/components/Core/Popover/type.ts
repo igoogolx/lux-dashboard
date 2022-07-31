@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ReactNode } from "react";
 
 export enum PlacementEnum {
   TopStart = "top-start",
@@ -28,7 +29,7 @@ export type PopoverProps = {
         open: () => void;
         close: () => void;
         isOpen: boolean;
-      }) => void);
+      }) => ReactNode);
   content:
     | React.ReactNode
     | ((data: {

@@ -56,6 +56,17 @@ const getProcess = (name: string) => {
   return paths[paths.length - 1];
 };
 
+// TODO: move
+function LoadTag({ value }: { value: number }): JSX.Element {
+  const { value: convertedValue, unit } = convertByte(value);
+  return <>{`${convertedValue} ${unit}`}</>;
+}
+
+function StartTag({ value }: { value: number }): JSX.Element {
+  const duration = new Date().getTime() - value;
+  return <>{convertDuration(duration)}</>;
+}
+
 export function Connections(): JSX.Element {
   const { t } = useTranslation();
   const [conns, setConns] = useState<Conn[]>([]);
@@ -115,26 +126,17 @@ export function Connections(): JSX.Element {
       {
         Header: t(TRANSLATION_KEY.TIME) || "",
         accessor: "start",
-        Cell: ({ value }) => {
-          const duration = new Date().getTime() - value;
-          return convertDuration(duration);
-        },
+        Cell: StartTag,
       },
       {
         Header: t(TRANSLATION_KEY.DOWNLOAD) || "",
         accessor: "download",
-        Cell: ({ value }) => {
-          const { value: convertedValue, unit } = convertByte(value);
-          return `${convertedValue} ${unit}`;
-        },
+        Cell: LoadTag,
       },
       {
         Header: t(TRANSLATION_KEY.UPLOAD) || "",
         accessor: "upload",
-        Cell: ({ value }) => {
-          const { value: convertedValue, unit } = convertByte(value);
-          return `${convertedValue} ${unit}`;
-        },
+        Cell: LoadTag,
       },
     ];
   }, [t]);

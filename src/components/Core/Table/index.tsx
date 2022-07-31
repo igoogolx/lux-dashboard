@@ -55,7 +55,7 @@ export function Table<T extends object>(props: TableProps<T>): JSX.Element {
     useFlexLayout
   );
   const RenderRow = React.useCallback(
-    ({ index, style }) => {
+    ({ index, style }:{index:number,style:Record<string, any>}) => {
       const row = rows[index];
       prepareRow(row);
       return (

@@ -1,6 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
-import { useCallback } from "react";
+import { MouseEventHandler, useCallback } from "react";
 import styles from "./index.module.css";
 
 type ButtonProps = {
@@ -26,7 +26,7 @@ export function Button(props: ButtonProps): JSX.Element {
     type = "button",
     ...restProps
   } = props;
-  const handleOnClick = useCallback(
+  const handleOnClick = useCallback<MouseEventHandler<HTMLButtonElement>>(
     (e) => {
       if (onClick && !disabled) {
         onClick(e);

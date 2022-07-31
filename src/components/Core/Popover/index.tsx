@@ -139,14 +139,14 @@ export const Popover = React.memo((props: PopoverProps) => {
   }, [computedSetIsOpen, timeout]);
 
   const handleClickOutside = useCallback(
-    (event) => {
+    (event: MouseEvent) => {
       if (!computedIsOpen) return;
       if (
         !event.target ||
         !popperElement ||
         !referenceElement ||
-        popperElement.contains(event.target) ||
-        referenceElement.contains(event.target)
+        popperElement.contains(event.target as Node) ||
+        referenceElement.contains(event.target as Node)
       ) {
         return;
       }
@@ -204,9 +204,11 @@ export const Popover = React.memo((props: PopoverProps) => {
           style={arrowElementStyle}
         />
       )}
-      {typeof content === "function" && withState
-        ? content({ open, close, isOpen })
-        : content}
+      {
+        (typeof content === "function" && withState
+          ? content({ open, close, isOpen })
+          : content) as React.ReactNode
+      }
     </div>
   );
 
@@ -231,9 +233,11 @@ export const Popover = React.memo((props: PopoverProps) => {
   return (
     <>
       <div ref={setReferenceElement} {...getEvents()} className={className}>
-        {typeof children === "function" && withState
-          ? children({ open, close, isOpen })
-          : children}
+        {
+          (typeof children === "function" && withState
+            ? children({ open, close, isOpen })
+            : children) as React.ReactNode
+        }
       </div>
       {!disabled && computedIsOpen && createPortal(popover, containerElement)}
     </>
