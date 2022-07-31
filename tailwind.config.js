@@ -4,5 +4,8 @@ module.exports = {
   variants: {
     extend: {},
   },
+  content:[
+   "./src/**/*.*"
+  ],
   plugins: [],
 };
