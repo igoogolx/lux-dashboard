@@ -1,0 +1,10 @@
+.container {
+  @apply flex flex-row rounded border border-solid border-gray-800;
+
+  & .selector {
+    @apply border-0 border-r border-black rounded-tr-none rounded-br-none w-28;
+  }
+  & .input {
+    border-radius: inherit;
+  }
+}

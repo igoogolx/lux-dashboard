@@ -1,0 +1,17 @@
+.wrapper {
+  @apply flex p-4 flex-col overflow-auto flex-1 text-sm items-center;
+  & .toolbar {
+    @apply flex justify-start w-full mb-2 justify-between;
+
+    & .actions {
+      @apply flex items-center;
+      & .closeAll {
+        @apply w-6 h-6 mr-4 ml-4;
+      }
+    }
+  }
+
+  & .footer {
+    @apply flex flex-col border border-solid border-gray-400 mt-2 px-8 rounded;
+  }
+}

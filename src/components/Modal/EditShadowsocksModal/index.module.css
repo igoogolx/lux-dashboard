@@ -1,0 +1,11 @@
+.container {
+  & .buttonContainer {
+    @apply flex justify-end mt-6;
+    & .button {
+      @apply mt-1 my-2 rounded;
+      &:first-child {
+        @apply mr-4;
+      }
+    }
+  }
+}

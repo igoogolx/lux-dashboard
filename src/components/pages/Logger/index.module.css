@@ -1,0 +1,12 @@
+.wrapper {
+  @apply flex text-sm flex-col overflow-auto items-center justify-items-center w-full pt-4 mx-4;
+  & .toolbar {
+    @apply flex mb-2 w-full justify-between;
+  }
+  & .table {
+    @apply bg-white;
+    & .payload {
+      @apply overflow-hidden text-ellipsis;
+    }
+  }
+}

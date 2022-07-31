@@ -1,0 +1,18 @@
+.container {
+  @apply flex text-sm flex-col;
+  & .tooltip{
+    @apply inline-block;
+  }
+  & .label {
+    @apply text-black py-1 font-medium;
+  }
+}
+.button {
+  @apply justify-between;
+  & svg {
+    @apply ml-1;
+  }
+  & .text {
+    @apply overflow-hidden overflow-ellipsis whitespace-nowrap;
+  }
+}

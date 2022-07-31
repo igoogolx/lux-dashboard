@@ -1,0 +1,15 @@
+.base {
+  @apply rounded-full
+    w-2
+    h-2;
+}
+
+.disabled {
+  composes: base;
+  @apply bg-black;
+}
+
+.enabled {
+  composes: base;
+  @apply bg-blue-500;
+}

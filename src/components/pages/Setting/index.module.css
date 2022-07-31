@@ -1,0 +1,27 @@
+.wrapper {
+  @apply w-full;
+  & .form {
+    @apply py-4 px-8 h-full relative;
+    & .fields {
+      @apply w-full;
+      & .field {
+        &:not(:last-child) {
+          @apply mb-4;
+        }
+        & .label {
+          @apply flex align-middle items-center;
+
+          & .desc{
+            @apply mr-1;
+          }
+        }
+      }
+    }
+    & .bar {
+      @apply absolute w-full bg-white shadow bottom-0 left-0 px-8 py-2  flex;
+      & .resetBtn {
+        @apply mr-4;
+      }
+    }
+  }
+}

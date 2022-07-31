@@ -1,0 +1,31 @@
+.svg {
+  @apply pointer-events-none;
+}
+
+.small {
+  @apply w-2 h-2;
+  & .svg {
+    @apply w-2 h-2;
+  }
+}
+
+.normal {
+  @apply w-4 h-4;
+  & .svg {
+    @apply w-4 h-4;
+  }
+}
+
+.medium {
+  @apply w-6 h-6;
+  & .svg {
+    @apply w-6 h-6;
+  }
+}
+
+.large {
+  @apply w-8 h-8;
+  & .svg {
+    @apply w-8 h-8;
+  }
+}

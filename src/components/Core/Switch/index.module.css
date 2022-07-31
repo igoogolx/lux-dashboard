@@ -1,0 +1,41 @@
+.checkbox {
+  @apply invisible
+  w-0
+  h-0;
+}
+
+.checkbox:checked + .label {
+  @apply bg-blue-500;
+  & .button {
+    @apply left-full;
+    transform: translateX(-100%);
+  }
+}
+
+.label {
+  @apply flex
+  justify-between
+  cursor-pointer
+  w-12
+  h-6
+  rounded-2xl
+  relative
+  bg-gray-600;
+
+  & .button {
+    @apply absolute
+    top-0
+    left-0
+    w-6
+    h-6
+    rounded-full
+    bg-white
+    shadow-md
+    transition-all
+    ;
+  }
+}
+
+.disabled {
+  @apply pointer-events-none opacity-50;
+}

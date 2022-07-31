@@ -1,0 +1,36 @@
+.base {
+  @apply inline-flex
+  dark:bg-black
+  outline-none
+      cursor-pointer
+  border-none
+      h-8
+      items-center
+      justify-center
+      content-center
+      pl-4
+      pr-4
+  text-sm;
+}
+
+.primary {
+  composes: base;
+  @apply bg-gray-800 rounded text-white;
+}
+
+.secondary {
+  composes: base;
+  @apply bg-white rounded border border-gray-300 border-solid;
+}
+
+.blank {
+  composes: base;
+  @apply bg-transparent
+    pl-0
+    pr-0
+    h-auto;
+}
+
+.disabled {
+  @apply pointer-events-none opacity-50;
+}

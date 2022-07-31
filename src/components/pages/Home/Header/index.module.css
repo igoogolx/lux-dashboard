@@ -1,0 +1,17 @@
+.wrapper {
+  @apply bg-white flex w-full p-4 justify-end
+    items-center
+    h-full
+    border-gray-300
+    border-b;
+
+  & .rulesDropdown {
+    @apply mr-8 w-28;
+  }
+  & .addButton {
+    @apply mx-4;
+  }
+  & .testButton {
+    @apply mr-8;
+  }
+}

@@ -1,0 +1,6 @@
+.container {
+  @apply flex;
+  .label {
+    @apply mr-8 text-black font-medium text-sm;
+  }
+}

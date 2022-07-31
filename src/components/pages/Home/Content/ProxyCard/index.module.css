@@ -1,0 +1,65 @@
+.wrapper {
+  @apply relative m-4 text-sm;
+  & .content {
+    @apply
+    active:scale-[1.02]
+    flex
+    content-center
+    justify-between
+    bg-white
+    pt-4
+    pb-4
+    pl-2
+    pr-2
+    rounded
+    cursor-pointer
+    text-xs
+    relative
+    text-black
+    shadow-lg
+    border
+    border-gray-200
+    w-40
+    h-24;
+
+    & .info {
+      @apply flex flex-col w-full items-center justify-center;
+      & .name {
+        @apply mb-0.5 overflow-hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow-wrap: break-word;
+      }
+      & .target {
+        @apply text-gray-500 overflow-hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow-wrap: break-word;
+      }
+    }
+
+    & .dot {
+      @apply absolute
+      top-2
+      left-2;
+    }
+    & .delayTag {
+      @apply absolute left-2 bottom-2;
+    }
+    & .typeTag {
+      @apply absolute bottom-2 right-2 text-gray-600 text-xs opacity-80;
+    }
+  }
+  & .actionButton {
+    @apply
+    rounded-sm
+    hover:bg-gray-200
+    absolute
+    inline-block
+    top-1
+    z-10
+    right-2;
+  }
+}

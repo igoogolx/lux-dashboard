@@ -1,0 +1,8 @@
+.wrapper {
+  @apply
+  align-baseline
+  flex
+  h-full
+  overflow-auto
+  flex-wrap;
+}

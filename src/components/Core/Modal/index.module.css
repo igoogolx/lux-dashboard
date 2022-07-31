@@ -1,0 +1,42 @@
+.container {
+  @apply fixed
+    z-10
+    top-0
+    px-1
+    py-4
+    right-0
+    left-0
+   bottom-0 flex overflow-auto;
+}
+
+.mask {
+  @apply fixed inset-0 h-full z-10 bg-black opacity-50;
+}
+
+.close {
+  @apply absolute top-2 right-3 text-gray-300 z-10;
+
+  &:hover {
+    @apply text-black;
+  }
+}
+
+.content {
+  @apply relative  m-auto break-words;
+
+  & .panel {
+    @apply px-6 py-6 bg-white shadow-md rounded-md;
+  }
+}
+
+.sizeS {
+  @apply w-60;
+}
+
+.sizeM {
+  @apply w-80;
+}
+
+.sizeL {
+  @apply w-96;
+}

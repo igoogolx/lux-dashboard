@@ -1,0 +1,12 @@
+.container {
+  @apply px-4 py-8;
+  & .title {
+    @apply text-lg font-medium;
+  }
+  & .desc {
+    @apply text-gray-500 pt-2;
+    & .link {
+      @apply cursor-pointer;
+    }
+  }
+}

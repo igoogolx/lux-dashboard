@@ -1,0 +1,11 @@
+.container {
+  @apply rounded p-1 shadow text-sm max-w-xs break-words;
+}
+
+.dark {
+  @apply bg-gray-800 text-white;
+}
+
+.light {
+  @apply bg-white text-black;
+}

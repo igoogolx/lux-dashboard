@@ -1,0 +1,58 @@
+.wrapper {
+  @apply flex
+    flex-col
+    bg-white
+    rounded-lg
+    w-full
+    p-4
+    shadow-lg;
+
+  &:not(:last-child) {
+    @apply mb-4;
+  }
+
+  & .data {
+    @apply flex
+        mb-4;
+
+    & .header {
+      @apply flex items-center;
+
+      & .avatar {
+        @apply rounded-full bg-gray-100 p-2;
+      }
+    }
+
+    & .content {
+      @apply flex w-full justify-between;
+
+      & .item {
+        @apply flex justify-between flex-1  flex-col pl-4 pr-4;
+
+        &:not(:last-child) {
+          @apply border-r border-gray-300 border-solid border-0;
+        }
+
+        & .title {
+          @apply flex mb-2 text-gray-400 justify-between;
+        }
+
+        & .details {
+          @apply flex justify-between text-xl;
+
+          & .detail {
+            @apply flex items-center flex-1;
+
+            & svg {
+              @apply mr-1 fill-current text-gray-400 relative -bottom-1 scale-75 transform;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .graph {
+    @apply w-full h-32;
+  }
+}

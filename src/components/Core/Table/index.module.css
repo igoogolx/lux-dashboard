@@ -1,0 +1,46 @@
+.table {
+  @apply max-w-0 overflow-hidden bg-white rounded shadow-sm;
+  & .thead {
+    @apply mb-2 overflow-hidden;
+    & .tr {
+      & .th {
+        @apply flex relative px-2 py-1 items-center justify-between font-bold text-gray-800 text-sm;
+        & .thContent {
+          @apply overflow-hidden text-ellipsis;
+        }
+        & .icon {
+          @apply text-gray-400 fill-current;
+        }
+        & .resizerContainer {
+          @apply absolute right-0;
+          & .resizer {
+            @apply px-0.5;
+            & .line {
+              @apply bg-gray-500 h-4 border;
+            }
+          }
+        }
+      }
+
+      & .thSortable {
+        &:hover {
+          @apply bg-gray-200;
+        }
+      }
+    }
+  }
+  & .tbody {
+    @apply overflow-auto;
+    & .tr {
+      &:hover {
+        @apply bg-gray-200;
+      }
+      & .cell {
+        @apply overflow-hidden  px-2 whitespace-nowrap self-center text-ellipsis;
+      }
+    }
+    & .activeTr {
+      @apply bg-blue-300;
+    }
+  }
+}

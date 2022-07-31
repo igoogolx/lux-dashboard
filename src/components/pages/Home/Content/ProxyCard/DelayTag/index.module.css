@@ -1,0 +1,15 @@
+.error {
+  @apply text-red-500;
+}
+
+.warn {
+  @apply text-yellow-500;
+}
+
+.success {
+  @apply text-blue-500;
+}
+
+.loading {
+  @apply animate-spin;
+}

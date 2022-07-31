@@ -1,0 +1,42 @@
+.container {
+  @apply bg-white overflow-auto whitespace-nowrap shadow-lg border-gray-300 border rounded-md;
+  & .list {
+    @apply p-1 list-none min-w-min;
+    & .divider {
+      @apply my-1 h-px bg-gradient-to-r bg-gray-800;
+    }
+    & .item {
+      @apply w-full flex cursor-pointer h-8 items-center;
+      & svg {
+        @apply my-auto mx-0;
+      }
+      & .content {
+        @apply my-auto mx-2 flex flex-1 items-center;
+      }
+
+      & .text {
+        @apply ml-2 flex-1 inline-block;
+      }
+
+      &:hover {
+        @apply rounded-md bg-gray-200;
+      }
+    }
+
+    & .danger {
+      & svg {
+        @apply text-red-600;
+      }
+    }
+
+    & .disabled {
+      @apply pointer-events-none;
+      & svg {
+        @apply text-gray-300 fill-current;
+      }
+      & .text {
+        @apply text-gray-300;
+      }
+    }
+  }
+}
