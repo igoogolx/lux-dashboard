@@ -3,10 +3,6 @@
   width: 768px;
   height: 600px;
 
-  & .header {
-    @apply h-8 bg-white flex-shrink-0 shadow border-b items-center pl-2 flex;
-    -webkit-app-region: drag;
-  }
   & .body {
     @apply flex flex-1 shadow;
     height: calc(100% - 2rem);
