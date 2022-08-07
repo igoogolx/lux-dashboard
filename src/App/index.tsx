@@ -24,7 +24,6 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
-import TitleBar from "@/components/TitleBar";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
