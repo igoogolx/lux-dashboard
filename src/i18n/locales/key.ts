@@ -73,4 +73,5 @@ export const TRANSLATION_KEY = {
   UDP_OK_NOTIFICATION: "udp_ok_notification",
   MORE: "more",
   OPEN_LOG_DIR: "open_log_dir",
+  HUB_PORT: "hub_port",
 };

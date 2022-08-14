@@ -3,6 +3,7 @@ import { Modal } from "@/components/Core";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
+import getHubPort from "@/utils/getHubPort";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -15,6 +16,7 @@ const TRANSLATION_KEY_MAP = {
   tunInterfaceName: TRANSLATION_KEY.COMMON_TUN_INTERFACE_NAME,
   primaryDns: TRANSLATION_KEY.SETTING_PRIMARY_DNS,
   secondaryDns: TRANSLATION_KEY.SETTING_SECONDARY_DNS,
+  port: TRANSLATION_KEY.HUB_PORT,
 };
 
 export function RuntimeDetailModal(
@@ -22,13 +24,14 @@ export function RuntimeDetailModal(
 ): JSX.Element {
   const { close } = props;
   const { t } = useTranslation();
-  const [runtimeDetail, setRuntimeDetail] = useState<RuntimeDetail | null>(
-    null
-  );
+  const [runtimeDetail, setRuntimeDetail] = useState<
+    (RuntimeDetail & { port: number }) | null
+  >(null);
 
   useEffect(() => {
     getRuntimeDetail().then((detail) => {
-      setRuntimeDetail(detail);
+      const port = getHubPort();
+      setRuntimeDetail({ ...detail, port });
     });
   }, []);
 

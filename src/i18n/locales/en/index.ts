@@ -82,4 +82,5 @@ export default {
   [TRANSLATION_KEY.MORE]: "More",
   [TRANSLATION_KEY.DEFAULT_INTERFACE_V4_ADDR]: "Default Interface V4 address",
   [TRANSLATION_KEY.OPEN_LOG_DIR]: "Open Log Dir",
+  [TRANSLATION_KEY.HUB_PORT]: "Hub Port",
 };
