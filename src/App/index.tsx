@@ -95,7 +95,7 @@ export function App(): JSX.Element {
           }}
         />
       )}
-      <div className={styles.header} />
+      {window.IS_ELECTRON_ENV && <div className={styles.header} />}
       <ElevateModal />
       <div className={styles.body}>
         <div className={styles.nav}>
