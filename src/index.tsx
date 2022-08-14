@@ -14,6 +14,7 @@ import {
   CategoryScale,
 } from "chart.js";
 import { Provider } from "react-redux";
+import getHubPort from "@/utils/getHubPort";
 import { App } from "./App";
 import { store } from "./reducers";
 
@@ -26,7 +27,7 @@ Chart.register(
   CategoryScale
 );
 
-const port = window.getCorePort ? window.getCorePort() : 9000;
+const port = getHubPort();
 init(`localhost:${port}`);
 
 function Root() {
