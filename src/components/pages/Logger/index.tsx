@@ -118,7 +118,9 @@ export function Logger(): JSX.Element {
             setSearchedValue(e.target.value);
           }}
         />
-        <Button onClick={onOpenLogDir}>Open Log Dir</Button>
+        <Button onClick={onOpenLogDir}>
+          {t(TRANSLATION_KEY.OPEN_LOG_DIR)}
+        </Button>
       </div>
       <div className={styles.table}>
         <Table columns={columns} data={data} />
