@@ -1,3 +1,3 @@
 export default function getHubPort() {
-  return window.getCorePort ? window.getCorePort() : 9000;
+  return window.getCorePort?.() || Number(process.env.HUB_PORT) || 9000;
 }
