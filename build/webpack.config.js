@@ -81,7 +81,7 @@ module.exports = (env) => {
       },
     },
     plugins: [
-      new Dotenv(),
+      isDev && new Dotenv(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "..", "src", "index.html"),
       }),
@@ -89,6 +89,6 @@ module.exports = (env) => {
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
       }),
-    ],
+    ].filter(Boolean),
   };
 };
