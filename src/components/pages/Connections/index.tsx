@@ -14,6 +14,7 @@ import {
   IconNameEnum,
   IconSizeEnum,
   InputGroup,
+  PlacementEnum,
   SelectorProps,
   Table,
   Tooltip,
@@ -227,7 +228,10 @@ export function Connections(): JSX.Element {
             buttonType={ButtonTypeEnum.Blank}
             className={styles.closeAll}
           >
-            <Tooltip content={t(TRANSLATION_KEY.CLOSE_ALL)}>
+            <Tooltip
+              content={t(TRANSLATION_KEY.CLOSE_ALL)}
+              placement={PlacementEnum.Bottom}
+            >
               <Icon name={IconNameEnum.Trash} size={IconSizeEnum.Medium} />
             </Tooltip>
           </Button>

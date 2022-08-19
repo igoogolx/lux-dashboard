@@ -8,6 +8,7 @@ import {
   IconNameEnum,
   NewForm,
   notifier,
+  PlacementEnum,
   Tooltip,
 } from "@/components/Core";
 import React from "react";
@@ -86,6 +87,7 @@ export function SettingForm(props: SettingFormProps) {
                       </span>
                       <Tooltip
                         content={t(TRANSLATION_KEY.DEFAULT_INTERFACE_TOOLTIP)}
+                        placement={PlacementEnum.Bottom}
                       >
                         <Icon name={IconNameEnum.InfoCircle} />
                       </Tooltip>
