@@ -1,3 +1,6 @@
 export default function getHubPort() {
-  return window.getCorePort?.() || Number(process.env.HUB_PORT) || 9000;
+  const isDev = process.env.NODE_ENV === "development";
+  return (
+    (isDev ? Number(process.env.HUB_PORT) : window.getCorePort?.()) || 9000
+  );
 }
