@@ -29,6 +29,7 @@ import EditIcon from "@fortawesome/fontawesome-free/svgs/solid/pen-to-square.svg
 import SwapIcon from "@fortawesome/fontawesome-free/svgs/solid/right-left.svg";
 import CopyIcon from "@fortawesome/fontawesome-free/svgs/solid/copy.svg";
 import SyncIcon from "@fortawesome/fontawesome-free/svgs/solid/rotate.svg";
+import QuestionIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-question.svg";
 import LogoIcon from "../../../../assets/icon/logo.svg";
 
 export enum IconNameEnum {
@@ -64,6 +65,7 @@ export enum IconNameEnum {
   QrCode,
   Spin,
   Sync,
+  Question,
 }
 
 export const IconMap = {
@@ -99,4 +101,5 @@ export const IconMap = {
   [IconNameEnum.QrCode]: QrCodeIcon,
   [IconNameEnum.Spin]: SpinIcon,
   [IconNameEnum.Sync]: SyncIcon,
+  [IconNameEnum.Question]: QuestionIcon,
 };

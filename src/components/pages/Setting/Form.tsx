@@ -89,7 +89,7 @@ export function SettingForm(props: SettingFormProps) {
                         content={t(TRANSLATION_KEY.DEFAULT_INTERFACE_TOOLTIP)}
                         placement={PlacementEnum.Bottom}
                       >
-                        <Icon name={IconNameEnum.InfoCircle} />
+                        <Icon name={IconNameEnum.Question} />
                       </Tooltip>
                     </div>
                   }
@@ -105,7 +105,7 @@ export function SettingForm(props: SettingFormProps) {
                       <Tooltip
                         content={t(TRANSLATION_KEY.PRIMARY_DOMAINS_TOOLTIP)}
                       >
-                        <Icon name={IconNameEnum.InfoCircle} />
+                        <Icon name={IconNameEnum.Question} />
                       </Tooltip>
                     </div>
                   }
@@ -119,7 +119,7 @@ export function SettingForm(props: SettingFormProps) {
                         {t(TRANSLATION_KEY.BYPASS_IPS)}
                       </span>
                       <Tooltip content={t(TRANSLATION_KEY.BYPASS_IPS_TOOLTIP)}>
-                        <Icon name={IconNameEnum.InfoCircle} />
+                        <Icon name={IconNameEnum.Question} />
                       </Tooltip>
                     </div>
                   }
@@ -135,7 +135,7 @@ export function SettingForm(props: SettingFormProps) {
                       <Tooltip
                         content={t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP)}
                       >
-                        <Icon name={IconNameEnum.InfoCircle} />
+                        <Icon name={IconNameEnum.Question} />
                       </Tooltip>
                     </div>
                   }
