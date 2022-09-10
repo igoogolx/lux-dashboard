@@ -66,6 +66,9 @@ module.exports = (env) => {
                   localIdentName: isDev
                     ? "[path][name]__[local]--[hash:base64:5]"
                     : "[hash:base64]",
+                  getLocalIdent: (_context, _localIdentName, localName) => {
+                    if (localName === "dark") return "dark"
+                  },
                 },
               },
             },
