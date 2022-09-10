@@ -25,7 +25,7 @@
   @apply relative  m-auto break-words;
 
   & .panel {
-    @apply px-6 py-6 bg-white shadow-md rounded-md;
+    @apply px-6 py-6 bg-white shadow-md rounded-md dark:bg-neutral-900;
   }
 }
 

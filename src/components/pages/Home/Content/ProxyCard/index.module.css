@@ -20,7 +20,7 @@
     border
     border-gray-200
     w-40
-    h-24;
+    h-24 dark:bg-neutral-900;
 
     & .info {
       @apply flex flex-col w-full items-center justify-center;

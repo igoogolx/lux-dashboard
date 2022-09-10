@@ -9,7 +9,7 @@
     }
   }
   & .activeNavItem {
-    @apply border-0 border-l-4 border-black border-solid pl-5 text-black bg-gray-100;
+    @apply border-0 border-l-4 border-black border-solid pl-5 text-black bg-gray-100 dark:bg-gray-700 dark:border-white;
     & svg {
       @apply fill-current text-black;
     }

@@ -5,7 +5,9 @@
     rounded-lg
     w-full
     p-4
-    shadow-lg;
+    shadow-lg
+    dark:bg-neutral-900
+  ;
 
   &:not(:last-child) {
     @apply mb-4;
@@ -19,7 +21,7 @@
       @apply flex items-center;
 
       & .avatar {
-        @apply rounded-full bg-gray-100 p-2;
+        @apply rounded-full bg-gray-100 p-2 dark:bg-neutral-900;
       }
     }
 

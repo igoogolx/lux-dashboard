@@ -1,10 +1,10 @@
 .table {
-  @apply max-w-0 overflow-hidden bg-white rounded shadow-sm;
+  @apply max-w-0 overflow-hidden bg-white rounded shadow-sm dark:bg-neutral-900;
   & .thead {
     @apply mb-2 overflow-hidden;
     & .tr {
       & .th {
-        @apply flex relative px-2 py-1 items-center justify-between font-bold text-gray-800 text-sm;
+        @apply flex relative px-2 py-1 items-center justify-between font-bold text-gray-800 text-sm dark:text-white;
         & .thContent {
           @apply overflow-hidden text-ellipsis;
         }

@@ -1,8 +1,8 @@
 .container {
-  @apply text-sm relative  bg-white;
+  @apply text-sm relative  bg-white dark:bg-neutral-900;
 
   & .label {
-    @apply py-1 font-medium text-gray-800;
+    @apply py-1 font-medium text-gray-800 dark:text-white;
   }
 
   & .content {

@@ -30,6 +30,8 @@ import SwapIcon from "@fortawesome/fontawesome-free/svgs/solid/right-left.svg";
 import CopyIcon from "@fortawesome/fontawesome-free/svgs/solid/copy.svg";
 import SyncIcon from "@fortawesome/fontawesome-free/svgs/solid/rotate.svg";
 import QuestionIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-question.svg";
+import SunIcon from "@fortawesome/fontawesome-free/svgs/solid/sun.svg";
+import MoonIcon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg";
 import LogoIcon from "../../../../assets/icon/logo.svg";
 
 export enum IconNameEnum {
@@ -66,6 +68,8 @@ export enum IconNameEnum {
   Spin,
   Sync,
   Question,
+  Sun,
+  Moon,
 }
 
 export const IconMap = {
@@ -102,4 +106,6 @@ export const IconMap = {
   [IconNameEnum.Spin]: SpinIcon,
   [IconNameEnum.Sync]: SyncIcon,
   [IconNameEnum.Question]: QuestionIcon,
+  [IconNameEnum.Sun]: SunIcon,
+  [IconNameEnum.Moon]: MoonIcon,
 };

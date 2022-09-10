@@ -18,7 +18,7 @@
       }
     }
     & .bar {
-      @apply absolute w-full bg-white shadow bottom-0 left-0 px-8 py-2  flex;
+      @apply absolute w-full bg-white shadow bottom-0 left-0 px-8 py-2  flex dark:bg-neutral-900;
       & .resetBtn {
         @apply mr-4;
       }
