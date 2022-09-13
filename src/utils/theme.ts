@@ -17,4 +17,4 @@ export const setTheme = (theme: ThemeEnum) => {
 };
 
 // TODO: remove
-setTheme(ThemeEnum.Dark);
+setTheme(ThemeEnum.Light);
