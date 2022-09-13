@@ -53,7 +53,14 @@ function convertDuration(duration: number) {
 }
 
 const getProcess = (name: string) => {
-  const paths = name.split("\\");
+  const platform = window.getPlatform();
+  let separator = "";
+  if (platform === "win32") {
+    separator = "\\";
+  } else if (platform === "darwin") {
+    separator = "/";
+  }
+  const paths = name.split(separator);
   return paths[paths.length - 1];
 };
 
