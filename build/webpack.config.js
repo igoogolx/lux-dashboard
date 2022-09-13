@@ -9,15 +9,12 @@ module.exports = (env) => {
   return {
     optimization: {
       minimize: true,
-      usedExports: true,
-      splitChunks: {
-        chunks: "all"
-      }
+      usedExports: true
     },
     entry: path.resolve(__dirname, "..", "src", "index.tsx"),
     output: {
       path: path.resolve(__dirname, "..", "dist"),
-      filename: "[name].js",
+      filename: "bundle.js",
       clean: {
         dry: true,
       },
