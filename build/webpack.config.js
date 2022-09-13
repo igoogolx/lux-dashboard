@@ -8,7 +8,8 @@ module.exports = (env) => {
   const isDev = env.NODE_ENV === "development";
   return {
     optimization: {
-      minimize: true,
+      //Note: don't enable minimize
+      minimize: false,
       usedExports: true
     },
     entry: path.resolve(__dirname, "..", "src", "index.tsx"),
