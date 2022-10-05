@@ -1,6 +1,5 @@
 import "./i18n";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "./index.css";
 import { HashRouter as Router } from "react-router-dom";
 import { init } from "lux-js-sdk";
@@ -15,6 +14,7 @@ import {
 } from "chart.js";
 import { Provider } from "react-redux";
 import getHubPort from "@/utils/getHubPort";
+import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { store } from "./reducers";
 
@@ -40,4 +40,6 @@ function Root() {
   );
 }
 
-ReactDOM.render(<Root />, document.getElementById("app"));
+const container = document.getElementById("app");
+const root = createRoot(container as HTMLElement); // createRoot(container!) if you use TypeScript
+root.render(<Root />);
