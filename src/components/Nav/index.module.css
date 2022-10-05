@@ -3,15 +3,18 @@
   -webkit-app-region: drag;
   & .navItem {
     -webkit-app-region: no-drag;
-    @apply block flex py-4 pl-6 flex items-center;
+    @apply block flex py-4 pl-6 flex items-center text-light-unselected;
+    & svg {
+      @apply fill-current text-light-unselected;
+    }
     & .text {
       @apply ml-2;
     }
   }
   & .activeNavItem {
-    @apply border-0 border-l-4 border-black border-solid pl-5 text-black bg-gray-100 dark:bg-gray-700 dark:border-white;
+    @apply border-0 border-l-4 border-black border-solid border-light-highlight pl-5 font-bold text-light-font dark:bg-gray-700 dark:border-white;
     & svg {
-      @apply fill-current text-black;
+      @apply text-light-font;
     }
   }
 }

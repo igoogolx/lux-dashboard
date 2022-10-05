@@ -2,7 +2,7 @@
   @apply bg-white flex w-full p-4 justify-end
     items-center
     h-full
-    border-gray-300
+    border-light-line
     border-b
     dark:bg-neutral-900
   ;

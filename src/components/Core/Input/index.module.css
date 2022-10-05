@@ -12,7 +12,7 @@
       line-height: 20px;
     }
     & .inputBorder {
-      @apply rounded border border-gray-700 border-solid;
+      @apply rounded border border-light-line border-solid;
     }
     & .input:focus {
       @apply border-blue-600;

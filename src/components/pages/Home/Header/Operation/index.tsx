@@ -97,7 +97,7 @@ export function Operation(props: OperationProps): JSX.Element {
           className={classNames(className, styles.button)}
           buttonType={ButtonTypeEnum.Secondary}
         >
-          <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Medium} />
+          <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Normal} />
         </Button>
       </Tooltip>
     </Dropdown>

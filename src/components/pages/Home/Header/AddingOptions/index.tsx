@@ -91,7 +91,7 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
         <Tooltip content="New Proxy" placement={PlacementEnum.Bottom}>
           <Icon
             name={IconNameEnum.Plus}
-            size={IconSizeEnum.Large}
+            size={IconSizeEnum.Medium}
             className={styles.addButton}
           />
         </Tooltip>
