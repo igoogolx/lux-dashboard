@@ -9,14 +9,14 @@ declare module "*.svg" {
 }
 
 declare interface Window {
-  elevate: () => Promise<void>;
-  exit: () => void;
-  IS_ELECTRON_ENV: boolean;
-  restart: () => void;
-  shellOpenPath: (path: string) => Promise<void>;
-  shellOpenExternal: (url: string) => Promise<void>;
-  getPlatform: () => string;
-  getVersion: () => string;
+  elevate?: () => Promise<void>;
+  exit?: () => void;
+  IS_ELECTRON_ENV?: boolean;
+  restart?: () => void;
+  shellOpenPath?: (path: string) => Promise<void>;
+  shellOpenExternal?: (url: string) => Promise<void>;
+  getPlatform?: () => string;
+  getVersion?: () => string;
   getCorePort?: () => number;
   closeWindow?: () => number;
   minimizeWindow?: () => number;

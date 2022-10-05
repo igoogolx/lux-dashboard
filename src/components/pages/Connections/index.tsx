@@ -23,6 +23,7 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import TestRuleModal from "@/components/pages/Connections/TestRuleModal";
 import RuleTag from "@/components/pages/Connections/RuleTag";
+import { getPlatform } from "@/electronContext";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {
@@ -53,8 +54,8 @@ function convertDuration(duration: number) {
 }
 
 const getProcess = (name: string) => {
-  const platform = window.getPlatform();
-  let separator = "";
+  const platform = getPlatform();
+  let separator = "win32";
   if (platform === "win32") {
     separator = "\\";
   } else if (platform === "darwin") {
