@@ -55,7 +55,7 @@ function convertDuration(duration: number) {
 
 const getProcess = (name: string) => {
   const platform = getPlatform();
-  let separator = "win32";
+  let separator = "\\";
   if (platform === "win32") {
     separator = "\\";
   } else if (platform === "darwin") {
