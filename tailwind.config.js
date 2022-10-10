@@ -15,6 +15,7 @@ module.exports = {
         },
         dark: {
           DEFAULT: "rgb(20 22 39)",
+          line: "#dcddde",
           content: colors.neutral["100"],
           font: "#1e1e1e",
           highlight: "#3f8af7",
