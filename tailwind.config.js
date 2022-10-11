@@ -19,6 +19,7 @@ module.exports = {
           content: colors.neutral["100"],
           font: "#1e1e1e",
           highlight: "#3f8af7",
+          unselected: "#898c8e",
         },
       },
     },
