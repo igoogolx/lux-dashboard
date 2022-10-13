@@ -13,9 +13,7 @@ module.exports = {
           highlight: "#3f8af7",
           content: colors.gray["100"],
         },
-        dark: {
-          DEFAULT: "rgb(20 22 39)",
-        },
+        dark: {},
       },
     },
   },
