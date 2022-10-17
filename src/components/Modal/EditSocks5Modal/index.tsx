@@ -7,8 +7,8 @@ import {
   Field,
   NewForm,
 } from "@/components/Core";
-import { useDispatch } from "react-redux";
-import { proxiesSlice } from "@/reducers";
+import { useDispatch, useSelector } from "react-redux";
+import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import * as Yup from "yup";
@@ -53,6 +53,9 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
   const { t } = useTranslation();
   const { close, initialValue, isSelected } = props;
   const dispatch = useDispatch();
+  const isStarted = useSelector<RootState, boolean>(
+    (state) => state.manager.isStared
+  );
   const onSubmit = async (data: Socks5FormValue) => {
     const submittedValue = { ...data, port: Number(data.port) };
     if (initialValue) {
@@ -116,7 +119,7 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
                 </Button>
                 <Button
                   className={styles.button}
-                  disabled={!dirty || isSelected}
+                  disabled={!dirty || (isSelected && isStarted)}
                   onClick={submitForm}
                 >
                   {t(TRANSLATION_KEY.FORM_SAVE)}

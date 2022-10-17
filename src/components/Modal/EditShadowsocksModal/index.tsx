@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
-import { useDispatch } from "react-redux";
-import { proxiesSlice } from "@/reducers";
+import { useDispatch, useSelector } from "react-redux";
+import { proxiesSlice, RootState } from "@/reducers";
 import {
   convertPluginOptsStr,
   parsePluginOptsStr,
@@ -77,6 +77,10 @@ export const EditShadowsocksModal = React.memo(
     const dispatch = useDispatch();
     const methodsOptions = useRef(
       ENCRYPTION_METHODS.map((METHOD) => ({ content: METHOD, id: METHOD }))
+    );
+
+    const isStarted = useSelector<RootState, boolean>(
+      (state) => state.manager.isStared
     );
 
     const onSubmit = async (value: ShadowsocksWrapper) => {
@@ -161,7 +165,9 @@ export const EditShadowsocksModal = React.memo(
                   <Button
                     className={styles.button}
                     disabled={
-                      !dirty || (!isValid && submitCount > 0) || isSelected
+                      !dirty ||
+                      (!isValid && submitCount > 0) ||
+                      (isSelected && isStarted)
                     }
                     onClick={submitForm}
                   >
