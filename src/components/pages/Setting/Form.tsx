@@ -80,29 +80,29 @@ export function SettingForm(props: SettingFormProps) {
 
   return (
     <div className={styles.form}>
-      <div>
-        Theme:
-        <Button
-          onClick={() => {
-            if (currentTheme === ThemeEnum.Light) {
-              setCurrentTheme(ThemeEnum.Dark);
-              setTheme(ThemeEnum.Dark);
-            } else {
-              setTheme(ThemeEnum.Light);
-              setCurrentTheme(ThemeEnum.Light);
-            }
-          }}
-          buttonType={ButtonTypeEnum.Blank}
-        >
-          <Icon
-            name={
-              currentTheme === ThemeEnum.Light
-                ? IconNameEnum.Sun
-                : IconNameEnum.Moon
-            }
-          />
-        </Button>
-      </div>
+      {/* <div> */}
+      {/*  Theme: */}
+      {/*  <Button */}
+      {/*    onClick={() => { */}
+      {/*      if (currentTheme === ThemeEnum.Light) { */}
+      {/*        setCurrentTheme(ThemeEnum.Dark); */}
+      {/*        setTheme(ThemeEnum.Dark); */}
+      {/*      } else { */}
+      {/*        setTheme(ThemeEnum.Light); */}
+      {/*        setCurrentTheme(ThemeEnum.Light); */}
+      {/*      } */}
+      {/*    }} */}
+      {/*    buttonType={ButtonTypeEnum.Blank} */}
+      {/*  > */}
+      {/*    <Icon */}
+      {/*      name={ */}
+      {/*        currentTheme === ThemeEnum.Light */}
+      {/*          ? IconNameEnum.Sun */}
+      {/*          : IconNameEnum.Moon */}
+      {/*      } */}
+      {/*    /> */}
+      {/*  </Button> */}
+      {/* </div> */}
       <NewForm onSubmit={onSubmit} initialValues={convertData(initValue)}>
         {({ dirty, submitCount, isValid, setValues, submitForm, values }) => {
           return (
