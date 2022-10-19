@@ -14,7 +14,6 @@ module.exports = {
           content: colors.gray["100"],
         },
         dark: {
-          line: "#dcddde",
           font: "#1e1e1e",
           content: colors.gray["100"],
         },
