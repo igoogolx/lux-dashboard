@@ -92,7 +92,10 @@ export function Operation(props: OperationProps): JSX.Element {
       }}
     >
       {isRuntimeDetailOpen && <RuntimeDetailModal close={closeRuntimeDetail} />}
-      <Tooltip content="More" placement={PlacementEnum.Bottom}>
+      <Tooltip
+        content={t(TRANSLATION_KEY.MORE)}
+        placement={PlacementEnum.Bottom}
+      >
         <Button
           className={classNames(className, styles.button)}
           buttonType={ButtonTypeEnum.Secondary}
