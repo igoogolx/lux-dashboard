@@ -1,11 +1,12 @@
 import * as React from "react";
 import { useCallback, useEffect, useMemo } from "react";
 import {
+  MenuItemProps,
+  notifier,
+  PlacementEnum,
+  Selector,
   Switch,
   Tooltip,
-  MenuItemProps,
-  Selector,
-  notifier,
 } from "@/components/Core";
 import {
   getRules,
@@ -16,7 +17,7 @@ import {
 } from "lux-js-sdk";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedSlice } from "@/reducers/selected";
-import { rulesSelectors, rulesSlice, RootState } from "@/reducers";
+import { RootState, rulesSelectors, rulesSlice } from "@/reducers";
 import { managerSlice } from "@/reducers/manager";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
@@ -110,6 +111,7 @@ export function Header(): JSX.Element {
         content={t(TRANSLATION_KEY.SWITCH_DISABLE_TIP)}
         disabled={!isSwitchDisabled}
         timeout={DEFAULT_TOOLTIP_TIMEOUT}
+        placement={PlacementEnum.Bottom}
       >
         <Switch
           checked={isStarted}
