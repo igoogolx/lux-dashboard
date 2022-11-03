@@ -25,7 +25,13 @@ export const parsePluginOptsStr = (optsStr: string) => {
     const values = pair.split("=");
     if (values.length === 2) {
       const [key, value] = values;
-      opts[key] = value;
+      if (key === "obfs") {
+        opts.mode = value;
+      } else if (key === "obfs-host") {
+        opts.host = value;
+      } else {
+        opts[key] = value;
+      }
     }
   });
 
@@ -47,6 +53,9 @@ const convertConfig = (rawConfig: Config) => {
   if (pluginStr) {
     const separatorIndex = pluginStr.indexOf(";");
     result.plugin = pluginStr.substring(0, separatorIndex);
+    if (result.plugin.includes("obfs")) {
+      result.plugin = "obfs";
+    }
     result.pluginOpts = parsePluginOptsStr(
       pluginStr.substring(separatorIndex + 1)
     );
