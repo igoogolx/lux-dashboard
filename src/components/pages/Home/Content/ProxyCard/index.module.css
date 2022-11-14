@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative m-4 text-sm;
+  @apply relative m-4 text-sm h-fit;
   & .content {
     @apply
     active:scale-[1.02]

@@ -4,5 +4,6 @@
   flex
   h-full
   overflow-auto
-  flex-wrap;
+  flex-wrap
+  content-start;
 }
