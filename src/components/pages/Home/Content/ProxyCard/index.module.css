@@ -32,13 +32,6 @@
         -webkit-line-clamp: 2;
         overflow-wrap: break-word;
       }
-      & .target {
-        @apply text-gray-500 overflow-hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow-wrap: break-word;
-      }
     }
 
     & .dot {

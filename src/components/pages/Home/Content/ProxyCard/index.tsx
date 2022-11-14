@@ -45,8 +45,9 @@ export function ProxyCard(props: ProxyCardProps): JSX.Element {
         )}
         <div className={styles.typeTag}>{proxy.type}</div>
         <div className={styles.info}>
-          <div className={styles.name}>{proxy.name}</div>
-          <div className={styles.target}>{`${proxy.server}:${proxy.port}`}</div>
+          <div className={styles.name}>
+            {proxy.name || `${proxy.server}:${proxy.port}`}
+          </div>
         </div>
       </div>
     </div>
