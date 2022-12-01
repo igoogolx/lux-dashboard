@@ -72,12 +72,9 @@ export const decode = (url: string) => {
 };
 
 export const encode = (config: Shadowsocks) => {
-  let pluginStr = "";
-  if (pluginStr) {
-    pluginStr = `${config.plugin}`;
-    if (config.pluginOpts) {
-      pluginStr = `${pluginStr};${convertPluginOptsStr(config.pluginOpts)}`;
-    }
+  let pluginStr = `${config.plugin}`;
+  if (config.pluginOpts) {
+    pluginStr = `${pluginStr};${convertPluginOptsStr(config.pluginOpts)}`;
   }
   return SIP002_URI.stringify(
     makeConfig({
