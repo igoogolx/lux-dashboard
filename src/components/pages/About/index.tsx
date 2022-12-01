@@ -10,7 +10,7 @@ import styles from "./index.module.css";
 export function About(): JSX.Element {
   const { t } = useTranslation();
   const version = getVersion();
-  const [hasLatestVersion, setHasLatestVersion] = useState(true);
+  const [hasLatestVersion, setHasLatestVersion] = useState(false);
   const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
   const onCheckForUpdate = useCallback(async () => {
     try {
