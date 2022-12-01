@@ -83,4 +83,9 @@ export default {
   [TRANSLATION_KEY.DEFAULT_INTERFACE_V4_ADDR]: "Default Interface V4 address",
   [TRANSLATION_KEY.OPEN_LOG_DIR]: "Open Log Dir",
   [TRANSLATION_KEY.HUB_PORT]: "Hub Port",
+  [TRANSLATION_KEY.NEW_VERSION_INFO]: "There is a new available version",
+  [TRANSLATION_KEY.CONFIRM]: "Confirm",
+  [TRANSLATION_KEY.CHECK_UPDATE]: "Check for updates",
+  [TRANSLATION_KEY.GO]: "Go",
+  [TRANSLATION_KEY.NO_UPDATE_INFO]: "There is no updates",
 };

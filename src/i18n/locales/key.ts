@@ -74,4 +74,9 @@ export const TRANSLATION_KEY = {
   MORE: "more",
   OPEN_LOG_DIR: "open_log_dir",
   HUB_PORT: "hub_port",
+  NEW_VERSION_INFO: "new_version_info",
+  CHECK_UPDATE: "check_update",
+  CONFIRM: "confirm",
+  GO: "go",
+  NO_UPDATE_INFO: "no_update_info",
 };

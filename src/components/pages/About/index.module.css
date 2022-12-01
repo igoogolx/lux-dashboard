@@ -9,4 +9,7 @@
       @apply cursor-pointer;
     }
   }
+  & .checkUpdatesBth{
+    @apply ml-1;
+  }
 }
