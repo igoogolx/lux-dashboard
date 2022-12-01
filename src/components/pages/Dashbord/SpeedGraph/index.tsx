@@ -47,9 +47,7 @@ const getConfiguration = () => {
           },
         },
         y: {
-          grid: {
-            drawBorder: false,
-          },
+          border: { width: 0 },
           ticks: {
             callback: (value: number | string) => {
               const { value: convertedValue, unit } = convertByte(
