@@ -12,6 +12,7 @@ module.exports = (env) => {
       minimize: false,
       usedExports: true
     },
+    devtool: isDev ? "source-map" : false,
     entry: path.resolve(__dirname, "..", "src", "index.tsx"),
     output: {
       path: path.resolve(__dirname, "..", "dist"),
