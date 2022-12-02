@@ -11,13 +11,14 @@ import {
   PlacementEnum,
   Tooltip,
 } from "@/components/Core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { settingSlice } from "@/reducers/setting";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
+import { FormikProps } from "formik";
 import styles from "./index.module.css";
 
 type FormData = {
@@ -71,10 +72,13 @@ export function SettingForm(props: SettingFormProps) {
     (state) => state.manager.isStared || state.manager.isLoading
   );
 
+  const formInstance = useRef<FormikProps<FormData>>(null);
+
   const onSubmit = async (data: FormData) => {
     const submitData = parseData(data);
     await setSetting(submitData);
     dispatch(settingSlice.actions.setSetting(data));
+    formInstance.current?.resetForm({ values: data });
     notifier.success(t(TRANSLATION_KEY.SAVE_SUCCESS));
   };
 
@@ -103,7 +107,11 @@ export function SettingForm(props: SettingFormProps) {
       {/*    /> */}
       {/*  </Button> */}
       {/* </div> */}
-      <NewForm onSubmit={onSubmit} initialValues={convertData(initValue)}>
+      <NewForm
+        onSubmit={onSubmit}
+        initialValues={convertData(initValue)}
+        innerRef={formInstance}
+      >
         {({ dirty, submitCount, isValid, setValues, submitForm, values }) => {
           return (
             <>
