@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "@/components/pages/Home";
@@ -7,13 +8,14 @@ import { Connections } from "@/components/pages/Connections";
 import { Logger } from "@/components/pages/Logger";
 import {
   ConfirmModal,
-  notifier,
+  Icon,
+  IconNameEnum,
   NotificationContainer,
+  notifier,
 } from "@/components/Core";
 import { Setting } from "@/components/pages/Setting";
-import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getIsAdmin, subscribePing, subscribeLog } from "lux-js-sdk";
+import { getIsAdmin, subscribeLog, subscribePing } from "lux-js-sdk";
 import { loggerSlice } from "@/reducers/logger";
 import { generalSlice } from "@/reducers/general";
 import { ElevateModal } from "@/components/Modal/ElevateModal";
@@ -95,7 +97,9 @@ export function App(): JSX.Element {
           }}
         />
       )}
-      {window.IS_ELECTRON_ENV && <div className={styles.header} />}
+      <div className={styles.header}>
+        <Icon name={IconNameEnum.Logo} />
+      </div>
       <ElevateModal />
       <div className={styles.body}>
         <div className={styles.nav}>
