@@ -68,6 +68,7 @@
     "react-transition-group": "^4.4.2",
     "react-window": "^1.8.6",
     "redux": "^4.1.0",
+    "semver": "^7.3.8",
     "shadowsocksconfig": "github:Jigsaw-Code/outline-shadowsocksconfig",
     "yup": "^0.32.11"
   }
