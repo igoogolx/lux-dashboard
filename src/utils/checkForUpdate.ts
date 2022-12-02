@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getVersion } from "@/electronContext";
+import { compare } from "semver";
 
 function compareVersion(current: string, latest: string): boolean {
-  return Number(latest) > Number(current);
+  return compare(latest, current) === 1;
 }
 
 function getVersionFromTag(tag: string) {
