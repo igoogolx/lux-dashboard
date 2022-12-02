@@ -24,6 +24,7 @@
     "@types/react-table": "^7.7.2",
     "@types/react-transition-group": "^4.4.3",
     "@types/react-window": "^1.8.4",
+    "@types/semver": "^7.3.13",
     "autoprefixer": "^10.2.6",
     "css-loader": "^6.5.0",
     "dotenv-webpack": "^8.0.0",
