@@ -23,7 +23,7 @@ const getConfiguration = () => {
           tension: 0.2,
         },
         {
-          label: i18next.t(TRANSLATION_KEY.DOWNLOAD),
+          label: i18next.t(TRANSLATION_KEY.UPLOAD),
           borderColor: "#fe8b56",
           borderWidth: 1,
           fill: false,
