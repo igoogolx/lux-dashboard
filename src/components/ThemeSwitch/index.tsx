@@ -10,6 +10,7 @@ export default function ThemeSwitch(): JSX.Element {
   useEffect(() => {
     const theme = getTheme();
     setCurrentTheme(theme);
+    setTheme(theme);
   }, []);
 
   const onClick = () => {

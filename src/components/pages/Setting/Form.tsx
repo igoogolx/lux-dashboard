@@ -11,14 +11,13 @@ import {
   PlacementEnum,
   Tooltip,
 } from "@/components/Core";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { settingSlice } from "@/reducers/setting";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 
-import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
 import { FormikProps } from "formik";
 import styles from "./index.module.css";
 
