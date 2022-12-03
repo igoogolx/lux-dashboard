@@ -15,6 +15,3 @@ export const setTheme = (theme: ThemeEnum) => {
   }
   localStorage.setItem("theme", theme);
 };
-
-// TODO: remove
-setTheme(ThemeEnum.Light);

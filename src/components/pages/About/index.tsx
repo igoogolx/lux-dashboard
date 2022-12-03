@@ -3,7 +3,12 @@ import { getVersion, shellOpenExternal } from "@/electronContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { LATEST_RELEASE_URL, REPOSITORY_URL } from "@/utils/constants";
-import { Button, ConfirmModal, notifier } from "@/components/Core";
+import {
+  Button,
+  ButtonTypeEnum,
+  ConfirmModal,
+  notifier,
+} from "@/components/Core";
 import checkForUpdate from "@/utils/checkForUpdate";
 import styles from "./index.module.css";
 
@@ -47,6 +52,7 @@ export function About(): JSX.Element {
             onClick={onCheckForUpdate}
             disabled={isCheckingUpdate}
             className={styles.checkUpdatesBth}
+            buttonType={ButtonTypeEnum.Secondary}
           >
             {t(TRANSLATION_KEY.CHECK_UPDATE)}
           </Button>

@@ -11,12 +11,13 @@ import {
   PlacementEnum,
   Tooltip,
 } from "@/components/Core";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { settingSlice } from "@/reducers/setting";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
+
 import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
 import { FormikProps } from "formik";
 import styles from "./index.module.css";
@@ -61,12 +62,6 @@ export function SettingForm(props: SettingFormProps) {
   const { initValue } = props;
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [currentTheme, setCurrentTheme] = useState(ThemeEnum.Light);
-
-  useEffect(() => {
-    const theme = getTheme();
-    setCurrentTheme(theme);
-  }, []);
 
   const isStarted = useSelector<RootState, boolean>(
     (state) => state.manager.isStared || state.manager.isLoading
@@ -84,29 +79,6 @@ export function SettingForm(props: SettingFormProps) {
 
   return (
     <div className={styles.form}>
-      {/* <div> */}
-      {/*  Theme: */}
-      {/*  <Button */}
-      {/*    onClick={() => { */}
-      {/*      if (currentTheme === ThemeEnum.Light) { */}
-      {/*        setCurrentTheme(ThemeEnum.Dark); */}
-      {/*        setTheme(ThemeEnum.Dark); */}
-      {/*      } else { */}
-      {/*        setTheme(ThemeEnum.Light); */}
-      {/*        setCurrentTheme(ThemeEnum.Light); */}
-      {/*      } */}
-      {/*    }} */}
-      {/*    buttonType={ButtonTypeEnum.Blank} */}
-      {/*  > */}
-      {/*    <Icon */}
-      {/*      name={ */}
-      {/*        currentTheme === ThemeEnum.Light */}
-      {/*          ? IconNameEnum.Sun */}
-      {/*          : IconNameEnum.Moon */}
-      {/*      } */}
-      {/*    /> */}
-      {/*  </Button> */}
-      {/* </div> */}
       <NewForm
         onSubmit={onSubmit}
         initialValues={convertData(initValue)}

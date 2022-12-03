@@ -13,6 +13,7 @@ module.exports = {
           highlight: "#3f8af7",
           content: colors.gray["100"],
           hover: colors.gray["200"],
+          "theme-switch": "#f1efee",
         },
         dark: {
           DEFAULT: "#1a1c1e",
@@ -22,6 +23,8 @@ module.exports = {
           highlight: "#3f8af7",
           unselected: "#898c8e",
           hover: colors.gray["800"],
+          "theme-switch": "#282a2e",
+          tooltip: "#1f1f1f",
         },
       },
     },

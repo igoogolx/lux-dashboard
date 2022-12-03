@@ -1,5 +1,5 @@
 .svg {
-  @apply pointer-events-none fill-current dark:fill-white;
+  @apply pointer-events-none fill-current;
 }
 
 .small {

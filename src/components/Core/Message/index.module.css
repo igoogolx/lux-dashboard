@@ -12,9 +12,15 @@
   mt-4
   mb-0
   shadow-lg
-  border-gray-100
+  border-light-line
   border
-  pointer-events-auto;
+  bg-light
+  pointer-events-auto
+  text-light-font
+  dark:bg-dark
+  dark:border-dark-line
+  dark:text-dark-font
+  ;
 
   & .popup {
     @apply flex items-center content-center select-text;

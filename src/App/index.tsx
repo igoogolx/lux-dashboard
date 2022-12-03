@@ -26,6 +26,7 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -104,6 +105,9 @@ export function App(): JSX.Element {
       <div className={styles.body}>
         <div className={styles.nav}>
           <Nav />
+          <div className={styles.themeSwitch}>
+            <ThemeSwitch />
+          </div>
         </div>
         <div className={styles.content}>
           <Routes>

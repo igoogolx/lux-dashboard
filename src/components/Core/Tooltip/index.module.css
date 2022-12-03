@@ -1,5 +1,5 @@
 .container {
-  @apply rounded p-1 shadow text-sm max-w-xs break-words dark:bg-gray-800 dark:text-white;
+  @apply rounded p-1 shadow text-sm max-w-xs break-words dark:bg-dark-tooltip dark:text-dark-font;
 }
 
 .dark {
