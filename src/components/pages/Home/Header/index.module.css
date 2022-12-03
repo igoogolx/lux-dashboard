@@ -4,7 +4,8 @@
     h-full
     border-light-line
     border-b
-    dark:bg-neutral-900
+    dark:bg-dark
+    dark:border-dark-line
   ;
 
   & .rulesDropdown {

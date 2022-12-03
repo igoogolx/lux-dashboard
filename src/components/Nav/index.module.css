@@ -5,16 +5,17 @@
     -webkit-app-region: no-drag;
     @apply block flex py-4 pl-6 flex items-center text-light-unselected;
     & svg {
-      @apply fill-current text-light-unselected;
+      @apply fill-current text-light-unselected dark:text-dark-unselected;
     }
     & .text {
       @apply ml-2;
     }
   }
   & .activeNavItem {
-    @apply border-0 border-l-4 border-black border-solid border-light-highlight pl-5 font-bold text-light-font dark:bg-gray-700 dark:border-white;
+    @apply border-0 border-l-4 border-black border-solid border-light-highlight pl-5 font-bold text-light-font
+    dark:bg-dark dark:border-dark-highlight dark:text-dark-font;
     & svg {
-      @apply text-light-font;
+      @apply text-light-font dark:text-dark-font;
     }
   }
 }

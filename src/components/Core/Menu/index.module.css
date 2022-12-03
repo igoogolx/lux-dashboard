@@ -1,5 +1,6 @@
 .container {
-  @apply bg-white overflow-auto whitespace-nowrap shadow-lg border-gray-300 border rounded-md dark:bg-neutral-900;
+  @apply bg-white overflow-auto whitespace-nowrap shadow-lg border-gray-300 border rounded-md dark:bg-dark
+  dark:border-dark-line;
   & .list {
     @apply p-1 list-none min-w-min;
     & .divider {
@@ -19,7 +20,7 @@
       }
 
       &:hover {
-        @apply rounded-md bg-gray-200;
+        @apply rounded-md bg-light-hover dark:bg-dark-hover;
       }
     }
 

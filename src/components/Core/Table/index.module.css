@@ -1,5 +1,5 @@
 .table {
-  @apply max-w-0 overflow-hidden bg-white rounded shadow-sm dark:bg-neutral-900;
+  @apply max-w-0 overflow-hidden bg-white shadow-sm dark:bg-dark;
   & .thead {
     @apply mb-2 overflow-hidden;
     & .tr {
@@ -24,7 +24,7 @@
 
       & .thSortable {
         &:hover {
-          @apply bg-gray-200;
+          @apply bg-gray-200 dark:bg-dark-hover;
         }
       }
     }
@@ -33,7 +33,7 @@
     @apply overflow-auto;
     & .tr {
       &:hover {
-        @apply bg-gray-200;
+        @apply bg-gray-200 dark:bg-dark-hover;
       }
       & .cell {
         @apply overflow-hidden  px-2 whitespace-nowrap self-center text-ellipsis;

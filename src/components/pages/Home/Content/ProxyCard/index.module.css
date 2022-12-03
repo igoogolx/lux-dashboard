@@ -21,7 +21,10 @@
     border-gray-200
     w-40
     h-24
-    dark:bg-dark;
+    dark:text-dark-font
+    dark:bg-dark
+    dark:border-dark-line
+    ;
 
     & .info {
       @apply flex flex-col w-full items-center justify-center;
@@ -43,7 +46,7 @@
       @apply absolute left-2 bottom-2;
     }
     & .typeTag {
-      @apply absolute bottom-2 right-2 text-gray-600 text-xs opacity-80;
+      @apply absolute bottom-2 right-2 text-gray-600 text-xs opacity-80 dark:text-dark-font;
     }
   }
   & .actionButton {

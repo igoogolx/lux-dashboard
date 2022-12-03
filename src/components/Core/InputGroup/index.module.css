@@ -1,8 +1,8 @@
 .container {
-  @apply flex flex-row rounded border border-solid border-light-line;
+  @apply flex flex-row rounded border border-solid border-light-line dark:border-dark-line;
 
   & .selector {
-    @apply border-0 border-r border-light-line rounded-tr-none rounded-br-none w-28;
+    @apply border-0 border-r border-light-line rounded-tr-none rounded-br-none w-28 dark:border-dark-line;
   }
   & .input {
     border-radius: inherit;

@@ -1,6 +1,6 @@
 .base {
   @apply inline-flex
-  dark:bg-black
+  dark:bg-dark
   outline-none
       cursor-pointer
   border-none
@@ -20,7 +20,7 @@
 
 .secondary {
   composes: base;
-  @apply bg-white rounded border border-gray-300 border-solid;
+  @apply bg-white rounded border border-gray-300 border-solid dark:border-dark-line;
 }
 
 .blank {

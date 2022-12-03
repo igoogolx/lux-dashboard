@@ -1,10 +1,12 @@
 .wrapper {
-  @apply flex m-auto flex-col shadow-xl border-light-line border bg-light dark:bg-dark dark:text-white;
+  @apply flex m-auto flex-col shadow-xl border-light-line border bg-light dark:bg-dark dark:text-white dark:border-dark-line
+    dark:text-dark-font
+  ;
   width: 768px;
   height: 600px;
 
   & .header {
-    @apply h-8 bg-white flex-shrink-0 shadow border-b items-center pl-2 flex z-20;
+    @apply h-8 bg-white flex-shrink-0 shadow border-b items-center pl-2 flex z-20 dark:bg-dark dark:border-dark-line;
     -webkit-app-region: drag;
   }
   & .body {
@@ -14,7 +16,7 @@
 }
 
 .nav {
-  @apply flex w-40 flex-col flex-shrink-0 relative bg-white border-r border-light-line dark:bg-dark;
+  @apply flex w-40 flex-col flex-shrink-0 relative bg-white border-r border-light-line dark:bg-dark dark:border-dark-line
 }
 
 .content {

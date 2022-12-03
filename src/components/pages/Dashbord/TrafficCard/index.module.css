@@ -8,7 +8,8 @@
     border-solid
     border
     border-light-line
-    dark:bg-neutral-900
+    dark:bg-dark
+    dark:border-dark-line
   ;
 
   &:not(:last-child) {
