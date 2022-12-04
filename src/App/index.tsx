@@ -27,6 +27,8 @@ import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import { Title } from "chart.js";
+import TitleBar from "@/components/TitleBar";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -99,7 +101,7 @@ export function App(): JSX.Element {
         />
       )}
       <div className={styles.header}>
-        <Icon name={IconNameEnum.Logo} />
+        <TitleBar />
       </div>
       <ElevateModal />
       <div className={styles.body}>
