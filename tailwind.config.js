@@ -24,7 +24,7 @@ module.exports = {
           unselected: "#898c8e",
           hover: colors.gray["800"],
           "theme-switch": "#282a2e",
-          tooltip: "#1f1f1f",
+          tooltip: "#776f6f",
         },
       },
     },

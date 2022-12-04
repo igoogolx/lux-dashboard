@@ -1,5 +1,5 @@
 .container {
-  @apply text-sm relative  bg-white dark:bg-dark;
+  @apply text-sm relative bg-light dark:bg-dark;
 
   & .label {
     @apply py-1 font-medium text-gray-800 dark:text-white;

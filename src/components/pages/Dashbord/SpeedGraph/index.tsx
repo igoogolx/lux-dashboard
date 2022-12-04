@@ -15,8 +15,8 @@ const getConfiguration = () => {
       datasets: [
         {
           label: i18next.t(TRANSLATION_KEY.DOWNLOAD),
-          borderColor: "#280AB2",
-          borderWidth: 1,
+          borderColor: "#22ce70",
+          borderWidth: 1.5,
           fill: false,
           pointRadius: 0,
           data: [],
@@ -24,7 +24,7 @@ const getConfiguration = () => {
         },
         {
           label: i18next.t(TRANSLATION_KEY.UPLOAD),
-          borderColor: "#fe8b56",
+          borderColor: "#ff6573",
           borderWidth: 1,
           fill: false,
           pointRadius: 0,
@@ -47,7 +47,10 @@ const getConfiguration = () => {
           },
         },
         y: {
-          border: { width: 0 },
+          border: { width: 0, dash: [5, 5] },
+          grid: {
+            color: "#50585b",
+          },
           ticks: {
             callback: (value: number | string) => {
               const { value: convertedValue, unit } = convertByte(

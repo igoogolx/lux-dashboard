@@ -1,4 +1,10 @@
-import { Button, ButtonTypeEnum, Icon, IconNameEnum } from "@/components/Core";
+import {
+  Button,
+  ButtonTypeEnum,
+  Icon,
+  IconNameEnum,
+  IconSizeEnum,
+} from "@/components/Core";
 import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
@@ -34,14 +40,14 @@ export default function ThemeSwitch(): JSX.Element {
           [styles.selected]: currentTheme === ThemeEnum.Light,
         })}
       >
-        <Icon name={IconNameEnum.Sun} />
+        <Icon name={IconNameEnum.Sun} size={IconSizeEnum.Small} />
       </div>
       <div
         className={classNames(styles.item, {
           [styles.selected]: currentTheme === ThemeEnum.Dark,
         })}
       >
-        <Icon name={IconNameEnum.Moon} />
+        <Icon name={IconNameEnum.Moon} size={IconSizeEnum.Small} />
       </div>
     </Button>
   );

@@ -16,9 +16,8 @@
     text-xs
     relative
     text-black
-    shadow-lg
     border
-    border-gray-200
+    border-light-line
     w-40
     h-24
     dark:text-dark-font
