@@ -1,24 +1,23 @@
 .wrapper {
   @apply flex
-    flex-col
-    bg-white
-    rounded-lg
     w-full
-    p-4
-    border-solid
+    flex-col
+    rounded-lg
     border
+    border-solid
     border-light-line
-    dark:bg-dark
+    bg-white
+    p-4
     dark:border-dark-line
-  ;
+    dark:bg-dark;
 
   &:not(:last-child) {
     @apply mb-4;
   }
 
   & .data {
-    @apply flex
-        mb-4;
+    @apply mb-4
+        flex;
 
     & .header {
       @apply flex items-center;
@@ -32,24 +31,24 @@
       @apply flex w-full justify-between;
 
       & .item {
-        @apply flex justify-between flex-1  flex-col pl-4 pr-4;
+        @apply flex flex-1 flex-col  justify-between pl-4 pr-4;
 
         &:not(:last-child) {
-          @apply border-r border-gray-300 border-solid border-0;
+          @apply border-0 border-r border-solid border-gray-300;
         }
 
         & .title {
-          @apply flex mb-2 text-gray-400 justify-between;
+          @apply mb-2 flex justify-between text-gray-400;
         }
 
         & .details {
           @apply flex justify-between text-xl;
 
           & .detail {
-            @apply flex items-center flex-1;
+            @apply flex flex-1 items-center;
 
             & svg {
-              @apply mr-1 fill-current text-gray-400 relative -bottom-1 scale-75 transform;
+              @apply relative -bottom-1 mr-1 scale-75 transform fill-current text-gray-400;
             }
           }
         }
@@ -58,6 +57,6 @@
   }
 
   & .graph {
-    @apply w-full h-32;
+    @apply h-32 w-full;
   }
 }

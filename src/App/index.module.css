@@ -1,12 +1,11 @@
 .wrapper {
-  @apply flex m-auto flex-col border-light-line border bg-light dark:bg-dark dark:text-white dark:border-dark-line
-    dark:text-dark-font
-  ;
+  @apply m-auto flex flex-col border border-light-line bg-light dark:border-dark-line dark:bg-dark dark:text-white
+    dark:text-dark-font;
   width: 768px;
   height: 600px;
 
   & .header {
-    @apply h-8 bg-white flex-shrink-0 border-b items-center pl-2 flex z-20 dark:bg-dark dark:border-dark-line;
+    @apply z-20 flex h-8 flex-shrink-0 items-center border-b bg-white pl-2 dark:border-dark-line dark:bg-dark;
     -webkit-app-region: drag;
   }
   & .body {
@@ -16,11 +15,11 @@
 }
 
 .nav {
-  @apply flex w-40 flex-col flex-shrink-0 relative bg-white border-r border-light-line dark:bg-dark dark:border-dark-line
+  @apply relative flex w-40 flex-shrink-0 flex-col border-r border-light-line bg-white dark:border-dark-line dark:bg-dark;
 }
 
-.themeSwitch{
-  @apply mx-2 py-8 border-t border-light-line dark:border-dark-line;
+.themeSwitch {
+  @apply mx-2 border-t border-light-line py-8 dark:border-dark-line;
 }
 
 .content {

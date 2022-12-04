@@ -1,9 +1,8 @@
 .wrapper {
-  @apply
-  align-baseline
-  flex
+  @apply flex
   h-full
-  overflow-auto
   flex-wrap
-  content-start;
+  content-start
+  overflow-auto
+  align-baseline;
 }

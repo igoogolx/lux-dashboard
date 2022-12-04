@@ -22,7 +22,7 @@ input {
 }
 
 *::-webkit-scrollbar {
-  @apply w-1.5 h-1.5;
+  @apply h-1.5 w-1.5;
 }
 
 *::-webkit-scrollbar-track {
@@ -30,5 +30,5 @@ input {
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded;
+  @apply rounded bg-gray-400;
 }

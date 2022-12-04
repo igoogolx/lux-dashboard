@@ -13,6 +13,6 @@
     }
   }
   & .loading {
-    @apply animate-spin mr-1;
+    @apply mr-1 animate-spin;
   }
 }

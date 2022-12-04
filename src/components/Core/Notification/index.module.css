@@ -12,7 +12,7 @@
 }
 
 .container {
-  @apply z-50 fixed flex w-full pointer-events-none flex-col top-10;
+  @apply pointer-events-none fixed top-10 z-50 flex w-full flex-col;
 }
 
 .close {

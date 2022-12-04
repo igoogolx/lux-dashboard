@@ -1,8 +1,8 @@
 .wrapper {
-  @apply flex text-sm flex-col overflow-auto items-center justify-items-center w-full pt-4 mx-4;
+  @apply mx-4 flex w-full flex-col items-center justify-items-center overflow-auto pt-4 text-sm;
   & .toolbar {
-    @apply flex mb-2 w-full justify-between;
-    & .logBtn{
+    @apply mb-2 flex w-full justify-between;
+    & .logBtn {
       display: none;
     }
   }

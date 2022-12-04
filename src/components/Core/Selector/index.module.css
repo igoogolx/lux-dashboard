@@ -1,10 +1,10 @@
 .container {
-  @apply flex text-sm flex-col;
-  & .tooltip{
+  @apply flex flex-col text-sm;
+  & .tooltip {
     @apply inline-block;
   }
   & .label {
-    @apply text-black py-1 font-medium dark:text-white;
+    @apply py-1 font-medium text-black dark:text-white;
   }
 }
 .button {

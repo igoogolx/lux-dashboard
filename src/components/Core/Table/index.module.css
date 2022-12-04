@@ -4,19 +4,19 @@
     @apply mb-2 overflow-hidden;
     & .tr {
       & .th {
-        @apply flex relative px-2 py-1 items-center justify-between font-bold text-gray-800 text-sm dark:text-white;
+        @apply relative flex items-center justify-between px-2 py-1 text-sm font-bold text-gray-800 dark:text-white;
         & .thContent {
           @apply overflow-hidden text-ellipsis;
         }
         & .icon {
-          @apply text-gray-400 fill-current;
+          @apply fill-current text-gray-400;
         }
         & .resizerContainer {
           @apply absolute right-0;
           & .resizer {
             @apply px-0.5;
             & .line {
-              @apply bg-gray-500 h-4 border;
+              @apply h-4 border bg-gray-500;
             }
           }
         }
@@ -36,7 +36,7 @@
         @apply bg-gray-200 dark:bg-dark-hover;
       }
       & .cell {
-        @apply overflow-hidden  px-2 whitespace-nowrap self-center text-ellipsis;
+        @apply self-center  overflow-hidden text-ellipsis whitespace-nowrap px-2;
       }
     }
     & .activeTr {

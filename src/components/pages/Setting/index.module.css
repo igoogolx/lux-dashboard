@@ -1,7 +1,7 @@
 .wrapper {
   @apply w-full;
   & .form {
-    @apply py-4 px-8 h-full relative;
+    @apply relative h-full py-4 px-8;
     & .fields {
       @apply w-full;
       & .field {
@@ -9,16 +9,16 @@
           @apply mb-4;
         }
         & .label {
-          @apply flex align-middle items-center;
+          @apply flex items-center align-middle;
 
-          & .desc{
+          & .desc {
             @apply mr-1;
           }
         }
       }
     }
     & .bar {
-      @apply absolute w-full bg-white shadow bottom-0 left-0 px-8 py-2  flex dark:bg-neutral-900;
+      @apply absolute bottom-0 left-0 flex w-full bg-white px-8 py-2  shadow dark:bg-neutral-900;
       & .resetBtn {
         @apply mr-4;
       }

@@ -1,6 +1,6 @@
 .wrapper {
   & .value {
-    @apply text-2xl inline-block min-w-[32px];
+    @apply inline-block min-w-[32px] text-2xl;
   }
   & .unit {
     @apply ml-1 text-sm;

@@ -1,5 +1,5 @@
 .container {
-  @apply text-sm relative bg-light dark:bg-dark;
+  @apply relative bg-light text-sm dark:bg-dark;
 
   & .label {
     @apply py-1 font-medium text-gray-800 dark:text-white;
@@ -8,11 +8,11 @@
   & .content {
     @apply relative;
     & .input {
-      @apply w-full bg-transparent h-8 px-2;
+      @apply h-8 w-full bg-transparent px-2;
       line-height: 20px;
     }
     & .inputBorder {
-      @apply rounded border border-light-line border-solid dark:border-dark-line;
+      @apply rounded border border-solid border-light-line dark:border-dark-line;
     }
     & .input:focus {
       @apply border-blue-600;
@@ -59,10 +59,10 @@
 }
 
 .errorText {
-  @apply text-red-500 text-base text-xs;
+  @apply text-base text-xs text-red-500;
 }
 
 .adornment {
-  @apply absolute right-2 box-content top-0.5;
+  @apply absolute right-2 top-0.5 box-content;
   transform: translate(0, 50%);
 }

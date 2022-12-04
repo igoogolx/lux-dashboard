@@ -1,12 +1,11 @@
 .wrapper {
-  @apply bg-white flex w-full p-4 justify-end
-    items-center
-    h-full
-    border-light-line
+  @apply flex h-full w-full items-center justify-end
     border-b
-    dark:bg-dark
+    border-light-line
+    bg-white
+    p-4
     dark:border-dark-line
-  ;
+    dark:bg-dark;
 
   & .rulesDropdown {
     @apply mr-8 w-28;

@@ -1,9 +1,9 @@
 .wrapper {
-  @apply flex flex-col relative w-full dark:bg-dark;
+  @apply relative flex w-full flex-col dark:bg-dark;
   & .header {
     @apply absolute top-0 left-0 h-16 w-full;
   }
   & .content {
-    @apply pt-16 w-full h-full;
+    @apply h-full w-full pt-16;
   }
 }

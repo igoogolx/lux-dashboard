@@ -1,7 +1,7 @@
 .base {
-  @apply rounded-full
+  @apply h-2
     w-2
-    h-2;
+    rounded-full;
 }
 
 .disabled {

@@ -1,7 +1,7 @@
 .checkbox {
   @apply invisible
-  w-0
-  h-0;
+  h-0
+  w-0;
 }
 
 .checkbox:checked + .label {
@@ -13,26 +13,25 @@
 }
 
 .label {
-  @apply flex
-  justify-between
-  cursor-pointer
-  w-12
+  @apply relative
+  flex
   h-6
+  w-12
+  cursor-pointer
+  justify-between
   rounded-2xl
-  relative
   bg-gray-600;
 
   & .button {
     @apply absolute
     top-0
     left-0
-    w-6
     h-6
+    w-6
     rounded-full
     bg-white
     shadow-md
-    transition-all
-    ;
+    transition-all;
   }
 }
 
