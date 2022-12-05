@@ -45,8 +45,5 @@
 }
 
 .close {
-  @apply my-auto mx-2 h-fit bg-white p-0;
-  &:hover {
-    @apply bg-gray-300;
-  }
+  @apply my-auto mx-2 h-fit p-0;
 }

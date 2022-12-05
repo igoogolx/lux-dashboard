@@ -1,5 +1,5 @@
 .container {
-  @apply text-gray-700;
+  @apply text-light-font dark:text-dark-font;
   & .title {
     @apply mb-4 font-medium;
   }

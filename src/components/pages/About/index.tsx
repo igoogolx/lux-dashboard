@@ -52,7 +52,7 @@ export function About(): JSX.Element {
             onClick={onCheckForUpdate}
             disabled={isCheckingUpdate}
             className={styles.checkUpdatesBth}
-            buttonType={ButtonTypeEnum.Secondary}
+            buttonType={ButtonTypeEnum.Primary}
           >
             {t(TRANSLATION_KEY.CHECK_UPDATE)}
           </Button>
