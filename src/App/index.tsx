@@ -8,8 +8,6 @@ import { Connections } from "@/components/pages/Connections";
 import { Logger } from "@/components/pages/Logger";
 import {
   ConfirmModal,
-  Icon,
-  IconNameEnum,
   NotificationContainer,
   notifier,
 } from "@/components/Core";
@@ -27,7 +25,6 @@ import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
-import { Title } from "chart.js";
 import TitleBar from "@/components/TitleBar";
 import styles from "./index.module.css";
 

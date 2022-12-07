@@ -22,8 +22,6 @@ import { FormikProps } from "formik";
 import styles from "./index.module.css";
 
 type FormData = {
-  primaryDomainsStr?: string;
-  bypassIpsStr?: string;
   localServerHttpEnabled: boolean;
   localServerHttpPort: string;
 } & SettingRes;
@@ -31,8 +29,6 @@ type FormData = {
 const convertData = (rawData: SettingRes) => {
   const result: FormData = {
     ...rawData,
-    primaryDomainsStr: rawData.primaryDomains.join(";"),
-    bypassIpsStr: rawData.bypassIps.join(";"),
     localServerHttpEnabled: rawData.localServer.http.enabled,
     localServerHttpPort: rawData.localServer.http.port.toString(),
   };
@@ -42,8 +38,7 @@ const convertData = (rawData: SettingRes) => {
 const parseData = (data: FormData) => {
   const result: FormData = {
     ...data,
-    primaryDomains: data.primaryDomainsStr?.split(";") || [],
-    bypassIps: data.bypassIpsStr?.split(";") || [],
+    trueProxyServer: data.trueProxyServer,
     localServer: {
       http: {
         enabled: data.localServerHttpEnabled,
@@ -105,29 +100,15 @@ export function SettingForm(props: SettingFormProps) {
                   className={styles.field}
                 />
                 <Field<keyof FormData>
-                  name="primaryDomainsStr"
+                  name="trueProxyServer"
                   label={
                     <div className={styles.label}>
                       <span className={styles.desc}>
-                        {t(TRANSLATION_KEY.PRIMARY_DOMAINS)}
+                        {t(TRANSLATION_KEY.TRUE_PROXY_SERVER)}
                       </span>
                       <Tooltip
-                        content={t(TRANSLATION_KEY.PRIMARY_DOMAINS_TOOLTIP)}
+                        content={t(TRANSLATION_KEY.TRUE_PROXY_SERVER_TOOLTIPS)}
                       >
-                        <Icon name={IconNameEnum.Question} />
-                      </Tooltip>
-                    </div>
-                  }
-                  className={styles.field}
-                />
-                <Field<keyof FormData>
-                  name="bypassIpsStr"
-                  label={
-                    <div className={styles.label}>
-                      <span className={styles.desc}>
-                        {t(TRANSLATION_KEY.BYPASS_IPS)}
-                      </span>
-                      <Tooltip content={t(TRANSLATION_KEY.BYPASS_IPS_TOOLTIP)}>
                         <Icon name={IconNameEnum.Question} />
                       </Tooltip>
                     </div>
