@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative m-4 h-fit text-sm;
+  @apply relative m-4 mb-0 h-fit text-sm;
   & .content {
     @apply relative
     flex
