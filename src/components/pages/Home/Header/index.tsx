@@ -72,9 +72,9 @@ export function Header(): JSX.Element {
   const ruleItems = useMemo<MenuItemProps[]>(() => {
     return rules.map((rule) => ({
       id: rule.id,
-      content: rule.name,
+      content: t(rule.id),
     }));
-  }, [rules]);
+  }, [rules, t]);
 
   const onSwitch = async () => {
     try {

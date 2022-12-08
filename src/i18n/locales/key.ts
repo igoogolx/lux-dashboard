@@ -79,4 +79,8 @@ export const TRANSLATION_KEY = {
   CONFIRM: "confirm",
   GO: "go",
   NO_UPDATE_INFO: "no_update_info",
+  PROXY_ALL_RULE: "proxy_all",
+  BYPASS_ALL_RULE: "bypass_all",
+  BYPASS_CN_RULE: "bypass_cn",
+  PROXY_GFW_RULE: "proxy_gfw",
 };

@@ -88,4 +88,8 @@ export default {
   [TRANSLATION_KEY.CHECK_UPDATE]: "Check for updates",
   [TRANSLATION_KEY.GO]: "Go",
   [TRANSLATION_KEY.NO_UPDATE_INFO]: "There is no updates",
+  [TRANSLATION_KEY.BYPASS_ALL_RULE]: "Bypass All",
+  [TRANSLATION_KEY.PROXY_GFW_RULE]: "Proxy GFW",
+  [TRANSLATION_KEY.BYPASS_CN_RULE]: "Bypass CN",
+  [TRANSLATION_KEY.PROXY_ALL_RULE]: "Proxy ALL",
 };
