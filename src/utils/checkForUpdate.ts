@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getVersion } from "@/electronContext";
 import { compare } from "semver";
+import { getVersion } from "@/utils/version";
 
 function compareVersion(current: string, latest: string): boolean {
   return compare(latest, current) === 1;

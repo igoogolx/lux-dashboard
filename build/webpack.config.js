@@ -94,6 +94,7 @@ module.exports = (env) => {
       new MiniCssExtractPlugin(),
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
+        "process.env.CLIENT_VERSION": JSON.stringify(env.CLIENT_VERSION || ""),
       }),
     ].filter(Boolean),
   };

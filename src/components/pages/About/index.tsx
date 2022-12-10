@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { getVersion, shellOpenExternal } from "@/electronContext";
+import { shellOpenExternal } from "@/electronContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { LATEST_RELEASE_URL, REPOSITORY_URL } from "@/utils/constants";
@@ -10,6 +10,7 @@ import {
   notifier,
 } from "@/components/Core";
 import checkForUpdate from "@/utils/checkForUpdate";
+import { getVersion } from "@/utils/version";
 import styles from "./index.module.css";
 
 export function About(): JSX.Element {

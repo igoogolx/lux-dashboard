@@ -48,10 +48,3 @@ export const shellOpenExternal = (path: string) => {
     window.shellOpenExternal?.(path);
   }
 };
-
-export const getVersion = () => {
-  if (isElectron) {
-    return window.getVersion?.();
-  }
-  return "";
-};
