@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   MenuItemProps,
   notifier,
@@ -35,6 +35,7 @@ export function Header(): JSX.Element {
   const isSwitchLoading = useSelector<RootState, boolean>(
     (state) => state.manager.isLoading
   );
+  const [isSettingRule, setIsSettingRule] = useState(false);
   const isProxyValid = useSelector<RootState, boolean>((state) => {
     if (state.selected.proxy) {
       if (state.proxies.ids.includes(state.selected.proxy)) {
@@ -63,8 +64,13 @@ export function Header(): JSX.Element {
 
   const selectRule = useCallback(
     async (id: string) => {
-      await updateSelectedRuleId({ id });
-      dispatch(selectedSlice.actions.setRule({ id }));
+      try {
+        setIsSettingRule(true);
+        await updateSelectedRuleId({ id });
+        dispatch(selectedSlice.actions.setRule({ id }));
+      } finally {
+        setIsSettingRule(false);
+      }
     },
     [dispatch]
   );
@@ -105,7 +111,7 @@ export function Header(): JSX.Element {
         }}
         value={selectedRuleId}
         className={styles.rulesDropdown}
-        disabled={isStarted}
+        disabled={isStarted || isSettingRule}
       />
       <Tooltip
         content={t(TRANSLATION_KEY.SWITCH_DISABLE_TIP)}
