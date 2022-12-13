@@ -98,7 +98,7 @@ export function Header(): JSX.Element {
     }
   };
 
-  const isSwitchDisabled = isSwitchLoading || !isProxyValid;
+  const isSwitchDisabled = isSwitchLoading || !isProxyValid || isSettingRule;
 
   return (
     <div className={styles.wrapper}>
