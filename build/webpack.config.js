@@ -2,15 +2,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require("dotenv-webpack");
 
 module.exports = (env) => {
   const isDev = env.NODE_ENV === "development";
   return {
     optimization: {
-      //Note: don't enable minimize
-      minimize: false,
-      usedExports: true
+      minimize: true,
+      usedExports: true,
     },
     devtool: isDev ? "source-map" : false,
     entry: path.resolve(__dirname, "..", "src", "index.tsx"),
@@ -41,7 +40,7 @@ module.exports = (env) => {
             loader: "ts-loader",
             options: {
               allowTsInNodeModules: true,
-              happyPackMode: !isDev
+              happyPackMode: !isDev,
             },
           },
         },
@@ -69,7 +68,7 @@ module.exports = (env) => {
                     ? "[path][name]__[local]--[hash:base64:5]"
                     : "[hash:base64]",
                   getLocalIdent: (_context, _localIdentName, localName) => {
-                    if (localName === "dark") return "dark"
+                    if (localName === "dark") return "dark";
                   },
                 },
               },

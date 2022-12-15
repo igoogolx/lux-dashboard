@@ -9,7 +9,7 @@
 }
 
 #app {
-  @apply flex h-full;
+  @apply flex h-screen;
 }
 
 body {
