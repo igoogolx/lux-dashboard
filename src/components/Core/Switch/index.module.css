@@ -1,3 +1,7 @@
+.container{
+  @apply flex;
+}
+
 .checkbox {
   @apply invisible
   h-0

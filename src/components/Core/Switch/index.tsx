@@ -11,7 +11,7 @@ export type SwitchProps = {
 export function Switch(props: SwitchProps): JSX.Element {
   const { checked, onClick, disabled = false } = props;
   return (
-    <>
+    <div className={styles.container}>
       <input
         type="checkbox"
         className={styles.checkbox}
@@ -25,6 +25,6 @@ export function Switch(props: SwitchProps): JSX.Element {
       >
         <span className={styles.button} />
       </label>
-    </>
+    </div>
   );
 }
