@@ -12,11 +12,29 @@ import {
   TrafficCard,
   TrafficCardTypeEnum,
 } from "@/components/pages/Dashbord/TrafficCard";
+import {
+  CategoryScale,
+  Chart,
+  LinearScale,
+  LineController,
+  LineElement,
+  PointElement,
+  Title,
+} from "chart.js";
 import styles from "./index.module.css";
 
 type Speed = { proxy: TrafficItem[]; direct: TrafficItem[] };
 
-export function Dashboard(): JSX.Element {
+Chart.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale
+);
+
+export default function Dashboard(): JSX.Element {
   const speed = useSelector<RootState, Speed>((state) => {
     const result: Speed = {
       proxy: [],

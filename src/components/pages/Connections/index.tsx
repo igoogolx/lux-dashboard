@@ -76,7 +76,7 @@ function StartTag({ value }: { value: number }): JSX.Element {
   return <>{convertDuration(duration)}</>;
 }
 
-export function Connections(): JSX.Element {
+export default function Connections(): JSX.Element {
   const { t } = useTranslation();
   const [conns, setConns] = useState<Conn[]>([]);
   const [total, setTotal] = useState<{

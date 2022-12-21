@@ -35,7 +35,7 @@ function PayloadCell({ value }: { value: string }) {
   );
 }
 
-export function Logger(): JSX.Element {
+export default function Logger(): JSX.Element {
   const { t } = useTranslation();
   const logs = useSelector<RootState, Log[]>((state) => state.logger.logs);
   const [searchedValue, setSearchedValue] = useState("");

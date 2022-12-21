@@ -6,7 +6,7 @@ import { RootState } from "@/reducers";
 import { SettingForm } from "@/components/pages/Setting/Form";
 import styles from "./index.module.css";
 
-export function Setting() {
+export default function Setting() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {

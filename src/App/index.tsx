@@ -1,24 +1,25 @@
 import * as React from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Nav } from "@/components/Nav";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "@/components/pages/Home";
-import { Dashboard } from "@/components/pages/Dashbord";
-import { Connections } from "@/components/pages/Connections";
-import { Logger } from "@/components/pages/Logger";
 import {
   ConfirmModal,
   NotificationContainer,
   notifier,
 } from "@/components/Core";
-import { Setting } from "@/components/pages/Setting";
 import { useDispatch } from "react-redux";
 import { getIsAdmin, subscribeLog, subscribePing } from "lux-js-sdk";
 import { loggerSlice } from "@/reducers/logger";
 import { generalSlice } from "@/reducers/general";
 import { ElevateModal } from "@/components/Modal/ElevateModal";
 import axios from "axios";
-import { About } from "@/components/pages/About";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import i18next from "i18next";
@@ -39,6 +40,13 @@ axios.interceptors.response.use(
 );
 
 const RECONNECT_TIMEOUT = 1000;
+
+const Home = lazy(() => import("@/components/pages/Home"));
+const Dashboard = lazy(() => import("@/components/pages/Dashbord"));
+const Setting = lazy(() => import("@/components/pages/Setting"));
+const Connections = lazy(() => import("@/components/pages/Connections"));
+const Logger = lazy(() => import("@/components/pages/Logger"));
+const About = lazy(() => import("@/components/pages/About"));
 
 export function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -110,12 +118,54 @@ export function App(): JSX.Element {
         </div>
         <div className={styles.content}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/connections" element={<Connections />} />
-            <Route path="/logs" element={<Logger />} />
-            <Route path="/setting" element={<Setting />} />
-            <Route path="/about" element={<About />} />
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<></>}>
+                  <Home />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <Suspense fallback={<></>}>
+                  <Dashboard />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/connections"
+              element={
+                <Suspense fallback={<></>}>
+                  <Connections />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/logs"
+              element={
+                <Suspense fallback={<></>}>
+                  <Logger />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/setting"
+              element={
+                <Suspense fallback={<></>}>
+                  <Setting />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Suspense fallback={<></>}>
+                  <About />
+                </Suspense>
+              }
+            />
           </Routes>
         </div>
       </div>

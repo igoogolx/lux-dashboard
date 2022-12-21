@@ -3,29 +3,11 @@ import * as React from "react";
 import "./index.css";
 import { HashRouter as Router } from "react-router-dom";
 import { init } from "lux-js-sdk";
-import {
-  Chart,
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale,
-} from "chart.js";
 import { Provider } from "react-redux";
 import getHubPort from "@/utils/getHubPort";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { store } from "./reducers";
-
-Chart.register(
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale
-);
 
 const port = getHubPort();
 init(`localhost:${port}`);
