@@ -59,7 +59,7 @@
     "isomorphic-ws": "^5.0.0",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
-    "lux-js-sdk": "file:../lux-js-sdk",
+    "lux-js-sdk": "igoogolx/lux-js-sdk",
     "qrcode": "^1.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
