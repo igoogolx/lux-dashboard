@@ -32,7 +32,7 @@ import SyncIcon from "@fortawesome/fontawesome-free/svgs/solid/rotate.svg";
 import QuestionIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-question.svg";
 import SunIcon from "@fortawesome/fontawesome-free/svgs/solid/sun.svg";
 import MoonIcon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg";
-import LogoIcon from "../../../../assets/icon/logo.svg";
+import LogoIcon from "../../../../public/icon/logo.svg";
 
 export enum IconNameEnum {
   Home,
