@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = (env) => {
   const isDev = env.NODE_ENV === "development";
@@ -12,7 +13,7 @@ module.exports = (env) => {
       minimize: true,
       usedExports: true,
       splitChunks: {
-        chunks: 'async',
+        chunks: "async",
         minSize: 20000,
         minRemainingSize: 0,
         minChunks: 1,
@@ -111,6 +112,7 @@ module.exports = (env) => {
       isDev && new BundleAnalyzerPlugin(),
       isDev && new Dotenv(),
       new HtmlWebpackPlugin({
+        favicon: "./public/icon/logo.svg",
         template: path.resolve(__dirname, "..", "src", "index.html"),
       }),
       new MiniCssExtractPlugin(),
