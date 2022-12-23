@@ -109,7 +109,7 @@ module.exports = (env) => {
       },
     },
     plugins: [
-      isDev && new BundleAnalyzerPlugin(),
+      env.withBundleAnalyzer && new BundleAnalyzerPlugin(),
       isDev && new Dotenv(),
       new HtmlWebpackPlugin({
         favicon: "./public/icon/logo.svg",
