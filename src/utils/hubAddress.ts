@@ -1,5 +1,3 @@
-import { H, p } from "chart.js/dist/chunks/helpers.core";
-
 const getCoreAddress = () => {
   const params = new URL(window.location.href).searchParams;
   return params.get("hub_address") as string;
