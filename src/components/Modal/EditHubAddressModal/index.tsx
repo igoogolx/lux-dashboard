@@ -29,7 +29,7 @@ export default function EditHubAddressModal(
 
   return (
     <Modal>
-      <div className={styles.title}>Set hub address</div>
+      <div className={styles.title}>{t(TRANSLATION_KEY.SET_HUB_ADDRESS)}</div>
       <NewForm onSubmit={onSubmit} initialValues={initialValue}>
         {({ dirty, submitForm }) => {
           return (

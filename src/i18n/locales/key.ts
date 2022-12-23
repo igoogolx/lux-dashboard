@@ -83,4 +83,5 @@ export const TRANSLATION_KEY = {
   BYPASS_ALL_RULE: "bypass_all",
   BYPASS_CN_RULE: "bypass_cn",
   PROXY_GFW_RULE: "proxy_gfw",
+  SET_HUB_ADDRESS: "set_hub_address",
 };

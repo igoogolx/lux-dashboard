@@ -92,4 +92,5 @@ export default {
   [TRANSLATION_KEY.PROXY_GFW_RULE]: "Proxy GFW",
   [TRANSLATION_KEY.BYPASS_CN_RULE]: "Bypass CN",
   [TRANSLATION_KEY.PROXY_ALL_RULE]: "Proxy ALL",
+  [TRANSLATION_KEY.SET_HUB_ADDRESS]: "Set hub address",
 };
