@@ -4,13 +4,13 @@ import "./index.css";
 import { HashRouter as Router } from "react-router-dom";
 import { init } from "lux-js-sdk";
 import { Provider } from "react-redux";
-import getHubPort from "@/utils/getHubPort";
+import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { store } from "./reducers";
 
-const port = getHubPort();
-init(`localhost:${port}`);
+const hubAddress = getHubAddress();
+init(stringAddress(hubAddress));
 
 function Root() {
   return (

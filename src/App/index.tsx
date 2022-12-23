@@ -9,24 +9,20 @@ import {
 } from "react";
 import { Nav } from "@/components/Nav";
 import { Route, Routes } from "react-router-dom";
-import {
-  ConfirmModal,
-  NotificationContainer,
-  notifier,
-} from "@/components/Core";
+import { NotificationContainer, notifier } from "@/components/Core";
 import { useDispatch } from "react-redux";
 import { getIsAdmin, subscribeLog, subscribePing } from "lux-js-sdk";
 import { loggerSlice } from "@/reducers/logger";
 import { generalSlice } from "@/reducers/general";
 import { ElevateModal } from "@/components/Modal/ElevateModal";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
 import TitleBar from "@/components/TitleBar";
+import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -50,7 +46,6 @@ const About = lazy(() => import("@/components/pages/About"));
 
 export function App(): JSX.Element {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
   const [connected, setConnected] = useState(true);
   const pingSubscriber = useRef<WsClient | null>(null);
   const hasDisconnected = useRef(false);
@@ -93,15 +88,9 @@ export function App(): JSX.Element {
     <div className={styles.wrapper}>
       <NotificationContainer />
       {!connected && (
-        <ConfirmModal
-          title={t(TRANSLATION_KEY.WARNING)}
-          content={t(TRANSLATION_KEY.DISCONNECTED_WARN_TIP)}
-          onCancel={() => {
-            window.location.reload();
-          }}
-          confirmText={t(TRANSLATION_KEY.RELOAD)}
-          onConfirm={() => {
-            window.location.reload();
+        <EditHubAddressModal
+          close={() => {
+            setConnected(true);
           }}
         />
       )}

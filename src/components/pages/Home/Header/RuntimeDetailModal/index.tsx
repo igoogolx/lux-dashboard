@@ -3,7 +3,7 @@ import { Modal } from "@/components/Core";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
-import getHubPort from "@/utils/getHubPort";
+import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -25,13 +25,13 @@ export function RuntimeDetailModal(
   const { close } = props;
   const { t } = useTranslation();
   const [runtimeDetail, setRuntimeDetail] = useState<
-    (RuntimeDetail & { port: number }) | null
+    (RuntimeDetail & { hubAddress: string }) | null
   >(null);
 
   useEffect(() => {
     getRuntimeDetail().then((detail) => {
-      const port = getHubPort();
-      setRuntimeDetail({ ...detail, port });
+      const hubAddress = getHubAddress();
+      setRuntimeDetail({ ...detail, hubAddress: stringAddress(hubAddress) });
     });
   }, []);
 
