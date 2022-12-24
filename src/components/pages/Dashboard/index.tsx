@@ -11,7 +11,7 @@ import { trafficsSlice, RootState } from "@/reducers";
 import {
   TrafficCard,
   TrafficCardTypeEnum,
-} from "@/components/pages/Dashbord/TrafficCard";
+} from "@/components/pages/Dashboard/TrafficCard";
 import {
   CategoryScale,
   Chart,

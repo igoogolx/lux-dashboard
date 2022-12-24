@@ -38,7 +38,7 @@ axios.interceptors.response.use(
 const RECONNECT_TIMEOUT = 1000;
 
 const Home = lazy(() => import("@/components/pages/Home"));
-const Dashboard = lazy(() => import("@/components/pages/Dashbord"));
+const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
 const Setting = lazy(() => import("@/components/pages/Setting"));
 const Connections = lazy(() => import("@/components/pages/Connections"));
 const Logger = lazy(() => import("@/components/pages/Logger"));
