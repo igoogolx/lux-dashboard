@@ -71,7 +71,7 @@ export function Operation(props: OperationProps): JSX.Element {
       },
       {
         id: OperationTypeEnum.Test,
-        content: t(TRANSLATION_KEY.COMMON_TEST_DELAY),
+        content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
         iconName: IconNameEnum.Swap,
       },
       {

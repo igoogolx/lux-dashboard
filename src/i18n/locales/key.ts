@@ -5,7 +5,7 @@ export const TRANSLATION_KEY = {
   LOG: "log",
   NAV_SETTING: "nav.setting",
   NAV_ABOUT: "nav.about",
-  COMMON_TEST_DELAY: "common.test_delay",
+  CONNECTIVITY_TEST: "common.connectivity_test",
   COMMON_TEST_UDP: "common.test_upd",
   COMMON_EDIT: "common.edit",
   COMMON_DELETE: "common.delete",

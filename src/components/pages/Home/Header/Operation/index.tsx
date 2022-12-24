@@ -60,7 +60,7 @@ export function Operation(props: OperationProps): JSX.Element {
     return [
       {
         id: OperationTypeEnum.TestDelay,
-        content: t(TRANSLATION_KEY.COMMON_TEST_DELAY),
+        content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
       },
       {
         id: OperationTypeEnum.RuntimeDetail,
