@@ -4,5 +4,6 @@
   flex-wrap
   content-start
   overflow-auto
-  align-baseline;
+  align-baseline
+  pb-4;
 }
