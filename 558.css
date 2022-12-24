@@ -138,6 +138,7 @@
     flex-wrap: wrap;
     align-content: flex-start;
     overflow: auto;
+    padding-bottom: 1rem;
     vertical-align: baseline
 }
 
