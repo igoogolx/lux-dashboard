@@ -8,7 +8,6 @@
     "build:dev": "webpack -c build/webpack.config.js --env NODE_ENV=development --mode development",
     "dev": "webpack serve -c build/webpack.config.js --env NODE_ENV=development --mode development --hot --open",
     "format": "prettier ./src -write",
-    "lint": "eslint --cache --ext .ts,.tsx src",
     "lint-fix": "eslint --ext .ts,.tsx --fix src"
   },
   "keywords": [],
