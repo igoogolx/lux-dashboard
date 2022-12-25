@@ -588,23 +588,23 @@ video {
   bottom: 0px;
   left: 0px;
 }
+.top-0 {
+  top: 0px;
+}
+.left-0 {
+  left: 0px;
+}
+.right-0 {
+  right: 0px;
+}
+.bottom-0 {
+  bottom: 0px;
+}
 .right-2 {
   right: 0.5rem;
 }
 .top-0\.5 {
   top: 0.125rem;
-}
-.top-0 {
-  top: 0px;
-}
-.right-0 {
-  right: 0px;
-}
-.left-0 {
-  left: 0px;
-}
-.bottom-0 {
-  bottom: 0px;
 }
 .top-2 {
   top: 0.5rem;
@@ -627,11 +627,14 @@ video {
 .top-1 {
   top: 0.25rem;
 }
-.z-10 {
-  z-index: 10;
-}
 .z-50 {
   z-index: 50;
+}
+.z-40 {
+  z-index: 40;
+}
+.z-10 {
+  z-index: 10;
 }
 .m-auto {
   margin: auto;
@@ -741,6 +744,9 @@ video {
 .h-full {
   height: 100%;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .h-\[2px\] {
   height: 2px;
 }
@@ -790,6 +796,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-10 {
+  width: 2.5rem;
 }
 .w-1\/2 {
   width: 50%;
@@ -1200,6 +1209,9 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+.opacity-40 {
+  opacity: 0.4;
 }
 .opacity-80 {
   opacity: 0.8;
@@ -2637,6 +2649,76 @@ input {
     margin-right: 1rem
 }
 
+.dowa5evv5vX0fxTbrp7l {
+
+    position: fixed;
+
+    top: 0px;
+
+    left: 0px;
+
+    right: 0px;
+
+    bottom: 0px;
+
+    z-index: 40;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    --tw-bg-opacity: 1;
+
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity))
+}
+
+.dark .dowa5evv5vX0fxTbrp7l {
+
+    --tw-bg-opacity: 1;
+
+    background-color: rgba(26, 28, 30, var(--tw-bg-opacity))
+}
+
+    .dowa5evv5vX0fxTbrp7l .w_ndS53T3yeBQnw8seJQ {
+
+    height: 2.5rem;
+
+    width: 2.5rem
+}
+
+    @-webkit-keyframes pW0irp37BJigSSeJyqMa {
+
+    to {
+
+        transform: rotate(360deg)
+    }
+}
+
+    @keyframes pW0irp37BJigSSeJyqMa {
+
+    to {
+
+        transform: rotate(360deg)
+    }
+}
+
+    .dowa5evv5vX0fxTbrp7l .w_ndS53T3yeBQnw8seJQ {
+
+    -webkit-animation: pW0irp37BJigSSeJyqMa 1s linear infinite;
+
+            animation: pW0irp37BJigSSeJyqMa 1s linear infinite;
+
+    opacity: 0.4
+}
+
+    .dowa5evv5vX0fxTbrp7l .w_ndS53T3yeBQnw8seJQ svg {
+
+    height: 2.5rem;
+
+    width: 2.5rem
+}
 .FzeP6oi3IR7DwUT7l7mM {
   margin: auto;
   display: flex;
@@ -2660,7 +2742,7 @@ input {
 }
 
   .FzeP6oi3IR7DwUT7l7mM .go4IypDBRjUCfQzYKxoA {
-  z-index: 10;
+  z-index: 50;
   display: flex;
   height: 2rem;
   flex-shrink: 0;
