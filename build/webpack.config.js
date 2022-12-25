@@ -10,7 +10,7 @@ module.exports = (env) => {
   const isDev = env.NODE_ENV === "development";
   return {
     optimization: {
-      minimize: true,
+      minimize: !isDev,
       usedExports: true,
       splitChunks: {
         chunks: "async",
