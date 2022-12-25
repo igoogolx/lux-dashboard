@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { shellOpenExternal } from "@/electronContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
@@ -11,13 +11,22 @@ import {
 } from "@/components/Core";
 import checkForUpdate from "@/utils/checkForUpdate";
 import { getVersion } from "@/utils/version";
+import { getVersion as getCoreVersion } from "lux-js-sdk";
 import styles from "./index.module.css";
 
 export default function About(): JSX.Element {
   const { t } = useTranslation();
   const version = getVersion();
+  const [coreVersion, setCoreVersion] = useState("");
   const [hasLatestVersion, setHasLatestVersion] = useState(false);
   const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
+
+  useEffect(() => {
+    getCoreVersion().then((data) => {
+      setCoreVersion(data.version);
+    });
+  }, []);
+
   const onCheckForUpdate = useCallback(async () => {
     try {
       setIsCheckingUpdate(true);
@@ -57,6 +66,14 @@ export default function About(): JSX.Element {
           >
             {t(TRANSLATION_KEY.CHECK_UPDATE)}
           </Button>
+        </div>
+        <div
+          onClick={() => {
+            shellOpenExternal(REPOSITORY_URL);
+          }}
+          className={styles.link}
+        >
+          {t(TRANSLATION_KEY.CORE_VERSION)}: {coreVersion}
         </div>
         <div
           onClick={() => {

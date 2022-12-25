@@ -79,6 +79,7 @@ export const TRANSLATION_KEY = {
   CHECK_UPDATE: "check_update",
   CONFIRM: "confirm",
   GO: "go",
+  CORE_VERSION: "core_version",
   NO_UPDATE_INFO: "no_update_info",
   PROXY_ALL_RULE: "proxy_all",
   BYPASS_ALL_RULE: "bypass_all",
