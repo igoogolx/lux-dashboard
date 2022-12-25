@@ -1,5 +1,5 @@
 .container {
-    @apply fixed flex items-center top-0 left-0 right-0 bottom-0 justify-center z-40 bg-light dark:bg-dark;
+    @apply fixed flex items-center top-0 left-0 right-0 bottom-0 justify-center z-30 bg-light dark:bg-dark;
 
     & .icon{
         @apply h-10 w-10 opacity-40 animate-spin;

@@ -4,13 +4,13 @@
     right-0
     left-0
     bottom-0
-    z-10
+    z-40
     flex
    overflow-auto px-1 py-4;
 }
 
 .mask {
-  @apply fixed inset-0 z-10 h-full bg-black opacity-50;
+  @apply fixed inset-0 z-40 h-full bg-black opacity-50;
 }
 
 .close {
