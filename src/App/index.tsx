@@ -23,6 +23,7 @@ import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
 import TitleBar from "@/components/TitleBar";
 import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
+import Splash from "@/components/Splash";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -49,6 +50,7 @@ export function App(): JSX.Element {
   const [connected, setConnected] = useState(true);
   const pingSubscriber = useRef<WsClient | null>(null);
   const hasDisconnected = useRef(false);
+  const [loading, setLoading] = useState(true);
 
   const createPingSubscriber = useCallback(() => {
     pingSubscriber.current = subscribePing({
@@ -56,6 +58,7 @@ export function App(): JSX.Element {
         if (hasDisconnected.current) {
           window.location.reload();
         }
+        setLoading(false);
         setConnected(true);
       },
       onClose: async () => {
@@ -106,6 +109,7 @@ export function App(): JSX.Element {
           </div>
         </div>
         <div className={styles.content}>
+          {loading && <Splash />}
           <Routes>
             <Route
               path="/"

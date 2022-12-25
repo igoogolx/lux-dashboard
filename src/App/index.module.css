@@ -5,7 +5,7 @@
   height: 600px;
 
   & .header {
-    @apply z-10 flex h-8 flex-shrink-0 items-center border-b bg-white pl-2 dark:border-dark-line dark:bg-dark;
+    @apply z-50 flex h-8 flex-shrink-0 items-center border-b bg-white pl-2 dark:border-dark-line dark:bg-dark;
     -webkit-app-region: drag;
   }
   & .body {
