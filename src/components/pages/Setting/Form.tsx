@@ -6,7 +6,7 @@ import {
   FieldSwitch,
   Icon,
   IconNameEnum,
-  NewForm,
+  Form,
   notifier,
   PlacementEnum,
   Tooltip,
@@ -73,7 +73,7 @@ export function SettingForm(props: SettingFormProps) {
 
   return (
     <div className={styles.form}>
-      <NewForm
+      <Form
         onSubmit={onSubmit}
         initialValues={convertData(initValue)}
         innerRef={formInstance}
@@ -162,7 +162,7 @@ export function SettingForm(props: SettingFormProps) {
             </>
           );
         }}
-      </NewForm>
+      </Form>
     </div>
   );
 }

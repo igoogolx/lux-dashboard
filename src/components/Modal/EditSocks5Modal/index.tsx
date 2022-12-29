@@ -1,12 +1,6 @@
 import { addProxy, ProxyTypeEnum, Socks5, updateProxy } from "lux-js-sdk";
 import React from "react";
-import {
-  Button,
-  ButtonTypeEnum,
-  Modal,
-  Field,
-  NewForm,
-} from "@/components/Core";
+import { Button, ButtonTypeEnum, Modal, Field, Form } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
@@ -77,7 +71,7 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
 
   return (
     <Modal close={close}>
-      <NewForm
+      <Form
         onSubmit={onSubmit}
         initialValues={initialValue ? makeInitData(initialValue) : INIT_DATA}
         validationSchema={Socks5Schema}
@@ -128,7 +122,7 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
             </>
           );
         }}
-      </NewForm>
+      </Form>
     </Modal>
   );
 }

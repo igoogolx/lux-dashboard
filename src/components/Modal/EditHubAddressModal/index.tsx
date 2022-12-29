@@ -1,11 +1,5 @@
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import {
-  Button,
-  ButtonTypeEnum,
-  Field,
-  Modal,
-  NewForm,
-} from "@/components/Core";
+import { Button, ButtonTypeEnum, Field, Modal, Form } from "@/components/Core";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { HubAddress, getHubAddress, setHubAddress } from "@/utils/hubAddress";
@@ -30,7 +24,7 @@ export default function EditHubAddressModal(
   return (
     <Modal>
       <div className={styles.title}>{t(TRANSLATION_KEY.SET_HUB_ADDRESS)}</div>
-      <NewForm onSubmit={onSubmit} initialValues={initialValue}>
+      <Form onSubmit={onSubmit} initialValues={initialValue}>
         {({ dirty, submitForm }) => {
           return (
             <>
@@ -61,7 +55,7 @@ export default function EditHubAddressModal(
             </>
           );
         }}
-      </NewForm>
+      </Form>
     </Modal>
   );
 }

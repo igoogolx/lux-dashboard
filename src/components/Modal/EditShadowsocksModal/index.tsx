@@ -14,7 +14,7 @@ import {
   INPUT_SIZE,
   Modal,
   Field,
-  NewForm,
+  Form,
   FieldSelector,
   PasswordFiled,
 } from "@/components/Core";
@@ -104,7 +104,7 @@ export const EditShadowsocksModal = React.memo(
 
     return (
       <Modal close={close}>
-        <NewForm
+        <Form
           onSubmit={onSubmit}
           initialValues={initialValue ? makeInitData(initialValue) : INIT_DATA}
           validationSchema={ShadowsocksSchema}
@@ -177,7 +177,7 @@ export const EditShadowsocksModal = React.memo(
               </div>
             );
           }}
-        </NewForm>
+        </Form>
       </Modal>
     );
   }
