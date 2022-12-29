@@ -2,7 +2,7 @@ import { ConfirmModal, notifier } from "@/components/Core";
 import { useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import React, { useState } from "react";
-import { elevate, exit } from "@/electronContext";
+import { elevate, exit } from "@/clientContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 

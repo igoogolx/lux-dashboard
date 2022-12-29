@@ -23,7 +23,7 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import TestRuleModal from "@/components/pages/Connections/TestRuleModal";
 import RuleTag from "@/components/pages/Connections/RuleTag";
-import { getPlatform } from "@/electronContext";
+import { getPlatform } from "@/clientContext";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {

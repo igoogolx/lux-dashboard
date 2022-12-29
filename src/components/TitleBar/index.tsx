@@ -1,6 +1,6 @@
 import { Button, ButtonTypeEnum, Icon, IconNameEnum } from "@/components/Core";
 import React from "react";
-import { closeWindow, minimizeWindow } from "@/electronContext";
+import { closeWindow, minimizeWindow } from "@/clientContext";
 import classNames from "classnames";
 import styles from "./index.module.css";
 

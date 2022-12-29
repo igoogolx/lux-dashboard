@@ -12,7 +12,7 @@ import {
   TagTypeEnum,
   Tooltip,
 } from "@/components/Core";
-import { isElectron, shellOpenPath } from "@/electronContext";
+import { isElectron, shellOpenPath } from "@/clientContext";
 import { Column } from "react-table";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
