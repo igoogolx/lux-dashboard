@@ -9,7 +9,7 @@
       @apply cursor-pointer;
     }
   }
-  & .checkUpdatesBth {
-    @apply ml-1;
+  & .btn {
+    @apply mt-4 block;
   }
 }

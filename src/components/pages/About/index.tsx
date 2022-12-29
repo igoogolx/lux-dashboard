@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { shellOpenExternal } from "@/electronContext";
+import { shellOpenExternal } from "@/clientContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { LATEST_RELEASE_URL, REPOSITORY_URL } from "@/utils/constants";
@@ -58,14 +58,6 @@ export default function About(): JSX.Element {
       <div className={styles.desc}>
         <div>
           {t(TRANSLATION_KEY.VERSION)}: {version}
-          <Button
-            onClick={onCheckForUpdate}
-            disabled={isCheckingUpdate}
-            className={styles.checkUpdatesBth}
-            buttonType={ButtonTypeEnum.Primary}
-          >
-            {t(TRANSLATION_KEY.CHECK_UPDATE)}
-          </Button>
         </div>
         <div
           onClick={() => {
@@ -83,6 +75,23 @@ export default function About(): JSX.Element {
         >
           {t(TRANSLATION_KEY.REPOSITORY)}: {REPOSITORY_URL}
         </div>
+        <Button
+          onClick={onCheckForUpdate}
+          disabled={isCheckingUpdate}
+          buttonType={ButtonTypeEnum.Primary}
+          className={styles.btn}
+        >
+          {t(TRANSLATION_KEY.CHECK_UPDATE)}
+        </Button>
+        {window.openDevTools && (
+          <Button
+            onClick={window.openDevTools}
+            buttonType={ButtonTypeEnum.Primary}
+            className={styles.btn}
+          >
+            {t(TRANSLATION_KEY.OPEN_DEV_TOOLS)}
+          </Button>
+        )}
       </div>
     </div>
   );

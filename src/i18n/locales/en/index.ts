@@ -87,6 +87,7 @@ export default {
   [TRANSLATION_KEY.NEW_VERSION_INFO]: "There is a new available version",
   [TRANSLATION_KEY.CONFIRM]: "Confirm",
   [TRANSLATION_KEY.CHECK_UPDATE]: "Check for updates",
+  [TRANSLATION_KEY.OPEN_DEV_TOOLS]: "Open dev tools",
   [TRANSLATION_KEY.GO]: "Go",
   [TRANSLATION_KEY.NO_UPDATE_INFO]: "There is no updates",
   [TRANSLATION_KEY.BYPASS_ALL_RULE]: "Bypass All",

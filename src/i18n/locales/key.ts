@@ -77,6 +77,7 @@ export const TRANSLATION_KEY = {
   HUB_ADDRESS: "hub_address",
   NEW_VERSION_INFO: "new_version_info",
   CHECK_UPDATE: "check_update",
+  OPEN_DEV_TOOLS: "open_dev_tools",
   CONFIRM: "confirm",
   GO: "go",
   CORE_VERSION: "core_version",

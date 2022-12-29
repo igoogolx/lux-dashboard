@@ -18,4 +18,5 @@ declare interface Window {
   getPlatform?: () => string;
   closeWindow?: () => number;
   minimizeWindow?: () => number;
+  openDevTools?: () => void;
 }
