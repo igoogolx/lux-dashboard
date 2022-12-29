@@ -98,6 +98,7 @@ export function SettingForm(props: SettingFormProps) {
                     </div>
                   }
                   className={styles.field}
+                  disabled={isStarted}
                 />
                 <Field<keyof FormData>
                   name="trueProxyServer"
@@ -114,6 +115,7 @@ export function SettingForm(props: SettingFormProps) {
                     </div>
                   }
                   className={styles.field}
+                  disabled={isStarted}
                 />
                 <FieldSwitch<keyof FormData>
                   name="localServerHttpEnabled"
@@ -130,12 +132,14 @@ export function SettingForm(props: SettingFormProps) {
                     </div>
                   }
                   className={styles.field}
+                  disabled={isStarted}
                 />
                 {values.localServerHttpEnabled && (
                   <Field<keyof FormData>
                     name="localServerHttpPort"
                     label={`${t(TRANSLATION_KEY.HTTP_SERVER_PORT_LABEL)}`}
                     className={styles.field}
+                    disabled={isStarted}
                   />
                 )}
               </div>
