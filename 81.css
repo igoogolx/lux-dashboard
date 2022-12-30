@@ -6,7 +6,6 @@
       flex-direction: column;
       align-items: center;
       justify-items: center;
-      overflow: auto;
       padding-top: 1rem;
       font-size: 0.875rem;
       line-height: 1.25rem;
@@ -21,8 +20,11 @@
       display: none;
     }
   .nrQNbpXTc6DWET7_gbI2 .sb9VooL0JrOW7x0Ius02 {
-      --tw-bg-opacity: 1;
-      background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+      display: block;
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
+      overflow: auto;
 }
   .nrQNbpXTc6DWET7_gbI2 .sb9VooL0JrOW7x0Ius02 .px1wfdzMY41XFBdlSJVF {
       overflow: hidden;
