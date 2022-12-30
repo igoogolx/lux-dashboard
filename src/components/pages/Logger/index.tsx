@@ -13,9 +13,9 @@ import {
   Tooltip,
 } from "@/components/Core";
 import { isElectron, shellOpenPath } from "@/clientContext";
-import { Column } from "react-table";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import { CellContext, ColumnDef } from "@tanstack/react-table";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {
@@ -23,11 +23,15 @@ enum SearchSelectorItemsEnum {
   Content,
 }
 
-function TypeCell({ value }: { value: string }) {
+function TypeCell(props: CellContext<Log, string>) {
+  const { getValue } = props;
+  const value = getValue();
   return <Tag type={value as TagTypeEnum} value={value} />;
 }
 
-function PayloadCell({ value }: { value: string }) {
+function PayloadCell(props: CellContext<Log, string>) {
+  const { getValue } = props;
+  const value = getValue();
   return (
     <Tooltip content={value}>
       <div className={styles.payload}>{value}</div>
@@ -52,23 +56,19 @@ export default function Logger(): JSX.Element {
     }
   };
 
-  const columns = useMemo<
-    (Column & { accessor: keyof typeof data[number] })[]
-  >(() => {
+  const columns = useMemo<ColumnDef<Log, string>[]>(() => {
     return [
       {
-        Header: t(TRANSLATION_KEY.TYPE) || "",
-        accessor: "type",
-        minWidth: 80,
-        Cell: TypeCell,
+        header: t(TRANSLATION_KEY.TYPE) || "",
+        accessorKey: "type",
+        cell: TypeCell,
+        size: 100,
+        maxSize: 100,
       },
       {
-        Header: t(TRANSLATION_KEY.CONTENT) || "",
-        accessor: "payload",
-        minWidth: 494,
-        width: 496,
-        maxWidth: 496,
-        Cell: PayloadCell,
+        header: t(TRANSLATION_KEY.CONTENT) || "",
+        accessorKey: "payload",
+        cell: PayloadCell,
       },
     ];
   }, [t]);

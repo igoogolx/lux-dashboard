@@ -3,9 +3,9 @@ import {
   closeAllConnections,
   Conn,
   ConnNetworkMetaEnum,
+  ConnRuleEnum,
   subscribeConnections,
 } from "lux-js-sdk";
-import { Column } from "react-table";
 import { convertByte } from "@/utils/traffic";
 import {
   Button,
@@ -17,13 +17,15 @@ import {
   PlacementEnum,
   SelectorProps,
   Table,
+  Tag,
+  TagTypeEnum,
   Tooltip,
 } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import TestRuleModal from "@/components/pages/Connections/TestRuleModal";
-import RuleTag from "@/components/pages/Connections/RuleTag";
 import { getPlatform } from "@/clientContext";
+import { CellContext, ColumnDef } from "@tanstack/react-table";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {
@@ -31,6 +33,18 @@ enum SearchSelectorItemsEnum {
   Process,
   Domain,
 }
+
+type Connection = {
+  process: string;
+  destination: string;
+  domain: string;
+  download: number;
+  upload: number;
+  network: ConnNetworkMetaEnum;
+  rule: ConnRuleEnum;
+  start: number;
+  id: string;
+};
 
 function convertDuration(duration: number) {
   const secNum = duration / 1000; // don't forget the second param
@@ -66,14 +80,33 @@ const getProcess = (name: string) => {
 };
 
 // TODO: move
-function LoadTag({ value }: { value: number }): JSX.Element {
+function LoadTag(
+  props: CellContext<Connection, Connection["download"]>
+): JSX.Element {
+  const { getValue } = props;
+  const value = getValue();
   const { value: convertedValue, unit } = convertByte(value);
   return <>{`${convertedValue} ${unit}`}</>;
 }
 
-function StartTag({ value }: { value: number }): JSX.Element {
+function StartTag(
+  props: CellContext<Connection, Connection["start"]>
+): JSX.Element {
+  const { getValue } = props;
+  const value = getValue();
   const duration = new Date().getTime() - value;
   return <>{convertDuration(duration)}</>;
+}
+
+function RuleCell(props: CellContext<Connection, Connection["rule"]>) {
+  const { getValue } = props;
+  const value = getValue();
+  const { t } = useTranslation();
+
+  if (value === ConnRuleEnum.Proxy) {
+    return <Tag type={TagTypeEnum.Info} value={t(TRANSLATION_KEY.PROXY)} />;
+  }
+  return <Tag type={TagTypeEnum.Warning} value={t(TRANSLATION_KEY.DIRECT)} />;
 }
 
 export default function Connections(): JSX.Element {
@@ -111,44 +144,55 @@ export default function Connections(): JSX.Element {
       subscriber.close();
     };
   }, []);
-  const columns = useMemo<
-    (Column & { accessor: keyof typeof data[number] })[]
-  >(() => {
+  const columns = useMemo<ColumnDef<Connection, any>[]>(() => {
     return [
       {
-        Header: t(TRANSLATION_KEY.DESTINATION) || "",
-        accessor: "destination",
-        disableSortBy: true,
+        header: t(TRANSLATION_KEY.DESTINATION) || "",
+        accessorKey: "destination",
+        minSize: 100,
       },
       {
-        Header: t(TRANSLATION_KEY.PROCESS) || "",
-        accessor: "process",
-        minWidth: 84,
-      },
-      { Header: t(TRANSLATION_KEY.Domain) || "", accessor: "domain" },
-      {
-        Header: t(TRANSLATION_KEY.RULE) || "",
-        accessor: "rule",
-        Cell: RuleTag,
-      },
-      { Header: t(TRANSLATION_KEY.NETWORK) || "", accessor: "network" },
-      {
-        Header: t(TRANSLATION_KEY.TIME) || "",
-        accessor: "start",
-        Cell: StartTag,
+        header: t(TRANSLATION_KEY.PROCESS) || "",
+        accessorKey: "process",
+        minSize: 100,
       },
       {
-        Header: t(TRANSLATION_KEY.DOWNLOAD) || "",
-        accessor: "download",
-        Cell: LoadTag,
+        header: t(TRANSLATION_KEY.Domain) || "",
+        accessorKey: "domain",
+        minSize: 100,
       },
       {
-        Header: t(TRANSLATION_KEY.UPLOAD) || "",
-        accessor: "upload",
-        Cell: LoadTag,
+        header: t(TRANSLATION_KEY.RULE) || "",
+        accessorKey: "rule",
+        cell: RuleCell,
+        minSize: 100,
+      },
+      {
+        header: t(TRANSLATION_KEY.NETWORK) || "",
+        accessorKey: "network",
+        minSize: 100,
+      },
+      {
+        header: t(TRANSLATION_KEY.TIME) || "",
+        accessorKey: "start",
+        cell: StartTag,
+        minSize: 100,
+      },
+      {
+        header: t(TRANSLATION_KEY.DOWNLOAD) || "",
+        accessorKey: "download",
+        cell: LoadTag,
+        minSize: 100,
+      },
+      {
+        header: t(TRANSLATION_KEY.UPLOAD) || "",
+        accessorKey: "upload",
+        cell: LoadTag,
+        minSize: 100,
       },
     ];
   }, [t]);
+
   const data = useMemo(() => {
     return conns
       .map((conn) => ({

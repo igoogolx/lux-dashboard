@@ -1,46 +1,28 @@
-.table {
-  @apply max-w-0 overflow-hidden bg-white shadow-sm dark:bg-dark;
-  & .thead {
-    @apply mb-2 overflow-hidden;
-    & .tr {
-      & .th {
-        @apply relative flex items-center justify-between px-2 py-1 text-sm font-bold text-gray-800 dark:text-white;
-        & .thContent {
-          @apply overflow-hidden text-ellipsis;
-        }
-        & .icon {
-          @apply fill-current text-gray-400;
-        }
-        & .resizerContainer {
-          @apply absolute right-0;
-          & .resizer {
-            @apply px-0.5;
-            & .line {
-              @apply h-4 border bg-gray-500;
-            }
-          }
-        }
-      }
+.container {
+  @apply h-[600px] overflow-auto bg-light dark:bg-dark;
 
-      & .thSortable {
-        &:hover {
-          @apply bg-gray-200 dark:bg-dark-hover;
-        }
-      }
-    }
+  & table {
+    @apply border-collapse border-spacing-0 table-fixed w-full;
   }
-  & .tbody {
-    @apply overflow-auto;
-    & .tr {
-      &:hover {
-        @apply bg-gray-200 dark:bg-dark-hover;
-      }
-      & .cell {
-        @apply self-center  overflow-hidden text-ellipsis whitespace-nowrap px-2;
-      }
-    }
-    & .activeTr {
-      @apply bg-blue-300;
-    }
+
+  & thead {
+    @apply m-0 sticky top-0 bg-light dark:bg-dark;
   }
+
+  & th {
+    @apply p-1 text-left;
+  }
+
+   & td {
+    @apply p-1 text-ellipsis overflow-hidden;
+  }
+}
+
+
+.resizer {
+  @apply absolute right-0 top-0 h-full top-0 w-0.5 bg-light-line dark:bg-dark-line cursor-e-resize;
+}
+
+.isResizing {
+  background: blue;
 }

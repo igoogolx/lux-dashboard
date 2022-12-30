@@ -1,5 +1,5 @@
 .wrapper {
-  @apply mx-4 flex w-full flex-col items-center justify-items-center overflow-auto pt-4 text-sm;
+  @apply mx-4 flex w-full flex-col items-center justify-items-center pt-4 text-sm;
   & .toolbar {
     @apply mb-2 flex w-full justify-between;
     & .logBtn {
@@ -7,7 +7,7 @@
     }
   }
   & .table {
-    @apply bg-white;
+    @apply block overflow-auto h-fit;
     & .payload {
       @apply overflow-hidden text-ellipsis;
     }

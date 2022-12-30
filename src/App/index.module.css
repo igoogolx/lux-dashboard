@@ -1,8 +1,6 @@
 .wrapper {
   @apply m-auto flex flex-col border border-light-line bg-light dark:border-dark-line dark:bg-dark dark:text-white
-    dark:text-dark-font;
-  width: 768px;
-  height: 600px;
+    dark:text-dark-font h-full w-full min-h-[600px] min-w-[768px];
 
   & .header {
     @apply z-50 flex h-8 flex-shrink-0 items-center border-b bg-white pl-2 dark:border-dark-line dark:bg-dark;
