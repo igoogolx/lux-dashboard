@@ -30,6 +30,12 @@ export const minimizeWindow = async () => {
   }
 };
 
+export const maximizeWindow = async () => {
+  if (isElectron) {
+    window.maximizeWindow?.();
+  }
+};
+
 export const shellOpenPath = async (path: string) => {
   if (isElectron) {
     await window.shellOpenPath?.(path);

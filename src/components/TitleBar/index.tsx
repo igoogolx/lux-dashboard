@@ -1,6 +1,6 @@
 import { Button, ButtonTypeEnum, Icon, IconNameEnum } from "@/components/Core";
 import React from "react";
-import { closeWindow, minimizeWindow } from "@/clientContext";
+import { closeWindow, maximizeWindow, minimizeWindow } from "@/clientContext";
 import classNames from "classnames";
 import styles from "./index.module.css";
 
@@ -19,7 +19,7 @@ export default function TitleBar() {
         <Button
           buttonType={ButtonTypeEnum.Blank}
           className={styles.btn}
-          disabled
+          onClick={maximizeWindow}
         >
           <div className={styles.maximize} />
         </Button>
