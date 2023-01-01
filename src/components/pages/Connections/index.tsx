@@ -291,8 +291,8 @@ export default function Connections(): JSX.Element {
       </div>
       <Table columns={columns} data={data} />
       <div className={styles.footer}>
-        <div>{`Tcp:  ${total.tcp}`}</div>
-        <div>{`Udp:  ${total.udp}`}</div>
+        <div>{`TCP:  ${total.tcp}`}</div>
+        <div>{`UDP:  ${total.udp}`}</div>
       </div>
     </div>
   );
