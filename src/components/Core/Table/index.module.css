@@ -1,8 +1,8 @@
 .container {
-  @apply h-[600px] overflow-auto bg-light dark:bg-dark;
+  @apply block h-2/3 max-w-full overflow-x-scroll bg-light dark:bg-dark w-full;
 
   & table {
-    @apply border-collapse border-spacing-0 table-fixed w-full;
+    @apply w-full table-fixed;
   }
 
   & thead {
