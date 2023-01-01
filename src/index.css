@@ -21,14 +21,3 @@ input {
   border: none;
 }
 
-*::-webkit-scrollbar {
-  @apply h-1.5 w-1.5;
-}
-
-*::-webkit-scrollbar-track {
-  @apply hidden;
-}
-
-*::-webkit-scrollbar-thumb {
-  @apply rounded bg-gray-400;
-}
