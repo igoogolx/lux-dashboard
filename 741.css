@@ -26,9 +26,11 @@
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
+    height: 100%;
     flex: 1 1 0%;
     flex-direction: column;
     align-items: center;
+    overflow: auto;
     padding: 1rem;
     font-size: 0.875rem;
     line-height: 1.25rem

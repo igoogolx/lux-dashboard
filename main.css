@@ -742,12 +742,6 @@ video {
 .hidden {
   display: none;
 }
-.h-1\.5 {
-  height: 0.375rem;
-}
-.h-1 {
-  height: 0.25rem;
-}
 .h-full {
   height: 100%;
 }
@@ -786,8 +780,8 @@ video {
 .h-0 {
   height: 0px;
 }
-.h-\[600px\] {
-  height: 600px;
+.h-2\/3 {
+  height: 66.666667%;
 }
 .h-16 {
   height: 4rem;
@@ -803,9 +797,6 @@ video {
 }
 .min-h-\[600px\] {
   min-height: 600px;
-}
-.w-1 {
-  width: 0.25rem;
 }
 .w-full {
   width: 100%;
@@ -857,6 +848,9 @@ video {
 .min-w-\[32px\] {
   min-width: 32px;
 }
+.max-w-full {
+  max-width: 100%;
+}
 .max-w-xs {
   max-width: 20rem;
 }
@@ -865,17 +859,6 @@ video {
 }
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-.table-fixed {
-  table-layout: fixed;
-}
-.border-collapse {
-  border-collapse: collapse;
-}
-.border-spacing-0 {
-  --tw-border-spacing-x: 0px;
-  --tw-border-spacing-y: 0px;
-  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 .scale-75 {
   --tw-scale-x: .75;
@@ -940,6 +923,9 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 .overflow-ellipsis {
   text-overflow: ellipsis;
@@ -1112,11 +1098,11 @@ video {
 .p-1 {
   padding: 0.25rem;
 }
-.p-2 {
-  padding: 0.5rem;
-}
 .p-4 {
   padding: 1rem;
+}
+.p-2 {
+  padding: 0.5rem;
 }
 .py-8 {
   padding-top: 2rem;
@@ -1294,21 +1280,6 @@ input {
   border: none;
 }
 
-*::-webkit-scrollbar {
-  height: 0.375rem;
-  width: 0.375rem;
-}
-
-*::-webkit-scrollbar-track {
-  display: none;
-}
-
-*::-webkit-scrollbar-thumb {
-  border-radius: 0.25rem;
-  --tw-bg-opacity: 1;
-  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
-}
-
 .active\:scale-\[1\.02\]:active {
   --tw-scale-x: 1.02;
   --tw-scale-y: 1.02;
@@ -1349,6 +1320,7 @@ input {
   --tw-text-opacity: 1;
   color: rgba(252, 252, 252, var(--tw-text-opacity));
 }
+
 
 .KmOGTR2Y_8JAZu1vaoyQ {
   height: 100%;
@@ -2307,8 +2279,11 @@ input {
 }
 
 .vJz3kgDOz0jHdXfpfqLB {
-  height: 600px;
-  overflow: auto;
+  display: block;
+  height: 66.666667%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: scroll;
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
@@ -2321,10 +2296,6 @@ input {
   .vJz3kgDOz0jHdXfpfqLB table {
   width: 100%;
   table-layout: fixed;
-  border-collapse: collapse;
-  --tw-border-spacing-x: 0px;
-  --tw-border-spacing-y: 0px;
-  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
   .vJz3kgDOz0jHdXfpfqLB thead {
