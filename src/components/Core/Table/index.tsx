@@ -11,12 +11,15 @@ import {
 } from "@tanstack/react-table";
 import { useVirtual } from "react-virtual";
 import classNames from "classnames";
+import * as process from "process";
 import styles from "./index.module.css";
 
 type TableProps<T, O> = {
   columns: ColumnDef<T, O>[];
   data: T[];
 };
+
+const isDev = process.env.NODE_ENV === "development";
 
 export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
   const { columns, data } = props;
@@ -40,7 +43,7 @@ export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    debugTable: true,
+    debugTable: isDev,
   });
 
   const { rows } = table.getRowModel();
