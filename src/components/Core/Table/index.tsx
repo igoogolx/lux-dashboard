@@ -11,7 +11,6 @@ import {
 } from "@tanstack/react-table";
 import { useVirtual } from "react-virtual";
 import classNames from "classnames";
-import * as process from "process";
 import styles from "./index.module.css";
 
 type TableProps<T, O> = {
