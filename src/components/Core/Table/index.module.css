@@ -1,5 +1,5 @@
 .container {
-  @apply block h-2/3 max-w-full overflow-x-scroll bg-light dark:bg-dark w-full;
+  @apply block h-2/3 max-w-full overflow-x-auto bg-light dark:bg-dark w-full;
 
   & table {
     @apply w-full table-fixed;
