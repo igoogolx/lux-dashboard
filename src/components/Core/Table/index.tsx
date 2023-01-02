@@ -32,6 +32,9 @@ export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
     state: {
       sorting,
     },
+    getRowId: (originalRow) => {
+      return originalRow.id;
+    },
     enableColumnResizing: true,
     columnResizeMode: "onChange",
     onSortingChange: setSorting,

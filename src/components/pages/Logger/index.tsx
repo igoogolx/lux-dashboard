@@ -70,11 +70,13 @@ export default function Logger(): JSX.Element {
         header: t(TRANSLATION_KEY.TYPE) || "",
         accessorKey: "type",
         cell: TypeCell,
+        size: 5,
       },
       {
         header: t(TRANSLATION_KEY.TIME) || "",
         accessorKey: "time",
         cell: TimeCell,
+        size: 5,
       },
       {
         header: t(TRANSLATION_KEY.CONTENT) || "",

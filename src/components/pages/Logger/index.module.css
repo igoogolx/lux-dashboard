@@ -7,7 +7,7 @@
     }
   }
   & .table {
-    @apply block overflow-auto h-full;
+    @apply block overflow-auto h-full w-full;
     & .payload {
       @apply overflow-hidden text-ellipsis;
     }
