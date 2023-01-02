@@ -21,7 +21,6 @@ import i18next from "i18next";
 import WsClient from "isomorphic-ws";
 import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
-import TitleBar from "@/components/TitleBar";
 import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import Splash from "@/components/Splash";
 import styles from "./index.module.css";
@@ -97,9 +96,6 @@ export function App(): JSX.Element {
           }}
         />
       )}
-      <div className={styles.header}>
-        <TitleBar />
-      </div>
       <ElevateModal />
       <div className={styles.body}>
         <div className={styles.nav}>

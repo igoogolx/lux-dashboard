@@ -16,8 +16,5 @@ declare interface Window {
   shellOpenPath?: (path: string) => Promise<void>;
   shellOpenExternal?: (url: string) => Promise<void>;
   getPlatform?: () => string;
-  closeWindow?: () => number;
-  minimizeWindow?: () => void;
-  maximizeWindow?: () => void;
   openDevTools?: () => void;
 }

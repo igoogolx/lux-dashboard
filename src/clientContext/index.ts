@@ -18,24 +18,6 @@ export const restart = async () => {
   }
 };
 
-export const closeWindow = async () => {
-  if (isElectron) {
-    window.closeWindow?.();
-  }
-};
-
-export const minimizeWindow = async () => {
-  if (isElectron) {
-    window.minimizeWindow?.();
-  }
-};
-
-export const maximizeWindow = async () => {
-  if (isElectron) {
-    window.maximizeWindow?.();
-  }
-};
-
 export const shellOpenPath = async (path: string) => {
   if (isElectron) {
     await window.shellOpenPath?.(path);
