@@ -6,6 +6,7 @@ import {
   Button,
   InputGroup,
   notifier,
+  PlacementEnum,
   SelectorProps,
   Table,
   Tag,
@@ -23,6 +24,13 @@ enum SearchSelectorItemsEnum {
   Content,
 }
 
+function TimeCell(props: CellContext<Log, number>) {
+  const { getValue } = props;
+  const value = getValue();
+  const date = new Date(value);
+  return <div>{date.toLocaleTimeString()}</div>;
+}
+
 function TypeCell(props: CellContext<Log, string>) {
   const { getValue } = props;
   const value = getValue();
@@ -33,7 +41,7 @@ function PayloadCell(props: CellContext<Log, string>) {
   const { getValue } = props;
   const value = getValue();
   return (
-    <Tooltip content={value}>
+    <Tooltip content={value} placement={PlacementEnum.TopStart}>
       <div className={styles.payload}>{value}</div>
     </Tooltip>
   );
@@ -56,14 +64,17 @@ export default function Logger(): JSX.Element {
     }
   };
 
-  const columns = useMemo<ColumnDef<Log, string>[]>(() => {
+  const columns = useMemo<ColumnDef<Log, any>[]>(() => {
     return [
       {
         header: t(TRANSLATION_KEY.TYPE) || "",
         accessorKey: "type",
         cell: TypeCell,
-        size: 100,
-        maxSize: 100,
+      },
+      {
+        header: t(TRANSLATION_KEY.TIME) || "",
+        accessorKey: "time",
+        cell: TimeCell,
       },
       {
         header: t(TRANSLATION_KEY.CONTENT) || "",

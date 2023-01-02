@@ -18,7 +18,7 @@ type TableProps<T, O> = {
   data: T[];
 };
 
-export function Table<T, O>(props: TableProps<T, O>) {
+export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
   const { columns, data } = props;
 
   // we need a reference to the scrolling element for logic down below
@@ -46,7 +46,7 @@ export function Table<T, O>(props: TableProps<T, O>) {
   const rowVirtualizer = useVirtual({
     parentRef: tableContainerRef,
     size: rows.length,
-    overscan: 10,
+    overscan: 20,
   });
   const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
   const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
@@ -98,7 +98,7 @@ export function Table<T, O>(props: TableProps<T, O>) {
           {virtualRows.map((virtualRow) => {
             const row = rows[virtualRow.index] as Row<T>;
             return (
-              <tr key={row.id}>
+              <tr key={row.original.id}>
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td key={cell.id} style={{ width: cell.column.getSize() }}>
