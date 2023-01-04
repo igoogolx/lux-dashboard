@@ -1,8 +1,6 @@
 .wrapper {
   @apply h-full w-full flex-col pt-8;
-  -webkit-app-region: drag;
   & .navItem {
-    -webkit-app-region: no-drag;
     @apply block flex flex items-center py-4 pl-6 text-light-unselected;
     & svg {
       @apply fill-current text-light-unselected dark:text-dark-unselected;
