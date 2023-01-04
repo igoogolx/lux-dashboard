@@ -135,9 +135,7 @@ export default function Logger(): JSX.Element {
           {t(TRANSLATION_KEY.OPEN_LOG_DIR)}
         </Button>
       </div>
-      <div className={styles.table}>
-        <Table columns={columns} data={data} />
-      </div>
+      <Table columns={columns} data={data} />
     </div>
   );
 }
