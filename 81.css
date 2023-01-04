@@ -1,6 +1,4 @@
 .nrQNbpXTc6DWET7_gbI2 {
-      margin-left: 1rem;
-      margin-right: 1rem;
       display: flex;
       height: 100%;
       width: 100%;
@@ -8,7 +6,7 @@
       align-items: center;
       justify-items: center;
       overflow: auto;
-      padding-top: 1rem;
+      padding: 1rem;
       font-size: 0.875rem;
       line-height: 1.25rem;
 }
@@ -21,13 +19,7 @@
   .nrQNbpXTc6DWET7_gbI2 .bCym_SmeimM9gS_XqCez .VOUHprgJvo_pwa8rsD9K {
       display: none;
     }
-  .nrQNbpXTc6DWET7_gbI2 .sb9VooL0JrOW7x0Ius02 {
-      display: block;
-      height: 100%;
-      width: 100%;
-      overflow: auto;
-}
-  .nrQNbpXTc6DWET7_gbI2 .sb9VooL0JrOW7x0Ius02 .px1wfdzMY41XFBdlSJVF {
+  .nrQNbpXTc6DWET7_gbI2 .px1wfdzMY41XFBdlSJVF {
       overflow: hidden;
       text-overflow: ellipsis;
 }
