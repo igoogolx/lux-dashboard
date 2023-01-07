@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useMemo, useState } from "react";
+import { MouseEventHandler, useCallback, useMemo, useState } from "react";
 import classNames from "classnames";
 import { Tooltip } from "@/components/Core/Tooltip";
 import { PlacementEnum } from "../Popover";
@@ -18,6 +18,7 @@ export type SelectorProps = {
   isVirtualized?: boolean;
   onChange: (key: string | number) => void;
   disabled?: boolean;
+  clearable?: boolean;
 };
 
 export function Selector(props: SelectorProps): JSX.Element {
@@ -28,8 +29,10 @@ export function Selector(props: SelectorProps): JSX.Element {
     items,
     isVirtualized,
     disabled = false,
+    clearable = true,
   } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   const onMenuItemClick = useCallback<MenuProps["onClick"]>(
     (key) => {
@@ -41,6 +44,17 @@ export function Selector(props: SelectorProps): JSX.Element {
   const selectedItem = useMemo(() => {
     return items.find((i) => i.id === value);
   }, [items, value]);
+
+  const onReset = useCallback<MouseEventHandler>(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (value) {
+        onChange("");
+      }
+    },
+    [onChange, value]
+  );
 
   return (
     <Dropdown
@@ -62,9 +76,21 @@ export function Selector(props: SelectorProps): JSX.Element {
           buttonType={ButtonTypeEnum.Secondary}
           className={classNames(styles.button, className)}
           disabled={disabled}
+          onMouseEnter={() => {
+            setIsHover(true);
+          }}
+          onMouseLeave={() => {
+            setIsHover(false);
+          }}
         >
           <span className={styles.text}>{selectedItem?.content}</span>
-          <Icon name={isOpen ? IconNameEnum.Up : IconNameEnum.Down} />
+          {isHover && clearable && value ? (
+            <Button buttonType={ButtonTypeEnum.Blank} onClick={onReset}>
+              <Icon name={IconNameEnum.Close} />
+            </Button>
+          ) : (
+            <Icon name={isOpen ? IconNameEnum.Up : IconNameEnum.Down} />
+          )}
         </Button>
       </Tooltip>
     </Dropdown>

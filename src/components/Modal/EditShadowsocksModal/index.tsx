@@ -18,12 +18,8 @@ import {
   FieldSelector,
   PasswordFiled,
 } from "@/components/Core";
-import {
-  ShadowsocksSchema,
-  validatePlugin,
-  validatePluginOptsStr,
-} from "./validate";
-import { ENCRYPTION_METHODS } from "./constant";
+import { ShadowsocksSchema, validatePluginOptsStr } from "./validate";
+import { ENCRYPTION_METHODS, SHADOWSOCKS_PLUINS } from "./constant";
 import styles from "./index.module.css";
 
 type EditShadowsocksModalProps = {
@@ -77,6 +73,10 @@ export const EditShadowsocksModal = React.memo(
     const dispatch = useDispatch();
     const methodsOptions = useRef(
       ENCRYPTION_METHODS.map((METHOD) => ({ content: METHOD, id: METHOD }))
+    );
+
+    const pluginOptions = useRef(
+      SHADOWSOCKS_PLUINS.map((METHOD) => ({ content: METHOD, id: METHOD }))
     );
 
     const isStarted = useSelector<RootState, boolean>(
@@ -138,13 +138,13 @@ export const EditShadowsocksModal = React.memo(
                   label={t(TRANSLATION_KEY.FORM_PASSWORD)}
                   size={INPUT_SIZE.AUTO}
                 />
-                <Field<keyof ShadowsocksWrapper>
+                <FieldSelector<keyof ShadowsocksWrapper>
+                  selectorClassName={styles.plugin}
                   name="plugin"
+                  items={pluginOptions.current}
                   label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(
                     TRANSLATION_KEY.FORM_OPTIONAL
                   )})`}
-                  size={INPUT_SIZE.AUTO}
-                  validate={validatePlugin}
                 />
                 <Field<keyof ShadowsocksWrapper>
                   name="pluginOptsStr"

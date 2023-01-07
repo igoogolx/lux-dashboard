@@ -9,6 +9,7 @@ type FieldSelectorProps<T extends string> = Omit<
     name: T;
     label: string;
     render?: (value: string) => React.ReactNode;
+    selectorClassName?: string;
   } & SelectorProps,
   "onChange" | "value"
 >;
@@ -16,7 +17,8 @@ type FieldSelectorProps<T extends string> = Omit<
 export function FieldSelector<T extends string>(
   props: FieldSelectorProps<T>
 ): JSX.Element {
-  const { name, label, render, className, ...restProps } = props;
+  const { name, label, render, className, selectorClassName, ...restProps } =
+    props;
   const [field, , helpers] = useField({ name });
   const { setValue } = helpers;
 
@@ -30,6 +32,7 @@ export function FieldSelector<T extends string>(
       <Selector
         value={render ? render(field.value) : field.value}
         onChange={setValue}
+        className={selectorClassName}
         {...restProps}
       />
     </div>

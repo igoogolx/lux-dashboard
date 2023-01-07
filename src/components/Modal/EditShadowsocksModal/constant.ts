@@ -19,3 +19,5 @@ export const ENCRYPTION_METHODS = [
   "chacha20",
   "chacha20-ietf",
 ];
+
+export const SHADOWSOCKS_PLUINS = ["obfs", "v2ray-plugin"];

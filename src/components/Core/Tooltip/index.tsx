@@ -33,7 +33,7 @@ export function Tooltip(props: TooltipProps): JSX.Element {
       content={content}
       placement={placement}
       popoverClassName={classNames(styles[theme], styles.container)}
-      disabled={disabled}
+      disabled={disabled || !content}
       timeout={timeout}
       className={className}
     >
