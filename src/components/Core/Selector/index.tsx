@@ -29,7 +29,7 @@ export function Selector(props: SelectorProps): JSX.Element {
     items,
     isVirtualized,
     disabled = false,
-    clearable = true,
+    clearable = false,
   } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);

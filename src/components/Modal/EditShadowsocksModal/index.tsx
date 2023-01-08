@@ -139,6 +139,7 @@ export const EditShadowsocksModal = React.memo(
                   size={INPUT_SIZE.AUTO}
                 />
                 <FieldSelector<keyof ShadowsocksWrapper>
+                  clearable
                   selectorClassName={styles.plugin}
                   name="plugin"
                   items={pluginOptions.current}
