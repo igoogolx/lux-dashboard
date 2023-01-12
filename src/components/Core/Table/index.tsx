@@ -72,6 +72,7 @@ export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
                     key={header.id}
                     colSpan={header.colSpan}
                     style={{ position: "relative", width: header.getSize() }}
+                    onClick={header.column.getToggleSortingHandler()}
                   >
                     {header.isPlaceholder
                       ? null
@@ -79,6 +80,10 @@ export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
                           header.column.columnDef.header,
                           header.getContext()
                         )}
+                    {{
+                      asc: " 🔼",
+                      desc: " 🔽",
+                    }[header.column.getIsSorted() as string] ?? null}
                     {header.column.getCanResize() && (
                       <div
                         onMouseDown={header.getResizeHandler()}
