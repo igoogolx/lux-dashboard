@@ -63,6 +63,6 @@
 }
 
 .adornment {
-  @apply absolute right-2 top-0.5 box-content;
+  @apply absolute flex right-2;
   transform: translate(0, 50%);
 }
