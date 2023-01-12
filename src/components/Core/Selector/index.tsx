@@ -86,10 +86,13 @@ export function Selector(props: SelectorProps): JSX.Element {
           <span className={styles.text}>{selectedItem?.content}</span>
           {isHover && clearable && value ? (
             <Button buttonType={ButtonTypeEnum.Blank} onClick={onReset}>
-              <Icon name={IconNameEnum.Close} />
+              <Icon name={IconNameEnum.Close} className={styles.icon} />
             </Button>
           ) : (
-            <Icon name={isOpen ? IconNameEnum.Up : IconNameEnum.Down} />
+            <Icon
+              name={isOpen ? IconNameEnum.Up : IconNameEnum.Down}
+              className={styles.icon}
+            />
           )}
         </Button>
       </Tooltip>

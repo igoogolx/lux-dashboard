@@ -9,10 +9,10 @@
 }
 .button {
   @apply justify-between;
-  & svg {
-    @apply ml-1;
-  }
   & .text {
-    @apply overflow-hidden overflow-ellipsis whitespace-nowrap;
+    @apply overflow-hidden overflow-ellipsis whitespace-nowrap mr-1;
+  }
+  & .icon{
+    @apply text-gray-500;
   }
 }
