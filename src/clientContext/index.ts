@@ -34,5 +34,7 @@ export const getPlatform = () => {
 export const shellOpenExternal = (path: string) => {
   if (isElectron) {
     window.shellOpenExternal?.(path);
+  } else {
+    window.open(path);
   }
 };

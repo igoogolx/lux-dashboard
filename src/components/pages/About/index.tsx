@@ -59,21 +59,19 @@ export default function About(): JSX.Element {
         <div>
           {t(TRANSLATION_KEY.VERSION)}: {version}
         </div>
-        <div
-          onClick={() => {
-            shellOpenExternal(REPOSITORY_URL);
-          }}
-          className={styles.link}
-        >
+        <div className={styles.desc}>
           {t(TRANSLATION_KEY.CORE_VERSION)}: {coreVersion}
         </div>
-        <div
-          onClick={() => {
-            shellOpenExternal(REPOSITORY_URL);
-          }}
-          className={styles.link}
-        >
-          {t(TRANSLATION_KEY.REPOSITORY)}: {REPOSITORY_URL}
+        <div className={styles.link}>
+          {t(TRANSLATION_KEY.REPOSITORY)}:{" "}
+          <Button
+            onClick={() => {
+              shellOpenExternal(REPOSITORY_URL);
+            }}
+            buttonType={ButtonTypeEnum.Link}
+          >
+            {REPOSITORY_URL}
+          </Button>
         </div>
         <Button
           onClick={onCheckForUpdate}

@@ -14,6 +14,7 @@ export enum ButtonTypeEnum {
   Primary = "primary",
   Secondary = "secondary",
   Blank = "blank",
+  Link = "link",
 }
 
 export function Button(props: ButtonProps): JSX.Element {

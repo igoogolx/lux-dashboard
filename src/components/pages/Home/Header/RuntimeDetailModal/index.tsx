@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Modal } from "@/components/Core";
+import { Button, ButtonTypeEnum, Modal } from "@/components/Core";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
+import { shellOpenExternal } from "@/clientContext";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -37,19 +38,34 @@ export function RuntimeDetailModal(
 
   return runtimeDetail ? (
     <Modal close={close}>
-      {(Object.keys(runtimeDetail) as (keyof RuntimeDetail)[]).map((key) => {
-        const content = Array.isArray(runtimeDetail[key])
-          ? (runtimeDetail[key] as string[]).join(",")
-          : runtimeDetail[key];
-        return (
-          <div className={styles.item} key={key}>
-            <div className={styles.title}>
-              {`${t(TRANSLATION_KEY_MAP[key])}:`}
+      {(Object.keys(runtimeDetail) as (keyof typeof runtimeDetail)[]).map(
+        (key) => {
+          const content = Array.isArray(runtimeDetail[key])
+            ? (runtimeDetail[key] as string[]).join(",")
+            : runtimeDetail[key];
+          return (
+            <div className={styles.item} key={key}>
+              <div className={styles.title}>
+                {`${t(TRANSLATION_KEY_MAP[key])}:`}
+              </div>
+              <div className={styles.content}>
+                {key === "hubAddress" ? (
+                  <Button
+                    onClick={() => {
+                      shellOpenExternal(`http://${content}` as string);
+                    }}
+                    buttonType={ButtonTypeEnum.Link}
+                  >
+                    {content}
+                  </Button>
+                ) : (
+                  content
+                )}
+              </div>
             </div>
-            <div className={styles.content}>{content}</div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
     </Modal>
   ) : (
     <></>
