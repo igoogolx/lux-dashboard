@@ -35,7 +35,7 @@ const INIT_DATA: ShadowsocksWrapper = {
   server: "",
   password: "",
   port: "",
-  method: ENCRYPTION_METHODS[0],
+  cipher: ENCRYPTION_METHODS[0],
 };
 
 type ShadowsocksWrapper = Omit<Shadowsocks, "port"> & {
@@ -49,8 +49,8 @@ const makeInitData = (config: Shadowsocks) => {
     pluginOptsStr: "",
     port: config.port.toString(),
   };
-  if (newConfig.pluginOpts) {
-    newConfig.pluginOptsStr = convertPluginOptsStr(newConfig.pluginOpts);
+  if (newConfig["plugin-opts"]) {
+    newConfig.pluginOptsStr = convertPluginOptsStr(newConfig["plugin-opts"]);
   }
   return newConfig;
 };
@@ -61,7 +61,7 @@ const makeSubmittedData = (config: ShadowsocksWrapper) => {
     port: Number(config.port),
   };
   if (config.pluginOptsStr) {
-    newConfig.pluginOpts = parsePluginOptsStr(config.pluginOptsStr);
+    newConfig["plugin-opts"] = parsePluginOptsStr(config.pluginOptsStr);
   }
   return newConfig;
 };
@@ -123,7 +123,7 @@ export const EditShadowsocksModal = React.memo(
                   size={INPUT_SIZE.AUTO}
                 />
                 <FieldSelector<keyof ShadowsocksWrapper>
-                  name="method"
+                  name="cipher"
                   items={methodsOptions.current}
                   label={t(TRANSLATION_KEY.FORM_ENCRYPTION)}
                 />

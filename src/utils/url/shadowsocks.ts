@@ -44,7 +44,7 @@ const convertConfig = (rawConfig: Config) => {
     name: rawConfig.tag.data,
     server: rawConfig.host.data,
     port: rawConfig.port.data,
-    method: rawConfig.method.data,
+    cipher: rawConfig.method.data,
     password: rawConfig.password.data,
     udp: true,
   };
@@ -56,7 +56,7 @@ const convertConfig = (rawConfig: Config) => {
     if (result.plugin.includes("obfs")) {
       result.plugin = "obfs";
     }
-    result.pluginOpts = parsePluginOptsStr(
+    result["plugin-opts"] = parsePluginOptsStr(
       pluginStr.substring(separatorIndex + 1)
     );
   }
@@ -73,14 +73,14 @@ export const decode = (url: string) => {
 
 export const encode = (config: Shadowsocks) => {
   let pluginStr = `${config.plugin}`;
-  if (config.pluginOpts) {
-    pluginStr = `${pluginStr};${convertPluginOptsStr(config.pluginOpts)}`;
+  if (config["plugin-opts"]) {
+    pluginStr = `${pluginStr};${convertPluginOptsStr(config["plugin-opts"])}`;
   }
   return SIP002_URI.stringify(
     makeConfig({
       host: config.server,
       port: config.port,
-      method: config.method,
+      method: config.cipher,
       password: config.password,
       tag: config.name,
       plugin: pluginStr,
