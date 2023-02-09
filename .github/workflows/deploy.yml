@@ -33,6 +33,16 @@ jobs:
       - run: yarn install
       - run: yarn build
 
+      - run: tar -cvzf dist.tar.gz dist
+      - run: sha256sum dist.tar.gz > dist.tar.gz.sha256
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist.tar.gz
+            dist.tar.gz.sha256        
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
