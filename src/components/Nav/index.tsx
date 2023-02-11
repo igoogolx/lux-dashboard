@@ -15,7 +15,7 @@ export function Nav(): JSX.Element {
       {
         to: "/dashboard",
         icon: IconNameEnum.Dashboard,
-        name: t(TRANSLATION_KEY.NAV_DASHBOARD),
+        name: t(TRANSLATION_KEY.NAV_DATA),
       },
       {
         to: "/connections",

@@ -2,7 +2,7 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 
 export default {
   [TRANSLATION_KEY.NAV_HOME]: "Home",
-  [TRANSLATION_KEY.NAV_DASHBOARD]: "Dashboard",
+  [TRANSLATION_KEY.NAV_DATA]: "Data",
   [TRANSLATION_KEY.NAV_CONNECTION]: "Connection",
   [TRANSLATION_KEY.LOG]: "Log",
   [TRANSLATION_KEY.NAV_SETTING]: "Setting",

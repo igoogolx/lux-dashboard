@@ -1,6 +1,6 @@
 export const TRANSLATION_KEY = {
   NAV_HOME: "nav.home",
-  NAV_DASHBOARD: "nav.dashboard",
+  NAV_DATA: "nav.data",
   NAV_CONNECTION: "nav.connection",
   LOG: "log",
   NAV_SETTING: "nav.setting",
