@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, ButtonTypeEnum, Modal } from "@/components/Core";
-import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { shellOpenExternal } from "@/clientContext";
+import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {

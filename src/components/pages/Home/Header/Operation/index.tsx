@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTestDelay } from "@/hooks";
 import { BaseProxy } from "lux-js-sdk";
-import { RuntimeDetailModal } from "../RuntimeDetailModal";
+import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
 import styles from "./index.module.css";
 
 type OperationProps = {
