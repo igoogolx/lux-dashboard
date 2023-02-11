@@ -17,4 +17,5 @@ declare interface Window {
   shellOpenExternal?: (url: string) => Promise<void>;
   getPlatform?: () => string;
   openDevTools?: () => void;
+  setClientTheme?: (theme: "system" | "dark" | "light") => Promise<void>;
 }

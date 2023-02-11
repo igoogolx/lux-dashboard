@@ -14,4 +14,5 @@ export const setTheme = (theme: ThemeEnum) => {
     document.documentElement.classList.remove("dark");
   }
   localStorage.setItem("theme", theme);
+  window?.setClientTheme?.(theme);
 };
