@@ -11,26 +11,16 @@ import styles from "./index.module.css";
 
 type EditSocks5ModalProps = {
   close: () => void;
-  initialValue?: Socks5 & { id?: string };
+  initialValue?: Socks5;
   isSelected?: boolean;
 };
 
-type Socks5FormValue = Omit<Socks5, "port"> & { port: string };
-
-const makeInitData = (config: Socks5) => {
-  const newConfig: Socks5FormValue = {
-    ...config,
-    port: config.port.toString(),
-  };
-  return newConfig;
-};
-
-const INIT_DATA: Socks5FormValue = {
+const INIT_DATA: Socks5 = {
   type: ProxyTypeEnum.Socks5,
   server: "",
   id: "",
   name: "",
-  port: "",
+  port: 1080,
   password: "",
   username: "",
 };
@@ -50,21 +40,18 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
   const isStarted = useSelector<RootState, boolean>(
     (state) => state.manager.isStared
   );
-  const onSubmit = async (data: Socks5FormValue) => {
-    const submittedValue = { ...data, port: Number(data.port) };
+  const onSubmit = async (data: Socks5) => {
     if (initialValue) {
       await updateProxy({
         id: data.id,
-        proxy: { ...submittedValue },
+        proxy: data,
       });
-      dispatch(proxiesSlice.actions.updateOne({ proxy: submittedValue }));
+      dispatch(proxiesSlice.actions.updateOne({ proxy: data }));
     } else {
       const { id } = await addProxy({
-        proxy: { ...submittedValue },
+        proxy: data,
       });
-      dispatch(
-        proxiesSlice.actions.addOne({ proxy: { ...submittedValue, id } })
-      );
+      dispatch(proxiesSlice.actions.addOne({ proxy: { ...data, id } }));
     }
     close();
   };
@@ -73,7 +60,7 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
     <Modal close={close}>
       <Form
         onSubmit={onSubmit}
-        initialValues={initialValue ? makeInitData(initialValue) : INIT_DATA}
+        initialValues={initialValue || INIT_DATA}
         validationSchema={Socks5Schema}
       >
         {({ dirty, submitForm }) => {
@@ -90,6 +77,7 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
               <Field<keyof Socks5>
                 name="port"
                 label={t(TRANSLATION_KEY.FORM_PORT)}
+                type="number"
               />
               <Field<keyof Socks5>
                 name="username"
