@@ -3079,8 +3079,8 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 lux-js-sdk@igoogolx/lux-js-sdk:
-  version "0.0.6"
-  resolved "https://codeload.github.com/igoogolx/lux-js-sdk/tar.gz/928d46edd2026d3131097ddd210715f76e788f5a"
+  version "0.0.7"
+  resolved "https://codeload.github.com/igoogolx/lux-js-sdk/tar.gz/ac4d4386aa72b960c68b918de984752d59d688eb"
 
 make-dir@^2.1.0:
   version "2.1.0"
