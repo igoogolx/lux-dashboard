@@ -23,6 +23,7 @@ import { delay } from "@/utils/delay";
 import ThemeSwitch from "@/components/ThemeSwitch";
 import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import Splash from "@/components/Splash";
+import { ServerConfirmModal } from "@/components/Modal/ServerConfirmModal";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -89,6 +90,7 @@ export function App(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <NotificationContainer />
+      <ServerConfirmModal />
       {!connected && (
         <EditHubAddressModal
           close={() => {
