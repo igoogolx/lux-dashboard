@@ -24,7 +24,7 @@ import styles from "./index.module.css";
 
 type EditShadowsocksModalProps = {
   close: () => void;
-  initialValue?: Shadowsocks & { id?: string };
+  initialValue?: Shadowsocks;
   isSelected?: boolean;
 };
 
@@ -34,20 +34,19 @@ const INIT_DATA: ShadowsocksWrapper = {
   name: "",
   server: "",
   password: "",
-  port: "",
+  port: 1080,
   cipher: ENCRYPTION_METHODS[0],
 };
 
-type ShadowsocksWrapper = Omit<Shadowsocks, "port"> & {
+// TODO: remove pluginOptsStr
+type ShadowsocksWrapper = Shadowsocks & {
   pluginOptsStr?: string;
-  port: string;
 };
 
 const makeInitData = (config: Shadowsocks) => {
   const newConfig: ShadowsocksWrapper = {
     ...config,
     pluginOptsStr: "",
-    port: config.port.toString(),
   };
   if (newConfig["plugin-opts"]) {
     newConfig.pluginOptsStr = convertPluginOptsStr(newConfig["plugin-opts"]);
@@ -55,14 +54,14 @@ const makeInitData = (config: Shadowsocks) => {
   return newConfig;
 };
 
-const makeSubmittedData = (config: ShadowsocksWrapper) => {
-  const newConfig: Shadowsocks = {
+const makeSubmittedData = (config: ShadowsocksWrapper): Shadowsocks => {
+  const newConfig = {
     ...config,
-    port: Number(config.port),
   };
-  if (config.pluginOptsStr) {
-    newConfig["plugin-opts"] = parsePluginOptsStr(config.pluginOptsStr);
+  if (newConfig.pluginOptsStr) {
+    newConfig["plugin-opts"] = parsePluginOptsStr(newConfig.pluginOptsStr);
   }
+  delete newConfig.pluginOptsStr;
   return newConfig;
 };
 
