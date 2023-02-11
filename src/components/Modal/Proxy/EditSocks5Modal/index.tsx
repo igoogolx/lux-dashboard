@@ -1,4 +1,3 @@
-import { addProxy, ProxyTypeEnum, Socks5, updateProxy } from "lux-js-sdk";
 import React from "react";
 import { Button, ButtonTypeEnum, Modal, Field, Form } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import * as Yup from "yup";
 import { MAX_PORT, MIN_PORT } from "@/utils/validator";
+import { addProxy, ProxyTypeEnum, Socks5, updateProxy } from "lux-js-sdk";
 import styles from "./index.module.css";
 
 type EditSocks5ModalProps = {

@@ -10,7 +10,7 @@ import {
 import { addProxy, ProxyTypeEnum } from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
-import { EditModal } from "@/components/Modal";
+import { EditModal } from "@/components/Modal/Proxy";
 import { decode } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";

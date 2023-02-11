@@ -1,7 +1,7 @@
 import React from "react";
 import { ProxyTypeEnum, Shadowsocks, Socks5 } from "lux-js-sdk";
-import { EditSocks5Modal } from "@/components/Modal/EditSocks5Modal";
-import { EditShadowsocksModal } from "@/components/Modal/EditShadowsocksModal";
+import { EditSocks5Modal } from "./EditSocks5Modal";
+import { EditShadowsocksModal } from "./EditShadowsocksModal";
 
 type EditModalProps = {
   close: () => void;

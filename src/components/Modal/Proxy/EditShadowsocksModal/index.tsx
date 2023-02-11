@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
 import {
@@ -18,6 +17,7 @@ import {
   FieldSelector,
   PasswordFiled,
 } from "@/components/Core";
+import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
 import { ShadowsocksSchema, validatePluginOptsStr } from "./validate";
 import { ENCRYPTION_METHODS, SHADOWSOCKS_PLUINS } from "./constant";
 import styles from "./index.module.css";

@@ -15,7 +15,7 @@ import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
 import { useTestDelay, useTestUdp } from "@/hooks";
 import classNames from "classnames";
 import { selectedSlice } from "@/reducers/selected";
-import { EditModal } from "@/components/Modal";
+import { EditModal } from "@/components/Modal/Proxy";
 import { encode } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
