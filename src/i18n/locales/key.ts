@@ -57,6 +57,7 @@ export const TRANSLATION_KEY = {
   UNKNOWN_ERROR: "unknown_error",
   SHADOWSOCKS: "shadowsocks",
   SOCKS5: "socks5",
+  HTTP: "http",
   CLIPBOARD_IMPORT: "clipboard_import",
   RELOAD: "reload",
   WARNING: "warning",

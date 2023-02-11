@@ -96,4 +96,5 @@ export default {
   [TRANSLATION_KEY.PROXY_ALL_RULE]: "Proxy ALL",
   [TRANSLATION_KEY.SET_HUB_ADDRESS]: "Set hub address",
   [TRANSLATION_KEY.CORE_VERSION]: "Core Version",
+  [TRANSLATION_KEY.HTTP]: "Http",
 };

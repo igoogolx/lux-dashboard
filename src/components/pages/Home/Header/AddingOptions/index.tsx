@@ -20,6 +20,7 @@ enum OperationTypeEnum {
   Shadowsocks,
   Socks5,
   Clipboard,
+  Http,
 }
 
 type AddingOptionsProps = {
@@ -44,6 +45,10 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
     },
     { id: OperationTypeEnum.Socks5, content: t(TRANSLATION_KEY.SOCKS5) },
     {
+      id: OperationTypeEnum.Http,
+      content: t(TRANSLATION_KEY.HTTP),
+    },
+    {
       id: OperationTypeEnum.Clipboard,
       content: t(TRANSLATION_KEY.CLIPBOARD_IMPORT),
     },
@@ -56,6 +61,9 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
         break;
       case OperationTypeEnum.Socks5:
         setCurrentAddingType(ProxyTypeEnum.Socks5);
+        break;
+      case OperationTypeEnum.Http:
+        setCurrentAddingType(ProxyTypeEnum.Http);
         break;
       case OperationTypeEnum.Clipboard: {
         const url = await navigator.clipboard.readText();
