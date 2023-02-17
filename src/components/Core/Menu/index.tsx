@@ -53,6 +53,7 @@ const Item = React.memo(
         })}
         onClick={handleOnClick}
       >
+        {/* TODO: fix styles of divider */}
         {isDivider && <div className={styles.divider} />}
         <div className={styles.content}>
           {iconName && <Icon name={iconName} />}

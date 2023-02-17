@@ -77,7 +77,6 @@ export function Operation(props: OperationProps): JSX.Element {
       return items;
     }
     items = [
-      ...items,
       {
         id: OperationTypeEnum.Edit,
         content: t(TRANSLATION_KEY.COMMON_EDIT),
@@ -93,10 +92,10 @@ export function Operation(props: OperationProps): JSX.Element {
         content: t(TRANSLATION_KEY.COMMON_TEST_UDP),
         iconName: IconNameEnum.Sync,
       },
+      ...items,
     ];
     if (proxy.type === ProxyTypeEnum.Shadowsocks) {
       items = [
-        ...items,
         {
           id: OperationTypeEnum.CopyUrl,
           content: t(TRANSLATION_KEY.COMMON_COPY_URL),
@@ -107,6 +106,7 @@ export function Operation(props: OperationProps): JSX.Element {
           content: t(TRANSLATION_KEY.COMMON_QR_CODE),
           iconName: IconNameEnum.QrCode,
         },
+        ...items,
       ];
     }
     return items;
