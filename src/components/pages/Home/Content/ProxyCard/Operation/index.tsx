@@ -68,9 +68,11 @@ export function Operation(props: OperationProps): JSX.Element {
       },
     ];
     if (
-      ![ProxyTypeEnum.Http, ProxyTypeEnum.Http, ProxyTypeEnum.Socks5].includes(
-        proxy.type
-      )
+      ![
+        ProxyTypeEnum.Shadowsocks,
+        ProxyTypeEnum.Http,
+        ProxyTypeEnum.Socks5,
+      ].includes(proxy.type)
     ) {
       return items;
     }
