@@ -57,17 +57,27 @@ export function Operation(props: OperationProps): JSX.Element {
     (state) => state.selected.proxy === proxyId
   );
   const menuItems: MenuItemProps[] = useMemo(() => {
-    let items = [
-      {
-        id: OperationTypeEnum.Edit,
-        content: t(TRANSLATION_KEY.COMMON_EDIT),
-        iconName: IconNameEnum.Edit,
-      },
+    let items: MenuItemProps[] = [
       {
         id: OperationTypeEnum.Delete,
         content: t(TRANSLATION_KEY.COMMON_DELETE),
         iconName: IconNameEnum.Trash,
         disabled: (isStarted || isSwitchLoading) && isSelected,
+      },
+    ];
+    if (
+      ![ProxyTypeEnum.Http, ProxyTypeEnum.Http, ProxyTypeEnum.Socks5].includes(
+        proxy.type
+      )
+    ) {
+      return items;
+    }
+    items = [
+      ...items,
+      {
+        id: OperationTypeEnum.Edit,
+        content: t(TRANSLATION_KEY.COMMON_EDIT),
+        iconName: IconNameEnum.Edit,
       },
       {
         id: OperationTypeEnum.Test,

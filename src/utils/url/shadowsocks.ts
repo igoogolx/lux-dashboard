@@ -1,10 +1,10 @@
 import {
-  SIP002_URI,
-  SHADOWSOCKS_URI,
   Config,
   makeConfig,
+  SHADOWSOCKS_URI,
+  SIP002_URI,
 } from "shadowsocksconfig";
-import { Shadowsocks } from "lux-js-sdk";
+import { ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
 
 export const convertPluginOptsStr = (opts: Record<string, string>) => {
   let plugin = "";
@@ -40,6 +40,7 @@ export const parsePluginOptsStr = (optsStr: string) => {
 
 const convertConfig = (rawConfig: Config) => {
   const result: Shadowsocks = {
+    type: ProxyTypeEnum.Shadowsocks,
     id: "",
     name: rawConfig.tag.data,
     server: rawConfig.host.data,

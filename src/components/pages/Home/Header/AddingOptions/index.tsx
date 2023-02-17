@@ -7,13 +7,14 @@ import {
   PlacementEnum,
   Tooltip,
 } from "@/components/Core";
-import { addProxy, ProxyTypeEnum } from "lux-js-sdk";
+import { addProxy, BaseProxy, ProxyTypeEnum } from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
 import { EditModal } from "@/components/Modal/Proxy";
 import { decode } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import { parse as parseYaml } from "yaml";
 import styles from "./index.module.css";
 
 enum OperationTypeEnum {
@@ -21,6 +22,7 @@ enum OperationTypeEnum {
   Socks5,
   Clipboard,
   Http,
+  CLASH,
 }
 
 type AddingOptionsProps = {
@@ -52,6 +54,10 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
       id: OperationTypeEnum.Clipboard,
       content: t(TRANSLATION_KEY.CLIPBOARD_IMPORT),
     },
+    {
+      id: OperationTypeEnum.CLASH,
+      content: t(TRANSLATION_KEY.CLASH_IMPORT),
+    },
   ];
 
   const onSelect = async (id: OperationTypeEnum) => {
@@ -71,6 +77,21 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
         await Promise.all(
           shadowsockses.map(async (shadowsocks) => {
             const proxy = { ...shadowsocks, type: ProxyTypeEnum.Shadowsocks };
+            const res = await addProxy({ proxy });
+            dispatch(
+              proxiesSlice.actions.addOne({ proxy: { ...proxy, id: res.id } })
+            );
+          })
+        );
+        break;
+      }
+      case OperationTypeEnum.CLASH: {
+        const clashConfigText = await navigator.clipboard.readText();
+        const clashConfig = parseYaml(clashConfigText) as {
+          proxies: BaseProxy[];
+        };
+        await Promise.all(
+          clashConfig.proxies.map(async (proxy) => {
             const res = await addProxy({ proxy });
             dispatch(
               proxiesSlice.actions.addOne({ proxy: { ...proxy, id: res.id } })

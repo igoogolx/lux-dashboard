@@ -61,6 +61,7 @@ export const TRANSLATION_KEY = {
   SOCKS5: "socks5",
   HTTP: "http",
   CLIPBOARD_IMPORT: "clipboard_import",
+  CLASH_IMPORT: "clash_import",
   RELOAD: "reload",
   WARNING: "warning",
   DISCONNECTED_WARN_TIP: "disconnected_warn_tip",
