@@ -63,6 +63,8 @@ export function Operation(props: OperationProps): JSX.Element {
         content: t(TRANSLATION_KEY.COMMON_DELETE),
         iconName: IconNameEnum.Trash,
         disabled: (isStarted || isSwitchLoading) && isSelected,
+        isDanger: true,
+        isDivider: true,
       },
     ];
     if (
