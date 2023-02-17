@@ -65,8 +65,8 @@ export default {
   [TRANSLATION_KEY.UNKNOWN_ERROR]: "Unknown Error",
   [TRANSLATION_KEY.SHADOWSOCKS]: "Shadowsocks",
   [TRANSLATION_KEY.SOCKS5]: "Socks5",
-  [TRANSLATION_KEY.CLIPBOARD_IMPORT]: "Import From Clipboard",
-  [TRANSLATION_KEY.CLASH_IMPORT]: "Import From Clash Config",
+  [TRANSLATION_KEY.CLIPBOARD_IMPORT]: "Import Url From Clipboard",
+  [TRANSLATION_KEY.CLASH_IMPORT]: "Import Clash Config From Clipboard",
   [TRANSLATION_KEY.WARNING]: "Warning",
   [TRANSLATION_KEY.RELOAD]: "Reload",
   [TRANSLATION_KEY.DISCONNECTED_WARN_TIP]:
