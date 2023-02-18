@@ -23,7 +23,6 @@ import {
 } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import TestRuleModal from "@/components/pages/Connections/TestRuleModal";
 import { getPlatform } from "@/clientContext";
 import { CellContext, ColumnDef } from "@tanstack/react-table";
 import styles from "./index.module.css";
@@ -121,7 +120,6 @@ export default function Connections(): JSX.Element {
   const [searchedSelectorValue, setSearchedSelectorValue] = useState(
     SearchSelectorItemsEnum.Process
   );
-  const [isTestRuleModalOpen, setIsTestRuleModalOpen] = useState(false);
 
   useEffect(() => {
     const subscriber = subscribeConnections({
@@ -247,13 +245,6 @@ export default function Connections(): JSX.Element {
 
   return (
     <div className={styles.wrapper}>
-      {isTestRuleModalOpen && (
-        <TestRuleModal
-          close={() => {
-            setIsTestRuleModalOpen(false);
-          }}
-        />
-      )}
       <div className={styles.toolbar}>
         <InputGroup
           selectorItems={searchSelectorItems}
@@ -267,14 +258,6 @@ export default function Connections(): JSX.Element {
           }}
         />
         <div className={styles.actions}>
-          <Button
-            onClick={() => {
-              setIsTestRuleModalOpen(true);
-            }}
-            buttonType={ButtonTypeEnum.Secondary}
-          >
-            Test Rule
-          </Button>
           <Button
             onClick={closeAllConnections}
             buttonType={ButtonTypeEnum.Blank}
