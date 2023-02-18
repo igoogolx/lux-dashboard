@@ -59,6 +59,16 @@ export function Operation(props: OperationProps): JSX.Element {
   const menuItems: MenuItemProps[] = useMemo(() => {
     let items: MenuItemProps[] = [
       {
+        id: OperationTypeEnum.Test,
+        content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
+        iconName: IconNameEnum.Swap,
+      },
+      {
+        id: OperationTypeEnum.TestUdp,
+        content: t(TRANSLATION_KEY.COMMON_TEST_UDP),
+        iconName: IconNameEnum.Sync,
+      },
+      {
         id: OperationTypeEnum.Delete,
         content: t(TRANSLATION_KEY.COMMON_DELETE),
         iconName: IconNameEnum.Trash,
@@ -82,16 +92,7 @@ export function Operation(props: OperationProps): JSX.Element {
         content: t(TRANSLATION_KEY.COMMON_EDIT),
         iconName: IconNameEnum.Edit,
       },
-      {
-        id: OperationTypeEnum.Test,
-        content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
-        iconName: IconNameEnum.Swap,
-      },
-      {
-        id: OperationTypeEnum.TestUdp,
-        content: t(TRANSLATION_KEY.COMMON_TEST_UDP),
-        iconName: IconNameEnum.Sync,
-      },
+
       ...items,
     ];
     if (proxy.type === ProxyTypeEnum.Shadowsocks) {
