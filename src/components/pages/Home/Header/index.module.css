@@ -8,7 +8,7 @@
     dark:bg-dark;
 
   & .rulesDropdown {
-    @apply mr-8 w-28;
+    @apply mr-8 w-36;
   }
   & .addButton {
     @apply mx-4;
