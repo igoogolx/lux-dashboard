@@ -44,12 +44,6 @@ export const useTestDelay = () => {
             delay: { id, value: res.delay },
           })
         );
-      } catch (e) {
-        dispatch(
-          delaysSlice.actions.updateOne({
-            delay: { id, value: -1 },
-          })
-        );
       } finally {
         dispatch(
           delaysSlice.actions.updateOne({
