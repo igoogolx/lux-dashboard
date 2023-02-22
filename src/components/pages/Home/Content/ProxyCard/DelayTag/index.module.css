@@ -7,7 +7,7 @@
 }
 
 .success {
-  @apply text-blue-500;
+  @apply text-green-500;
 }
 
 .loading {
