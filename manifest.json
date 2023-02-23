@@ -3,17 +3,17 @@
   "name": "Dashboard for lux",
   "icons": [
     {
-      "src": "logo.svg",
+      "src": "logo.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg"
+      "type": "image/x-icon"
     },
     {
-      "src": "logo.svg",
+      "src": "logo128.svg",
       "type": "image/svg",
-      "sizes": "192x192"
+      "sizes": "128x128"
     },
     {
-      "src": "logo.svg",
+      "src": "logo512.svg",
       "type": "image/svg",
       "sizes": "512x512"
     }
