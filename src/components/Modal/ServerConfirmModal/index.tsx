@@ -1,4 +1,4 @@
-import { ConfirmModal, notifier } from "@/components/Core";
+import { ConfirmModal } from "@/components/Core";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
