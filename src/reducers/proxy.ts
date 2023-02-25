@@ -26,5 +26,8 @@ export const proxiesSlice = createSlice({
     addOne(state, action: PayloadAction<{ proxy: BaseProxy }>) {
       proxiesAdapter.addOne(state, action.payload.proxy);
     },
+    deleteAll(state) {
+      proxiesAdapter.removeAll(state);
+    },
   },
 });

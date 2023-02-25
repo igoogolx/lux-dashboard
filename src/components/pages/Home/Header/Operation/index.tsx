@@ -10,13 +10,13 @@ import {
   PlacementEnum,
   Tooltip,
 } from "@/components/Core";
-import { useSelector } from "react-redux";
-import { proxiesSelectors, RootState } from "@/reducers";
+import { useDispatch, useSelector } from "react-redux";
+import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTestDelay } from "@/hooks";
-import { BaseProxy } from "lux-js-sdk";
+import { BaseProxy, deleteAllProxies } from "lux-js-sdk";
 import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
 import styles from "./index.module.css";
 
@@ -27,11 +27,13 @@ type OperationProps = {
 enum OperationTypeEnum {
   RuntimeDetail = "0",
   TestDelay = "1",
+  DeleteAllProxies = "2",
 }
 
 export function Operation(props: OperationProps): JSX.Element {
   const { t } = useTranslation();
   const { className } = props;
+  const dispatch = useDispatch();
   const [isRuntimeDetailOpen, setIsRuntimeDetailOpen] = useState(false);
 
   const isStarted = useSelector<RootState, boolean>(
@@ -56,6 +58,11 @@ export function Operation(props: OperationProps): JSX.Element {
     setIsRuntimeDetailOpen(false);
   };
 
+  const onDeleteAllProxies = async () => {
+    await deleteAllProxies();
+    dispatch(proxiesSlice.actions.deleteAll());
+  };
+
   const menuItems: MenuItemProps[] = useMemo(() => {
     return [
       {
@@ -67,6 +74,12 @@ export function Operation(props: OperationProps): JSX.Element {
         content: t(TRANSLATION_KEY.COMMON_RUNTIME_DETAIL),
         disabled: !isStarted,
       },
+      {
+        id: OperationTypeEnum.DeleteAllProxies,
+        content: t(TRANSLATION_KEY.DELETE_ALL_PROXIES),
+        disabled: isStarted,
+        isDanger: true,
+      },
     ];
   }, [isStarted, t]);
   const onSelect = (id: string) => {
@@ -76,6 +89,10 @@ export function Operation(props: OperationProps): JSX.Element {
         return;
       case OperationTypeEnum.RuntimeDetail: {
         openRuntimeDetail();
+        return;
+      }
+      case OperationTypeEnum.DeleteAllProxies: {
+        onDeleteAllProxies();
         return;
       }
       default: {
