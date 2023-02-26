@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import styles from "./index.module.css";
 import { Button, ButtonTypeEnum } from "../Button";
 import { Icon, IconNameEnum } from "../Icon";
@@ -30,6 +32,9 @@ export function ConfirmModal(props: ConfirmModalPros) {
     hideCancelText = false,
     hideConfirmText = false,
   } = props;
+
+  const { t } = useTranslation();
+
   return (
     <Modal close={onCancel} closeWhenClickOutside={closeWhenClickOutside}>
       <div className={styles.container}>
@@ -42,7 +47,7 @@ export function ConfirmModal(props: ConfirmModalPros) {
               buttonType={ButtonTypeEnum.Secondary}
               onClick={onCancel}
             >
-              {cancelText || "Cancel"}
+              {cancelText || t(TRANSLATION_KEY.FORM_CANCEL)}
             </Button>
           )}
           {!hideConfirmText && (
@@ -50,7 +55,7 @@ export function ConfirmModal(props: ConfirmModalPros) {
               {loading && (
                 <Icon name={IconNameEnum.Spin} className={styles.loading} />
               )}
-              {confirmText || "Confirm"}
+              {confirmText || t(TRANSLATION_KEY.CONFIRM)}
             </Button>
           )}
         </div>
