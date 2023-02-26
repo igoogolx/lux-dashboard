@@ -60,6 +60,8 @@ export default {
   [TRANSLATION_KEY.ELEVATE_TIP]:
     "The core is not run as admin. Confirm to elevate.",
   [TRANSLATION_KEY.CHECK_SERVER_NAME]: "Check server name",
+  [TRANSLATION_KEY.DELETE_ALL_PROXIES_TIPS]:
+    "Are you sure to delete all proxies?",
   [TRANSLATION_KEY.CHECK_SERVER_NAME_TIP]:
     "The server name is localhost or 127.0.0.1. Please set the true proxy server correctly in setting.",
   [TRANSLATION_KEY.EXIT]: "Exit",

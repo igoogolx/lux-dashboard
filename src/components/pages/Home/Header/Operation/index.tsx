@@ -11,13 +11,19 @@ import {
   Tooltip,
 } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
-import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
+import {
+  proxiesSelectors,
+  proxiesSlice,
+  RootState,
+  selectedSlice,
+} from "@/reducers";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTestDelay } from "@/hooks";
 import { BaseProxy, deleteAllProxies } from "lux-js-sdk";
 import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
+import { DeleteAllProxiesConfirmModal } from "@/components/Modal/DeleteAllProxiesConfirmModal";
 import styles from "./index.module.css";
 
 type OperationProps = {
@@ -35,6 +41,8 @@ export function Operation(props: OperationProps): JSX.Element {
   const { className } = props;
   const dispatch = useDispatch();
   const [isRuntimeDetailOpen, setIsRuntimeDetailOpen] = useState(false);
+  const [isDeleteAllProxiesModalOpen, setIsDeleteAllProxiesModalOpen] =
+    useState(false);
 
   const isStarted = useSelector<RootState, boolean>(
     (state) => state.manager.isStared
@@ -58,9 +66,19 @@ export function Operation(props: OperationProps): JSX.Element {
     setIsRuntimeDetailOpen(false);
   };
 
+  const openDeleteAllProxiesModal = () => {
+    setIsDeleteAllProxiesModalOpen(true);
+  };
+
+  const closeDeleteAllProxiesModal = () => {
+    setIsDeleteAllProxiesModalOpen(false);
+  };
+
   const onDeleteAllProxies = async () => {
     await deleteAllProxies();
     dispatch(proxiesSlice.actions.deleteAll());
+    dispatch(selectedSlice.actions.setProxy({ id: "" }));
+    closeDeleteAllProxiesModal();
   };
 
   const menuItems: MenuItemProps[] = useMemo(() => {
@@ -92,7 +110,7 @@ export function Operation(props: OperationProps): JSX.Element {
         return;
       }
       case OperationTypeEnum.DeleteAllProxies: {
-        onDeleteAllProxies();
+        openDeleteAllProxiesModal();
         return;
       }
       default: {
@@ -108,6 +126,12 @@ export function Operation(props: OperationProps): JSX.Element {
         onSelect(id as string);
       }}
     >
+      {isDeleteAllProxiesModalOpen && (
+        <DeleteAllProxiesConfirmModal
+          onClose={closeDeleteAllProxiesModal}
+          onConfirm={onDeleteAllProxies}
+        />
+      )}
       {isRuntimeDetailOpen && <RuntimeDetailModal close={closeRuntimeDetail} />}
       <Tooltip
         content={t(TRANSLATION_KEY.MORE)}
