@@ -15,6 +15,7 @@ import { decode } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { parse as parseYaml } from "yaml";
+import ClashConfigUrlModal from "@/components/Modal/ClashConfigUrlModal";
 import styles from "./index.module.css";
 
 enum OperationTypeEnum {
@@ -23,6 +24,7 @@ enum OperationTypeEnum {
   Clipboard,
   Http,
   CLASH,
+  ClashUrl,
 }
 
 type AddingOptionsProps = {
@@ -35,6 +37,8 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
   const [currentAddingType, setCurrentAddingType] =
     useState<ProxyTypeEnum | null>(null);
   const dispatch = useDispatch();
+
+  const [isOpenClashUrlModal, setIsOpenClashUrlModal] = useState(false);
 
   const closeAddingModal = () => {
     setCurrentAddingType(null);
@@ -57,6 +61,10 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
     {
       id: OperationTypeEnum.CLASH,
       content: t(TRANSLATION_KEY.CLASH_IMPORT),
+    },
+    {
+      id: OperationTypeEnum.ClashUrl,
+      content: t(TRANSLATION_KEY.CLASH_URL_IMPORT),
     },
   ];
 
@@ -100,6 +108,10 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
         );
         break;
       }
+      case OperationTypeEnum.ClashUrl: {
+        setIsOpenClashUrlModal(true);
+        break;
+      }
       default: {
         throw new Error(`invalid ${id}`);
       }
@@ -108,6 +120,13 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
 
   return (
     <div className={className}>
+      {isOpenClashUrlModal && (
+        <ClashConfigUrlModal
+          close={() => {
+            setIsOpenClashUrlModal(false);
+          }}
+        />
+      )}
       {currentAddingType && (
         <EditModal close={closeAddingModal} type={currentAddingType} />
       )}

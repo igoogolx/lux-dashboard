@@ -23,6 +23,9 @@ export const proxiesSlice = createSlice({
         changes: action.payload.proxy,
       });
     },
+    addMany(state, action: PayloadAction<{ proxies: BaseProxy[] }>) {
+      proxiesAdapter.addMany(state, action.payload.proxies);
+    },
     addOne(state, action: PayloadAction<{ proxy: BaseProxy }>) {
       proxiesAdapter.addOne(state, action.payload.proxy);
     },
