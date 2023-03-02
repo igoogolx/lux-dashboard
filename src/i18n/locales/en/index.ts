@@ -73,7 +73,7 @@ export default {
   [TRANSLATION_KEY.CLASH_URL_IMPORT]: "Import Clash Config From Url",
   [TRANSLATION_KEY.WARNING]: "Warning",
   [TRANSLATION_KEY.RELOAD]: "Reload",
-  [TRANSLATION_KEY.URL]: "Url",
+  [TRANSLATION_KEY.CLASH_URL]: "Clash YAML URL",
   [TRANSLATION_KEY.DISCONNECTED_WARN_TIP]:
     "The core is disconnected. Trying to reconnect...",
   [TRANSLATION_KEY.PROXY]: "Proxy",

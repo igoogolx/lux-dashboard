@@ -66,7 +66,7 @@ export const TRANSLATION_KEY = {
   CLASH_IMPORT: "clash_import",
   CLASH_URL_IMPORT: "clash_url_import",
   RELOAD: "reload",
-  URL: "url",
+  CLASH_URL: "clash_url",
   WARNING: "warning",
   DISCONNECTED_WARN_TIP: "disconnected_warn_tip",
   PROXY: "proxy",

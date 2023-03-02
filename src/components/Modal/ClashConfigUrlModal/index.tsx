@@ -36,7 +36,7 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
             setDestination(e.target.value);
           }}
           className={styles.input}
-          placeholder={t(TRANSLATION_KEY.URL)}
+          placeholder={t(TRANSLATION_KEY.CLASH_URL)}
         />
         <Button onClick={handleConfirm} disabled={loading}>
           {t(TRANSLATION_KEY.CONFIRM)}
