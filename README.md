@@ -11,7 +11,7 @@
 [![Build Status][build-shield]][build-url]
 
 <h3 align="center">Lux Dashboard</h3>
-The web ui for the [lux](https://github.com/igoogolx/lux)
+The web ui for the <a href="https://github.com/igoogolx/lux"><strong>lux</strong></a>.
   <p align="center">
     <br />
     <a href="https://github.com/igoogolx/itun2socks/wiki"><strong>Explore the docs »</strong></a>
