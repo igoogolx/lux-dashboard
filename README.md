@@ -25,6 +25,12 @@ The web ui for the <a href="https://github.com/igoogolx/lux"><strong>lux</strong
   </p>
 </div>
 
+### Development
+```yarn dev```
+
+### Build
+```yarn build```
+
 
 [contributors-shield]: https://img.shields.io/github/contributors/igoogolx/lux-dashboard.svg
 [contributors-url]: https://github.com/igoogolx/lux-dashboard/graphs/contributors
