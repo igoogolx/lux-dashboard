@@ -26,10 +26,14 @@ The web ui for the <a href="https://github.com/igoogolx/lux"><strong>lux</strong
 </div>
 
 ### Development
-```yarn dev```
+```sh
+yarn dev
+```
 
 ### Build
-```yarn build```
+```sh
+yarn build
+```
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/igoogolx/lux-dashboard.svg
