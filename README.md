@@ -10,7 +10,7 @@
 [![MIT License][license-shield]][license-url]
 [![Build Status][build-shield]][build-url]
 
-<h3 align="center">Itun2socks</h3>
+<h3 align="center">Lux Dashboard</h3>
 The web ui for the [lux](https://github.com/igoogolx/lux)
   <p align="center">
     <br />
