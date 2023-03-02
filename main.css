@@ -684,23 +684,26 @@ video {
 .mb-0 {
   margin-bottom: 0px;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.mr-4 {
+  margin-right: 1rem;
+}
 .mt-6 {
   margin-top: 1.5rem;
 }
 .mt-1 {
   margin-top: 0.25rem;
 }
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-.mr-4 {
-  margin-right: 1rem;
-}
 .ml-4 {
   margin-left: 1rem;
-}
-.mt-2 {
-  margin-top: 0.5rem;
 }
 .mr-8 {
   margin-right: 2rem;
