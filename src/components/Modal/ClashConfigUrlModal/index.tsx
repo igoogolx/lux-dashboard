@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Button, Input, Modal } from "@/components/Core";
+import React, { useEffect, useState } from "react";
+import { Button, Input, Modal, ModalSizeEnum } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { addProxiesFromClashUrlConfig } from "lux-js-sdk";
+import {
+  addProxiesFromClashUrlConfig,
+  getClashYamlUrl,
+  updateClashYamlUrl,
+} from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
 import styles from "./index.module.css";
@@ -20,6 +24,7 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
   const handleConfirm = async () => {
     try {
       setLoading(true);
+      await updateClashYamlUrl({ url: destination });
       const res = await addProxiesFromClashUrlConfig({ url: destination });
       dispatch(proxiesSlice.actions.addMany(res));
       close();
@@ -27,8 +32,13 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    getClashYamlUrl().then((res) => {
+      setDestination(res.url);
+    });
+  }, []);
   return (
-    <Modal close={close}>
+    <Modal close={close} size={ModalSizeEnum.Large}>
       <div className={styles.search}>
         <Input
           value={destination}
