@@ -98,6 +98,7 @@ export default {
   [TRANSLATION_KEY.CHECK_UPDATE]: "Check for updates",
   [TRANSLATION_KEY.OPEN_DEV_TOOLS]: "Open dev tools",
   [TRANSLATION_KEY.GO]: "Go",
+  [TRANSLATION_KEY.OK]: "OK",
   [TRANSLATION_KEY.NO_UPDATE_INFO]: "There is no updates",
   [TRANSLATION_KEY.BYPASS_ALL_RULE]: "Bypass All",
   [TRANSLATION_KEY.PROXY_GFW_RULE]: "Proxy GFW",

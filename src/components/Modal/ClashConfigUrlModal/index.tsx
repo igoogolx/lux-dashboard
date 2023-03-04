@@ -39,7 +39,7 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
           placeholder={t(TRANSLATION_KEY.CLASH_URL)}
         />
         <Button onClick={handleConfirm} disabled={loading}>
-          {t(TRANSLATION_KEY.CONFIRM)}
+          {t(TRANSLATION_KEY.OK)}
         </Button>
       </div>
     </Modal>

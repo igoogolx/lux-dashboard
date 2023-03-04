@@ -88,6 +88,7 @@ export const TRANSLATION_KEY = {
   OPEN_DEV_TOOLS: "open_dev_tools",
   CONFIRM: "confirm",
   GO: "go",
+  OK: "ok",
   CORE_VERSION: "core_version",
   NO_UPDATE_INFO: "no_update_info",
   PROXY_ALL_RULE: "proxy_all",
