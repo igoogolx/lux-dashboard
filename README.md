@@ -38,7 +38,7 @@ yarn build
 
 [contributors-shield]: https://img.shields.io/github/contributors/igoogolx/lux-dashboard.svg
 [contributors-url]: https://github.com/igoogolx/lux-dashboard/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/lux-dashboard/itun2socks.svg
+[forks-shield]: https://img.shields.io/github/forks/igoogolx/lux-dashboard.svg
 [forks-url]: https://github.com/igoogolx/lux-dashboard/network/members
 [stars-shield]: https://img.shields.io/github/stars/igoogolx/lux-dashboard.svg
 [stars-url]: https://github.com/igoogolx/lux-dashboard/stargazers
