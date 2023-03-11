@@ -1,7 +1,7 @@
 {
   "name": "lux-dashboard",
   "version": "0.4.8",
-  "description": "",
+  "description": "Web port of lux",
   "main": "index.js",
   "scripts": {
     "build": "webpack -c build/webpack.config.js --env NODE_ENV=production --mode production",
