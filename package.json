@@ -1,6 +1,6 @@
 {
   "name": "lux-dashboard",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Web port of lux",
   "main": "index.js",
   "scripts": {
