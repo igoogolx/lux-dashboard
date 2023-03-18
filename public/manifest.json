@@ -1,7 +1,7 @@
 {
   "name": "lux-dashboard",
   "short_name": "Lux",
-  "start_url": "/",
+  "start_url": "/lux-dashboard",
   "display": "standalone",
   "description": "The web port for lux",
   "lang": "en",
@@ -50,15 +50,8 @@
   "related_applications": [
     {
       "platform": "windows",
-      "url": "https://igoogolx.github.io/lux-dashboard/"
+      "url": "https://igoogolx.github.io"
     }
   ],
-  "prefer_related_applications": false,
-  "shortcuts": [
-    {
-      "name": "The name you would like to be displayed for your shortcut",
-      "url": "The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut",
-      "description": "A description of the functionality of this shortcut"
-    }
-  ]
+  "prefer_related_applications": false
 }
