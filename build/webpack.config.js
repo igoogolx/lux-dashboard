@@ -53,10 +53,7 @@ module.exports = (env) => {
             rules: [
                 {
                     test: /\.svg/,
-                    type: "asset/resource",
-                    generator: {
-                        filename: "static/[hash][ext][query]",
-                    },
+                    type: "asset/inline",
                 },
                 {
                     test: /\.tsx?$/,
