@@ -122,6 +122,10 @@ module.exports = (env) => {
                     {
                         from: path.resolve(__dirname, "..", "public"),
                         to: path.resolve(__dirname, "..", "dist","public")
+                    },
+                    {
+                        from: path.resolve(__dirname, "..", "pwa"),
+                        to: path.resolve(__dirname, "..", "dist")
                     }
                 ]
             }),
