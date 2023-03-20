@@ -18,7 +18,6 @@
     pr-2
     text-xs
     text-black
-    active:scale-[1.02]
     dark:border-dark-line
     dark:bg-dark
     dark:text-dark-font;
@@ -26,7 +25,8 @@
     & .info {
       @apply flex w-full flex-col items-center justify-center;
       & .name {
-        @apply mb-0.5 overflow-hidden;
+        @apply mb-0.5 overflow-hidden
+        active:scale-[1.02];
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
