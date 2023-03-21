@@ -107,4 +107,6 @@ export default {
   [TRANSLATION_KEY.SET_HUB_ADDRESS]: "Set hub address",
   [TRANSLATION_KEY.CORE_VERSION]: "Core Version",
   [TRANSLATION_KEY.HTTP]: "Http",
+  [TRANSLATION_KEY.SEARCH_CONNECTION_TIP]:
+    "Type a destination, process or domain to search",
 };

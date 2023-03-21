@@ -3,6 +3,14 @@
   & .toolbar {
     @apply mb-2 flex w-full justify-start justify-between;
 
+    & .input{
+      @apply w-96;
+    }
+
+    & .inputIcon{
+      @apply text-gray-300;
+    }
+
     & .actions {
       @apply flex items-center;
       & .closeAll {

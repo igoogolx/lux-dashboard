@@ -13,9 +13,8 @@ import {
   Icon,
   IconNameEnum,
   IconSizeEnum,
-  InputGroup,
+  Input,
   PlacementEnum,
-  SelectorProps,
   Table,
   Tag,
   TagTypeEnum,
@@ -26,12 +25,6 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { getPlatform } from "@/clientContext";
 import { CellContext, ColumnDef } from "@tanstack/react-table";
 import styles from "./index.module.css";
-
-enum SearchSelectorItemsEnum {
-  Destination,
-  Process,
-  Domain,
-}
 
 type Connection = {
   process: string;
@@ -117,9 +110,6 @@ export default function Connections(): JSX.Element {
     history: number[];
   }>({ tcp: 0, udp: 0, history: [] });
   const [searchedValue, setSearchedValue] = useState("");
-  const [searchedSelectorValue, setSearchedSelectorValue] = useState(
-    SearchSelectorItemsEnum.Process
-  );
 
   useEffect(() => {
     const subscriber = subscribeConnections({
@@ -206,56 +196,29 @@ export default function Connections(): JSX.Element {
       }))
       .filter((conn) => {
         if (searchedValue) {
-          switch (searchedSelectorValue) {
-            case SearchSelectorItemsEnum.Domain:
-              return conn.domain
-                .toLocaleLowerCase()
-                .includes(searchedValue.toLocaleLowerCase());
-            case SearchSelectorItemsEnum.Process:
-              return conn.process
-                .toLocaleLowerCase()
-                .includes(searchedValue.toLocaleLowerCase());
-            case SearchSelectorItemsEnum.Destination:
-              return conn.destination
-                .toLocaleLowerCase()
-                .includes(searchedValue.toLocaleLowerCase());
-            default: {
-              throw new Error(`invalid ${searchedValue}`);
-            }
-          }
+          return [conn.domain, conn.process, conn.destination].some((value) => {
+            return value
+              .toLocaleLowerCase()
+              .includes(searchedValue.toLocaleLowerCase());
+          });
         }
         return true;
       });
-  }, [conns, searchedSelectorValue, searchedValue]);
-
-  const searchSelectorItems: SelectorProps["items"] = [
-    {
-      id: SearchSelectorItemsEnum.Destination,
-      content: t(TRANSLATION_KEY.DESTINATION),
-    },
-    {
-      id: SearchSelectorItemsEnum.Process,
-      content: t(TRANSLATION_KEY.PROCESS),
-    },
-    {
-      id: SearchSelectorItemsEnum.Domain,
-      content: t(TRANSLATION_KEY.Domain),
-    },
-  ];
+  }, [conns, searchedValue]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
-        <InputGroup
-          selectorItems={searchSelectorItems}
-          selectorValue={searchedSelectorValue}
-          inputValue={searchedValue}
-          onSelectorChange={
-            setSearchedSelectorValue as SelectorProps["onChange"]
-          }
-          onInputChange={(e) => {
+        <Input
+          value={searchedValue}
+          onChange={(e) => {
             setSearchedValue(e.target.value);
           }}
+          adornment={
+            <Icon name={IconNameEnum.Search} className={styles.inputIcon} />
+          }
+          placeholder={t(TRANSLATION_KEY.SEARCH_CONNECTION_TIP)}
+          className={styles.input}
         />
         <div className={styles.actions}>
           <Button

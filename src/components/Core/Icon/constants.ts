@@ -32,6 +32,7 @@ import SyncIcon from "@fortawesome/fontawesome-free/svgs/solid/rotate.svg";
 import QuestionIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-question.svg";
 import SunIcon from "@fortawesome/fontawesome-free/svgs/solid/sun.svg";
 import MoonIcon from "@fortawesome/fontawesome-free/svgs/solid/moon.svg";
+import SearchIcon from "@fortawesome/fontawesome-free/svgs/solid/magnifying-glass.svg";
 import LogoIcon from "../../../../public/logo.svg";
 
 export enum IconNameEnum {
@@ -70,6 +71,7 @@ export enum IconNameEnum {
   Question,
   Sun,
   Moon,
+  Search,
 }
 
 export const IconMap = {
@@ -108,4 +110,5 @@ export const IconMap = {
   [IconNameEnum.Question]: QuestionIcon,
   [IconNameEnum.Sun]: SunIcon,
   [IconNameEnum.Moon]: MoonIcon,
+  [IconNameEnum.Search]: SearchIcon,
 };
