@@ -1,10 +1,10 @@
-import React, { useCallback, useLayoutEffect } from "react";
+import React, { useCallback } from "react";
 import { createPortal } from "react-dom";
 import classNames from "classnames";
+import { useLockBodyScroll } from "@/hooks";
 import styles from "./index.module.css";
 import { Button, ButtonTypeEnum } from "../Button";
 import { Icon, IconNameEnum } from "../Icon";
-import { useLockBodyScroll } from "@/hooks";
 
 export enum ModalSizeEnum {
   Small = "sizeS",

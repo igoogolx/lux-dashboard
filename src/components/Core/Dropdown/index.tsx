@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
+import { useLockBodyScroll } from "@/hooks";
 import { Menu, MenuItemProps, MenuProps } from "../Menu";
 import { PlacementEnum, TriggerEnum, Popover } from "../Popover";
 import styles from "./index.module.css";
-import { useLockBodyScroll } from "@/hooks";
 
 type DropdownProps = {
   children: React.ReactNode;

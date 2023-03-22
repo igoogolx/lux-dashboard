@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProxy, ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
 import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
-import { useTestDelay, useTestUdp } from "@/hooks";
+import { useTestDelay } from "@/hooks";
 import classNames from "classnames";
 import { selectedSlice } from "@/reducers/selected";
 import { EditModal } from "@/components/Modal/Proxy";
@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { QrCodeModal } from "@/components/Modal/QrCodeModal";
 import styles from "./index.module.css";
+import { useTestUdp } from "@/utils/testUdp";
 
 type OperationProps = {
   id: string;
