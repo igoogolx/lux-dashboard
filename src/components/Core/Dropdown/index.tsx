@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, MenuItemProps, MenuProps } from "../Menu";
 import { PlacementEnum, TriggerEnum, Popover } from "../Popover";
 import styles from "./index.module.css";
+import { useLockBodyScroll } from "@/hooks";
 
 type DropdownProps = {
   children: React.ReactNode;
@@ -37,6 +38,7 @@ export function Dropdown(props: DropdownProps): JSX.Element {
     }
     onItemClick(id);
   };
+  useLockBodyScroll();
   return disabled ? (
     <div className={className}>{children}</div>
   ) : (

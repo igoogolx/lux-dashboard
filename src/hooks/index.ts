@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Chart, ChartConfiguration } from "chart.js";
 import { delaysSlice } from "@/reducers/delay";
 import { useDispatch } from "react-redux";
@@ -99,3 +99,17 @@ export const useTestUdp = () => {
 export const useOnMount = (fn: () => void) => {
   useEffect(fn, []); // eslint-disable-line
 };
+
+// https://usehooks.com/useLockBodyScroll/
+export const useLockBodyScroll = () => {
+  useLayoutEffect(() => {
+    // Get original body overflow
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    // Prevent scrolling on mount
+    document.body.style.overflow = "hidden";
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
+}; // Empty array ensures effect is only run on mount and unmount

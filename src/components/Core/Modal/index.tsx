@@ -4,6 +4,7 @@ import classNames from "classnames";
 import styles from "./index.module.css";
 import { Button, ButtonTypeEnum } from "../Button";
 import { Icon, IconNameEnum } from "../Icon";
+import { useLockBodyScroll } from "@/hooks";
 
 export enum ModalSizeEnum {
   Small = "sizeS",
@@ -37,16 +38,7 @@ export const Modal = React.memo((props: ModalProps) => {
 
   const cls = classNames(styles.container);
   // https://usehooks.com/useLockBodyScroll/
-  useLayoutEffect(() => {
-    // Get original body overflow
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    // Prevent scrolling on mount
-    document.body.style.overflow = "hidden";
-    // Re-enable scrolling when component unmounts
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, []); // Empty array ensures effect is only run on mount and unmount
+  useLockBodyScroll();
   return createPortal(
     <div>
       <div className={styles.mask} />
