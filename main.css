@@ -616,18 +616,6 @@ video {
 .-bottom-1 {
   bottom: -0.25rem;
 }
-.left-2 {
-  left: 0.5rem;
-}
-.bottom-2 {
-  bottom: 0.5rem;
-}
-.right-2 {
-  right: 0.5rem;
-}
-.top-1 {
-  top: 0.25rem;
-}
 .z-30 {
   z-index: 30;
 }
@@ -645,9 +633,6 @@ video {
 }
 .m-0 {
   margin: 0px;
-}
-.m-4 {
-  margin: 1rem;
 }
 .mx-2 {
   margin-left: 0.5rem;
@@ -773,9 +758,6 @@ video {
 .h-16 {
   height: 4rem;
 }
-.h-24 {
-  height: 6rem;
-}
 .max-h-60 {
   max-height: 15rem;
 }
@@ -866,9 +848,6 @@ video {
 .flex-col {
   flex-direction: column;
 }
-.flex-wrap {
-  flex-wrap: wrap;
-}
 .content-center {
   align-content: center;
 }
@@ -931,9 +910,6 @@ video {
 }
 .rounded-lg {
   border-radius: 0.5rem;
-}
-.rounded-sm {
-  border-radius: 0.125rem;
 }
 .rounded-tr-none {
   border-top-right-radius: 0px;
@@ -1020,10 +996,6 @@ video {
 .bg-transparent {
   background-color: transparent;
 }
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
@@ -1031,6 +1003,10 @@ video {
 .bg-light-hover {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+}
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
 .bg-light-line {
   --tw-bg-opacity: 1;
@@ -1125,18 +1101,6 @@ video {
 }
 .pt-2 {
   padding-top: 0.5rem;
-}
-.pt-4 {
-  padding-top: 1rem;
-}
-.pb-4 {
-  padding-bottom: 1rem;
-}
-.pl-2 {
-  padding-left: 0.5rem;
-}
-.pr-2 {
-  padding-right: 0.5rem;
 }
 .align-baseline {
   vertical-align: baseline;
@@ -1255,12 +1219,6 @@ input {
 .hover\:text-blue-500:hover {
   --tw-text-opacity: 1;
   color: rgba(59, 130, 246, var(--tw-text-opacity));
-}
-
-.active\:scale-\[1\.02\]:active {
-  --tw-scale-x: 1.02;
-  --tw-scale-y: 1.02;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .dark .dark\:border-dark-line {
@@ -1621,13 +1579,7 @@ input {
 }
 
 .Pf1YmwcWT0A_RUfncO26 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
-
-.dark .Pf1YmwcWT0A_RUfncO26 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(252, 252, 252, var(--tw-bg-opacity));
+  opacity: 0;
 }
 
 ._SeJtx_7AKmC5pPzC4kW {
