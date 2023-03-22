@@ -1,7 +1,7 @@
 {
   "name": "lux-dashboard",
   "short_name": "Lux",
-  "start_url": "/lux-dashboard",
+  "start_url": "/",
   "display": "standalone",
   "description": "The web port for lux",
   "lang": "en",
@@ -32,7 +32,7 @@
   "related_applications": [
     {
       "platform": "windows",
-      "url": "https://igoogolx.github.io"
+      "url": "/lux-dashboard"
     }
   ],
   "prefer_related_applications": false
