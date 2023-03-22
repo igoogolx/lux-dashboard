@@ -1,7 +1,7 @@
 .wrapper {
   @apply flex
   h-full
-  flex-wrap
+  flex-col
   content-start
   overflow-auto
   align-baseline

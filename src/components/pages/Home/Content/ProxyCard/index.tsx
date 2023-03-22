@@ -27,14 +27,19 @@ export function ProxyCard(props: ProxyCardProps): JSX.Element {
   };
   return (
     <div className={styles.wrapper}>
-      <div className={styles.actionButton}>
-        <Operation id={proxy.id} />
-      </div>
-      <div className={styles.content} >
+      <div className={styles.left}>
         <Dot
           type={isSelected ? DotTypeEnum.Enabled : DotTypeEnum.Disabled}
           className={styles.dot}
         />
+        <div className={styles.info} onClick={handleClick}>
+          <div className={styles.name}>
+            {proxy.name || `${proxy.server}:${proxy.port}`}
+          </div>
+          <div className={styles.typeTag}>{proxy.type}</div>
+        </div>
+      </div>
+      <div className={styles.right}>
         {delay && (
           <DelayTag
             id={proxy.id}
@@ -43,11 +48,8 @@ export function ProxyCard(props: ProxyCardProps): JSX.Element {
             loading={delay.loading}
           />
         )}
-        <div className={styles.typeTag}>{proxy.type}</div>
-        <div className={styles.info} onClick={handleClick}>
-          <div className={styles.name}>
-            {proxy.name || `${proxy.server}:${proxy.port}`}
-          </div>
+        <div className={styles.actionButton}>
+          <Operation id={proxy.id} />
         </div>
       </div>
     </div>

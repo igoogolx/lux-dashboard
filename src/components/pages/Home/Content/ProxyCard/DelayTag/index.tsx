@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useMemo } from "react";
 import classNames from "classnames";
-import { Icon, IconNameEnum } from "@/components/Core";
+import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core";
 import { useTestDelay } from "@/hooks";
 import styles from "./index.module.css";
 
@@ -29,6 +29,7 @@ export function DelayTag(props: DelayTagProps): JSX.Element {
 
   return loading ? (
     <Icon
+      size={IconSizeEnum.Small}
       name={IconNameEnum.Loading}
       className={classNames(className, styles.loading)}
     />

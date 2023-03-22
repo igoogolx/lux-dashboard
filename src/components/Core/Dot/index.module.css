@@ -6,7 +6,7 @@
 
 .disabled {
   composes: base;
-  @apply bg-black dark:bg-dark-font;
+  @apply opacity-0;
 }
 
 .enabled {

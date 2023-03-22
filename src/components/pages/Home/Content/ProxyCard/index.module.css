@@ -1,59 +1,60 @@
 .wrapper {
-  @apply relative m-4 mb-0 h-fit text-sm;
-  & .content {
-    @apply relative
-    flex
-    h-24
-    w-40
-    cursor-pointer
-    content-center
-    justify-between
-    rounded
-    border
+    @apply relative mb-0 h-fit flex text-xs
+    border-b
     border-light-line
     bg-white
-    pt-4
-    pb-4
-    pl-2
-    pr-2
-    text-xs
-    text-black
-    dark:border-dark-line
-    dark:bg-dark
-    dark:text-dark-font;
+    py-2
+    px-4;
 
-    & .info {
-      @apply flex w-full flex-col items-center justify-center;
-      & .name {
-        @apply mb-0.5 overflow-hidden
-        active:scale-[1.02];
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow-wrap: break-word;
-      }
+    & .left {
+        @apply relative
+        flex
+        w-full
+        cursor-pointer
+        content-center
+        justify-between
+        text-black
+        dark:border-dark-line
+        dark:bg-dark
+        dark:text-dark-font;
+
+        & .info {
+            @apply flex w-full flex-col;
+
+            & .name {
+                @apply mb-0.5 overflow-hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow-wrap: break-word;
+            }
+
+            & .typeTag {
+                @apply text-xs text-gray-600 opacity-80 dark:text-dark-font mr-2;
+            }
+        }
+
+        & .dot {
+            @apply
+            my-auto
+            mr-4;
+        }
+
+
     }
 
-    & .dot {
-      @apply absolute
-      top-2
-      left-2;
+    & .right {
+        @apply flex;
+
+        & .delayTag {
+            @apply mr-4 my-auto;
+        }
+
+        & .actionButton {
+            @apply
+            my-auto
+            inline-block
+            hover:opacity-80;
+        }
     }
-    & .delayTag {
-      @apply absolute left-2 bottom-2;
-    }
-    & .typeTag {
-      @apply absolute bottom-2 right-2 text-xs text-gray-600 opacity-80 dark:text-dark-font;
-    }
-  }
-  & .actionButton {
-    @apply absolute
-    top-1
-    right-2
-    z-10
-    h-4
-    inline-block
-    rounded-sm
-    hover:bg-gray-200;
-  }
 }
