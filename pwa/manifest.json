@@ -1,7 +1,8 @@
 {
   "name": "lux-dashboard",
   "short_name": "Lux",
-  "start_url": "/",
+  "start_url": "/lux-dashboard/",
+  "scope": "/lux-dashboard",
   "display": "standalone",
   "description": "The web port for lux",
   "lang": "en",
@@ -27,12 +28,6 @@
       "src": "screenshots/750x1334-screenshot.png",
       "sizes": "750x1334",
       "type": "image/png"
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "windows",
-      "url": "/lux-dashboard"
     }
   ],
   "prefer_related_applications": false
