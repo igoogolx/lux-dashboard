@@ -4,23 +4,38 @@ import classNames from "classnames";
 import { Switch, SwitchProps } from "../../Switch";
 import styles from "./index.module.css";
 
-type FieldSwitchProps<T extends string> = {
-  name: T;
+type FieldSwitchProps<K> = {
+  name: string;
   label?: React.ReactNode;
   className?: string;
+  customizedValue?: (value: K) => boolean;
+  customizedResult?: (value: boolean) => K;
 } & Omit<SwitchProps, "checked" | "onClick">;
 
-export function FieldSwitch<T extends string>(props: FieldSwitchProps<T>) {
-  const { name, label, disabled, className } = props;
+export function FieldSwitch<K>(props: FieldSwitchProps<K>) {
+  const {
+    name,
+    label,
+    disabled,
+    className,
+    customizedValue,
+    customizedResult,
+  } = props;
+
   const [field, , helpers] = useField({ name });
   const { setValue } = helpers;
+  const checked = customizedValue ? customizedValue(field.value) : field.value;
   return (
     <div className={classNames(className, styles.container)}>
       {label && <div className={styles.label}>{label}</div>}
       <Switch
-        checked={field.value}
+        checked={checked}
         onClick={() => {
-          setValue(!field.value);
+          console.log(field.value);
+          if (customizedValue) {
+            console.log(customizedValue(field.value));
+          }
+          setValue(customizedResult ? customizedResult(!checked) : !checked);
         }}
         disabled={disabled}
       />

@@ -3,10 +3,11 @@ import {
   Button,
   ButtonTypeEnum,
   Field,
+  FieldSelector,
   FieldSwitch,
+  Form,
   Icon,
   IconNameEnum,
-  Form,
   notifier,
   PlacementEnum,
   Tooltip,
@@ -52,6 +53,7 @@ const parseData = (data: FormData) => {
 type SettingFormProps = {
   initValue: SettingRes;
 };
+
 export function SettingForm(props: SettingFormProps) {
   const { initValue } = props;
   const { t } = useTranslation();
@@ -60,6 +62,10 @@ export function SettingForm(props: SettingFormProps) {
   const isStarted = useSelector<RootState, boolean>(
     (state) => state.manager.isStared || state.manager.isLoading
   );
+  const modeTypeOptions = useRef([
+    { content: "url-test", id: "url-test" },
+    { content: "fallback", id: "fallback" },
+  ]);
 
   const formInstance = useRef<FormikProps<FormData>>(null);
 
@@ -117,7 +123,7 @@ export function SettingForm(props: SettingFormProps) {
                   className={styles.field}
                   disabled={isStarted}
                 />
-                <FieldSwitch<keyof FormData>
+                <FieldSwitch<boolean>
                   name="localServerHttpEnabled"
                   label={
                     <div className={styles.label}>
@@ -141,6 +147,40 @@ export function SettingForm(props: SettingFormProps) {
                     className={styles.field}
                     disabled={isStarted}
                   />
+                )}
+                <FieldSwitch<string>
+                  name="outbound.mode"
+                  customizedValue={(value) => value === "auto"}
+                  customizedResult={(checked) => (checked ? "auto" : "select")}
+                  label={
+                    <div className={styles.label}>
+                      <span className={styles.desc}>
+                        {t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}
+                      </span>
+                      <Tooltip content={t(TRANSLATION_KEY.MODE_SWITCH_TOOLTIP)}>
+                        <Icon name={IconNameEnum.Question} />
+                      </Tooltip>
+                    </div>
+                  }
+                  className={styles.field}
+                  disabled={isStarted}
+                />
+                {values.outbound.mode === "auto" && (
+                  <>
+                    <FieldSelector
+                      items={modeTypeOptions.current}
+                      name="outbound.config.type"
+                      label={`${t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}`}
+                      className={styles.field}
+                      disabled={isStarted}
+                    />
+                    <Field
+                      name="outbound.config.url"
+                      label={`${t(TRANSLATION_KEY.TESTING_URL_LABEL)}`}
+                      className={styles.field}
+                      disabled={isStarted}
+                    />
+                  </>
                 )}
               </div>
               <div className={styles.bar}>

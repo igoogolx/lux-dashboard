@@ -84,7 +84,12 @@ export default {
   [TRANSLATION_KEY.HTTP_SERVER_SWITCH_LABEL]: "Enable Local Http Server",
   [TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP]:
     "Allow other devices to connect",
+  [TRANSLATION_KEY.MODE_SWITCH_LABEL]: "Proxy Mode",
+  [TRANSLATION_KEY.MODE_SWITCH_TOOLTIP]:
+    "Mode that makes lux decide how to select proxy",
   [TRANSLATION_KEY.SEARCH]: "Search",
+  [TRANSLATION_KEY.TESTING_URL_LABEL]: "Testing Url",
+  [TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL]: "Mode Type",
   [TRANSLATION_KEY.COMMON_TEST_UDP]: "Test Udp",
   [TRANSLATION_KEY.UDP_FAILED_NOTIFICATION]: "Udp is not supported",
   [TRANSLATION_KEY.UDP_OK_NOTIFICATION]: "Udp is ok",

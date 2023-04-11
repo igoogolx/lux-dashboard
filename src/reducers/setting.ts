@@ -7,6 +7,13 @@ const initialState: SettingRes = {
   localServer: {
     http: { enabled: false, port: 0 },
   },
+  outbound: {
+    mode: "auto",
+    config: {
+      url: "https://google.com",
+      type: "url-test",
+    },
+  },
 };
 
 export const settingSlice = createSlice({
