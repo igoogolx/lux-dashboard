@@ -1,13 +1,6 @@
 import * as React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  MenuItemProps,
-  notifier,
-  PlacementEnum,
-  Selector,
-  Switch,
-  Tooltip,
-} from "@/components/Core";
+import { MenuItemProps, notifier } from "@/components/Core";
 import {
   getRules,
   getStatus,
@@ -22,10 +15,16 @@ import { managerSlice } from "@/reducers/manager";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { Operation } from "@/components/pages/Home/Header/Operation";
+import {
+  Dropdown,
+  DropdownProps,
+  Option,
+  Switch,
+  Tooltip,
+  useId,
+} from "@fluentui/react-components";
 import { AddingOptions } from "./AddingOptions";
 import styles from "./index.module.css";
-
-const DEFAULT_TOOLTIP_TIMEOUT = 1000;
 
 export function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -62,12 +61,14 @@ export function Header(): JSX.Element {
     });
   }, [dispatch]);
 
-  const selectRule = useCallback(
-    async (id: string) => {
+  const selectRule = useCallback<NonNullable<DropdownProps["onOptionSelect"]>>(
+    async (e, data) => {
       try {
         setIsSettingRule(true);
-        await updateSelectedRuleId({ id });
-        dispatch(selectedSlice.actions.setRule({ id }));
+        await updateSelectedRuleId({ id: data.optionValue as string });
+        dispatch(
+          selectedSlice.actions.setRule({ id: data.optionValue as string })
+        );
       } finally {
         setIsSettingRule(false);
       }
@@ -100,28 +101,36 @@ export function Header(): JSX.Element {
 
   const isSwitchDisabled = isSwitchLoading || !isProxyValid || isSettingRule;
 
+  const dropdownId = useId("dropdown-default");
+
   return (
     <div className={styles.wrapper}>
       <Operation />
       <AddingOptions className={styles.addButton} />
-      <Selector
-        items={ruleItems}
-        onChange={(id) => {
-          selectRule(id as string);
-        }}
-        value={selectedRuleId}
-        className={styles.rulesDropdown}
+      <Dropdown
+        aria-labelledby={dropdownId}
+        placeholder="Select an animal"
+        value={t(selectedRuleId)}
         disabled={isStarted || isSettingRule}
-      />
+        onOptionSelect={selectRule}
+      >
+        {ruleItems.map((option) => (
+          <Option
+            key={option.id}
+            text={option.content as string}
+            value={option.id as string}
+          >
+            {option.content}
+          </Option>
+        ))}
+      </Dropdown>
       <Tooltip
         content={t(TRANSLATION_KEY.SWITCH_DISABLE_TIP)}
-        disabled={!isSwitchDisabled}
-        timeout={DEFAULT_TOOLTIP_TIMEOUT}
-        placement={PlacementEnum.Bottom}
+        relationship="description"
       >
         <Switch
           checked={isStarted}
-          onClick={onSwitch}
+          onChange={onSwitch}
           disabled={isSwitchDisabled}
         />
       </Tooltip>

@@ -1,12 +1,4 @@
 import React, { useState } from "react";
-import {
-  Dropdown,
-  Icon,
-  IconNameEnum,
-  IconSizeEnum,
-  PlacementEnum,
-  Tooltip,
-} from "@/components/Core";
 import { addProxy, BaseProxy, ProxyTypeEnum } from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
@@ -16,7 +8,16 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { parse as parseYaml } from "yaml";
 import ClashConfigUrlModal from "@/components/Modal/ClashConfigUrlModal";
-import styles from "./index.module.css";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Tooltip,
+} from "@fluentui/react-components";
+import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core";
 
 enum OperationTypeEnum {
   Shadowsocks,
@@ -130,20 +131,35 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
       {currentAddingType && (
         <EditModal close={closeAddingModal} type={currentAddingType} />
       )}
-      <Dropdown
-        items={items}
-        onItemClick={(id) => {
-          onSelect(id as OperationTypeEnum);
-        }}
-      >
-        <Tooltip content="New Proxy" placement={PlacementEnum.Bottom}>
-          <Icon
-            name={IconNameEnum.Plus}
-            size={IconSizeEnum.Medium}
-            className={styles.addButton}
-          />
+      <Menu>
+        <Tooltip
+          content={t(TRANSLATION_KEY.NEW_PROXY)}
+          relationship="description"
+        >
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              icon={
+                <Icon name={IconNameEnum.Plus} size={IconSizeEnum.Normal} />
+              }
+            />
+          </MenuTrigger>
         </Tooltip>
-      </Dropdown>
+
+        <MenuPopover>
+          <MenuList>
+            {items.map((item) => (
+              <MenuItem
+                key={item.id}
+                onClick={() => {
+                  onSelect(item.id as OperationTypeEnum);
+                }}
+              >
+                {item.content}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
     </div>
   );
 }

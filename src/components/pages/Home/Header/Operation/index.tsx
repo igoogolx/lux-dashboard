@@ -1,14 +1,9 @@
 import React, { useMemo, useState } from "react";
 import {
-  Button,
-  ButtonTypeEnum,
-  Dropdown,
   Icon,
   IconNameEnum,
   IconSizeEnum,
   MenuItemProps,
-  PlacementEnum,
-  Tooltip,
 } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -17,18 +12,21 @@ import {
   RootState,
   selectedSlice,
 } from "@/reducers";
-import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTestDelay } from "@/hooks";
 import { BaseProxy, deleteAllProxies } from "lux-js-sdk";
-import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Tooltip,
+} from "@fluentui/react-components";
 import { DeleteAllProxiesConfirmModal } from "@/components/Modal/DeleteAllProxiesConfirmModal";
-import styles from "./index.module.css";
-
-type OperationProps = {
-  className?: string;
-};
+import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
 
 enum OperationTypeEnum {
   RuntimeDetail = "0",
@@ -36,9 +34,8 @@ enum OperationTypeEnum {
   DeleteAllProxies = "2",
 }
 
-export function Operation(props: OperationProps): JSX.Element {
+export function Operation(): JSX.Element {
   const { t } = useTranslation();
-  const { className } = props;
   const dispatch = useDispatch();
   const [isRuntimeDetailOpen, setIsRuntimeDetailOpen] = useState(false);
   const [isDeleteAllProxiesModalOpen, setIsDeleteAllProxiesModalOpen] =
@@ -120,12 +117,7 @@ export function Operation(props: OperationProps): JSX.Element {
   };
 
   return (
-    <Dropdown
-      items={menuItems}
-      onItemClick={(id) => {
-        onSelect(id as string);
-      }}
-    >
+    <>
       {isDeleteAllProxiesModalOpen && (
         <DeleteAllProxiesConfirmModal
           onClose={closeDeleteAllProxiesModal}
@@ -133,17 +125,31 @@ export function Operation(props: OperationProps): JSX.Element {
         />
       )}
       {isRuntimeDetailOpen && <RuntimeDetailModal close={closeRuntimeDetail} />}
-      <Tooltip
-        content={t(TRANSLATION_KEY.MORE)}
-        placement={PlacementEnum.Bottom}
-      >
-        <Button
-          className={classNames(className, styles.button)}
-          buttonType={ButtonTypeEnum.Secondary}
-        >
-          <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Normal} />
-        </Button>
-      </Tooltip>
-    </Dropdown>
+      <Menu>
+        <Tooltip content={t(TRANSLATION_KEY.MORE)} relationship="description">
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              icon={
+                <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Normal} />
+              }
+            />
+          </MenuTrigger>
+        </Tooltip>
+        <MenuPopover>
+          <MenuList>
+            {menuItems.map((item) => (
+              <MenuItem
+                key={item.id}
+                onClick={() => {
+                  onSelect(item.id as string);
+                }}
+              >
+                {item.content}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
   );
 }

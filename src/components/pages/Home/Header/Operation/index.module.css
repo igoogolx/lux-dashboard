@@ -1,8 +1,0 @@
-.button {
-  @apply w-8 p-0;
-  &:hover {
-    & svg {
-      @apply fill-current text-gray-500;
-    }
-  }
-}

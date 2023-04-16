@@ -6,6 +6,7 @@ import { init } from "lux-js-sdk";
 import { Provider } from "react-redux";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { createRoot } from "react-dom/client";
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import { App } from "./App";
 import { store } from "./reducers";
 
@@ -16,7 +17,9 @@ function Root() {
   return (
     <Provider store={store}>
       <Router>
-        <App />
+        <FluentProvider theme={webLightTheme} style={{ width: "100%" }}>
+          <App />
+        </FluentProvider>
       </Router>
     </Provider>
   );
