@@ -17,7 +17,7 @@ import {
   MenuTrigger,
   Tooltip,
 } from "@fluentui/react-components";
-import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core";
+import { AddFilled } from "@fluentui/react-icons";
 
 enum OperationTypeEnum {
   Shadowsocks,
@@ -137,11 +137,7 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
           relationship="description"
         >
           <MenuTrigger disableButtonEnhancement>
-            <Button
-              icon={
-                <Icon name={IconNameEnum.Plus} size={IconSizeEnum.Normal} />
-              }
-            />
+            <Button icon={<AddFilled />} />
           </MenuTrigger>
         </Tooltip>
 

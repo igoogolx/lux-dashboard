@@ -1,10 +1,5 @@
 import React, { useMemo, useState } from "react";
-import {
-  Icon,
-  IconNameEnum,
-  IconSizeEnum,
-  MenuItemProps,
-} from "@/components/Core";
+import { MenuItemProps } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import {
   proxiesSelectors,
@@ -27,6 +22,7 @@ import {
 } from "@fluentui/react-components";
 import { DeleteAllProxiesConfirmModal } from "@/components/Modal/DeleteAllProxiesConfirmModal";
 import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
+import { MoreHorizontalFilled } from "@fluentui/react-icons";
 
 enum OperationTypeEnum {
   RuntimeDetail = "0",
@@ -128,11 +124,7 @@ export function Operation(): JSX.Element {
       <Menu>
         <Tooltip content={t(TRANSLATION_KEY.MORE)} relationship="description">
           <MenuTrigger disableButtonEnhancement>
-            <Button
-              icon={
-                <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Normal} />
-              }
-            />
+            <Button icon={<MoreHorizontalFilled />} />
           </MenuTrigger>
         </Tooltip>
         <MenuPopover>
