@@ -1,27 +1,60 @@
 .wrapper {
-  @apply w-full;
-  & .form {
-    @apply relative h-full py-4 px-8;
-    & .fields {
-      @apply w-full;
-      & .field {
-        &:not(:last-child) {
-          @apply mb-4;
-        }
-        & .label {
-          @apply flex items-center align-middle;
+    @apply w-full;
 
-          & .desc {
-            @apply mr-1;
-          }
+    & .card {
+        @apply mb-6;
+
+        & .cardItem {
+            @apply flex items-center justify-between w-full mb-4;
+
+            & .title {
+                @apply text-lg;
+            }
+
+            & .desc {
+                @apply text-sm text-neutral-500;
+            }
+
+            & .input {
+                width: 40%;
+            }
+
+
         }
-      }
     }
-    & .bar {
-      @apply absolute bottom-0 left-0 flex w-full bg-white px-8 py-2  shadow dark:bg-neutral-900;
-      & .resetBtn {
-        @apply mr-4;
-      }
+
+    & .form {
+        @apply relative h-full py-4 px-8;
+
+        & .fields {
+            @apply w-full;
+
+            & .field {
+                &:not(:last-child) {
+                    @apply mb-4;
+                }
+
+                & .label {
+                    @apply flex items-center align-middle;
+
+                    & .desc {
+                        @apply mr-1;
+                    }
+                }
+            }
+        }
+
+        & .bar {
+            @apply absolute bottom-0 left-0 flex w-full bg-white px-8 py-2  shadow dark:bg-neutral-900;
+
+            & .resetBtn {
+                @apply mr-4;
+            }
+        }
     }
-  }
+}
+
+
+.dialogBody {
+    @apply flex flex-col;
 }

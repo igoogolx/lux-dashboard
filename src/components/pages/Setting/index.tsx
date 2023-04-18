@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getSetting, SettingRes } from "lux-js-sdk";
-import { useDispatch, useSelector } from "react-redux";
+import { getSetting } from "lux-js-sdk";
+import { useDispatch } from "react-redux";
 import { settingSlice } from "@/reducers/setting";
-import { RootState } from "@/reducers";
 import { SettingForm } from "@/components/pages/Setting/Form";
 import styles from "./index.module.css";
 
@@ -19,11 +18,6 @@ export default function Setting() {
         setIsLoading(false);
       });
   }, [dispatch]);
-  const setting = useSelector<RootState, SettingRes>((state) => state.setting);
 
-  return (
-    <div className={styles.wrapper}>
-      {!isLoading && <SettingForm initValue={setting} />}
-    </div>
-  );
+  return <div className={styles.wrapper}>{!isLoading && <SettingForm />}</div>;
 }
