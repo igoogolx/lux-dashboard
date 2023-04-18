@@ -109,7 +109,6 @@ export function Header(): JSX.Element {
       <AddingOptions className={styles.addButton} />
       <Dropdown
         aria-labelledby={dropdownId}
-        placeholder="Select an animal"
         value={t(selectedRuleId)}
         disabled={isStarted || isSettingRule}
         onOptionSelect={selectRule}
