@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useMemo } from "react";
 import classNames from "classnames";
-import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core";
 import { useTestDelay } from "@/hooks";
+import { Spinner } from "@fluentui/react-components";
+import { useSelector } from "react-redux";
+import { DelayInfo, delaysSelectors, RootState } from "@/reducers";
 import styles from "./index.module.css";
 
 type DelayTagProps = {
   id: string;
-  value: number;
+  value?: number;
   className?: string;
-  loading?: boolean;
 };
 
 enum TypeEnum {
@@ -19,20 +20,25 @@ enum TypeEnum {
 }
 
 export function DelayTag(props: DelayTagProps): JSX.Element {
-  const { value, className, loading = false, id } = props;
+  const { value, className, id } = props;
   const type = useMemo(() => {
+    if (value === undefined) return TypeEnum.Error;
     if (value > 0 && value <= 1000) return TypeEnum.Success;
     if (value > 1000) return TypeEnum.Warn;
     return TypeEnum.Error;
   }, [value]);
   const testDelay = useTestDelay();
 
+  const { loading } = useSelector<RootState, DelayInfo>(
+    (state) => delaysSelectors.selectById(state, id) || { id, loading: false }
+  );
+
+  if (value === undefined && !loading) {
+    return <></>;
+  }
+
   return loading ? (
-    <Icon
-      size={IconSizeEnum.Small}
-      name={IconNameEnum.Loading}
-      className={classNames(className, styles.loading)}
-    />
+    <Spinner size="tiny" />
   ) : (
     <span
       className={classNames(className, styles[type])}

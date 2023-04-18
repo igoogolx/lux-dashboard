@@ -7,7 +7,6 @@ import { Delay } from "lux-js-sdk";
 
 export type DelayInfo = Pick<Delay, "id"> & {
   loading?: boolean;
-  value?: number;
 };
 
 export const delaysAdapter = createEntityAdapter<DelayInfo>();

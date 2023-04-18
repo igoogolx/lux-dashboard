@@ -1,31 +1,35 @@
 import React, { useMemo, useState } from "react";
-import {
-  Button,
-  ButtonTypeEnum,
-  Dropdown,
-  Icon,
-  IconNameEnum,
-  IconSizeEnum,
-  MenuItemProps,
-  notifier,
-} from "@/components/Core";
+import { MenuItemProps, notifier } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProxy, ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
 import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
 import { useTestDelay } from "@/hooks";
-import classNames from "classnames";
 import { selectedSlice } from "@/reducers/selected";
 import { EditModal } from "@/components/Modal/Proxy";
 import { encode } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { QrCodeModal } from "@/components/Modal/QrCodeModal";
-import styles from "./index.module.css";
 import { useTestUdp } from "@/utils/testUdp";
+import {
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from "@fluentui/react-components";
+import {
+  ClipboardRegular,
+  DeleteRegular,
+  DeviceEqRegular,
+  EditRegular,
+  QrCodeFilled,
+  SendRegular,
+} from "@fluentui/react-icons";
 
 type OperationProps = {
   id: string;
-  className?: string;
 };
 
 enum OperationTypeEnum {
@@ -39,7 +43,7 @@ enum OperationTypeEnum {
 
 export function Operation(props: OperationProps): JSX.Element {
   const { t } = useTranslation();
-  const { id: proxyId, className } = props;
+  const { id: proxyId } = props;
   const [isEditingDialogOpen, setIsEditingDialogOpen] = useState(false);
   const [isQrcodeModalOpen, setIsQrcodeModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -62,17 +66,17 @@ export function Operation(props: OperationProps): JSX.Element {
       {
         id: OperationTypeEnum.Test,
         content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
-        iconName: IconNameEnum.Swap,
+        icon: <DeviceEqRegular />,
       },
       {
         id: OperationTypeEnum.TestUdp,
         content: t(TRANSLATION_KEY.COMMON_TEST_UDP),
-        iconName: IconNameEnum.Sync,
+        icon: <SendRegular />,
       },
       {
         id: OperationTypeEnum.Delete,
         content: t(TRANSLATION_KEY.COMMON_DELETE),
-        iconName: IconNameEnum.Trash,
+        icon: <DeleteRegular />,
         disabled: (isStarted || isSwitchLoading) && isSelected,
         isDanger: true,
         isDivider: true,
@@ -91,9 +95,8 @@ export function Operation(props: OperationProps): JSX.Element {
       {
         id: OperationTypeEnum.Edit,
         content: t(TRANSLATION_KEY.COMMON_EDIT),
-        iconName: IconNameEnum.Edit,
+        icon: <EditRegular />,
       },
-
       ...items,
     ];
     if (proxy.type === ProxyTypeEnum.Shadowsocks) {
@@ -101,12 +104,12 @@ export function Operation(props: OperationProps): JSX.Element {
         {
           id: OperationTypeEnum.CopyUrl,
           content: t(TRANSLATION_KEY.COMMON_COPY_URL),
-          iconName: IconNameEnum.Copy,
+          icon: <ClipboardRegular />,
         },
         {
           id: OperationTypeEnum.QrCode,
           content: t(TRANSLATION_KEY.COMMON_QR_CODE),
-          iconName: IconNameEnum.QrCode,
+          icon: <QrCodeFilled />,
         },
         ...items,
       ];
@@ -152,12 +155,7 @@ export function Operation(props: OperationProps): JSX.Element {
   };
 
   return (
-    <Dropdown
-      items={menuItems}
-      onItemClick={(id) => {
-        onSelect(id as string);
-      }}
-    >
+    <>
       {isQrcodeModalOpen && (
         <QrCodeModal
           url={encode(proxy)}
@@ -174,12 +172,32 @@ export function Operation(props: OperationProps): JSX.Element {
           isSelected={isSelected}
         />
       )}
-      <Button
-        className={classNames(className, styles.button)}
-        buttonType={ButtonTypeEnum.Blank}
-      >
-        <Icon name={IconNameEnum.Ellipsis} size={IconSizeEnum.Normal} />
-      </Button>
-    </Dropdown>
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <Button
+            icon={<EditRegular />}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          />
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            {menuItems.map((item) => (
+              <MenuItem
+                disabled={item.disabled}
+                key={item.id}
+                icon={item.icon}
+                onClick={() => {
+                  onSelect(item.id as string);
+                }}
+              >
+                {item.content}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
   );
 }

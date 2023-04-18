@@ -17,7 +17,10 @@ export const proxiesSlice = createSlice({
     deleteOne(state, action: PayloadAction<{ id: string }>) {
       proxiesAdapter.removeOne(state, action.payload.id);
     },
-    updateOne(state, action: PayloadAction<{ proxy: BaseProxy }>) {
+    updateOne(
+      state,
+      action: PayloadAction<{ proxy: Partial<BaseProxy> & { id: string } }>
+    ) {
       proxiesAdapter.updateOne(state, {
         id: action.payload.proxy.id,
         changes: action.payload.proxy,

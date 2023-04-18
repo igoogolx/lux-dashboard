@@ -16,12 +16,14 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { Operation } from "@/components/pages/Home/Header/Operation";
 import {
-  Dropdown,
-  DropdownProps,
-  Option,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
   Switch,
   Tooltip,
-  useId,
 } from "@fluentui/react-components";
 import { AddingOptions } from "./AddingOptions";
 import styles from "./index.module.css";
@@ -61,14 +63,12 @@ export function Header(): JSX.Element {
     });
   }, [dispatch]);
 
-  const selectRule = useCallback<NonNullable<DropdownProps["onOptionSelect"]>>(
-    async (e, data) => {
+  const selectRule = useCallback(
+    async (id: string) => {
       try {
         setIsSettingRule(true);
-        await updateSelectedRuleId({ id: data.optionValue as string });
-        dispatch(
-          selectedSlice.actions.setRule({ id: data.optionValue as string })
-        );
+        await updateSelectedRuleId({ id });
+        dispatch(selectedSlice.actions.setRule({ id }));
       } finally {
         setIsSettingRule(false);
       }
@@ -101,28 +101,33 @@ export function Header(): JSX.Element {
 
   const isSwitchDisabled = isSwitchLoading || !isProxyValid || isSettingRule;
 
-  const dropdownId = useId("dropdown-default");
-
   return (
     <div className={styles.wrapper}>
       <Operation />
       <AddingOptions className={styles.addButton} />
-      <Dropdown
-        aria-labelledby={dropdownId}
-        value={t(selectedRuleId)}
-        disabled={isStarted || isSettingRule}
-        onOptionSelect={selectRule}
-      >
-        {ruleItems.map((option) => (
-          <Option
-            key={option.id}
-            text={option.content as string}
-            value={option.id as string}
-          >
-            {option.content}
-          </Option>
-        ))}
-      </Dropdown>
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton disabled={isStarted || isSettingRule}>
+            {t(selectedRuleId)}
+          </MenuButton>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            {ruleItems.map((item) => (
+              <MenuItem
+                disabled={item.disabled}
+                key={item.id}
+                icon={item.icon}
+                onClick={() => {
+                  selectRule(item.id as string);
+                }}
+              >
+                {item.content}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
       <Tooltip
         content={t(TRANSLATION_KEY.SWITCH_DISABLE_TIP)}
         relationship="description"

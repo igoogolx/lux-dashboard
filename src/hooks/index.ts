@@ -4,6 +4,7 @@ import { Chart, ChartConfiguration } from "chart.js";
 import { delaysSlice } from "@/reducers/delay";
 import { useDispatch } from "react-redux";
 import { getProxyDelay } from "lux-js-sdk";
+import { proxiesSlice } from "@/reducers";
 
 export const useChartJs = (
   initialConfiguration: ChartConfiguration
@@ -36,8 +37,8 @@ export const useTestDelay = () => {
       try {
         const res = await getProxyDelay({ id });
         dispatch(
-          delaysSlice.actions.updateOne({
-            delay: { id, value: res.delay },
+          proxiesSlice.actions.updateOne({
+            proxy: { id, delay: res.delay },
           })
         );
       } finally {

@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { RefObject, useCallback, useMemo } from "react";
 import { FixedSizeList as List } from "react-window";
 import * as React from "react";
+import { MenuItemSlots } from "@fluentui/react-components";
 import styles from "./index.module.css";
 import { Icon, IconProps } from "../Icon";
 
@@ -11,6 +12,9 @@ const VIRTUALIZED_ITEM_HEIGHT = 170;
 
 export type MenuItemProps = {
   id: string | number;
+  // TODO: remove
+  // eslint-disable-next-line react/no-unused-prop-types
+  icon?: MenuItemSlots["icon"];
   content?: React.ReactNode;
   iconName?: IconProps["name"];
   isDivider?: boolean;
