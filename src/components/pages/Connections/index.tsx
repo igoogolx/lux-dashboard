@@ -4,6 +4,7 @@ import {
   Conn,
   ConnNetworkMetaEnum,
   ConnRuleEnum,
+  getRuntimeOS,
   subscribeConnections,
 } from "lux-js-sdk";
 import { convertByte } from "@/utils/traffic";
@@ -19,7 +20,6 @@ import {
 } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { getPlatform } from "@/clientContext";
 import { TableColumnDefinition } from "@fluentui/react-table";
 import {
   createTableColumn,
@@ -62,12 +62,11 @@ function convertDuration(duration: number) {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-const getProcess = (name: string) => {
-  const platform = getPlatform();
+const getProcess = (name: string, os: string) => {
   let separator = "\\";
-  if (platform === "win32") {
+  if (os === "win32") {
     separator = "\\";
-  } else if (platform === "darwin") {
+  } else if (os === "darwin") {
     separator = "/";
   }
   const paths = name.split(separator);
@@ -96,6 +95,13 @@ export default function Connections(): JSX.Element {
     history: number[];
   }>({ tcp: 0, udp: 0, history: [] });
   const [searchedValue, setSearchedValue] = useState("");
+  const [os, setOS] = useState("win32");
+
+  useEffect(() => {
+    getRuntimeOS().then((data) => {
+      setOS(data.os);
+    });
+  }, []);
 
   useEffect(() => {
     const subscriber = subscribeConnections({
@@ -223,7 +229,7 @@ export default function Connections(): JSX.Element {
   const data = useMemo(() => {
     return conns
       .map((conn) => ({
-        process: getProcess(conn.process),
+        process: getProcess(conn.process, os),
         destination: `${conn.metadata.destinationIP}:${conn.metadata.destinationPort}`,
         domain: conn.domain,
         download: conn.download,
@@ -243,7 +249,7 @@ export default function Connections(): JSX.Element {
         }
         return true;
       });
-  }, [conns, searchedValue]);
+  }, [conns, os, searchedValue]);
 
   return (
     <div className={styles.wrapper}>

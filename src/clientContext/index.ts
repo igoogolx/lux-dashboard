@@ -24,13 +24,6 @@ export const shellOpenPath = async (path: string) => {
   }
 };
 
-export const getPlatform = () => {
-  if (isElectron) {
-    return window.getPlatform?.();
-  }
-  return "";
-};
-
 export const shellOpenExternal = (path: string) => {
   if (isElectron) {
     window.shellOpenExternal?.(path);
