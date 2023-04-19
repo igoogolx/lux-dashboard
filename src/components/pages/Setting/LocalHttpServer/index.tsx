@@ -65,13 +65,13 @@ export default function LocalHttpServer() {
             </div>
           </div>
           <EditItemWithDialog
-            title="Edit the true proxy server"
+            title="Edit the local http server port"
             open={openModal}
             setOpen={setOpenModal}
             onSubmit={(value) => {
               onSubmit({ port: +value });
             }}
-            label="True proxy server"
+            label="Http server port"
             value={setting.localServer.http.port.toString()}
           />
         </div>
