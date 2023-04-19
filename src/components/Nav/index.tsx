@@ -4,37 +4,44 @@ import { useMemo } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import {
+  DataUsageRegular,
+  HomeRegular,
+  InfoRegular,
+  NoteRegular,
+  SettingsRegular,
+  TopSpeedRegular,
+} from "@fluentui/react-icons";
 import styles from "./index.module.css";
-import { IconNameEnum, Icon } from "../Core";
 
 export function Nav(): JSX.Element {
   const { t } = useTranslation();
   const items = useMemo(() => {
     return [
-      { to: "/", icon: IconNameEnum.Home, name: t(TRANSLATION_KEY.NAV_HOME) },
+      { to: "/", icon: <HomeRegular />, name: t(TRANSLATION_KEY.NAV_HOME) },
       {
         to: "/dashboard",
-        icon: IconNameEnum.Dashboard,
+        icon: <TopSpeedRegular />,
         name: t(TRANSLATION_KEY.NAV_DATA),
       },
       {
         to: "/connections",
-        icon: IconNameEnum.Monitor,
+        icon: <DataUsageRegular />,
         name: t(TRANSLATION_KEY.NAV_CONNECTION),
       },
       {
         to: "/logs",
-        icon: IconNameEnum.Note,
+        icon: <NoteRegular />,
         name: t(TRANSLATION_KEY.LOG),
       },
       {
         to: "/setting",
-        icon: IconNameEnum.Setting,
+        icon: <SettingsRegular />,
         name: t(TRANSLATION_KEY.NAV_SETTING),
       },
       {
         to: "/about",
-        icon: IconNameEnum.InfoCircle,
+        icon: <InfoRegular />,
         name: t(TRANSLATION_KEY.NAV_ABOUT),
       },
     ];
@@ -53,7 +60,7 @@ export function Nav(): JSX.Element {
             end
             key={item.to}
           >
-            <Icon name={item.icon} />
+            {item.icon}
             <span className={styles.text}>{item.name}</span>
           </NavLink>
         );
