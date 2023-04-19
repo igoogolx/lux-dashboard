@@ -45,7 +45,7 @@ export default function TrueProxyServer() {
             onSubmit(value);
           }}
           label="True proxy server"
-          value={setting.localServer.http.port.toString()}
+          value={setting.trueProxyServer}
           disabled={isStarted}
         />
       </div>

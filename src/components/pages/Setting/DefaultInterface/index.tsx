@@ -47,7 +47,7 @@ export default function DefaultInterface() {
             onSubmit(value);
           }}
           label="Default interface name"
-          value={setting.localServer.http.port.toString()}
+          value={setting.defaultInterface}
           disabled={isStarted}
         />
       </div>
