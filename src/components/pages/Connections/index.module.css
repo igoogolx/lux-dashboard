@@ -14,7 +14,7 @@
     & .actions {
       @apply flex items-center;
       & .closeAll {
-        @apply mr-4 ml-4 h-6 w-6;
+        @apply mr-4 ml-4;
       }
     }
   }

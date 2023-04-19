@@ -8,11 +8,8 @@ import {
 } from "lux-js-sdk";
 import { convertByte } from "@/utils/traffic";
 import {
-  Button,
-  ButtonTypeEnum,
   Icon,
   IconNameEnum,
-  IconSizeEnum,
   Input,
   PlacementEnum,
   Table,
@@ -23,7 +20,13 @@ import {
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { getPlatform } from "@/clientContext";
-import { CellContext, ColumnDef } from "@tanstack/react-table";
+import { TableColumnDefinition } from "@fluentui/react-table";
+import {
+  createTableColumn,
+  TableCellLayout,
+  Button,
+} from "@fluentui/react-components";
+import { DeleteRegular } from "@fluentui/react-icons";
 import styles from "./index.module.css";
 
 type Connection = {
@@ -72,33 +75,16 @@ const getProcess = (name: string) => {
 };
 
 // TODO: move
-function LoadTag(
-  props: CellContext<Connection, Connection["download"]>
-): JSX.Element {
-  const { getValue } = props;
-  const value = getValue();
+function LoadTag(props: { value: number }): JSX.Element {
+  const { value } = props;
   const { value: convertedValue, unit } = convertByte(value);
   return <>{`${convertedValue} ${unit}`}</>;
 }
 
-function StartTag(
-  props: CellContext<Connection, Connection["start"]>
-): JSX.Element {
-  const { getValue } = props;
-  const value = getValue();
+function StartTag(props: { value: number }): JSX.Element {
+  const { value } = props;
   const duration = new Date().getTime() - value;
   return <>{convertDuration(duration)}</>;
-}
-
-function RuleCell(props: CellContext<Connection, Connection["rule"]>) {
-  const { getValue } = props;
-  const value = getValue();
-  const { t } = useTranslation();
-
-  if (value === ConnRuleEnum.Proxy) {
-    return <Tag type={TagTypeEnum.Info} value={t(TRANSLATION_KEY.PROXY)} />;
-  }
-  return <Tag type={TagTypeEnum.Warning} value={t(TRANSLATION_KEY.DIRECT)} />;
 }
 
 export default function Connections(): JSX.Element {
@@ -132,52 +118,105 @@ export default function Connections(): JSX.Element {
       subscriber.close();
     };
   }, []);
-  const columns = useMemo<ColumnDef<Connection, any>[]>(() => {
+  const columns = useMemo<TableColumnDefinition<Connection>[]>(() => {
     return [
-      {
-        header: t(TRANSLATION_KEY.DESTINATION) || "",
-        accessorKey: "destination",
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.PROCESS) || "",
-        accessorKey: "process",
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.Domain) || "",
-        accessorKey: "domain",
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.RULE) || "",
-        accessorKey: "rule",
-        cell: RuleCell,
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.NETWORK) || "",
-        accessorKey: "network",
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.TIME) || "",
-        accessorKey: "start",
-        cell: StartTag,
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.DOWNLOAD) || "",
-        accessorKey: "download",
-        cell: LoadTag,
-        minSize: 100,
-      },
-      {
-        header: t(TRANSLATION_KEY.UPLOAD) || "",
-        accessorKey: "upload",
-        cell: LoadTag,
-        minSize: 100,
-      },
+      createTableColumn<Connection>({
+        columnId: "destination",
+        renderHeaderCell: () => {
+          return "Destination";
+        },
+        renderCell: (item) => {
+          return <TableCellLayout truncate>{item.destination}</TableCellLayout>;
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "process",
+        renderHeaderCell: () => {
+          return "Process";
+        },
+        renderCell: (item) => {
+          return <TableCellLayout truncate>{item.process}</TableCellLayout>;
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "domain",
+        renderHeaderCell: () => {
+          return "Domain";
+        },
+        renderCell: (item) => {
+          return <TableCellLayout truncate>{item.domain}</TableCellLayout>;
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "rule",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.RULE);
+        },
+        renderCell: (item) => {
+          let tag;
+          if (item.rule === ConnRuleEnum.Proxy) {
+            tag = (
+              <Tag type={TagTypeEnum.Info} value={t(TRANSLATION_KEY.PROXY)} />
+            );
+          } else {
+            tag = (
+              <Tag
+                type={TagTypeEnum.Warning}
+                value={t(TRANSLATION_KEY.DIRECT)}
+              />
+            );
+          }
+          return <TableCellLayout>{tag}</TableCellLayout>;
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "network",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.NETWORK);
+        },
+        renderCell: (item) => {
+          return <TableCellLayout>{item.network}</TableCellLayout>;
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "start",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.TIME);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <StartTag value={item.start} />
+            </TableCellLayout>
+          );
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "download",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.DOWNLOAD);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <LoadTag value={item.download} />
+            </TableCellLayout>
+          );
+        },
+      }),
+      createTableColumn<Connection>({
+        columnId: "upload",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.UPLOAD);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <LoadTag value={item.upload} />
+            </TableCellLayout>
+          );
+        },
+      }),
     ];
   }, [t]);
 
@@ -223,14 +262,14 @@ export default function Connections(): JSX.Element {
         <div className={styles.actions}>
           <Button
             onClick={closeAllConnections}
-            buttonType={ButtonTypeEnum.Blank}
             className={styles.closeAll}
+            icon={<DeleteRegular />}
           >
             <Tooltip
               content={t(TRANSLATION_KEY.CLOSE_ALL)}
               placement={PlacementEnum.Bottom}
             >
-              <Icon name={IconNameEnum.Trash} size={IconSizeEnum.Medium} />
+              Close All
             </Tooltip>
           </Button>
         </div>
