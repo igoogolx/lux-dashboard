@@ -8,10 +8,7 @@ import {
 } from "lux-js-sdk";
 import { useDispatch, useSelector } from "react-redux";
 import { trafficsSlice, RootState } from "@/reducers";
-import {
-  TrafficCard,
-  TrafficCardTypeEnum,
-} from "@/components/pages/Dashboard/TrafficCard";
+import { TrafficCard } from "@/components/pages/Dashboard/TrafficCard";
 import {
   CategoryScale,
   Chart,
@@ -74,16 +71,7 @@ export default function Dashboard(): JSX.Element {
 
   return speed && total ? (
     <div className={styles.wrapper}>
-      <TrafficCard
-        speed={speed.proxy}
-        total={total.proxy}
-        type={TrafficCardTypeEnum.Proxy}
-      />
-      <TrafficCard
-        speed={speed.direct}
-        total={total.direct}
-        type={TrafficCardTypeEnum.Direct}
-      />
+      <TrafficCard speed={speed} total={total} />
     </div>
   ) : (
     <></>

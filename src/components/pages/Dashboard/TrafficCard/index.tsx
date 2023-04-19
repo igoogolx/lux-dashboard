@@ -1,10 +1,8 @@
 import * as React from "react";
 import { TrafficItem } from "lux-js-sdk";
-import { Icon, IconNameEnum, IconSizeEnum, Tooltip } from "@/components/Core";
-import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { useTranslation } from "react-i18next";
+import { Card } from "@fluentui/react-components";
+import FlowInfo from "@/components/pages/Dashboard/TrafficCard/FlowInfo";
 import styles from "./index.module.css";
-import { FlowText, FlowTextTypeEnum } from "./FlowText";
 import { SpeedGraph } from "../SpeedGraph";
 
 export enum TrafficCardTypeEnum {
@@ -12,83 +10,44 @@ export enum TrafficCardTypeEnum {
   Direct,
 }
 
-const TITLE_MAP = {
-  [TrafficCardTypeEnum.Proxy]: TRANSLATION_KEY.PROXY,
-  [TrafficCardTypeEnum.Direct]: TRANSLATION_KEY.DIRECT,
+type TrafficCardProps = {
+  speed: { proxy: TrafficItem[]; direct: TrafficItem[] };
+  total: { proxy: TrafficItem; direct: TrafficItem };
 };
 
-type TrafficCardProps = {
-  type: TrafficCardTypeEnum;
-  speed: TrafficItem[];
-  total: TrafficItem;
-};
+function getCurrent(items: TrafficItem[]) {
+  return items.length ? items[items.length - 1] : { upload: 0, download: 0 };
+}
 
 export function TrafficCard(props: TrafficCardProps): JSX.Element {
-  const { speed, total, type } = props;
-  const current = speed.length
-    ? speed[speed.length - 1]
-    : { upload: 0, download: 0 };
-
-  const { t } = useTranslation();
+  const { speed, total } = props;
+  const currentProxy = getCurrent(speed.proxy);
+  const currentDirect = getCurrent(speed.direct);
 
   return (
-    <div className={styles.wrapper}>
+    <Card className={styles.wrapper}>
       <div className={styles.data}>
-        <div className={styles.header}>
-          <div className={styles.avatar}>
-            <Tooltip content={t(TITLE_MAP[type])}>
-              <Icon
-                name={
-                  type === TrafficCardTypeEnum.Proxy
-                    ? IconNameEnum.Plane
-                    : IconNameEnum.ToTop
-                }
-                size={IconSizeEnum.Large}
-              />
-            </Tooltip>
+        <div className={styles.info}>
+          <div className={styles.header}>
+            <div className={styles.avatar}>Proxy</div>
+          </div>
+          <div className={styles.content}>
+            <FlowInfo current={currentProxy} total={total.proxy} />
           </div>
         </div>
-        <div className={styles.content}>
-          <div className={styles.item}>
-            <div className={styles.title}>
-              Speed
-              <Icon name={IconNameEnum.Flash} />
-            </div>
-            <div className={styles.details}>
-              <div className={styles.detail}>
-                <Icon name={IconNameEnum.ArrowUp} />
-                <FlowText value={current.upload} />
-              </div>
-              <div className={styles.detail}>
-                <Icon name={IconNameEnum.ArrowDown} />
-                <FlowText value={current.download} />
-              </div>
-            </div>
+        <div className={styles.line} />
+        <div className={styles.info}>
+          <div className={styles.header}>
+            <div className={styles.avatar}>Direct</div>
           </div>
-          <div className={styles.item}>
-            <div className={styles.title}>
-              Total
-              <Icon name={IconNameEnum.Database} />
-            </div>
-            <div className={styles.details}>
-              <div className={styles.detail}>
-                <Icon name={IconNameEnum.ArrowUp} />
-                <FlowText value={total.upload} type={FlowTextTypeEnum.Total} />
-              </div>
-              <div className={styles.detail}>
-                <Icon name={IconNameEnum.ArrowDown} />
-                <FlowText
-                  value={total.download}
-                  type={FlowTextTypeEnum.Total}
-                />
-              </div>
-            </div>
+          <div className={styles.content}>
+            <FlowInfo current={currentDirect} total={total.direct} />
           </div>
         </div>
       </div>
       <div className={styles.graph}>
         <SpeedGraph data={speed} />
       </div>
-    </div>
+    </Card>
   );
 }

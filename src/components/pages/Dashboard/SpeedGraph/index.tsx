@@ -3,9 +3,9 @@ import { useChartJs } from "@/hooks";
 import { ChartConfiguration } from "chart.js";
 import * as React from "react";
 import { convertByte } from "@/utils/traffic";
-import { TrafficItem } from "lux-js-sdk";
 import i18next from "i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import { TrafficItem } from "lux-js-sdk";
 
 const getConfiguration = () => {
   const configuration: ChartConfiguration = {
@@ -69,7 +69,7 @@ const getConfiguration = () => {
 };
 
 type SpeedGraphProps = {
-  data: TrafficItem[];
+  data: { proxy: TrafficItem[]; direct: TrafficItem[] };
 };
 
 export function SpeedGraph(props: SpeedGraphProps): JSX.Element {
@@ -78,10 +78,14 @@ export function SpeedGraph(props: SpeedGraphProps): JSX.Element {
   const [chartRef, chart] = useChartJs(getConfiguration());
   useEffect(() => {
     if (chart) {
-      chart.data.labels = data.map((t, index) => index);
+      chart.data.labels = data.proxy.map((t, index) => index);
       if (chart.data.datasets) {
-        chart.data.datasets[0].data = data.map((traffic) => traffic.download);
-        chart.data.datasets[1].data = data.map((traffic) => traffic.upload);
+        chart.data.datasets[0].data = data.proxy.map(
+          (traffic) => traffic.upload + traffic.download
+        );
+        chart.data.datasets[1].data = data.direct.map(
+          (traffic) => traffic.upload + traffic.download
+        );
       }
       chart.update("none");
     }

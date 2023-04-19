@@ -2,58 +2,36 @@
   @apply flex
     w-full
     flex-col
-    rounded-lg
-    border
-    border-solid
-    border-light-line
-    bg-white
     p-4
-    dark:border-dark-line
-    flex-1
-    dark:bg-dark;
+    flex-1;
 
   &:not(:last-child) {
     @apply mb-4;
   }
 
   & .data {
-    @apply mb-4
-        flex;
+    @apply mb-4 flex justify-between;
 
-    & .header {
-      @apply flex items-center;
+    & .line{
+      @apply border-0 border-r border-solid border-gray-300 mx-4;
+    }
 
-      & .avatar {
-        @apply rounded-full bg-gray-100 p-2 dark:bg-neutral-900;
+    & .info{
+      @apply flex-1;
+
+
+      & .header {
+        @apply flex items-center text-lg mb-2;
+
+        & .avatar {
+          @apply font-bold;
+        }
       }
     }
 
     & .content {
       @apply flex w-full justify-between;
 
-      & .item {
-        @apply flex flex-1 flex-col  justify-between pl-4 pr-4;
-
-        &:not(:last-child) {
-          @apply border-0 border-r border-solid border-gray-300;
-        }
-
-        & .title {
-          @apply mb-2 flex justify-between text-gray-400;
-        }
-
-        & .details {
-          @apply flex justify-between text-xl;
-
-          & .detail {
-            @apply flex flex-1 items-center;
-
-            & svg {
-              @apply relative -bottom-1 mr-1 scale-75 transform fill-current text-gray-400;
-            }
-          }
-        }
-      }
     }
   }
 
