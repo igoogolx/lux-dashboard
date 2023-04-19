@@ -1,28 +1,4 @@
 .container {
-  @apply block max-w-full overflow-x-auto bg-light dark:bg-dark w-full;
-
-  & table {
-    @apply w-full table-fixed;
-  }
-
-  & thead {
-    @apply m-0 sticky top-0 bg-light dark:bg-dark;
-  }
-
-  & th {
-    @apply p-1 text-left;
-  }
-
-   & td {
-    @apply p-1 text-ellipsis overflow-hidden;
-  }
+  @apply w-full overflow-auto;
 }
 
-
-.resizer {
-  @apply absolute right-0 top-0 h-full top-0 w-0.5 bg-light-line dark:bg-dark-line cursor-e-resize;
-}
-
-.isResizing {
-  background: blue;
-}

@@ -1,134 +1,52 @@
 import React from "react";
-
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  Row,
-  SortingState,
-  useReactTable,
-} from "@tanstack/react-table";
-import { useVirtual } from "react-virtual";
-import classNames from "classnames";
+  DataGrid,
+  DataGridBody,
+  DataGridCell,
+  DataGridHeader,
+  DataGridHeaderCell,
+  DataGridRow,
+  useFluent,
+  useScrollbarWidth,
+} from "@fluentui/react-components";
+import { TableColumnDefinition } from "@fluentui/react-table";
 import styles from "./index.module.css";
 
-type TableProps<T, O> = {
-  columns: ColumnDef<T, O>[];
+type TableProps<T> = {
+  columns: TableColumnDefinition<T>[];
   data: T[];
 };
 
-const isDev = process.env.NODE_ENV === "development";
-
-export function Table<T extends { id: string }, O>(props: TableProps<T, O>) {
+export function Table<T extends { id: string }>(props: TableProps<T>) {
   const { columns, data } = props;
 
-  // we need a reference to the scrolling element for logic down below
-  const tableContainerRef = React.useRef<HTMLDivElement>(null);
-
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-    },
-    getRowId: (originalRow) => {
-      return originalRow.id;
-    },
-    enableColumnResizing: true,
-    columnResizeMode: "onChange",
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    debugTable: isDev,
-  });
-
-  const { rows } = table.getRowModel();
-
-  // Virtualizing is optional, but might be necessary if we are going to potentially have hundreds or thousands of rows
-  const rowVirtualizer = useVirtual({
-    parentRef: tableContainerRef,
-    size: rows.length,
-    overscan: 20,
-  });
-  const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
-  const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
-  const paddingBottom =
-    virtualRows.length > 0
-      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
-      : 0;
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
 
   return (
-    <div className={styles.container} ref={tableContainerRef}>
-      <table>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <th
-                    key={header.id}
-                    colSpan={header.colSpan}
-                    style={{ position: "relative", width: header.getSize() }}
-                    onClick={header.column.getToggleSortingHandler()}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                    {{
-                      asc: " 🔼",
-                      desc: " 🔽",
-                    }[header.column.getIsSorted() as string] ?? null}
-                    {header.column.getCanResize() && (
-                      <div
-                        onMouseDown={header.getResizeHandler()}
-                        onTouchStart={header.getResizeHandler()}
-                        className={classNames(styles.resizer, {
-                          [styles.isResizing]: header.column.getIsResizing(),
-                        })}
-                      />
-                    )}
-                  </th>
-                );
-              })}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {paddingTop > 0 && (
-            <tr>
-              <td style={{ height: `${paddingTop}px` }} />
-            </tr>
+    <DataGrid
+      items={data}
+      columns={columns}
+      focusMode="cell"
+      sortable
+      className={styles.container}
+    >
+      <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
+        <DataGridRow>
+          {({ renderHeaderCell }) => (
+            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
-          {virtualRows.map((virtualRow) => {
-            const row = rows[virtualRow.index] as Row<T>;
-            return (
-              <tr key={row.original.id}>
-                {row.getVisibleCells().map((cell) => {
-                  return (
-                    <td key={cell.id} style={{ width: cell.column.getSize() }}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-          {paddingBottom > 0 && (
-            <tr>
-              <td style={{ height: `${paddingBottom}px` }} />
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<T>>
+        {({ item, rowId }, style) => (
+          <DataGridRow<T> key={rowId} style={style as React.CSSProperties}>
+            {({ renderCell }) => (
+              <DataGridCell>{renderCell(item)}</DataGridCell>
+            )}
+          </DataGridRow>
+        )}
+      </DataGridBody>
+    </DataGrid>
   );
 }
