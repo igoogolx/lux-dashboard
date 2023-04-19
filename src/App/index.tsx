@@ -11,7 +11,7 @@ import { Nav } from "@/components/Nav";
 import { Route, Routes } from "react-router-dom";
 import { NotificationContainer, notifier } from "@/components/Core";
 import { useDispatch } from "react-redux";
-import { getIsAdmin, subscribeLog, subscribePing } from "lux-js-sdk";
+import { getIsAdmin, getStatus, subscribeLog, subscribePing } from "lux-js-sdk";
 import { loggerSlice } from "@/reducers/logger";
 import { generalSlice } from "@/reducers/general";
 import { ElevateModal } from "@/components/Modal/ElevateModal";
@@ -24,6 +24,7 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import Splash from "@/components/Splash";
 import { ServerConfirmModal } from "@/components/Modal/ServerConfirmModal";
+import { managerSlice } from "@/reducers";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -51,6 +52,12 @@ export function App(): JSX.Element {
   const pingSubscriber = useRef<WsClient | null>(null);
   const hasDisconnected = useRef(false);
   const [loading, setLoading] = useState(true);
+
+  getStatus().then((status) => {
+    dispatch(
+      managerSlice.actions.setIsStarted({ isStarted: status.isStarted })
+    );
+  });
 
   const createPingSubscriber = useCallback(() => {
     pingSubscriber.current = subscribePing({

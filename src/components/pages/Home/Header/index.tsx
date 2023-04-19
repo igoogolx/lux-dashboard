@@ -1,13 +1,7 @@
 import * as React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MenuItemProps, notifier } from "@/components/Core";
-import {
-  getRules,
-  getStatus,
-  start,
-  stop,
-  updateSelectedRuleId,
-} from "lux-js-sdk";
+import { getRules, start, stop, updateSelectedRuleId } from "lux-js-sdk";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedSlice } from "@/reducers/selected";
 import { RootState, rulesSelectors, rulesSlice } from "@/reducers";
@@ -52,11 +46,6 @@ export function Header(): JSX.Element {
   );
 
   useEffect(() => {
-    getStatus().then((status) => {
-      dispatch(
-        managerSlice.actions.setIsStarted({ isStarted: status.isStarted })
-      );
-    });
     getRules().then((res) => {
       dispatch(rulesSlice.actions.received(res));
       dispatch(selectedSlice.actions.setRule({ id: res.selectedId }));
