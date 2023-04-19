@@ -18,6 +18,10 @@ export default function LocalHttpServer() {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const isStarted = useSelector<RootState, boolean>(
+    (state) => state.manager.isStared || state.manager.isLoading
+  );
+
   const onSubmit = async (
     httpConfig: Partial<SettingRes["localServer"]["http"]>
   ) => {
@@ -52,6 +56,7 @@ export default function LocalHttpServer() {
           onChange={(e, data) => {
             onSubmit({ enabled: data.checked });
           }}
+          disabled={isStarted}
         />
       </div>
       {setting.localServer.http.enabled && (
@@ -73,6 +78,7 @@ export default function LocalHttpServer() {
             }}
             label="Http server port"
             value={setting.localServer.http.port.toString()}
+            disabled={isStarted}
           />
         </div>
       )}

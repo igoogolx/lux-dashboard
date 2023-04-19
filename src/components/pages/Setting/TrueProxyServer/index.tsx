@@ -22,6 +22,10 @@ export default function TrueProxyServer() {
     notifier.success(t(TRANSLATION_KEY.SAVE_SUCCESS));
   };
 
+  const isStarted = useSelector<RootState, boolean>(
+    (state) => state.manager.isStared || state.manager.isLoading
+  );
+
   return (
     <Card className={styles.card}>
       <div className={styles.cardItem}>
@@ -42,6 +46,7 @@ export default function TrueProxyServer() {
           }}
           label="True proxy server"
           value={setting.localServer.http.port.toString()}
+          disabled={isStarted}
         />
       </div>
     </Card>

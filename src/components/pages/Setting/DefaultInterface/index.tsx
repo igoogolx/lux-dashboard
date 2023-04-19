@@ -14,6 +14,10 @@ export default function DefaultInterface() {
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
 
+  const isStarted = useSelector<RootState, boolean>(
+    (state) => state.manager.isStared || state.manager.isLoading
+  );
+
   const setting = useSelector<RootState, SettingRes>((state) => state.setting);
 
   const onSubmit = async (value: string) => {
@@ -44,6 +48,7 @@ export default function DefaultInterface() {
           }}
           label="Default interface name"
           value={setting.localServer.http.port.toString()}
+          disabled={isStarted}
         />
       </div>
     </Card>
