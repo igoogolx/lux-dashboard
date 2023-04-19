@@ -1,7 +1,7 @@
 .wrapper {
   @apply h-full w-full flex-col pt-8;
   & .navItem {
-    @apply flex items-center py-4 pl-6 text-light-unselected;
+    @apply flex items-center py-4 pl-6;
 
     & .text {
       @apply ml-2;
@@ -9,7 +9,6 @@
 
   }
   & .activeNavItem {
-    @apply border-0 border-l-4 border-solid  border-light-highlight pl-5 font-bold text-light-font
-    dark:border-dark-highlight dark:bg-dark dark:text-dark-font;
+    @apply border-0 border-l-4 border-solid border-light-highlight pl-5 font-bold;
   }
 }

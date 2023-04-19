@@ -1,13 +1,8 @@
-import {
-  Button,
-  ButtonTypeEnum,
-  Icon,
-  IconNameEnum,
-  IconSizeEnum,
-} from "@/components/Core";
 import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
+import { WeatherMoonRegular, WeatherSunnyRegular } from "@fluentui/react-icons";
+import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export default function ThemeSwitch(): JSX.Element {
@@ -30,24 +25,20 @@ export default function ThemeSwitch(): JSX.Element {
   };
 
   return (
-    <Button
-      onClick={onClick}
-      buttonType={ButtonTypeEnum.Blank}
-      className={styles.container}
-    >
+    <Button onClick={onClick} className={styles.container}>
       <div
         className={classNames(styles.item, {
           [styles.selected]: currentTheme === ThemeEnum.Light,
         })}
       >
-        <Icon name={IconNameEnum.Sun} size={IconSizeEnum.Small} />
+        <WeatherSunnyRegular />
       </div>
       <div
         className={classNames(styles.item, {
           [styles.selected]: currentTheme === ThemeEnum.Dark,
         })}
       >
-        <Icon name={IconNameEnum.Moon} size={IconSizeEnum.Small} />
+        <WeatherMoonRegular />
       </div>
     </Button>
   );

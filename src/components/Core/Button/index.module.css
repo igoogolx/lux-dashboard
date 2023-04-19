@@ -18,7 +18,7 @@
 
 .secondary {
   composes: base;
-  @apply rounded border border-solid border-gray-300 bg-white dark:border-dark-line dark:bg-dark;
+  @apply rounded border border-solid border-gray-300;
 }
 
 .blank {

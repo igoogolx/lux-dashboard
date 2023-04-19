@@ -4,7 +4,7 @@
     @apply inline-block;
   }
   & .label {
-    @apply py-1 font-medium text-black dark:text-white;
+    @apply py-1 font-medium text-black;
   }
 }
 .button {

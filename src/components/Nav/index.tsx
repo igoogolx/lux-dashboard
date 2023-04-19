@@ -12,6 +12,7 @@ import {
   SettingsRegular,
   TopSpeedRegular,
 } from "@fluentui/react-icons";
+import { Text } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export function Nav(): JSX.Element {
@@ -61,7 +62,7 @@ export function Nav(): JSX.Element {
             key={item.to}
           >
             {item.icon}
-            <span className={styles.text}>{item.name}</span>
+            <Text className={styles.text}>{item.name}</Text>
           </NavLink>
         );
       })}

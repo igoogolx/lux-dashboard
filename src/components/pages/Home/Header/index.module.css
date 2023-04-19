@@ -2,10 +2,7 @@
   @apply flex h-full w-full items-center justify-end
     border-b
     border-light-line
-    bg-white
-    p-4
-    dark:border-dark-line
-    dark:bg-dark;
+    p-4;
 
   & .rulesDropdown {
     @apply mr-8 w-36;
