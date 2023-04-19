@@ -1,35 +1,23 @@
 import React, { useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import {
-  Button,
-  Card,
-  Dialog,
-  DialogActions,
-  DialogBody,
-  DialogContent,
-  DialogSurface,
-  DialogTitle,
-  DialogTrigger,
-  Input,
-  Label,
-} from "@fluentui/react-components";
+import { Card } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
 import { setSetting, SettingRes } from "lux-js-sdk";
 import { notifier } from "@/components/Core";
+import EditItemWithDialog from "@/components/pages/Setting/EditItemWithDialog";
 
 export default function DefaultInterface() {
   const { t } = useTranslation();
-  const [editedValue, setEditedValue] = useState("");
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
 
   const setting = useSelector<RootState, SettingRes>((state) => state.setting);
 
-  const onSubmit = async () => {
-    const newSetting = { ...setting, defaultInterface: editedValue };
+  const onSubmit = async (value: string) => {
+    const newSetting = { ...setting, defaultInterface: value };
     await setSetting(newSetting);
     dispatch(settingSlice.actions.setSetting(newSetting));
     setOpenModal(false);
@@ -47,47 +35,16 @@ export default function DefaultInterface() {
             {t(TRANSLATION_KEY.DEFAULT_INTERFACE_TOOLTIP)}
           </div>
         </div>
-        <Dialog
-          modalType="modal"
+        <EditItemWithDialog
+          title="Edit the default interface name"
           open={openModal}
-          onOpenChange={(e, data) => {
-            setOpenModal(data.open);
+          setOpen={setOpenModal}
+          onSubmit={(value) => {
+            onSubmit(value);
           }}
-        >
-          <DialogTrigger disableButtonEnhancement>
-            <Input
-              size="medium"
-              className={styles.input}
-              value={setting.defaultInterface}
-            />
-          </DialogTrigger>
-          <DialogSurface aria-describedby={undefined}>
-            <DialogBody>
-              <DialogTitle>Edit the default interface name</DialogTitle>
-              <DialogContent className={styles.dialogBody}>
-                <Label required htmlFor="default-interface-input">
-                  Default interface name
-                </Label>
-                <Input
-                  required
-                  id="default-interface-input"
-                  value={editedValue}
-                  onChange={(e) => {
-                    setEditedValue(e.target.value);
-                  }}
-                />
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
-                </DialogTrigger>
-                <Button appearance="primary" onClick={onSubmit}>
-                  Submit
-                </Button>
-              </DialogActions>
-            </DialogBody>
-          </DialogSurface>
-        </Dialog>
+          label="Default interface name"
+          value={setting.localServer.http.port.toString()}
+        />
       </div>
     </Card>
   );
