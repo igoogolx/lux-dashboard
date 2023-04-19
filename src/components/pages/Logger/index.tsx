@@ -16,7 +16,8 @@ import {
 import { isElectron, shellOpenPath } from "@/clientContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { CellContext, ColumnDef } from "@tanstack/react-table";
+import { TableColumnDefinition } from "@fluentui/react-table";
+import { createTableColumn, TableCellLayout } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {
@@ -24,22 +25,19 @@ enum SearchSelectorItemsEnum {
   Content,
 }
 
-function TimeCell(props: CellContext<Log, number>) {
-  const { getValue } = props;
-  const value = getValue();
+function TimeCell(props: { value: number }) {
+  const { value } = props;
   const date = new Date(value);
   return <div>{date.toLocaleTimeString()}</div>;
 }
 
-function TypeCell(props: CellContext<Log, string>) {
-  const { getValue } = props;
-  const value = getValue();
+function TypeCell(props: { value: string }) {
+  const { value } = props;
   return <Tag type={value as TagTypeEnum} value={value} />;
 }
 
-function PayloadCell(props: CellContext<Log, string>) {
-  const { getValue } = props;
-  const value = getValue();
+function PayloadCell(props: { value: string }) {
+  const { value } = props;
   return (
     <Tooltip content={value} placement={PlacementEnum.TopStart}>
       <div className={styles.payload}>{value}</div>
@@ -64,25 +62,47 @@ export default function Logger(): JSX.Element {
     }
   };
 
-  const columns = useMemo<ColumnDef<Log, any>[]>(() => {
+  const columns = useMemo<TableColumnDefinition<Log>[]>(() => {
     return [
-      {
-        header: t(TRANSLATION_KEY.TYPE) || "",
-        accessorKey: "type",
-        cell: TypeCell,
-        size: 5,
-      },
-      {
-        header: t(TRANSLATION_KEY.TIME) || "",
-        accessorKey: "time",
-        cell: TimeCell,
-        size: 5,
-      },
-      {
-        header: t(TRANSLATION_KEY.CONTENT) || "",
-        accessorKey: "payload",
-        cell: PayloadCell,
-      },
+      createTableColumn<Log>({
+        columnId: "type",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.TYPE);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <TypeCell value={item.type} />
+            </TableCellLayout>
+          );
+        },
+      }),
+      createTableColumn<Log>({
+        columnId: "time",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.TIME);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <TimeCell value={item.time} />
+            </TableCellLayout>
+          );
+        },
+      }),
+      createTableColumn<Log>({
+        columnId: "content",
+        renderHeaderCell: () => {
+          return t(TRANSLATION_KEY.CONTENT);
+        },
+        renderCell: (item) => {
+          return (
+            <TableCellLayout>
+              <PayloadCell value={item.payload} />
+            </TableCellLayout>
+          );
+        },
+      }),
     ];
   }, [t]);
   const searchSelectorItems: SelectorProps["items"] = [
