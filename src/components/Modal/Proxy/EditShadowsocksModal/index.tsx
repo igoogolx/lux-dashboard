@@ -10,7 +10,6 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
   Button,
   ButtonTypeEnum,
-  INPUT_SIZE,
   Modal,
   Field,
   Form,
@@ -135,7 +134,6 @@ export const EditShadowsocksModal = React.memo(
                 />
                 <FieldSelector<keyof ShadowsocksWrapper>
                   clearable
-                  selectorClassName={styles.plugin}
                   name="plugin"
                   items={pluginOptions.current}
                   label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(

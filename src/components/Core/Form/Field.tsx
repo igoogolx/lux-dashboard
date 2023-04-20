@@ -16,7 +16,8 @@ export type FieldProps<T extends string> = {
 
 export function Field<T extends string>(props: FieldProps<T>) {
   const { name, label, validate, type, adornment } = props;
-  const [field, meta] = useField({ name, validate });
+  const [field, meta, helpers] = useField({ name, validate });
+  const { setValue } = helpers;
   return (
     <FluentInput
       label={label}
@@ -24,9 +25,11 @@ export function Field<T extends string>(props: FieldProps<T>) {
     >
       <Input
         value={field.value as string}
-        onChange={field.onChange}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
         type={type}
-        contentBefore={adornment}
+        contentAfter={adornment}
       />
     </FluentInput>
   );
