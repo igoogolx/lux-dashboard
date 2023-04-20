@@ -1,3 +1,7 @@
+.icon{
+  overflow: hidden;
+}
+
 .error {
   @apply text-red-500;
 }
