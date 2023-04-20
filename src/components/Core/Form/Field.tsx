@@ -1,23 +1,33 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useField } from "formik";
-import { Input, InputProps } from "../Input";
+import {
+  Field as FluentInput,
+  Input,
+  InputProps,
+} from "@fluentui/react-components";
 
 export type FieldProps<T extends string> = {
   name: T;
   validate?: (value: string) => string;
-} & Omit<InputProps, "value" | "onChange" | "errorMsg" | "name">;
+  label?: string;
+  type?: InputProps["type"];
+  adornment?: InputProps["contentBefore"];
+};
 
 export function Field<T extends string>(props: FieldProps<T>) {
-  const { name, label, validate, ...restProps } = props;
+  const { name, label, validate, type, adornment } = props;
   const [field, meta] = useField({ name, validate });
   return (
-    <Input
-      value={field.value}
-      onChange={field.onChange}
-      name={field.name}
+    <FluentInput
       label={label}
-      errorMsg={meta.touched ? meta.error : ""}
-      {...restProps}
-    />
+      validationMessage={meta.touched ? meta.error : ""}
+    >
+      <Input
+        value={field.value as string}
+        onChange={field.onChange}
+        type={type}
+        contentBefore={adornment}
+      />
+    </FluentInput>
   );
 }

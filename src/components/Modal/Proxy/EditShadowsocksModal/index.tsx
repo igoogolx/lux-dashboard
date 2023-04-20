@@ -114,12 +114,10 @@ export const EditShadowsocksModal = React.memo(
                 <Field<keyof ShadowsocksWrapper>
                   name="name"
                   label={t(TRANSLATION_KEY.FORM_NAME)}
-                  size={INPUT_SIZE.AUTO}
                 />
                 <Field<keyof ShadowsocksWrapper>
                   name="server"
                   label={t(TRANSLATION_KEY.FORM_SERVER)}
-                  size={INPUT_SIZE.AUTO}
                 />
                 <FieldSelector<keyof ShadowsocksWrapper>
                   name="cipher"
@@ -129,13 +127,11 @@ export const EditShadowsocksModal = React.memo(
                 <Field<keyof ShadowsocksWrapper>
                   name="port"
                   label={t(TRANSLATION_KEY.FORM_PORT)}
-                  size={INPUT_SIZE.AUTO}
                   type="number"
                 />
                 <PasswordFiled<keyof ShadowsocksWrapper>
                   name="password"
                   label={t(TRANSLATION_KEY.FORM_PASSWORD)}
-                  size={INPUT_SIZE.AUTO}
                 />
                 <FieldSelector<keyof ShadowsocksWrapper>
                   clearable
@@ -151,7 +147,6 @@ export const EditShadowsocksModal = React.memo(
                   label={`${t(TRANSLATION_KEY.FORM_PLUGIN_OPTS)}(${t(
                     TRANSLATION_KEY.FORM_OPTIONAL
                   )})`}
-                  size={INPUT_SIZE.AUTO}
                   validate={validatePluginOptsStr}
                 />
                 <div className={styles.buttonContainer}>
