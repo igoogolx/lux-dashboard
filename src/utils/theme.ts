@@ -17,11 +17,6 @@ export const getTheme = (): ThemeEnum => {
 };
 
 export const setTheme = (theme: ThemeEnum) => {
-  if (theme === ThemeEnum.Dark) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
   localStorage.setItem("theme", theme);
   window?.setClientTheme?.(theme);
 };

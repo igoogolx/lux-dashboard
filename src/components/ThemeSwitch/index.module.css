@@ -1,12 +1,9 @@
 .container {
-  @apply flex w-full rounded-xl border border-solid border-light-line
-    bg-light-theme-switch
-    dark:border-dark-line
-    dark:bg-dark-theme-switch;
+  @apply flex w-full rounded-xl border border-solid ;
   & .item {
     @apply flex w-1/2 flex-1 px-2 py-1;
   }
   & .selected {
-    @apply rounded-xl bg-light dark:bg-dark;
+    @apply rounded-xl;
   }
 }

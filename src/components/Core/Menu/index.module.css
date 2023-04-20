@@ -19,7 +19,7 @@
       }
 
       &:hover {
-        @apply rounded-md bg-light-hover;
+        @apply rounded-md;
       }
     }
 

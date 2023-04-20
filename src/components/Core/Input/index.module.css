@@ -1,5 +1,5 @@
 .container {
-  @apply relative bg-light text-sm;
+  @apply relative text-sm;
 
   & .label {
     @apply py-1 font-medium text-gray-800;
@@ -12,7 +12,7 @@
       line-height: 20px;
     }
     & .inputBorder {
-      @apply rounded border border-solid border-light-line;
+      @apply rounded border border-solid ;
     }
     & .input:focus {
       @apply border-blue-600;

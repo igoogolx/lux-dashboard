@@ -1,7 +1,7 @@
 .wrapper {
   @apply flex h-full w-full items-center justify-end
     border-b
-    border-light-line
+
     p-4;
 
   & .rulesDropdown {
