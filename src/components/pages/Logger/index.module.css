@@ -1,7 +1,7 @@
 .wrapper {
   @apply flex w-full flex-col items-center justify-items-center p-4 text-sm overflow-auto h-full;
   & .toolbar {
-    @apply mb-2 flex w-full justify-between;
+    @apply mb-2 flex w-full;
     & .logBtn {
       display: none;
     }

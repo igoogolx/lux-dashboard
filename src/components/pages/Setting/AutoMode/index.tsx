@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Card, Combobox, Switch, Option } from "@fluentui/react-components";
+import { Card, Switch, Option, Dropdown } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
@@ -82,7 +82,7 @@ export default function AutoMode() {
                 <></>
               </div>
             </div>
-            <Combobox
+            <Dropdown
               disabled={isStarted}
               value={setting.outbound.config.type}
               onOptionSelect={(e, data) => {
@@ -97,7 +97,7 @@ export default function AutoMode() {
               {modeTypeOptions.current.map((option) => (
                 <Option key={option.id}>{option.content}</Option>
               ))}
-            </Combobox>
+            </Dropdown>
           </div>
           <div className={styles.cardItem}>
             <div>

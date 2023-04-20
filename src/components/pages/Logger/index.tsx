@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import {
   Button,
-  InputGroup,
   notifier,
   PlacementEnum,
   SelectorProps,
@@ -17,13 +16,25 @@ import { isElectron, shellOpenPath } from "@/clientContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { TableColumnDefinition } from "@fluentui/react-table";
-import { createTableColumn, TableCellLayout } from "@fluentui/react-components";
+import {
+  createTableColumn,
+  Input,
+  TableCellLayout,
+  Option,
+  Dropdown,
+} from "@fluentui/react-components";
+import { SearchRegular } from "@fluentui/react-icons";
 import styles from "./index.module.css";
 
 enum SearchSelectorItemsEnum {
-  Type,
-  Content,
+  Type = "0",
+  Content = "1",
 }
+
+const SearchSelectorTranslationMap = {
+  [SearchSelectorItemsEnum.Type]: TRANSLATION_KEY.TYPE,
+  [SearchSelectorItemsEnum.Content]: TRANSLATION_KEY.CONTENT,
+};
 
 function TimeCell(props: { value: number }) {
   const { value } = props;
@@ -140,16 +151,29 @@ export default function Logger(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
-        <InputGroup
-          selectorItems={searchSelectorItems}
-          selectorValue={searchedSelectorValue}
-          inputValue={searchedValue}
-          onSelectorChange={
-            setSearchedSelectorValue as SelectorProps["onChange"]
-          }
-          onInputChange={(e) => {
+        <Dropdown
+          value={t(
+            SearchSelectorTranslationMap[
+              searchedSelectorValue as SearchSelectorItemsEnum
+            ]
+          )}
+          onOptionSelect={(e, changedData) => {
+            setSearchedSelectorValue(
+              changedData.optionValue as SearchSelectorItemsEnum
+            );
+          }}
+        >
+          {searchSelectorItems.map((item) => (
+            <Option key={item.id} value={item.id.toString()}>
+              {item.content as string}
+            </Option>
+          ))}
+        </Dropdown>
+        <Input
+          onChange={(e) => {
             setSearchedValue(e.target.value);
           }}
+          contentAfter={<SearchRegular />}
         />
         <Button onClick={onOpenLogDir} className={styles.logBtn}>
           {t(TRANSLATION_KEY.OPEN_LOG_DIR)}
