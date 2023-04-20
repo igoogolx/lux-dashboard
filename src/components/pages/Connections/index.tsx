@@ -8,16 +8,7 @@ import {
   subscribeConnections,
 } from "lux-js-sdk";
 import { convertByte } from "@/utils/traffic";
-import {
-  Icon,
-  IconNameEnum,
-  Input,
-  PlacementEnum,
-  Table,
-  Tag,
-  TagTypeEnum,
-  Tooltip,
-} from "@/components/Core";
+import { PlacementEnum, Table, Tag, TagTypeEnum } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { TableColumnDefinition } from "@fluentui/react-table";
@@ -25,8 +16,10 @@ import {
   createTableColumn,
   TableCellLayout,
   Button,
+  Input,
+  Tooltip,
 } from "@fluentui/react-components";
-import { DeleteRegular } from "@fluentui/react-icons";
+import { DeleteRegular, SearchRegular } from "@fluentui/react-icons";
 import styles from "./index.module.css";
 
 type Connection = {
@@ -259,25 +252,23 @@ export default function Connections(): JSX.Element {
           onChange={(e) => {
             setSearchedValue(e.target.value);
           }}
-          adornment={
-            <Icon name={IconNameEnum.Search} className={styles.inputIcon} />
-          }
+          contentAfter={<SearchRegular />}
           placeholder={t(TRANSLATION_KEY.SEARCH_CONNECTION_TIP)}
           className={styles.input}
         />
         <div className={styles.actions}>
-          <Button
-            onClick={closeAllConnections}
-            className={styles.closeAll}
-            icon={<DeleteRegular />}
+          <Tooltip
+            content={t(TRANSLATION_KEY.CLOSE_ALL)}
+            relationship="description"
           >
-            <Tooltip
-              content={t(TRANSLATION_KEY.CLOSE_ALL)}
-              placement={PlacementEnum.Bottom}
+            <Button
+              onClick={closeAllConnections}
+              className={styles.closeAll}
+              icon={<DeleteRegular />}
             >
               Close All
-            </Tooltip>
-          </Button>
+            </Button>
+          </Tooltip>
         </div>
       </div>
       <Table columns={columns} data={data} />
