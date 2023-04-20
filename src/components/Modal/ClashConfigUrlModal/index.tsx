@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input, Modal, ModalSizeEnum } from "@/components/Core";
+import { Button, Input, Modal } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
@@ -38,7 +38,7 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
     });
   }, []);
   return (
-    <Modal close={close} size={ModalSizeEnum.Large}>
+    <Modal close={close}>
       <div className={styles.search}>
         <Input
           value={destination}

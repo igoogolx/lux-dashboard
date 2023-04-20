@@ -21,7 +21,6 @@ export function DeleteAllProxiesConfirmModal(
       hideCancelText
       onConfirm={onConfirm}
       onCancel={onClose}
-      closeWhenClickOutside={false}
     />
   );
 }
