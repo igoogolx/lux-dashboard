@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core/Icon";
-import { Button, ButtonTypeEnum } from "@/components/Core/Button";
+import { Button, Text } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export enum MessageTypeEnum {
@@ -52,14 +52,16 @@ export const Message = React.memo((props: MessageProps) => {
           />
         </div>
       )}
-      <div className={styles.popup}>{title}</div>
+      <div className={styles.popup}>
+        <Text>{title}</Text>
+      </div>
       <Button
         className={styles.close}
         onClick={close}
-        buttonType={ButtonTypeEnum.Blank}
-      >
-        <Icon name={IconNameEnum.Close} />
-      </Button>
+        type="transparent"
+        icon={<Icon name={IconNameEnum.Close} />}
+        as="a"
+      />
     </div>
   );
 });
