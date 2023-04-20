@@ -1,5 +1,4 @@
 .container {
-  @apply text-light-font;
   & .title {
     @apply mb-4 font-medium;
   }
