@@ -27,7 +27,7 @@ type EditShadowsocksModalProps = {
   isSelected?: boolean;
 };
 
-const INIT_DATA: ShadowsocksWrapper = {
+const INIT_DATA: Shadowsocks = {
   type: ProxyTypeEnum.Shadowsocks,
   id: "",
   name: "",
@@ -35,33 +35,7 @@ const INIT_DATA: ShadowsocksWrapper = {
   password: "",
   port: 1080,
   cipher: ENCRYPTION_METHODS[0],
-};
-
-// TODO: remove pluginOptsStr
-type ShadowsocksWrapper = Shadowsocks & {
-  pluginOptsStr?: string;
-};
-
-const makeInitData = (config: Shadowsocks) => {
-  const newConfig: ShadowsocksWrapper = {
-    ...config,
-    pluginOptsStr: "",
-  };
-  if (newConfig["plugin-opts"]) {
-    newConfig.pluginOptsStr = convertPluginOptsStr(newConfig["plugin-opts"]);
-  }
-  return newConfig;
-};
-
-const makeSubmittedData = (config: ShadowsocksWrapper): Shadowsocks => {
-  const newConfig = {
-    ...config,
-  };
-  if (newConfig.pluginOptsStr) {
-    newConfig["plugin-opts"] = parsePluginOptsStr(newConfig.pluginOptsStr);
-  }
-  delete newConfig.pluginOptsStr;
-  return newConfig;
+  "plugin-opts": {},
 };
 
 export const EditShadowsocksModal = React.memo(
@@ -81,21 +55,18 @@ export const EditShadowsocksModal = React.memo(
       (state) => state.manager.isStared
     );
 
-    const onSubmit = async (value: ShadowsocksWrapper) => {
-      const submittedValue = makeSubmittedData(value);
+    const onSubmit = async (value: Shadowsocks) => {
       if (initialValue) {
         await updateProxy({
           id: value.id,
-          proxy: { ...submittedValue },
+          proxy: { ...value },
         });
-        dispatch(proxiesSlice.actions.updateOne({ proxy: submittedValue }));
+        dispatch(proxiesSlice.actions.updateOne({ proxy: value }));
       } else {
         const { id } = await addProxy({
-          proxy: { ...submittedValue },
+          proxy: { ...value },
         });
-        dispatch(
-          proxiesSlice.actions.addOne({ proxy: { ...submittedValue, id } })
-        );
+        dispatch(proxiesSlice.actions.addOne({ proxy: { ...value, id } }));
       }
       close();
     };
@@ -104,35 +75,29 @@ export const EditShadowsocksModal = React.memo(
       <Modal close={close}>
         <Form
           onSubmit={onSubmit}
-          initialValues={initialValue ? makeInitData(initialValue) : INIT_DATA}
+          initialValues={initialValue || INIT_DATA}
           validationSchema={ShadowsocksSchema}
         >
           {({ dirty, submitForm, isValid, submitCount }) => {
             return (
               <div className={styles.container}>
-                <Field<keyof ShadowsocksWrapper>
-                  name="name"
-                  label={t(TRANSLATION_KEY.FORM_NAME)}
-                />
-                <Field<keyof ShadowsocksWrapper>
-                  name="server"
-                  label={t(TRANSLATION_KEY.FORM_SERVER)}
-                />
-                <FieldSelector<keyof ShadowsocksWrapper>
+                <Field name="name" label={t(TRANSLATION_KEY.FORM_NAME)} />
+                <Field name="server" label={t(TRANSLATION_KEY.FORM_SERVER)} />
+                <FieldSelector
                   name="cipher"
                   items={methodsOptions.current}
                   label={t(TRANSLATION_KEY.FORM_ENCRYPTION)}
                 />
-                <Field<keyof ShadowsocksWrapper>
+                <Field
                   name="port"
                   label={t(TRANSLATION_KEY.FORM_PORT)}
                   type="number"
                 />
-                <PasswordFiled<keyof ShadowsocksWrapper>
+                <PasswordFiled
                   name="password"
                   label={t(TRANSLATION_KEY.FORM_PASSWORD)}
                 />
-                <FieldSelector<keyof ShadowsocksWrapper>
+                <FieldSelector
                   clearable
                   name="plugin"
                   items={pluginOptions.current}
@@ -140,12 +105,14 @@ export const EditShadowsocksModal = React.memo(
                     TRANSLATION_KEY.FORM_OPTIONAL
                   )})`}
                 />
-                <Field<keyof ShadowsocksWrapper>
-                  name="pluginOptsStr"
+                <Field
+                  name="plugin-opts"
                   label={`${t(TRANSLATION_KEY.FORM_PLUGIN_OPTS)}(${t(
                     TRANSLATION_KEY.FORM_OPTIONAL
                   )})`}
                   validate={validatePluginOptsStr}
+                  getValue={convertPluginOptsStr}
+                  reverseValue={parsePluginOptsStr}
                 />
                 <div className={styles.buttonContainer}>
                   <Button

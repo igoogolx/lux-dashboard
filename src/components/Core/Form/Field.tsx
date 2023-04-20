@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useField } from "formik";
 import {
   Field as FluentInput,
@@ -12,10 +12,13 @@ export type FieldProps<T extends string> = {
   label?: string;
   type?: InputProps["type"];
   adornment?: InputProps["contentBefore"];
+  getValue?: (input: any) => string;
+  reverseValue?: (output: string) => any;
 };
 
 export function Field<T extends string>(props: FieldProps<T>) {
-  const { name, label, validate, type, adornment } = props;
+  const { name, label, validate, type, adornment, getValue, reverseValue } =
+    props;
   const [field, meta, helpers] = useField({ name, validate });
   const { setValue } = helpers;
   return (
@@ -24,9 +27,11 @@ export function Field<T extends string>(props: FieldProps<T>) {
       validationMessage={meta.touched ? meta.error : ""}
     >
       <Input
-        value={field.value as string}
+        value={getValue ? getValue(field.value) : (field.value as string)}
         onChange={(e) => {
-          setValue(e.target.value);
+          setValue(
+            reverseValue ? reverseValue(e.target.value) : e.target.value
+          );
         }}
         type={type}
         contentAfter={adornment}
