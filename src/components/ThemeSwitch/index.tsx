@@ -1,18 +1,26 @@
-import { getTheme, setTheme, ThemeEnum } from "@/utils/theme";
-import React, { useEffect, useState } from "react";
+import {
+  getTheme,
+  setTheme,
+  ThemeContext,
+  ThemeContextType,
+  ThemeEnum,
+} from "@/utils/theme";
+import React, { useContext, useEffect } from "react";
 import classNames from "classnames";
 import { WeatherMoonRegular, WeatherSunnyRegular } from "@fluentui/react-icons";
 import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export default function ThemeSwitch(): JSX.Element {
-  const [currentTheme, setCurrentTheme] = useState(ThemeEnum.Light);
+  const { theme: currentTheme, setTheme: setCurrentTheme } = useContext(
+    ThemeContext
+  ) as ThemeContextType;
 
   useEffect(() => {
     const theme = getTheme();
     setCurrentTheme(theme);
     setTheme(theme);
-  }, []);
+  }, [setCurrentTheme]);
 
   const onClick = () => {
     if (currentTheme === ThemeEnum.Light) {
