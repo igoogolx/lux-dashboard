@@ -24,6 +24,7 @@ import {
   DeleteRegular,
   DeviceEqRegular,
   EditRegular,
+  InfoRegular,
   QrCodeFilled,
   SendRegular,
 } from "@fluentui/react-icons";
@@ -175,7 +176,8 @@ export function Operation(props: OperationProps): JSX.Element {
       <Menu>
         <MenuTrigger disableButtonEnhancement>
           <Button
-            icon={<EditRegular />}
+            appearance="transparent"
+            icon={<InfoRegular />}
             onClick={(e) => {
               e.stopPropagation();
             }}
