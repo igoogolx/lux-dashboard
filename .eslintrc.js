@@ -9,7 +9,8 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/button-has-type": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "react/jsx-no-useless-fragment":"off",
+    "react/jsx-no-useless-fragment": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-props-no-spreading": [
       2,
       {
