@@ -9,6 +9,6 @@
 
   }
   & .activeNavItem {
-    @apply border-0 border-l-4 border-solid pl-5 font-bold;
+    @apply border-0 border-l-4 border-solid pl-5;
   }
 }

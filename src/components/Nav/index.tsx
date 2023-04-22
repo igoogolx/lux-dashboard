@@ -12,8 +12,20 @@ import {
   SettingsRegular,
   TopSpeedRegular,
 } from "@fluentui/react-icons";
-import { Text } from "@fluentui/react-components";
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  Text,
+} from "@fluentui/react-components";
+import { tokens } from "@fluentui/react-theme";
 import styles from "./index.module.css";
+
+const useStyles = makeStyles({
+  activeNav: {
+    ...shorthands.borderColor(tokens.colorPaletteSteelBorderActive),
+  },
+});
 
 export function Nav(): JSX.Element {
   const { t } = useTranslation();
@@ -47,6 +59,9 @@ export function Nav(): JSX.Element {
       },
     ];
   }, [t]);
+
+  const inStyles = useStyles();
+
   return (
     <div className={styles.wrapper}>
       {items.map((item) => {
@@ -54,15 +69,32 @@ export function Nav(): JSX.Element {
           <NavLink
             to={item.to}
             className={({ isActive }) => {
-              return classNames(styles.navItem, {
-                [styles.activeNavItem]: isActive,
-              });
+              return mergeClasses(
+                classNames(
+                  styles.navItem,
+                  {
+                    [styles.activeNavItem]: isActive,
+                  },
+                  inStyles.activeNav
+                )
+              );
             }}
             end
             key={item.to}
           >
-            {item.icon}
-            <Text className={styles.text}>{item.name}</Text>
+            {(isActive) => {
+              return (
+                <>
+                  {item.icon}
+                  <Text
+                    className={styles.text}
+                    weight={isActive ? "bold" : "regular"}
+                  >
+                    {item.name}
+                  </Text>
+                </>
+              );
+            }}
           </NavLink>
         );
       })}
