@@ -25,6 +25,7 @@ import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import Splash from "@/components/Splash";
 import { ServerConfirmModal } from "@/components/Modal/ServerConfirmModal";
 import { managerSlice } from "@/reducers";
+import { APP_CONTAINER_ID } from "@/utils/constants";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -95,7 +96,7 @@ export function App(): JSX.Element {
     };
   }, [createPingSubscriber, dispatch]);
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id={APP_CONTAINER_ID}>
       <NotificationContainer />
       <ServerConfirmModal />
       {!connected && (

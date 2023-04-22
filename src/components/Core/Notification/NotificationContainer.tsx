@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useReducer, useRef } from "react";
-import ReactDOM from "react-dom";
 import { Transition } from "react-transition-group";
+import { Portal } from "@fluentui/react-components";
+import { APP_CONTAINER_ID } from "@/utils/constants";
 import {
   NotificationAction,
   NotificationActionTypeEnum,
@@ -15,6 +16,8 @@ export const notificationEventManager =
 
 const TRANSITION_TIMEOUT_MS = 200;
 const DURATION_MS = 2000;
+
+const CONTAINER_ID = "notification-container";
 
 function MessageWithDuration(props: {
   duration: number;
@@ -59,18 +62,19 @@ function MessageWithDuration(props: {
   );
 }
 
-export const NotificationContainer = () => {
+export function NotificationContainer() {
   const [notificationState, dispatch] = useReducer(reducer, {
     notifications: [],
     counter: 0,
   });
 
-  let container = document.getElementById("notification-container");
+  let container = document.getElementById(CONTAINER_ID);
   if (!container) {
     container = document.createElement("div");
-    container.setAttribute("id", "notification-container");
+    container.setAttribute("id", CONTAINER_ID);
     container.setAttribute("class", styles.container);
-    document.body.prepend(container);
+    const root = document.getElementById(APP_CONTAINER_ID);
+    root?.prepend(container);
   }
 
   const remove = useCallback((id: number) => {
@@ -90,29 +94,30 @@ export const NotificationContainer = () => {
     };
   }, []);
 
-  return ReactDOM.createPortal(
-    notificationState.notifications.map((notification) => (
-      <Transition
-        appear
-        unmountOnExit
-        timeout={TRANSITION_TIMEOUT_MS}
-        onExited={() => remove(notification.id)}
-        in={notification.isShow}
-        key={notification.id}
-      >
-        {(state) => (
-          <div data-state={state} className={styles.animation}>
-            <MessageWithDuration
-              title={notification.title}
-              duration={DURATION_MS}
-              close={close}
-              id={notification.id}
-              type={notification.type}
-            />
-          </div>
-        )}
-      </Transition>
-    )),
-    container as HTMLDivElement
+  return (
+    <Portal mountNode={container}>
+      {notificationState.notifications.map((notification) => (
+        <Transition
+          appear
+          unmountOnExit
+          timeout={TRANSITION_TIMEOUT_MS}
+          onExited={() => remove(notification.id)}
+          in={notification.isShow}
+          key={notification.id}
+        >
+          {(state) => (
+            <div data-state={state} className={styles.animation}>
+              <MessageWithDuration
+                title={notification.title}
+                duration={DURATION_MS}
+                close={close}
+                id={notification.id}
+                type={notification.type}
+              />
+            </div>
+          )}
+        </Transition>
+      ))}
+    </Portal>
   );
-};
+}

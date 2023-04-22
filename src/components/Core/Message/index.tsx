@@ -1,8 +1,24 @@
 import React from "react";
 import classNames from "classnames";
-import { Icon, IconNameEnum, IconSizeEnum } from "@/components/Core/Icon";
-import { Button, Text } from "@fluentui/react-components";
+import { Icon, IconNameEnum } from "@/components/Core/Icon";
+import {
+  Button,
+  makeStyles,
+  mergeClasses,
+  Text,
+} from "@fluentui/react-components";
+import {
+  CheckRegular,
+  ErrorCircleRegular,
+  InfoRegular,
+  WarningRegular,
+} from "@fluentui/react-icons";
+import { tokens } from "@fluentui/react-theme";
 import styles from "./index.module.css";
+
+const useStyles = makeStyles({
+  root: { backgroundColor: tokens.colorNeutralBackground1 },
+});
 
 export enum MessageTypeEnum {
   Error = "error",
@@ -21,10 +37,10 @@ type MessageProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const ICON_MAP = {
-  [MessageTypeEnum.Info]: IconNameEnum.InfoCircle,
-  [MessageTypeEnum.Error]: IconNameEnum.CloseCircle,
-  [MessageTypeEnum.Success]: IconNameEnum.CheckCircle,
-  [MessageTypeEnum.Warning]: IconNameEnum.WarningCircle,
+  [MessageTypeEnum.Info]: <InfoRegular />,
+  [MessageTypeEnum.Error]: <ErrorCircleRegular />,
+  [MessageTypeEnum.Success]: <CheckRegular />,
+  [MessageTypeEnum.Warning]: <WarningRegular />,
 };
 
 export const Message = React.memo((props: MessageProps) => {
@@ -36,29 +52,23 @@ export const Message = React.memo((props: MessageProps) => {
     ...restProps
   } = props;
 
-  const iconCls = classNames(styles.icon, styles[type]);
-  const iconName = ICON_MAP[type];
+  const iconCls = classNames(styles.iconContainer, styles[type]);
+  const icon = ICON_MAP[type];
 
-  const cls = classNames(styles.message, className);
+  const inStyles = useStyles();
+
+  const cls = mergeClasses(styles.message, className, inStyles.root);
 
   return (
     <div className={cls} {...restProps}>
-      {iconName && (
-        <div className={styles.iconContainer}>
-          <Icon
-            className={iconCls}
-            name={iconName}
-            size={IconSizeEnum.Normal}
-          />
-        </div>
-      )}
+      {icon && <div className={iconCls}>{icon}</div>}
       <div className={styles.popup}>
         <Text>{title}</Text>
       </div>
       <Button
         className={styles.close}
         onClick={close}
-        type="transparent"
+        appearance="transparent"
         icon={<Icon name={IconNameEnum.Close} />}
         as="a"
       />
