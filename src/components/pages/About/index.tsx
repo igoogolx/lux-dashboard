@@ -7,7 +7,13 @@ import { ConfirmModal, notifier } from "@/components/Core";
 import checkForUpdate from "@/utils/checkForUpdate";
 import { getVersion } from "@/utils/version";
 import { getVersion as getCoreVersion } from "lux-js-sdk";
-import { Button, Link } from "@fluentui/react-components";
+import {
+  Button,
+  Display,
+  Link,
+  Text,
+  Title1,
+} from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export default function About(): JSX.Element {
@@ -50,16 +56,16 @@ export default function About(): JSX.Element {
           }}
         />
       )}
-      <div className={styles.title}>Lux</div>
+      <Title1 as="h1">Lux</Title1>
       <div className={styles.desc}>
-        <div>
+        <Text>
           {t(TRANSLATION_KEY.VERSION)}: {version}
-        </div>
-        <div className={styles.desc}>
+        </Text>
+        <Text>
           {t(TRANSLATION_KEY.CORE_VERSION)}: {coreVersion}
-        </div>
-        <div className={styles.link}>
-          {t(TRANSLATION_KEY.REPOSITORY)}:{" "}
+        </Text>
+        <div>
+          <Text>{t(TRANSLATION_KEY.REPOSITORY)}: </Text>
           <Button
             onClick={() => {
               shellOpenExternal(REPOSITORY_URL);

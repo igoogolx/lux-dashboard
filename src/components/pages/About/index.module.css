@@ -1,13 +1,7 @@
 .container {
-  @apply px-4 py-8;
-  & .title {
-    @apply text-lg font-medium;
-  }
+  @apply px-4 py-8 items-center justify-center flex flex-col flex-1 h-full;
   & .desc {
-    @apply pt-2 text-gray-500;
-    & .link {
-      @apply cursor-pointer;
-    }
+    @apply pt-2 flex flex-col;
   }
   & .btn {
     @apply mt-4 block;
