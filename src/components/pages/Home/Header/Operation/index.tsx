@@ -122,11 +122,9 @@ export function Operation(): JSX.Element {
       )}
       {isRuntimeDetailOpen && <RuntimeDetailModal close={closeRuntimeDetail} />}
       <Menu>
-        <Tooltip content={t(TRANSLATION_KEY.MORE)} relationship="description">
-          <MenuTrigger disableButtonEnhancement>
-            <Button icon={<MoreHorizontalFilled />} />
-          </MenuTrigger>
-        </Tooltip>
+        <MenuTrigger disableButtonEnhancement>
+          <Button icon={<MoreHorizontalFilled />} />
+        </MenuTrigger>
         <MenuPopover>
           <MenuList>
             {menuItems.map((item) => (

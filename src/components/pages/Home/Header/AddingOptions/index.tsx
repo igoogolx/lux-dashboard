@@ -132,15 +132,9 @@ export function AddingOptions(props: AddingOptionsProps): JSX.Element {
         <EditModal close={closeAddingModal} type={currentAddingType} />
       )}
       <Menu>
-        <Tooltip
-          content={t(TRANSLATION_KEY.NEW_PROXY)}
-          relationship="description"
-        >
-          <MenuTrigger disableButtonEnhancement>
-            <Button icon={<AddFilled />} />
-          </MenuTrigger>
-        </Tooltip>
-
+        <MenuTrigger disableButtonEnhancement>
+          <Button icon={<AddFilled />} />
+        </MenuTrigger>
         <MenuPopover>
           <MenuList>
             {items.map((item) => (

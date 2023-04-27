@@ -45,6 +45,8 @@ export function Header(): JSX.Element {
     (state) => state.selected.rule
   );
 
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
   useEffect(() => {
     getRules().then((res) => {
       dispatch(rulesSlice.actions.received(res));
@@ -120,6 +122,8 @@ export function Header(): JSX.Element {
       <Tooltip
         content={t(TRANSLATION_KEY.SWITCH_DISABLE_TIP)}
         relationship="description"
+        visible={tooltipVisible && isSwitchDisabled}
+        onVisibleChange={(_ev, data) => setTooltipVisible(data.visible)}
       >
         <Switch
           checked={isStarted}
