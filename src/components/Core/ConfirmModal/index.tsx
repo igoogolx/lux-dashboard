@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
-import { Button, ButtonTypeEnum } from "../Button";
 import { Icon, IconNameEnum } from "../Icon";
 import { Modal } from "../Modal";
 
@@ -42,11 +42,7 @@ export function ConfirmModal(props: ConfirmModalPros) {
         <div className={styles.content}>{content}</div>
         <div className={styles.footer}>
           {!hideCancelText && (
-            <Button
-              className={styles.cancelBtn}
-              buttonType={ButtonTypeEnum.Secondary}
-              onClick={onCancel}
-            >
+            <Button className={styles.cancelBtn} onClick={onCancel}>
               {cancelText || t(TRANSLATION_KEY.FORM_CANCEL)}
             </Button>
           )}

@@ -2,9 +2,10 @@ import * as React from "react";
 import { MouseEventHandler, useCallback, useMemo, useState } from "react";
 import classNames from "classnames";
 import { Tooltip } from "@/components/Core/Tooltip";
+import { Button } from "@fluentui/react-components";
+import CloseCircleFillIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-xmark.svg";
 import { PlacementEnum } from "../Popover";
 import { MenuItemProps, MenuProps } from "../Menu";
-import { Button, ButtonTypeEnum } from "../Button";
 import { Icon, IconNameEnum } from "../Icon";
 import styles from "./index.module.css";
 import { Dropdown } from "../Dropdown";
@@ -73,7 +74,6 @@ export function Selector(props: SelectorProps): JSX.Element {
         className={styles.tooltip}
       >
         <Button
-          buttonType={ButtonTypeEnum.Secondary}
           className={classNames(styles.button, className)}
           disabled={disabled}
           onMouseEnter={() => {
@@ -85,9 +85,11 @@ export function Selector(props: SelectorProps): JSX.Element {
         >
           <span className={styles.text}>{selectedItem?.content}</span>
           {isHover && clearable && value ? (
-            <Button buttonType={ButtonTypeEnum.Blank} onClick={onReset}>
-              <Icon name={IconNameEnum.Close} className={styles.icon} />
-            </Button>
+            <Button
+              appearance="transparent"
+              onClick={onReset}
+              icon={<CloseCircleFillIcon />}
+            />
           ) : (
             <Icon
               name={isOpen ? IconNameEnum.Up : IconNameEnum.Down}

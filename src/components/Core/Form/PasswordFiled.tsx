@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, ButtonTypeEnum } from "../Button";
-import { Icon, IconNameEnum } from "../Icon";
+import { Button } from "@fluentui/react-components";
+import { EyeRegular, EyeOffRegular } from "@fluentui/react-icons";
 import { Field, FieldProps } from "./Field";
 
 type PasswordFiledProps<T extends string> = Omit<FieldProps<T>, "type">;
@@ -14,12 +14,10 @@ export function PasswordFiled<T extends string>(props: PasswordFiledProps<T>) {
       adornment={
         <Button
           onClick={() => setIsShowPassword(!isShowPassword)}
-          buttonType={ButtonTypeEnum.Blank}
-        >
-          <Icon
-            name={isShowPassword ? IconNameEnum.EyeClose : IconNameEnum.Eye}
-          />
-        </Button>
+          appearance="transparent"
+          size="small"
+          icon={isShowPassword ? <EyeRegular /> : <EyeOffRegular />}
+        />
       }
       {...props}
     />

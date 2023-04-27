@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonTypeEnum, Modal, Field, Form } from "@/components/Core";
+import { Modal, Field, Form } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
@@ -7,6 +7,7 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import * as Yup from "yup";
 import { MAX_PORT, MIN_PORT } from "@/utils/validator";
 import { addProxy, ProxyTypeEnum, Http, updateProxy } from "lux-js-sdk";
+import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type EditHttpModalProps = {
@@ -92,17 +93,14 @@ export function EditHttpModal(props: EditHttpModalProps) {
                 )})`}
               />
               <div className={styles.buttonContainer}>
-                <Button
-                  onClick={close}
-                  className={styles.button}
-                  buttonType={ButtonTypeEnum.Secondary}
-                >
+                <Button onClick={close} className={styles.button}>
                   {t(TRANSLATION_KEY.FORM_CANCEL)}
                 </Button>
                 <Button
                   className={styles.button}
                   disabled={!dirty || (isSelected && isStarted)}
                   onClick={submitForm}
+                  appearance="primary"
                 >
                   {t(TRANSLATION_KEY.FORM_SAVE)}
                 </Button>

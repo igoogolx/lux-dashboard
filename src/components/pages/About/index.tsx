@@ -3,15 +3,11 @@ import { shellOpenExternal } from "@/clientContext";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { LATEST_RELEASE_URL, REPOSITORY_URL } from "@/utils/constants";
-import {
-  Button,
-  ButtonTypeEnum,
-  ConfirmModal,
-  notifier,
-} from "@/components/Core";
+import { ConfirmModal, notifier } from "@/components/Core";
 import checkForUpdate from "@/utils/checkForUpdate";
 import { getVersion } from "@/utils/version";
 import { getVersion as getCoreVersion } from "lux-js-sdk";
+import { Button, Link } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 export default function About(): JSX.Element {
@@ -68,15 +64,16 @@ export default function About(): JSX.Element {
             onClick={() => {
               shellOpenExternal(REPOSITORY_URL);
             }}
-            buttonType={ButtonTypeEnum.Link}
+            appearance="transparent"
           >
-            {REPOSITORY_URL}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <Link>{REPOSITORY_URL}</Link>
           </Button>
         </div>
         <Button
           onClick={onCheckForUpdate}
           disabled={isCheckingUpdate}
-          buttonType={ButtonTypeEnum.Primary}
+          appearance="primary"
           className={styles.btn}
         >
           {t(TRANSLATION_KEY.CHECK_UPDATE)}
@@ -84,7 +81,7 @@ export default function About(): JSX.Element {
         {window.openDevTools && (
           <Button
             onClick={window.openDevTools}
-            buttonType={ButtonTypeEnum.Primary}
+            appearance="primary"
             className={styles.btn}
           >
             {t(TRANSLATION_KEY.OPEN_DEV_TOOLS)}

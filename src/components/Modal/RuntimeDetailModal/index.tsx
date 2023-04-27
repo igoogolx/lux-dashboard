@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Button, ButtonTypeEnum, Modal } from "@/components/Core";
+import { Modal } from "@/components/Core";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { shellOpenExternal } from "@/clientContext";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
+import { Button, Link } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -54,9 +55,10 @@ export function RuntimeDetailModal(
                     onClick={() => {
                       shellOpenExternal(`http://${content}` as string);
                     }}
-                    buttonType={ButtonTypeEnum.Link}
+                    appearance="transparent"
                   >
-                    {content}
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <Link>{content}</Link>
                   </Button>
                 ) : (
                   content

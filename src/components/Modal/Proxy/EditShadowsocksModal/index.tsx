@@ -8,8 +8,6 @@ import {
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
-  Button,
-  ButtonTypeEnum,
   Modal,
   Field,
   Form,
@@ -17,6 +15,7 @@ import {
   PasswordFiled,
 } from "@/components/Core";
 import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
+import { Button } from "@fluentui/react-components";
 import { ShadowsocksSchema, validatePluginOptsStr } from "./validate";
 import { ENCRYPTION_METHODS, SHADOWSOCKS_PLUINS } from "./constant";
 import styles from "./index.module.css";
@@ -115,11 +114,7 @@ export const EditShadowsocksModal = React.memo(
                   reverseValue={parsePluginOptsStr}
                 />
                 <div className={styles.buttonContainer}>
-                  <Button
-                    onClick={close}
-                    className={styles.button}
-                    buttonType={ButtonTypeEnum.Secondary}
-                  >
+                  <Button onClick={close} className={styles.button}>
                     {t(TRANSLATION_KEY.FORM_CANCEL)}
                   </Button>
                   <Button
@@ -130,6 +125,7 @@ export const EditShadowsocksModal = React.memo(
                       (isSelected && isStarted)
                     }
                     onClick={submitForm}
+                    appearance="primary"
                   >
                     {t(TRANSLATION_KEY.FORM_SAVE)}
                   </Button>

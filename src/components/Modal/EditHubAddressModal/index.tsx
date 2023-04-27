@@ -1,8 +1,9 @@
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Button, ButtonTypeEnum, Field, Modal, Form } from "@/components/Core";
+import { Field, Modal, Form } from "@/components/Core";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { HubAddress, getHubAddress, setHubAddress } from "@/utils/hubAddress";
+import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type EditHubAddressModalProps = {
@@ -37,17 +38,14 @@ export default function EditHubAddressModal(
                 label={t(TRANSLATION_KEY.FORM_PORT)}
               />
               <div className={styles.buttonContainer}>
-                <Button
-                  onClick={close}
-                  className={styles.button}
-                  buttonType={ButtonTypeEnum.Secondary}
-                >
+                <Button onClick={close} className={styles.button}>
                   {t(TRANSLATION_KEY.FORM_CANCEL)}
                 </Button>
                 <Button
                   className={styles.button}
                   disabled={!dirty}
                   onClick={submitForm}
+                  appearance="primary"
                 >
                   {t(TRANSLATION_KEY.FORM_SAVE)}
                 </Button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input, Modal } from "@/components/Core";
+import { Modal } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
@@ -9,6 +9,7 @@ import {
 } from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
+import { Button, Input } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type ClashConfigUrlModalProps = {

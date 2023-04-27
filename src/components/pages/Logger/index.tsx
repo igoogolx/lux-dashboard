@@ -3,7 +3,6 @@ import { getLogsDir, Log } from "lux-js-sdk";
 import { useSelector } from "react-redux";
 import { RootState } from "@/reducers";
 import {
-  Button,
   notifier,
   PlacementEnum,
   SelectorProps,
@@ -22,6 +21,7 @@ import {
   TableCellLayout,
   Option,
   Dropdown,
+  Button,
 } from "@fluentui/react-components";
 import { SearchRegular } from "@fluentui/react-icons";
 import styles from "./index.module.css";
