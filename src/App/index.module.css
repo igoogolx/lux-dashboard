@@ -1,5 +1,5 @@
 .wrapper {
-  @apply m-auto flex flex-col border
+  @apply m-auto flex flex-col
     h-full w-full min-h-[600px] min-w-[768px];
 
   & .body {
@@ -9,11 +9,11 @@
 }
 
 .nav {
-  @apply relative flex w-40 flex-shrink-0 flex-col border-r ;
+  @apply relative flex w-40 flex-shrink-0 flex-col;
 }
 
 .themeSwitch {
-  @apply mx-2 border-t  py-8;
+  @apply mx-2  py-8;
 }
 
 .content {
