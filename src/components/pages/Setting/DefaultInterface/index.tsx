@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Card } from "@fluentui/react-components";
+import {
+  Body1,
+  Card,
+  Title1,
+  Title2,
+  Title3,
+} from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
@@ -32,12 +38,8 @@ export default function DefaultInterface() {
     <Card className={styles.card}>
       <div className={styles.cardItem}>
         <div>
-          <div className={styles.title}>
-            {t(TRANSLATION_KEY.DEFAULT_INTERFACE)}
-          </div>
-          <div className={styles.desc}>
-            {t(TRANSLATION_KEY.DEFAULT_INTERFACE_TOOLTIP)}
-          </div>
+          <Title3>{t(TRANSLATION_KEY.DEFAULT_INTERFACE)}</Title3>
+          <Body1>{t(TRANSLATION_KEY.DEFAULT_INTERFACE_TOOLTIP)}</Body1>
         </div>
         <EditItemWithDialog
           title="Edit the default interface name"
