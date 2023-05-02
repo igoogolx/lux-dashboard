@@ -71,7 +71,7 @@
     "redux": "^4.1.0",
     "semver": "^7.3.8",
     "shadowsocksconfig": "github:Jigsaw-Code/outline-shadowsocksconfig",
-    "yaml": "^2.2.1",
+    "yaml": "^2.2.2",
     "yup": "^0.32.11"
   }
 }
