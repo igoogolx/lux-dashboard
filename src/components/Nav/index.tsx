@@ -22,8 +22,14 @@ import { tokens } from "@fluentui/react-theme";
 import styles from "./index.module.css";
 
 const useStyles = makeStyles({
-  activeNav: {
+  nav: {
     ...shorthands.borderColor(tokens.colorPaletteSteelBorderActive),
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground1Selected,
+    },
+  },
+  activeNav: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
   },
 });
 
@@ -70,19 +76,17 @@ export function Nav(): JSX.Element {
             to={item.to}
             className={({ isActive }) => {
               return mergeClasses(
-                classNames(
-                  styles.navItem,
-                  {
-                    [styles.activeNavItem]: isActive,
-                  },
-                  inStyles.activeNav
-                )
+                inStyles.nav,
+                classNames(styles.navItem, {
+                  [styles.activeNavItem]: isActive,
+                  [inStyles.activeNav]: isActive,
+                })
               );
             }}
             end
             key={item.to}
           >
-            {(isActive) => {
+            {({ isActive }) => {
               return (
                 <>
                   {item.icon}

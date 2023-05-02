@@ -7,6 +7,7 @@ import {
   Option,
   Dropdown,
   Subtitle1,
+  Body1,
 } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,9 +81,7 @@ export default function AutoMode() {
           <div className={styles.cardItem}>
             <div className={styles.desc}>
               <Subtitle1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}</Subtitle1>
-              <div>
-                <></>
-              </div>
+              <Body1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_DESC)}</Body1>
             </div>
             <Dropdown
               disabled={isStarted}
@@ -104,9 +103,7 @@ export default function AutoMode() {
           <div className={styles.cardItem}>
             <div className={styles.desc}>
               <Subtitle1>{t(TRANSLATION_KEY.TESTING_URL_LABEL)}</Subtitle1>
-              <div>
-                <></>
-              </div>
+              <Body1>{t(TRANSLATION_KEY.TESTING_URL_DESC)}</Body1>
             </div>
             <EditItemWithDialog
               disabled={isStarted}

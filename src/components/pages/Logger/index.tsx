@@ -5,7 +5,6 @@ import { RootState } from "@/reducers";
 import {
   notifier,
   PlacementEnum,
-  SelectorProps,
   Table,
   Tag,
   TagTypeEnum,
@@ -19,22 +18,10 @@ import {
   createTableColumn,
   Input,
   TableCellLayout,
-  Option,
-  Dropdown,
   Button,
 } from "@fluentui/react-components";
 import { SearchRegular } from "@fluentui/react-icons";
 import styles from "./index.module.css";
-
-enum SearchSelectorItemsEnum {
-  Type = "0",
-  Content = "1",
-}
-
-const SearchSelectorTranslationMap = {
-  [SearchSelectorItemsEnum.Type]: TRANSLATION_KEY.TYPE,
-  [SearchSelectorItemsEnum.Content]: TRANSLATION_KEY.CONTENT,
-};
 
 function TimeCell(props: { value: number }) {
   const { value } = props;
@@ -60,9 +47,6 @@ export default function Logger(): JSX.Element {
   const { t } = useTranslation();
   const logs = useSelector<RootState, Log[]>((state) => state.logger.logs);
   const [searchedValue, setSearchedValue] = useState("");
-  const [searchedSelectorValue, setSearchedSelectorValue] = useState(
-    SearchSelectorItemsEnum.Content
-  );
   const onOpenLogDir = async () => {
     const logDir = await getLogsDir();
     if (isElectron) {
@@ -116,59 +100,18 @@ export default function Logger(): JSX.Element {
       }),
     ];
   }, [t]);
-  const searchSelectorItems: SelectorProps["items"] = [
-    {
-      id: SearchSelectorItemsEnum.Type,
-      content: t(TRANSLATION_KEY.TYPE),
-    },
-    {
-      id: SearchSelectorItemsEnum.Content,
-      content: t(TRANSLATION_KEY.CONTENT),
-    },
-  ];
 
   const data = useMemo(() => {
     return logs.filter((log) => {
-      if (searchedValue) {
-        switch (searchedSelectorValue) {
-          case SearchSelectorItemsEnum.Type:
-            return log.type
-              .toLocaleLowerCase()
-              .includes(searchedValue.toLocaleLowerCase());
-          case SearchSelectorItemsEnum.Content:
-            return log.payload
-              .toLocaleLowerCase()
-              .includes(searchedValue.toLocaleLowerCase());
-          default: {
-            throw new Error(`invalid ${searchedSelectorValue}`);
-          }
-        }
-      }
-      return true;
+      return log.payload
+        .toLocaleLowerCase()
+        .includes(searchedValue.toLocaleLowerCase());
     });
-  }, [logs, searchedSelectorValue, searchedValue]);
+  }, [logs, searchedValue]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
-        <Dropdown
-          value={t(
-            SearchSelectorTranslationMap[
-              searchedSelectorValue as SearchSelectorItemsEnum
-            ]
-          )}
-          onOptionSelect={(e, changedData) => {
-            setSearchedSelectorValue(
-              changedData.optionValue as SearchSelectorItemsEnum
-            );
-          }}
-        >
-          {searchSelectorItems.map((item) => (
-            <Option key={item.id} value={item.id.toString()}>
-              {item.content as string}
-            </Option>
-          ))}
-        </Dropdown>
         <Input
           onChange={(e) => {
             setSearchedValue(e.target.value);

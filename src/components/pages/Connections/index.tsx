@@ -8,7 +8,7 @@ import {
   subscribeConnections,
 } from "lux-js-sdk";
 import { convertByte } from "@/utils/traffic";
-import { PlacementEnum, Table, Tag, TagTypeEnum } from "@/components/Core";
+import { Table, Tag, TagTypeEnum } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { TableColumnDefinition } from "@fluentui/react-table";

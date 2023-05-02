@@ -65,7 +65,7 @@ export default function LocalHttpServer() {
         <div className={styles.cardItem}>
           <div className={styles.desc}>
             <Subtitle1>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_LABEL)}</Subtitle1>
-            <Body1>{t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP)}</Body1>
+            <Body1>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_DESC)}</Body1>
           </div>
           <EditItemWithDialog
             title="Edit the local http server port"

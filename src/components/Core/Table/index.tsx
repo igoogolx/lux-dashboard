@@ -28,7 +28,6 @@ export function Table<T extends { id: string }>(props: TableProps<T>) {
       items={data}
       columns={columns}
       focusMode="cell"
-      sortable
       className={styles.container}
     >
       <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
