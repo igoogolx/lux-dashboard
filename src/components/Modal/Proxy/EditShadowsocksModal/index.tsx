@@ -7,13 +7,7 @@ import {
 } from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import {
-  Modal,
-  Field,
-  Form,
-  FieldSelector,
-  PasswordFiled,
-} from "@/components/Core";
+import { Field, Form, FieldSelector, PasswordFiled } from "@/components/Core";
 import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
 import { Button } from "@fluentui/react-components";
 import { ShadowsocksSchema, validatePluginOptsStr } from "./validate";
@@ -71,70 +65,68 @@ export const EditShadowsocksModal = React.memo(
     };
 
     return (
-      <Modal close={close}>
-        <Form
-          onSubmit={onSubmit}
-          initialValues={initialValue || INIT_DATA}
-          validationSchema={ShadowsocksSchema}
-        >
-          {({ dirty, submitForm, isValid, submitCount }) => {
-            return (
-              <div className={styles.container}>
-                <Field name="name" label={t(TRANSLATION_KEY.FORM_NAME)} />
-                <Field name="server" label={t(TRANSLATION_KEY.FORM_SERVER)} />
-                <FieldSelector
-                  name="cipher"
-                  items={methodsOptions.current}
-                  label={t(TRANSLATION_KEY.FORM_ENCRYPTION)}
-                />
-                <Field
-                  name="port"
-                  label={t(TRANSLATION_KEY.FORM_PORT)}
-                  type="number"
-                />
-                <PasswordFiled
-                  name="password"
-                  label={t(TRANSLATION_KEY.FORM_PASSWORD)}
-                />
-                <FieldSelector
-                  clearable
-                  name="plugin"
-                  items={pluginOptions.current}
-                  label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(
-                    TRANSLATION_KEY.FORM_OPTIONAL
-                  )})`}
-                />
-                <Field
-                  name="plugin-opts"
-                  label={`${t(TRANSLATION_KEY.FORM_PLUGIN_OPTS)}(${t(
-                    TRANSLATION_KEY.FORM_OPTIONAL
-                  )})`}
-                  validate={validatePluginOptsStr}
-                  getValue={convertPluginOptsStr}
-                  reverseValue={parsePluginOptsStr}
-                />
-                <div className={styles.buttonContainer}>
-                  <Button onClick={close} className={styles.button}>
-                    {t(TRANSLATION_KEY.FORM_CANCEL)}
-                  </Button>
-                  <Button
-                    className={styles.button}
-                    disabled={
-                      !dirty ||
-                      (!isValid && submitCount > 0) ||
-                      (isSelected && isStarted)
-                    }
-                    onClick={submitForm}
-                    appearance="primary"
-                  >
-                    {t(TRANSLATION_KEY.FORM_SAVE)}
-                  </Button>
-                </div>
+      <Form
+        onSubmit={onSubmit}
+        initialValues={initialValue || INIT_DATA}
+        validationSchema={ShadowsocksSchema}
+      >
+        {({ dirty, submitForm, isValid, submitCount }) => {
+          return (
+            <div className={styles.container}>
+              <Field name="name" label={t(TRANSLATION_KEY.FORM_NAME)} />
+              <Field name="server" label={t(TRANSLATION_KEY.FORM_SERVER)} />
+              <FieldSelector
+                name="cipher"
+                items={methodsOptions.current}
+                label={t(TRANSLATION_KEY.FORM_ENCRYPTION)}
+              />
+              <Field
+                name="port"
+                label={t(TRANSLATION_KEY.FORM_PORT)}
+                type="number"
+              />
+              <PasswordFiled
+                name="password"
+                label={t(TRANSLATION_KEY.FORM_PASSWORD)}
+              />
+              <FieldSelector
+                clearable
+                name="plugin"
+                items={pluginOptions.current}
+                label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(
+                  TRANSLATION_KEY.FORM_OPTIONAL
+                )})`}
+              />
+              <Field
+                name="plugin-opts"
+                label={`${t(TRANSLATION_KEY.FORM_PLUGIN_OPTS)}(${t(
+                  TRANSLATION_KEY.FORM_OPTIONAL
+                )})`}
+                validate={validatePluginOptsStr}
+                getValue={convertPluginOptsStr}
+                reverseValue={parsePluginOptsStr}
+              />
+              <div className={styles.buttonContainer}>
+                <Button onClick={close} className={styles.button}>
+                  {t(TRANSLATION_KEY.FORM_CANCEL)}
+                </Button>
+                <Button
+                  className={styles.button}
+                  disabled={
+                    !dirty ||
+                    (!isValid && submitCount > 0) ||
+                    (isSelected && isStarted)
+                  }
+                  onClick={submitForm}
+                  appearance="primary"
+                >
+                  {t(TRANSLATION_KEY.FORM_SAVE)}
+                </Button>
               </div>
-            );
-          }}
-        </Form>
-      </Modal>
+            </div>
+          );
+        }}
+      </Form>
     );
   }
 );

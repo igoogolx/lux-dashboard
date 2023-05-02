@@ -58,57 +58,55 @@ export function EditSocks5Modal(props: EditSocks5ModalProps) {
   };
 
   return (
-    <Modal close={close}>
-      <Form
-        onSubmit={onSubmit}
-        initialValues={initialValue || INIT_DATA}
-        validationSchema={Socks5Schema}
-      >
-        {({ dirty, submitForm }) => {
-          return (
-            <>
-              <Field<keyof Socks5>
-                name="name"
-                label={t(TRANSLATION_KEY.FORM_NAME)}
-              />
-              <Field<keyof Socks5>
-                name="server"
-                label={t(TRANSLATION_KEY.FORM_SERVER)}
-              />
-              <Field<keyof Socks5>
-                name="port"
-                label={t(TRANSLATION_KEY.FORM_PORT)}
-                type="number"
-              />
-              <Field<keyof Socks5>
-                name="username"
-                label={`${t(TRANSLATION_KEY.FORM_PASSWORD)}(${t(
-                  TRANSLATION_KEY.FORM_OPTIONAL
-                )})`}
-              />
-              <Field<keyof Socks5>
-                name="password"
-                label={`${t(TRANSLATION_KEY.FORM_USERNAME)}(${t(
-                  TRANSLATION_KEY.FORM_OPTIONAL
-                )})`}
-              />
-              <div className={styles.buttonContainer}>
-                <Button onClick={close} className={styles.button}>
-                  {t(TRANSLATION_KEY.FORM_CANCEL)}
-                </Button>
-                <Button
-                  className={styles.button}
-                  disabled={!dirty || (isSelected && isStarted)}
-                  onClick={submitForm}
-                  appearance="primary"
-                >
-                  {t(TRANSLATION_KEY.FORM_SAVE)}
-                </Button>
-              </div>
-            </>
-          );
-        }}
-      </Form>
-    </Modal>
+    <Form
+      onSubmit={onSubmit}
+      initialValues={initialValue || INIT_DATA}
+      validationSchema={Socks5Schema}
+    >
+      {({ dirty, submitForm }) => {
+        return (
+          <>
+            <Field<keyof Socks5>
+              name="name"
+              label={t(TRANSLATION_KEY.FORM_NAME)}
+            />
+            <Field<keyof Socks5>
+              name="server"
+              label={t(TRANSLATION_KEY.FORM_SERVER)}
+            />
+            <Field<keyof Socks5>
+              name="port"
+              label={t(TRANSLATION_KEY.FORM_PORT)}
+              type="number"
+            />
+            <Field<keyof Socks5>
+              name="username"
+              label={`${t(TRANSLATION_KEY.FORM_PASSWORD)}(${t(
+                TRANSLATION_KEY.FORM_OPTIONAL
+              )})`}
+            />
+            <Field<keyof Socks5>
+              name="password"
+              label={`${t(TRANSLATION_KEY.FORM_USERNAME)}(${t(
+                TRANSLATION_KEY.FORM_OPTIONAL
+              )})`}
+            />
+            <div className={styles.buttonContainer}>
+              <Button onClick={close} className={styles.button}>
+                {t(TRANSLATION_KEY.FORM_CANCEL)}
+              </Button>
+              <Button
+                className={styles.button}
+                disabled={!dirty || (isSelected && isStarted)}
+                onClick={submitForm}
+                appearance="primary"
+              >
+                {t(TRANSLATION_KEY.FORM_SAVE)}
+              </Button>
+            </div>
+          </>
+        );
+      }}
+    </Form>
   );
 }

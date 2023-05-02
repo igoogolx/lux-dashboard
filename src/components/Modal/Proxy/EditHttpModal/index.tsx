@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Field, Form } from "@/components/Core";
+import { Field, Form } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
@@ -58,57 +58,55 @@ export function EditHttpModal(props: EditHttpModalProps) {
   };
 
   return (
-    <Modal close={close}>
-      <Form
-        onSubmit={onSubmit}
-        initialValues={initialValue || INIT_DATA}
-        validationSchema={HttpSchema}
-      >
-        {({ dirty, submitForm }) => {
-          return (
-            <>
-              <Field<keyof Http>
-                name="name"
-                label={t(TRANSLATION_KEY.FORM_NAME)}
-              />
-              <Field<keyof Http>
-                name="server"
-                label={t(TRANSLATION_KEY.FORM_SERVER)}
-              />
-              <Field<keyof Http>
-                name="port"
-                label={t(TRANSLATION_KEY.FORM_PORT)}
-                type="number"
-              />
-              <Field<keyof Http>
-                name="username"
-                label={`${t(TRANSLATION_KEY.FORM_PASSWORD)}(${t(
-                  TRANSLATION_KEY.FORM_OPTIONAL
-                )})`}
-              />
-              <Field<keyof Http>
-                name="password"
-                label={`${t(TRANSLATION_KEY.FORM_USERNAME)}(${t(
-                  TRANSLATION_KEY.FORM_OPTIONAL
-                )})`}
-              />
-              <div className={styles.buttonContainer}>
-                <Button onClick={close} className={styles.button}>
-                  {t(TRANSLATION_KEY.FORM_CANCEL)}
-                </Button>
-                <Button
-                  className={styles.button}
-                  disabled={!dirty || (isSelected && isStarted)}
-                  onClick={submitForm}
-                  appearance="primary"
-                >
-                  {t(TRANSLATION_KEY.FORM_SAVE)}
-                </Button>
-              </div>
-            </>
-          );
-        }}
-      </Form>
-    </Modal>
+    <Form
+      onSubmit={onSubmit}
+      initialValues={initialValue || INIT_DATA}
+      validationSchema={HttpSchema}
+    >
+      {({ dirty, submitForm }) => {
+        return (
+          <>
+            <Field<keyof Http>
+              name="name"
+              label={t(TRANSLATION_KEY.FORM_NAME)}
+            />
+            <Field<keyof Http>
+              name="server"
+              label={t(TRANSLATION_KEY.FORM_SERVER)}
+            />
+            <Field<keyof Http>
+              name="port"
+              label={t(TRANSLATION_KEY.FORM_PORT)}
+              type="number"
+            />
+            <Field<keyof Http>
+              name="username"
+              label={`${t(TRANSLATION_KEY.FORM_PASSWORD)}(${t(
+                TRANSLATION_KEY.FORM_OPTIONAL
+              )})`}
+            />
+            <Field<keyof Http>
+              name="password"
+              label={`${t(TRANSLATION_KEY.FORM_USERNAME)}(${t(
+                TRANSLATION_KEY.FORM_OPTIONAL
+              )})`}
+            />
+            <div className={styles.buttonContainer}>
+              <Button onClick={close} className={styles.button}>
+                {t(TRANSLATION_KEY.FORM_CANCEL)}
+              </Button>
+              <Button
+                className={styles.button}
+                disabled={!dirty || (isSelected && isStarted)}
+                onClick={submitForm}
+                appearance="primary"
+              >
+                {t(TRANSLATION_KEY.FORM_SAVE)}
+              </Button>
+            </div>
+          </>
+        );
+      }}
+    </Form>
   );
 }
