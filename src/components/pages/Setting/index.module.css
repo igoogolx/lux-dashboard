@@ -7,41 +7,11 @@
         & .cardItem {
             @apply flex items-center justify-between w-full mb-4;
 
-            & .title {
-                @apply text-lg;
-            }
 
             & .desc {
-                @apply text-sm text-neutral-500;
+                @apply flex flex-col;
             }
 
-            & .input {
-                width: 40%;
-            }
-
-
-        }
-    }
-
-    & .form {
-        @apply relative h-full py-4 px-8;
-
-        & .fields {
-            @apply w-full;
-
-            & .field {
-                &:not(:last-child) {
-                    @apply mb-4;
-                }
-
-                & .label {
-                    @apply flex items-center align-middle;
-
-                    & .desc {
-                        @apply mr-1;
-                    }
-                }
-            }
         }
     }
 }

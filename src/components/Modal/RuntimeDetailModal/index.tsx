@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { shellOpenExternal } from "@/clientContext";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
-import { Button, Link } from "@fluentui/react-components";
+import { Button, Link, Subtitle2, Subtitle1 } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -46,9 +46,7 @@ export function RuntimeDetailModal(
             : runtimeDetail[key];
           return (
             <div className={styles.item} key={key}>
-              <div className={styles.title}>
-                {`${t(TRANSLATION_KEY_MAP[key])}:`}
-              </div>
+              <Subtitle2>{`${t(TRANSLATION_KEY_MAP[key])}:`}</Subtitle2>
               <div className={styles.content}>
                 {key === "hubAddress" ? (
                   <Button
@@ -58,7 +56,7 @@ export function RuntimeDetailModal(
                     appearance="transparent"
                   >
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <Link>{content}</Link>
+                    <Link as="button">{content}</Link>
                   </Button>
                 ) : (
                   content

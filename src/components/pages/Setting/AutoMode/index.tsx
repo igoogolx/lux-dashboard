@@ -1,7 +1,13 @@
 import React, { useRef, useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Card, Switch, Option, Dropdown } from "@fluentui/react-components";
+import {
+  Card,
+  Switch,
+  Option,
+  Dropdown,
+  Subtitle1,
+} from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
@@ -53,9 +59,7 @@ export default function AutoMode() {
     <Card className={styles.card}>
       <div className={styles.cardItem}>
         <div>
-          <div className={styles.title}>
-            {t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}
-          </div>
+          <Subtitle1>{t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}</Subtitle1>
           <div className={styles.desc}>
             {t(TRANSLATION_KEY.MODE_SWITCH_TOOLTIP)}
           </div>
@@ -74,11 +78,9 @@ export default function AutoMode() {
       {setting.outbound.mode === "auto" && (
         <>
           <div className={styles.cardItem}>
-            <div>
-              <div className={styles.title}>
-                {t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}
-              </div>
-              <div className={styles.desc}>
+            <div className={styles.desc}>
+              <Subtitle1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}</Subtitle1>
+              <div>
                 <></>
               </div>
             </div>
@@ -100,11 +102,9 @@ export default function AutoMode() {
             </Dropdown>
           </div>
           <div className={styles.cardItem}>
-            <div>
-              <div className={styles.title}>
-                {t(TRANSLATION_KEY.TESTING_URL_LABEL)}
-              </div>
-              <div className={styles.desc}>
+            <div className={styles.desc}>
+              <Subtitle1>{t(TRANSLATION_KEY.TESTING_URL_LABEL)}</Subtitle1>
+              <div>
                 <></>
               </div>
             </div>

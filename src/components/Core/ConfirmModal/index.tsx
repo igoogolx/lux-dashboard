@@ -1,9 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Button } from "@fluentui/react-components";
 import styles from "./index.module.css";
-import { Icon, IconNameEnum } from "../Icon";
 import { Modal } from "../Modal";
 
 type ConfirmModalPros = {
@@ -36,25 +33,19 @@ export function ConfirmModal(props: ConfirmModalPros) {
   const { t } = useTranslation();
 
   return (
-    <Modal close={onCancel} closeWhenClickOutside={closeWhenClickOutside}>
+    <Modal
+      close={onCancel}
+      closeWhenClickOutside={closeWhenClickOutside}
+      hideCloseButton={hideCancelText}
+      hideOkButton={hideConfirmText}
+      loadingOk={loading}
+      closeText={cancelText}
+      okText={confirmText}
+      onOk={onConfirm}
+    >
       <div className={styles.container}>
         <div className={styles.title}>{title}</div>
         <div className={styles.content}>{content}</div>
-        <div className={styles.footer}>
-          {!hideCancelText && (
-            <Button className={styles.cancelBtn} onClick={onCancel}>
-              {cancelText || t(TRANSLATION_KEY.FORM_CANCEL)}
-            </Button>
-          )}
-          {!hideConfirmText && (
-            <Button onClick={onConfirm} disabled={loading}>
-              {loading && (
-                <Icon name={IconNameEnum.Spin} className={styles.loading} />
-              )}
-              {confirmText || t(TRANSLATION_KEY.CONFIRM)}
-            </Button>
-          )}
-        </div>
       </div>
     </Modal>
   );

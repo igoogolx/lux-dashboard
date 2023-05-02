@@ -53,6 +53,7 @@ export default {
   [TRANSLATION_KEY.NETWORK]: "Network",
   [TRANSLATION_KEY.TIME]: "Time",
   [TRANSLATION_KEY.CLOSE_ALL]: "Close All",
+  [TRANSLATION_KEY.CLOSE]: "Close",
   [TRANSLATION_KEY.TYPE]: "Type",
   [TRANSLATION_KEY.CONTENT]: "Content",
   [TRANSLATION_KEY.COPY_LOG_DIR_PATH]: "Copy log dir path",

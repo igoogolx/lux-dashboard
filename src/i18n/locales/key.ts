@@ -49,6 +49,7 @@ export const TRANSLATION_KEY = {
   NETWORK: "network",
   TIME: "time",
   CLOSE_ALL: "close_all",
+  CLOSE: "close",
   TYPE: "type",
   CONTENT: "content",
   COPY_LOG_DIR_PATH: "copy_log_dir_path",

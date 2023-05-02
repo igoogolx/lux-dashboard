@@ -12,6 +12,8 @@ import {
   Label,
 } from "@fluentui/react-components";
 import styles from "@/components/pages/Setting/index.module.css";
+import { useTranslation } from "react-i18next";
+import { TRANSLATION_KEY } from "@/i18n/locales/key";
 
 type EditItemWithDialogProps = {
   title: string;
@@ -35,6 +37,8 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
     inputType,
     disabled = false,
   } = props;
+
+  const { t } = useTranslation();
 
   const [editedValue, setEditedValue] = useState(value);
 
@@ -75,7 +79,7 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
           </DialogContent>
           <DialogActions>
             <DialogTrigger disableButtonEnhancement>
-              <Button appearance="secondary">Close</Button>
+              <Button appearance="secondary">{t(TRANSLATION_KEY.CLOSE)}</Button>
             </DialogTrigger>
             <Button
               appearance="primary"
@@ -83,7 +87,7 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
                 onSubmit(editedValue);
               }}
             >
-              Submit
+              {t(TRANSLATION_KEY.FORM_SAVE)}
             </Button>
           </DialogActions>
         </DialogBody>

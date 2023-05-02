@@ -1,20 +1,46 @@
 import React from "react";
 import { useLockBodyScroll } from "@/hooks";
 import {
+  Button,
   Dialog,
+  DialogActions,
   DialogBody,
   DialogContent,
   DialogSurface,
+  DialogTrigger,
 } from "@fluentui/react-components";
+import { TRANSLATION_KEY } from "@/i18n/locales/key";
+import { useTranslation } from "react-i18next";
+import SpinIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-notch.svg";
 
 type ModalProps = {
   children: React.ReactNode;
   close?: () => void;
   closeWhenClickOutside?: boolean;
+  onOk?: () => void;
+  disabledOk?: boolean;
+  loadingOk?: boolean;
+  hideCloseButton?: boolean;
+  hideOkButton?: boolean;
+  closeText?: string;
+  okText?: string;
 };
 
 export const Modal = React.memo((props: ModalProps) => {
-  const { close, children, closeWhenClickOutside = false } = props;
+  const {
+    close,
+    children,
+    closeWhenClickOutside = false,
+    onOk,
+    disabledOk = false,
+    loadingOk = false,
+    hideOkButton = false,
+    hideCloseButton = false,
+    closeText,
+    okText,
+  } = props;
+
+  const { t } = useTranslation();
 
   useLockBodyScroll();
   return (
@@ -30,6 +56,25 @@ export const Modal = React.memo((props: ModalProps) => {
       <DialogSurface>
         <DialogBody>
           <DialogContent>{children}</DialogContent>
+          <DialogActions>
+            {!hideCloseButton && close && (
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">
+                  {closeText && t(TRANSLATION_KEY.CLOSE)}
+                </Button>
+              </DialogTrigger>
+            )}
+            {!hideOkButton && onOk && (
+              <Button
+                appearance="primary"
+                onClick={onOk}
+                disabled={disabledOk || loadingOk}
+                icon={<SpinIcon />}
+              >
+                {okText && t(TRANSLATION_KEY.OK)}
+              </Button>
+            )}
+          </DialogActions>
         </DialogBody>
       </DialogSurface>
     </Dialog>

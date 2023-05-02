@@ -1,8 +1,5 @@
 .item {
   @apply flex flex-col;
-  & .title {
-    @apply text-gray-500;
-  }
   & .content {
     @apply flex justify-end;
   }
