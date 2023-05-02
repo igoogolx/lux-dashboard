@@ -1,16 +1,12 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
-import {
-  convertPluginOptsStr,
-  parsePluginOptsStr,
-} from "@/utils/url/shadowsocks";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { Field, Form, FieldSelector, PasswordFiled } from "@/components/Core";
 import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
 import { Button } from "@fluentui/react-components";
-import { ShadowsocksSchema, validatePluginOptsStr } from "./validate";
+import { ShadowsocksSchema } from "./validate";
 import { ENCRYPTION_METHODS, SHADOWSOCKS_PLUINS } from "./constant";
 import styles from "./index.module.css";
 
@@ -28,7 +24,6 @@ const INIT_DATA: Shadowsocks = {
   password: "",
   port: 1080,
   cipher: ENCRYPTION_METHODS[0],
-  "plugin-opts": {},
 };
 
 export const EditShadowsocksModal = React.memo(
@@ -96,15 +91,7 @@ export const EditShadowsocksModal = React.memo(
                 label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(
                   TRANSLATION_KEY.FORM_OPTIONAL
                 )})`}
-              />
-              <Field
-                name="plugin-opts"
-                label={`${t(TRANSLATION_KEY.FORM_PLUGIN_OPTS)}(${t(
-                  TRANSLATION_KEY.FORM_OPTIONAL
-                )})`}
-                validate={validatePluginOptsStr}
-                getValue={convertPluginOptsStr}
-                reverseValue={parsePluginOptsStr}
+                editable
               />
               <div className={styles.buttonContainer}>
                 <Button onClick={close} className={styles.button}>

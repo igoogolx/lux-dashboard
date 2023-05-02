@@ -6,14 +6,24 @@ import {
 } from "shadowsocksconfig";
 import { ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
 
-export const convertPluginOptsStr = (opts: Record<string, string>) => {
+export const convertPluginOptsStr = (
+  opts: NonNullable<Shadowsocks["plugin-opts"]>
+) => {
   let plugin = "";
   Object.keys(opts).forEach((key) => {
-    const nextArg = `${key}=${opts[key]}`;
-    if (plugin) {
-      plugin = `${plugin};${nextArg}`;
-    } else {
-      plugin = nextArg;
+    let nextArg = "";
+    const value = opts[key as keyof Shadowsocks["plugin-opts"]];
+    if (typeof value === "string") {
+      nextArg = `${key}=${value}`;
+    } else if (value) {
+      nextArg = key;
+    }
+    if (nextArg) {
+      if (plugin) {
+        plugin = `${plugin};${nextArg}`;
+      } else {
+        plugin = nextArg;
+      }
     }
   });
   return plugin;
@@ -53,13 +63,16 @@ const convertConfig = (rawConfig: Config) => {
   const pluginStr = rawConfig.extra.plugin;
   if (pluginStr) {
     const separatorIndex = pluginStr.indexOf(";");
-    result.plugin = pluginStr.substring(0, separatorIndex);
-    if (result.plugin.includes("obfs")) {
+    result.plugin = pluginStr.substring(
+      0,
+      separatorIndex
+    ) as Shadowsocks["plugin"];
+    if (result.plugin?.includes("obfs")) {
       result.plugin = "obfs";
     }
     result["plugin-opts"] = parsePluginOptsStr(
       pluginStr.substring(separatorIndex + 1)
-    );
+    ) as Shadowsocks["plugin-opts"];
   }
   return result;
 };
