@@ -8,13 +8,22 @@ import {
 import React, { useContext, useEffect } from "react";
 import classNames from "classnames";
 import { WeatherMoonRegular, WeatherSunnyRegular } from "@fluentui/react-icons";
-import { Button } from "@fluentui/react-components";
+import { Button, makeStyles } from "@fluentui/react-components";
+import { tokens } from "@fluentui/react-theme";
 import styles from "./index.module.css";
+
+const useStyles = makeStyles({
+  selected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+  },
+});
 
 export default function ThemeSwitch(): JSX.Element {
   const { theme: currentTheme, setTheme: setCurrentTheme } = useContext(
     ThemeContext
   ) as ThemeContextType;
+
+  const inStyles = useStyles();
 
   useEffect(() => {
     const theme = getTheme();
@@ -36,14 +45,14 @@ export default function ThemeSwitch(): JSX.Element {
     <Button onClick={onClick} className={styles.container}>
       <div
         className={classNames(styles.item, {
-          [styles.selected]: currentTheme === ThemeEnum.Light,
+          [inStyles.selected]: currentTheme === ThemeEnum.Light,
         })}
       >
         <WeatherSunnyRegular />
       </div>
       <div
         className={classNames(styles.item, {
-          [styles.selected]: currentTheme === ThemeEnum.Dark,
+          [inStyles.selected]: currentTheme === ThemeEnum.Dark,
         })}
       >
         <WeatherMoonRegular />
