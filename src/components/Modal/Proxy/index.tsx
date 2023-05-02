@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Http, Proxy, ProxyTypeEnum, Shadowsocks, Socks5 } from "lux-js-sdk";
 import { EditHttpModal } from "@/components/Modal/Proxy/EditHttpModal";
 import { Modal } from "@/components/Core";
 import { Card, Dropdown, Option, Text } from "@fluentui/react-components";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
+import { PageStepEnum } from "@/components/Modal/Proxy/EditShadowsocksModal/constant";
 import { EditSocks5Modal } from "./EditSocks5Modal";
 import { EditShadowsocksModal } from "./EditShadowsocksModal";
 import styles from "./index.module.css";
@@ -28,6 +29,8 @@ export function EditModal(props: EditModalProps) {
 
   const [currentType, setCurrentType] = useState(type);
 
+  const [pageStep, setPageStep] = useState(PageStepEnum.First);
+
   const { t } = useTranslation();
 
   switch (currentType) {
@@ -37,6 +40,7 @@ export function EditModal(props: EditModalProps) {
           close={close}
           initialValue={initialValue as Shadowsocks}
           isSelected={isSelected}
+          setPageStep={setPageStep}
         />
       );
       break;
@@ -64,27 +68,29 @@ export function EditModal(props: EditModalProps) {
   }
   return (
     <Modal close={close} hideCloseButton hideOkButton>
-      <Card className={styles.type}>
-        <Text>{t(TRANSLATION_KEY.TYPE)}</Text>
-        <Dropdown
-          disabled={!!initialValue}
-          defaultValue={typeOption[currentType]}
-          onOptionSelect={(e, data) => {
-            setCurrentType(data.optionValue as ProxyTypeEnum);
-          }}
-        >
-          {Object.keys(typeOption).map((key: string) => (
-            <Option
-              key={key}
-              text={typeOption[key as ProxyTypeEnum]}
-              value={key}
-            >
-              {typeOption[key as ProxyTypeEnum]}
-            </Option>
-          ))}
-        </Dropdown>
-      </Card>
-      <Card>{content}</Card>
+      {pageStep === PageStepEnum.First && (
+        <Card className={styles.type}>
+          <Text>{t(TRANSLATION_KEY.TYPE)}</Text>
+          <Dropdown
+            disabled={!!initialValue}
+            defaultValue={typeOption[currentType]}
+            onOptionSelect={(e, data) => {
+              setCurrentType(data.optionValue as ProxyTypeEnum);
+            }}
+          >
+            {Object.keys(typeOption).map((key: string) => (
+              <Option
+                key={key}
+                text={typeOption[key as ProxyTypeEnum]}
+                value={key}
+              >
+                {typeOption[key as ProxyTypeEnum]}
+              </Option>
+            ))}
+          </Dropdown>
+        </Card>
+      )}
+      {content}
     </Modal>
   );
 }

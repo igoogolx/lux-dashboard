@@ -12,6 +12,8 @@ export const TRANSLATION_KEY = {
   COMMON_COPY_URL: "common.copy_url",
   COMMON_QR_CODE: "common.qr_code",
   FORM_NAME: "form.name",
+  MODE: "mode",
+  HOST: "host",
   FORM_SERVER: "form.server",
   FORM_ENCRYPTION: "from.encryption",
   FORM_PORT: "form.port",
