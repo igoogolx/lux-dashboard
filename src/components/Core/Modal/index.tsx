@@ -60,7 +60,7 @@ export const Modal = React.memo((props: ModalProps) => {
             {!hideCloseButton && close && (
               <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">
-                  {closeText && t(TRANSLATION_KEY.CLOSE)}
+                  {closeText || t(TRANSLATION_KEY.CLOSE)}
                 </Button>
               </DialogTrigger>
             )}
@@ -71,7 +71,7 @@ export const Modal = React.memo((props: ModalProps) => {
                 disabled={disabledOk || loadingOk}
                 icon={<SpinIcon />}
               >
-                {okText && t(TRANSLATION_KEY.OK)}
+                {okText || t(TRANSLATION_KEY.OK)}
               </Button>
             )}
           </DialogActions>
