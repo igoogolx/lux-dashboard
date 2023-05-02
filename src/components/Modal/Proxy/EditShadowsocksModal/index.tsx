@@ -1,19 +1,31 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Field, Form, FieldSelector, PasswordFiled } from "@/components/Core";
-import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
+import { Field, FiledSelector, Form, PasswordFiled } from "@/components/Core";
+import {
+  addProxy,
+  Obfs,
+  ProxyTypeEnum,
+  Shadowsocks,
+  updateProxy,
+} from "lux-js-sdk";
 import { Button } from "@fluentui/react-components";
+import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
 import { ShadowsocksSchema } from "./validate";
-import { ENCRYPTION_METHODS, SHADOWSOCKS_PLUINS } from "./constant";
+import {
+  ENCRYPTION_METHODS,
+  PageStepEnum,
+  SHADOWSOCKS_PLUINS,
+} from "./constant";
 import styles from "./index.module.css";
 
 type EditShadowsocksModalProps = {
   close: () => void;
   initialValue?: Shadowsocks;
   isSelected?: boolean;
+  setPageStep?: (step: PageStepEnum) => void;
 };
 
 const INIT_DATA: Shadowsocks = {
@@ -28,7 +40,7 @@ const INIT_DATA: Shadowsocks = {
 
 export const EditShadowsocksModal = React.memo(
   (props: EditShadowsocksModalProps) => {
-    const { close, initialValue, isSelected = false } = props;
+    const { close, initialValue, isSelected = false, setPageStep } = props;
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const methodsOptions = useRef(
@@ -42,6 +54,8 @@ export const EditShadowsocksModal = React.memo(
     const isStarted = useSelector<RootState, boolean>(
       (state) => state.manager.isStared
     );
+
+    const [editingPlugin, setEditingPlugin] = useState(false);
 
     const onSubmit = async (value: Shadowsocks) => {
       if (initialValue) {
@@ -59,7 +73,18 @@ export const EditShadowsocksModal = React.memo(
       close();
     };
 
-    return (
+    return editingPlugin ? (
+      <EditObfsPlugin
+        initialValue={initialValue?.["plugin-opts"] as Obfs}
+        onChange={(data) => {}}
+        close={() => {
+          setEditingPlugin(false);
+          if (setPageStep) {
+            setPageStep(PageStepEnum.First);
+          }
+        }}
+      />
+    ) : (
       <Form
         onSubmit={onSubmit}
         initialValues={initialValue || INIT_DATA}
@@ -70,7 +95,7 @@ export const EditShadowsocksModal = React.memo(
             <div className={styles.container}>
               <Field name="name" label={t(TRANSLATION_KEY.FORM_NAME)} />
               <Field name="server" label={t(TRANSLATION_KEY.FORM_SERVER)} />
-              <FieldSelector
+              <FiledSelector
                 name="cipher"
                 items={methodsOptions.current}
                 label={t(TRANSLATION_KEY.FORM_ENCRYPTION)}
@@ -84,7 +109,7 @@ export const EditShadowsocksModal = React.memo(
                 name="password"
                 label={t(TRANSLATION_KEY.FORM_PASSWORD)}
               />
-              <FieldSelector
+              <FiledSelector
                 clearable
                 name="plugin"
                 items={pluginOptions.current}
@@ -92,6 +117,12 @@ export const EditShadowsocksModal = React.memo(
                   TRANSLATION_KEY.FORM_OPTIONAL
                 )})`}
                 editable
+                onEditClick={() => {
+                  setEditingPlugin(true);
+                  if (setPageStep) {
+                    setPageStep(PageStepEnum.Second);
+                  }
+                }}
               />
               <div className={styles.buttonContainer}>
                 <Button onClick={close} className={styles.button}>

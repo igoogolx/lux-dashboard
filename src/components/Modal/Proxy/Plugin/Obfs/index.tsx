@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Field, FieldSelector, Form } from "@/components/Core";
+import { Field, FiledSelector, Form } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import * as Yup from "yup";
@@ -51,10 +51,10 @@ export function EditObfsPlugin(props: EditObfsProps) {
       {({ dirty, submitForm }) => {
         return (
           <>
-            <Field name="host" label={t(TRANSLATION_KEY.FORM_NAME)} />
-            <FieldSelector
+            <Field name="host" label={t(TRANSLATION_KEY.HOST)} />
+            <FiledSelector
               name="mode"
-              label={t(TRANSLATION_KEY.FORM_SERVER)}
+              label={t(TRANSLATION_KEY.MODE)}
               items={modeOption.current}
             />
             <div className={styles.buttonContainer}>
