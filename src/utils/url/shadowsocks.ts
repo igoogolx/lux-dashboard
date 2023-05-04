@@ -4,7 +4,7 @@ import {
   SHADOWSOCKS_URI,
   SIP002_URI,
 } from "shadowsocksconfig";
-import { ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
+import { PluginTypeEnum, ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
 
 export const convertPluginOptsStr = (
   opts: NonNullable<Shadowsocks["plugin-opts"]>
@@ -68,7 +68,7 @@ const convertConfig = (rawConfig: Config) => {
       separatorIndex
     ) as Shadowsocks["plugin"];
     if (result.plugin?.includes("obfs")) {
-      result.plugin = "obfs";
+      result.plugin = PluginTypeEnum.Obfs;
     }
     result["plugin-opts"] = parsePluginOptsStr(
       pluginStr.substring(separatorIndex + 1)

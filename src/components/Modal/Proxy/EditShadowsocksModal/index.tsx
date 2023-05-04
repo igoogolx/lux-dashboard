@@ -13,6 +13,7 @@ import {
 } from "lux-js-sdk";
 import { Button } from "@fluentui/react-components";
 import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
+import { EditPlugin } from "@/components/Modal/Proxy/Plugin";
 import { ShadowsocksSchema } from "./validate";
 import {
   ENCRYPTION_METHODS,
@@ -57,6 +58,8 @@ export const EditShadowsocksModal = React.memo(
 
     const [editingPlugin, setEditingPlugin] = useState(false);
 
+    const initData = initialValue || INIT_DATA;
+
     const onSubmit = async (value: Shadowsocks) => {
       if (initialValue) {
         await updateProxy({
@@ -74,9 +77,12 @@ export const EditShadowsocksModal = React.memo(
     };
 
     return editingPlugin ? (
-      <EditObfsPlugin
-        initialValue={initialValue?.["plugin-opts"] as Obfs}
-        onChange={(data) => {}}
+      <EditPlugin
+        type={initData.plugin}
+        initialValue={initData}
+        onSave={(data) => {
+          console.log(data);
+        }}
         close={() => {
           setEditingPlugin(false);
           if (setPageStep) {
@@ -86,9 +92,9 @@ export const EditShadowsocksModal = React.memo(
       />
     ) : (
       <Form
-        onSubmit={onSubmit}
-        initialValues={initialValue || INIT_DATA}
         validationSchema={ShadowsocksSchema}
+        initialValues={initData}
+        onSubmit={onSubmit}
       >
         {({ dirty, submitForm, isValid, submitCount }) => {
           return (
