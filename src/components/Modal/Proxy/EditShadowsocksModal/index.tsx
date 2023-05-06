@@ -4,15 +4,8 @@ import { proxiesSlice, RootState } from "@/reducers";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { Field, FiledSelector, Form, PasswordFiled } from "@/components/Core";
-import {
-  addProxy,
-  Obfs,
-  ProxyTypeEnum,
-  Shadowsocks,
-  updateProxy,
-} from "lux-js-sdk";
+import { addProxy, ProxyTypeEnum, Shadowsocks, updateProxy } from "lux-js-sdk";
 import { Button } from "@fluentui/react-components";
-import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
 import { EditPlugin } from "@/components/Modal/Proxy/Plugin";
 import { ShadowsocksSchema } from "./validate";
 import {
@@ -60,6 +53,11 @@ export const EditShadowsocksModal = React.memo(
 
     const initData = initialValue || INIT_DATA;
 
+    const [pluginData, setPluginData] = useState({
+      plugin: initData.plugin,
+      "plugin-opts": initData["plugin-opts"],
+    });
+
     const onSubmit = async (value: Shadowsocks) => {
       if (initialValue) {
         await updateProxy({
@@ -78,10 +76,10 @@ export const EditShadowsocksModal = React.memo(
 
     return editingPlugin ? (
       <EditPlugin
-        type={initData.plugin}
-        initialValue={initData}
+        type={pluginData.plugin}
+        initialValue={pluginData}
         onSave={(data) => {
-          console.log(data);
+          setPluginData(data);
         }}
         close={() => {
           setEditingPlugin(false);
@@ -117,6 +115,7 @@ export const EditShadowsocksModal = React.memo(
               />
               <FiledSelector
                 clearable
+                value={pluginData.plugin}
                 name="plugin"
                 items={pluginOptions.current}
                 label={`${t(TRANSLATION_KEY.FORM_PLUGIN)}(${t(

@@ -17,7 +17,7 @@ export type SelectorProps = {
   className?: string;
   items: MenuItemProps[];
   isVirtualized?: boolean;
-  onChange: (key: string | number) => void;
+  onChange?: (key: string | number) => void;
   disabled?: boolean;
   clearable?: boolean;
 };
@@ -37,7 +37,7 @@ export function Selector(props: SelectorProps): JSX.Element {
 
   const onMenuItemClick = useCallback<MenuProps["onClick"]>(
     (key) => {
-      onChange(key);
+      onChange?.(key);
     },
     [onChange]
   );
@@ -51,7 +51,7 @@ export function Selector(props: SelectorProps): JSX.Element {
       e.preventDefault();
       e.stopPropagation();
       if (value) {
-        onChange("");
+        onChange?.("");
       }
     },
     [onChange, value]

@@ -69,7 +69,7 @@ export function EditModal(props: EditModalProps) {
   return (
     <Modal close={close} hideCloseButton hideOkButton>
       {pageStep === PageStepEnum.First && (
-        <Card className={styles.type}>
+        <div className={styles.type}>
           <Text>{t(TRANSLATION_KEY.TYPE)}</Text>
           <Dropdown
             disabled={!!initialValue}
@@ -88,7 +88,7 @@ export function EditModal(props: EditModalProps) {
               </Option>
             ))}
           </Dropdown>
-        </Card>
+        </div>
       )}
       {content}
     </Modal>

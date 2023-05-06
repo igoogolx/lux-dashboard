@@ -2,9 +2,9 @@ import React, { useRef } from "react";
 import { Field, FiledSelector, Form } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import * as Yup from "yup";
 import { Button } from "@fluentui/react-components";
 import { Obfs, ObfsModeEnum } from "lux-js-sdk";
+import { ObfsPluginSchema } from "@/components/Modal/Proxy/EditShadowsocksModal/validate";
 import styles from "./index.module.css";
 
 type EditObfsProps = {
@@ -17,11 +17,6 @@ const INIT_DATA: Obfs = {
   host: "",
   mode: ObfsModeEnum.Http,
 };
-
-const HttpSchema = Yup.object().shape({
-  host: Yup.string(),
-  mode: Yup.string().required("Required"),
-});
 
 export function EditObfsPlugin(props: EditObfsProps) {
   const { t } = useTranslation();
@@ -46,7 +41,7 @@ export function EditObfsPlugin(props: EditObfsProps) {
     <Form
       onSubmit={onSubmit}
       initialValues={initialValue || INIT_DATA}
-      validationSchema={HttpSchema}
+      validationSchema={ObfsPluginSchema}
     >
       {({ dirty, submitForm }) => {
         return (

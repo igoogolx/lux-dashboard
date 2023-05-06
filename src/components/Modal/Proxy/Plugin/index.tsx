@@ -12,7 +12,7 @@ type EditPluginProps = {
   close: () => void;
   type?: PluginTypeEnum;
   initialValue?: Pick<Shadowsocks, "plugin" | "plugin-opts">;
-  onSave: (data: Obfs | V2rayObfs) => void;
+  onSave: (data: Required<Pick<Shadowsocks, "plugin" | "plugin-opts">>) => void;
 };
 
 export function EditPlugin(props: EditPluginProps) {
@@ -34,7 +34,9 @@ export function EditPlugin(props: EditPluginProps) {
         <EditObfsPlugin
           close={close}
           initialValue={initialValue as Obfs}
-          onChange={onSave}
+          onChange={(data) => {
+            onSave({ plugin: currentType, "plugin-opts": data });
+          }}
         />
       );
       break;
@@ -43,7 +45,9 @@ export function EditPlugin(props: EditPluginProps) {
         <EditV2rayPlugin
           close={close}
           initialValue={initialValue as V2rayObfs}
-          onChange={onSave}
+          onChange={(data) => {
+            onSave({ plugin: currentType, "plugin-opts": data });
+          }}
         />
       );
       break;
@@ -53,7 +57,7 @@ export function EditPlugin(props: EditPluginProps) {
   }
   return (
     <Modal close={close} hideCloseButton hideOkButton>
-      <Card className={styles.type}>
+      <div className={styles.type}>
         <Text>{t(TRANSLATION_KEY.TYPE)}</Text>
         <Dropdown
           defaultValue={typeOption[currentType]}
@@ -71,7 +75,7 @@ export function EditPlugin(props: EditPluginProps) {
             </Option>
           ))}
         </Dropdown>
-      </Card>
+      </div>
       {content}
     </Modal>
   );

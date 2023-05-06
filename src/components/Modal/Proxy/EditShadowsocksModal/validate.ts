@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import { MAX_PORT, MIN_PORT } from "@/utils/validator";
+import { ObfsModeEnum } from "lux-js-sdk";
 
 export const validatePlugin = (value: string) => {
   if (!value) {
@@ -33,4 +34,11 @@ export const ShadowsocksSchema = Yup.object().shape({
   port: Yup.number().min(MIN_PORT).max(MAX_PORT).required("Required"),
   password: Yup.string().required("Required"),
   method: Yup.string(),
+});
+
+export const ObfsPluginSchema = Yup.object().shape({
+  host: Yup.string().required("Required"),
+  mode: Yup.string()
+    .matches(new RegExp(`(${ObfsModeEnum.Tls}|${ObfsModeEnum.Http})`))
+    .required("Required"),
 });

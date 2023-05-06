@@ -13,6 +13,8 @@ type FieldSelectorProps<T extends string> = {
   clearable?: boolean;
   editable?: boolean;
   onEditClick?: () => void;
+  // TODO: remove
+  value?: string;
 };
 
 export function FiledSelector<T extends string>(
@@ -25,13 +27,14 @@ export function FiledSelector<T extends string>(
     clearable = false,
     editable = false,
     onEditClick,
+    value,
   } = props;
   const [field, , helpers] = useField({ name });
   const { setValue } = helpers;
 
   const currentSelectedOption = useMemo(() => {
-    return items.find((item) => item.id === field.value);
-  }, [field.value, items]);
+    return items.find((item) => item.id === value || field.value);
+  }, [field.value, items, value]);
 
   return (
     <Field label={label}>
