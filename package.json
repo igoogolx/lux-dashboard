@@ -72,6 +72,6 @@
     "semver": "^7.3.8",
     "shadowsocksconfig": "github:Jigsaw-Code/outline-shadowsocksconfig",
     "yaml": "^2.2.2",
-    "yup": "^0.32.11"
+    "yup": "^1.1.1"
   }
 }
