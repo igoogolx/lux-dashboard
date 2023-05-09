@@ -15,7 +15,7 @@ module.exports = {
       2,
       {
         html: "ignore",
-        exceptions: ["Item", "Selector", "Field", "Input"],
+        exceptions: ["Item", "Field", "Input"],
       },
     ],
     "no-param-reassign": [
