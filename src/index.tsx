@@ -41,5 +41,3 @@ function Root() {
 const container = document.getElementById("app");
 const root = createRoot(container as HTMLElement); // createRoot(container!) if you use TypeScript
 root.render(<Root />);
-export { getVersion } from "@/utils/version";
-export { useTestUdp } from "@/utils/testUdp";
