@@ -1,7 +1,7 @@
 import * as React from "react";
+import { useMemo } from "react";
 import { useField } from "formik";
 import { Button, Dropdown, Field, Option } from "@fluentui/react-components";
-import { useMemo } from "react";
 import { EditRegular } from "@fluentui/react-icons";
 import { MenuItemProps } from "../../Menu";
 import styles from "./index.module.css";
@@ -29,7 +29,7 @@ export function FiledSelector<T extends string>(
     onEditClick,
     value,
   } = props;
-  const [field, , helpers] = useField({ name });
+  const [field, meta, helpers] = useField({ name });
   const { setValue } = helpers;
 
   const currentSelectedOption = useMemo(() => {
@@ -37,7 +37,10 @@ export function FiledSelector<T extends string>(
   }, [field.value, items, value]);
 
   return (
-    <Field label={label}>
+    <Field
+      label={label}
+      validationMessage={meta.touched && meta.error ? meta.error : null}
+    >
       <div className={styles.container}>
         <Dropdown
           value={(currentSelectedOption?.content as string) || ""}

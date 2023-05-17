@@ -18,7 +18,7 @@ const INIT_DATA: V2rayObfs = {
   host: "",
   port: "",
   path: "",
-  tLS: false,
+  tls: false,
   skipCertVerify: false,
 };
 
@@ -47,11 +47,11 @@ export function EditV2rayPlugin(props: EditV2rayProps) {
             <Field name="mode" label={t(TRANSLATION_KEY.MODE)} />
             <Field name="host" label={t(TRANSLATION_KEY.HOST)} />
             <Field name="port" label={t(TRANSLATION_KEY.FORM_PORT)} />
-            <Field name="path" label={t(TRANSLATION_KEY.HOST)} />
+            <Field name="path" label={t(TRANSLATION_KEY.PATH)} />
             <FieldSwitch name="tls" label={t(TRANSLATION_KEY.HOST)} />
             <FieldSwitch
               name="skipCertVerify"
-              label={t(TRANSLATION_KEY.HOST)}
+              label={t(TRANSLATION_KEY.SKIP_CERT_VERIFY)}
             />
             <div className={styles.buttonContainer}>
               <Button onClick={close} className={styles.button}>

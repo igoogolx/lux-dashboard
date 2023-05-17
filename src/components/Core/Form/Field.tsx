@@ -5,7 +5,6 @@ import {
   Input,
   InputProps,
 } from "@fluentui/react-components";
-import { bo } from "chart.js/dist/chunks/helpers.core";
 
 export type FieldProps<T extends string> = {
   name: T;
@@ -18,18 +17,14 @@ export type FieldProps<T extends string> = {
 
 export function Field<T extends string>(props: FieldProps<T>) {
   const { name, label, validate, type, adornment, disabled = false } = props;
-  const [field, meta, helpers] = useField({ name, validate });
-  const { setValue } = helpers;
+  const [field, meta] = useField({ name, validate });
   return (
     <FluentInput
       label={label}
-      validationMessage={meta.touched ? meta.error : ""}
+      validationMessage={meta.touched && meta.error ? meta.error : null}
     >
       <Input
-        value={field.value as string}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
+        {...field}
         type={type}
         contentAfter={adornment}
         disabled={disabled}
