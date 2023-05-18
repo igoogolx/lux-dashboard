@@ -2,30 +2,16 @@ import React from "react";
 import { Field, FieldSwitch, Form } from "@/components/Core";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import * as Yup from "yup";
 import { Button } from "@fluentui/react-components";
 import { V2rayObfs } from "lux-js-sdk";
+import { V2rayPluginSchema } from "@/components/Modal/Proxy/EditShadowsocksModal/validate";
 import styles from "./index.module.css";
 
 type EditV2rayProps = {
   close: () => void;
-  initialValue?: V2rayObfs;
+  initialValue: V2rayObfs;
   onChange: (data: V2rayObfs) => void;
 };
-
-const INIT_DATA: V2rayObfs = {
-  mode: "websocket",
-  host: "",
-  port: "",
-  path: "",
-  tls: false,
-  skipCertVerify: false,
-};
-
-const HttpSchema = Yup.object().shape({
-  host: Yup.string(),
-  mode: Yup.string().required("Required"),
-});
 
 export function EditV2rayPlugin(props: EditV2rayProps) {
   const { t } = useTranslation();
@@ -38,8 +24,8 @@ export function EditV2rayPlugin(props: EditV2rayProps) {
   return (
     <Form
       onSubmit={onSubmit}
-      initialValues={initialValue || INIT_DATA}
-      validationSchema={HttpSchema}
+      initialValues={initialValue}
+      validationSchema={V2rayPluginSchema}
     >
       {({ dirty, submitForm }) => {
         return (
@@ -48,7 +34,7 @@ export function EditV2rayPlugin(props: EditV2rayProps) {
             <Field name="host" label={t(TRANSLATION_KEY.HOST)} />
             <Field name="port" label={t(TRANSLATION_KEY.FORM_PORT)} />
             <Field name="path" label={t(TRANSLATION_KEY.PATH)} />
-            <FieldSwitch name="tls" label={t(TRANSLATION_KEY.HOST)} />
+            <FieldSwitch name="tls" label={t(TRANSLATION_KEY.TLS)} />
             <FieldSwitch
               name="skipCertVerify"
               label={t(TRANSLATION_KEY.SKIP_CERT_VERIFY)}

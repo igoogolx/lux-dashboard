@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { Obfs, PluginTypeEnum, Shadowsocks, V2rayObfs } from "lux-js-sdk";
+import {
+  Obfs,
+  ObfsModeEnum,
+  PluginTypeEnum,
+  Shadowsocks,
+  V2rayObfs,
+} from "lux-js-sdk";
 import { Modal } from "@/components/Core";
-import { Card, Dropdown, Option, Text } from "@fluentui/react-components";
+import { Dropdown, Option, Text } from "@fluentui/react-components";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
@@ -11,8 +17,22 @@ import styles from "./index.module.css";
 type EditPluginProps = {
   close: () => void;
   type?: PluginTypeEnum;
-  initialValue?: Pick<Shadowsocks, "plugin" | "plugin-opts">;
+  initialValue: Pick<Shadowsocks, "plugin" | "plugin-opts">;
   onSave: (data: Required<Pick<Shadowsocks, "plugin" | "plugin-opts">>) => void;
+};
+
+const INIT_V2RAY_DATA: V2rayObfs = {
+  mode: "websocket",
+  host: "",
+  port: "",
+  path: "",
+  tls: false,
+  skipCertVerify: false,
+};
+
+const INIT_OBFS_DATA: Obfs = {
+  host: "",
+  mode: ObfsModeEnum.Http,
 };
 
 export function EditPlugin(props: EditPluginProps) {
@@ -33,7 +53,7 @@ export function EditPlugin(props: EditPluginProps) {
       content = (
         <EditObfsPlugin
           close={close}
-          initialValue={initialValue as Obfs}
+          initialValue={(initialValue["plugin-opts"] as Obfs) || INIT_OBFS_DATA}
           onChange={(data) => {
             onSave({ plugin: currentType, "plugin-opts": data });
           }}
@@ -44,7 +64,9 @@ export function EditPlugin(props: EditPluginProps) {
       content = (
         <EditV2rayPlugin
           close={close}
-          initialValue={initialValue as V2rayObfs}
+          initialValue={
+            (initialValue["plugin-opts"] as V2rayObfs) || INIT_V2RAY_DATA
+          }
           onChange={(data) => {
             onSave({ plugin: currentType, "plugin-opts": data });
           }}

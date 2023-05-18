@@ -9,13 +9,8 @@ import styles from "./index.module.css";
 
 type EditObfsProps = {
   close: () => void;
-  initialValue?: Obfs;
+  initialValue: Obfs;
   onChange: (data: Obfs) => void;
-};
-
-const INIT_DATA: Obfs = {
-  host: "",
-  mode: ObfsModeEnum.Http,
 };
 
 export function EditObfsPlugin(props: EditObfsProps) {
@@ -40,7 +35,7 @@ export function EditObfsPlugin(props: EditObfsProps) {
   return (
     <Form
       onSubmit={onSubmit}
-      initialValues={initialValue || INIT_DATA}
+      initialValues={initialValue}
       validationSchema={ObfsPluginSchema}
     >
       {({ dirty, submitForm }) => {

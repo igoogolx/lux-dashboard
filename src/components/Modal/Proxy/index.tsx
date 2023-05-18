@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Http, Proxy, ProxyTypeEnum, Shadowsocks, Socks5 } from "lux-js-sdk";
 import { EditHttpModal } from "@/components/Modal/Proxy/EditHttpModal";
 import { Modal } from "@/components/Core";
-import { Card, Dropdown, Option, Text } from "@fluentui/react-components";
+import { Dropdown, Option, Text } from "@fluentui/react-components";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { PageStepEnum } from "@/components/Modal/Proxy/EditShadowsocksModal/constant";

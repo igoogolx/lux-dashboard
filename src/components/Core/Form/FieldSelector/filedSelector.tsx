@@ -33,7 +33,9 @@ export function FiledSelector<T extends string>(
   const { setValue } = helpers;
 
   const currentSelectedOption = useMemo(() => {
-    return items.find((item) => item.id === value || field.value);
+    return items.find((item) =>
+      value ? item.id === value : item.id === field.value
+    );
   }, [field.value, items, value]);
 
   return (
