@@ -18,7 +18,6 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Tooltip,
 } from "@fluentui/react-components";
 import { DeleteAllProxiesConfirmModal } from "@/components/Modal/DeleteAllProxiesConfirmModal";
 import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
@@ -133,6 +132,7 @@ export function Operation(): JSX.Element {
                 onClick={() => {
                   onSelect(item.id as string);
                 }}
+                disabled={item.disabled}
               >
                 {item.content}
               </MenuItem>
