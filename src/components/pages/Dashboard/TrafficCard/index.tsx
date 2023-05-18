@@ -1,6 +1,5 @@
 import * as React from "react";
 import { TrafficItem } from "lux-js-sdk";
-import { Card } from "@fluentui/react-components";
 import FlowInfo from "@/components/pages/Dashboard/TrafficCard/FlowInfo";
 import styles from "./index.module.css";
 import { SpeedGraph } from "../SpeedGraph";
@@ -25,7 +24,7 @@ export function TrafficCard(props: TrafficCardProps): JSX.Element {
   const currentDirect = getCurrent(speed.direct);
 
   return (
-    <Card className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.data}>
         <div className={styles.info}>
           <div className={styles.header}>
@@ -48,6 +47,6 @@ export function TrafficCard(props: TrafficCardProps): JSX.Element {
       <div className={styles.graph}>
         <SpeedGraph data={speed} />
       </div>
-    </Card>
+    </div>
   );
 }

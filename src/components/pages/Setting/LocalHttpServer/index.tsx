@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import {
-  Body1,
-  Card,
-  Switch,
-  Title1,
-  Subtitle1,
-} from "@fluentui/react-components";
+import { Card, Switch, Subtitle2, Caption1 } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
@@ -50,8 +44,8 @@ export default function LocalHttpServer() {
     <Card className={styles.card}>
       <div className={styles.cardItem}>
         <div className={styles.desc}>
-          <Subtitle1>{t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_LABEL)}</Subtitle1>
-          <Body1>{t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP)}</Body1>
+          <Subtitle2>{t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_LABEL)}</Subtitle2>
+          <Caption1>{t(TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP)}</Caption1>
         </div>
         <Switch
           checked={setting.localServer.http.enabled}
@@ -64,11 +58,12 @@ export default function LocalHttpServer() {
       {setting.localServer.http.enabled && (
         <div className={styles.cardItem}>
           <div className={styles.desc}>
-            <Subtitle1>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_LABEL)}</Subtitle1>
-            <Body1>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_DESC)}</Body1>
+            <Subtitle2>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_LABEL)}</Subtitle2>
+            <Caption1>{t(TRANSLATION_KEY.HTTP_SERVER_PORT_DESC)}</Caption1>
           </div>
           <EditItemWithDialog
             title="Edit the local http server port"
+            inputType="number"
             open={openModal}
             setOpen={setOpenModal}
             onSubmit={(value) => {

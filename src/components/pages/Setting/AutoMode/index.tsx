@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
+  Caption1,
   Card,
-  Switch,
-  Option,
   Dropdown,
-  Subtitle1,
-  Body1,
+  Option,
+  Subtitle2,
+  Switch,
 } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,11 +59,9 @@ export default function AutoMode() {
   return (
     <Card className={styles.card}>
       <div className={styles.cardItem}>
-        <div>
-          <Subtitle1>{t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}</Subtitle1>
-          <div className={styles.desc}>
-            {t(TRANSLATION_KEY.MODE_SWITCH_TOOLTIP)}
-          </div>
+        <div className={styles.desc}>
+          <Subtitle2>{t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}</Subtitle2>
+          <Caption1>{t(TRANSLATION_KEY.MODE_SWITCH_TOOLTIP)}</Caption1>
         </div>
         <Switch
           disabled={isStarted}
@@ -80,8 +78,8 @@ export default function AutoMode() {
         <>
           <div className={styles.cardItem}>
             <div className={styles.desc}>
-              <Subtitle1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}</Subtitle1>
-              <Body1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_DESC)}</Body1>
+              <Subtitle2>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL)}</Subtitle2>
+              <Caption1>{t(TRANSLATION_KEY.PROXY_MODE_TYPE_DESC)}</Caption1>
             </div>
             <Dropdown
               disabled={isStarted}
@@ -102,8 +100,8 @@ export default function AutoMode() {
           </div>
           <div className={styles.cardItem}>
             <div className={styles.desc}>
-              <Subtitle1>{t(TRANSLATION_KEY.TESTING_URL_LABEL)}</Subtitle1>
-              <Body1>{t(TRANSLATION_KEY.TESTING_URL_DESC)}</Body1>
+              <Subtitle2>{t(TRANSLATION_KEY.TESTING_URL_LABEL)}</Subtitle2>
+              <Caption1>{t(TRANSLATION_KEY.TESTING_URL_DESC)}</Caption1>
             </div>
             <EditItemWithDialog
               disabled={isStarted}

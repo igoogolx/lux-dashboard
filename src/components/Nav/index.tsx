@@ -1,6 +1,6 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
 import { useMemo } from "react";
+import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
@@ -86,16 +86,11 @@ export function Nav(): JSX.Element {
             end
             key={item.to}
           >
-            {({ isActive }) => {
+            {() => {
               return (
                 <>
                   {item.icon}
-                  <Text
-                    className={styles.text}
-                    weight={isActive ? "bold" : "regular"}
-                  >
-                    {item.name}
-                  </Text>
+                  <Text className={styles.text}>{item.name}</Text>
                 </>
               );
             }}

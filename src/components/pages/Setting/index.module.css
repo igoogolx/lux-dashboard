@@ -1,5 +1,5 @@
 .wrapper {
-    @apply w-full;
+    @apply w-full p-2;
 
     & .card {
         @apply mb-6;

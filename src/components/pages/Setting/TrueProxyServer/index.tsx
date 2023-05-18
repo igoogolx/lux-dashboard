@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
-import { Body1, Card, Subtitle1 } from "@fluentui/react-components";
+import { Caption1, Card, Subtitle2 } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
@@ -30,8 +30,8 @@ export default function TrueProxyServer() {
     <Card className={styles.card}>
       <div className={styles.cardItem}>
         <div className={styles.desc}>
-          <Subtitle1>{t(TRANSLATION_KEY.TRUE_PROXY_SERVER)}</Subtitle1>
-          <Body1>{t(TRANSLATION_KEY.TRUE_PROXY_SERVER_TOOLTIPS)}</Body1>
+          <Subtitle2>{t(TRANSLATION_KEY.TRUE_PROXY_SERVER)}</Subtitle2>
+          <Caption1>{t(TRANSLATION_KEY.TRUE_PROXY_SERVER_TOOLTIPS)}</Caption1>
         </div>
         <EditItemWithDialog
           title="Edit the true proxy server"

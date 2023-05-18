@@ -9,7 +9,7 @@
 }
 
 .nav {
-  @apply relative flex w-1/12 flex-shrink-0 flex-col;
+  @apply relative flex w-64 flex-shrink-0 flex-col;
 }
 
 .themeSwitch {
