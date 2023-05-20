@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { MenuItemProps, notifier } from "@/components/Core";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProxy, ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
-import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
+import { BaseProxy, deleteProxy, ProxyTypeEnum, Shadowsocks } from "lux-js-sdk";
+import { proxiesSlice, RootState } from "@/reducers";
 import { useTestDelay } from "@/hooks";
 import { selectedSlice } from "@/reducers/selected";
 import { EditModal } from "@/components/Modal/Proxy";
@@ -30,7 +30,7 @@ import {
 } from "@fluentui/react-icons";
 
 type OperationProps = {
-  id: string;
+  proxy: BaseProxy;
 };
 
 enum OperationTypeEnum {
@@ -44,15 +44,14 @@ enum OperationTypeEnum {
 
 export function Operation(props: OperationProps): JSX.Element {
   const { t } = useTranslation();
-  const { id: proxyId } = props;
+  const { proxy } = props;
+  const { id: proxyId } = proxy;
+
   const [isEditingDialogOpen, setIsEditingDialogOpen] = useState(false);
   const [isQrcodeModalOpen, setIsQrcodeModalOpen] = useState(false);
   const dispatch = useDispatch();
   const testDelay = useTestDelay();
   const testUdp = useTestUdp();
-  const proxy = useSelector<RootState, Shadowsocks>(
-    (state) => proxiesSelectors.selectById(state, proxyId) as Shadowsocks
-  );
   const isStarted = useSelector<RootState, boolean>(
     (state) => state.manager.isStared
   );
@@ -140,7 +139,7 @@ export function Operation(props: OperationProps): JSX.Element {
         return;
       }
       case OperationTypeEnum.CopyUrl: {
-        const url = encode(proxy);
+        const url = encode(proxy as Shadowsocks);
         await navigator.clipboard.writeText(url);
         notifier.success(t(TRANSLATION_KEY.COPIED));
         return;
@@ -159,7 +158,7 @@ export function Operation(props: OperationProps): JSX.Element {
     <>
       {isQrcodeModalOpen && (
         <QrCodeModal
-          url={encode(proxy)}
+          url={encode(proxy as Shadowsocks)}
           close={() => {
             setIsQrcodeModalOpen(false);
           }}
@@ -190,7 +189,8 @@ export function Operation(props: OperationProps): JSX.Element {
                 disabled={item.disabled}
                 key={item.id}
                 icon={item.icon}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   onSelect(item.id as string);
                 }}
               >

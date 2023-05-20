@@ -86,7 +86,7 @@ export function Content(): JSX.Element {
       renderCell: (item) => {
         return (
           <TableCellLayout truncate>
-            <Operation id={item.id} />
+            <Operation proxy={item} />
           </TableCellLayout>
         );
       },
