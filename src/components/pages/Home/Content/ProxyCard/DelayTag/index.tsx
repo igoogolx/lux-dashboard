@@ -38,7 +38,7 @@ export function DelayTag(props: DelayTagProps): JSX.Element {
   }
 
   return loading ? (
-    <Spinner size="tiny" className={styles.icon} />
+    <></>
   ) : (
     <span
       className={classNames(className, styles[type])}

@@ -11,7 +11,6 @@ import {
 } from "@fluentui/react-components";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
-import SpinIcon from "@fortawesome/fontawesome-free/svgs/solid/circle-notch.svg";
 
 type ModalProps = {
   children: React.ReactNode;
@@ -69,7 +68,6 @@ export const Modal = React.memo((props: ModalProps) => {
                 appearance="primary"
                 onClick={onOk}
                 disabled={disabledOk || loadingOk}
-                icon={<SpinIcon />}
               >
                 {okText || t(TRANSLATION_KEY.OK)}
               </Button>

@@ -9,7 +9,7 @@ import {
 } from "lux-js-sdk";
 import { useDispatch } from "react-redux";
 import { proxiesSlice } from "@/reducers";
-import { Button, Input } from "@fluentui/react-components";
+import { Input } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type ClashConfigUrlModalProps = {
@@ -39,7 +39,7 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
     });
   }, []);
   return (
-    <Modal close={close}>
+    <Modal close={close} onOk={handleConfirm} disabledOk={loading}>
       <div className={styles.search}>
         <Input
           value={destination}
@@ -50,9 +50,6 @@ function ClashConfigUrlModal(props: ClashConfigUrlModalProps) {
           placeholder={t(TRANSLATION_KEY.CLASH_URL)}
           autoFocus
         />
-        <Button onClick={handleConfirm} disabled={loading}>
-          {t(TRANSLATION_KEY.OK)}
-        </Button>
       </div>
     </Modal>
   );

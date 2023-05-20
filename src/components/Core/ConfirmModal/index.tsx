@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import styles from "./index.module.css";
 import { Modal } from "../Modal";
 
@@ -29,8 +28,6 @@ export function ConfirmModal(props: ConfirmModalPros) {
     hideCancelText = false,
     hideConfirmText = false,
   } = props;
-
-  const { t } = useTranslation();
 
   return (
     <Modal
