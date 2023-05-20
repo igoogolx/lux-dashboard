@@ -10,6 +10,7 @@ import { EditPlugin } from "@/components/Modal/Proxy/Plugin";
 import { ShadowsocksSchema } from "./validate";
 import {
   ENCRYPTION_METHODS,
+  NONE_ID,
   PageStepEnum,
   SHADOWSOCKS_PLUINS,
 } from "./constant";
@@ -42,7 +43,10 @@ export const EditShadowsocksModal = React.memo(
     );
 
     const pluginOptions = useRef(
-      SHADOWSOCKS_PLUINS.map((METHOD) => ({ content: METHOD, id: METHOD }))
+      [...SHADOWSOCKS_PLUINS, NONE_ID].map((METHOD) => ({
+        content: METHOD,
+        id: METHOD,
+      }))
     );
 
     const isStarted = useSelector<RootState, boolean>(

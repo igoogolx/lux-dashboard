@@ -25,7 +25,10 @@ import EditHubAddressModal from "@/components/Modal/EditHubAddressModal";
 import Splash from "@/components/Splash";
 import { ServerConfirmModal } from "@/components/Modal/ServerConfirmModal";
 import { managerSlice } from "@/reducers";
-import { APP_CONTAINER_ID } from "@/utils/constants";
+import { APP_CONTAINER_ID, ROUTER_PATH } from "@/utils/constants";
+import { makeStyles, mergeClasses } from "@fluentui/react-components";
+import { tokens } from "@fluentui/react-theme";
+import { Header } from "@/components/Header";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -47,12 +50,20 @@ const Connections = lazy(() => import("@/components/pages/Connections"));
 const Logger = lazy(() => import("@/components/pages/Logger"));
 const About = lazy(() => import("@/components/pages/About"));
 
+const useStyles = makeStyles({
+  nav: {
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+});
+
 export function App(): JSX.Element {
   const dispatch = useDispatch();
   const [connected, setConnected] = useState(true);
   const pingSubscriber = useRef<WsClient | null>(null);
   const hasDisconnected = useRef(false);
   const [loading, setLoading] = useState(true);
+
+  const inlineStyles = useStyles();
 
   getStatus().then((status) => {
     dispatch(
@@ -108,7 +119,7 @@ export function App(): JSX.Element {
       )}
       <ElevateModal />
       <div className={styles.body}>
-        <div className={styles.nav}>
+        <div className={mergeClasses(styles.nav, inlineStyles.nav)}>
           <Nav />
           <div className={styles.themeSwitch}>
             <ThemeSwitch />
@@ -116,9 +127,10 @@ export function App(): JSX.Element {
         </div>
         <div className={styles.content}>
           {loading && <Splash />}
+          <Header />
           <Routes>
             <Route
-              path="/"
+              path={ROUTER_PATH.Home}
               element={
                 <Suspense fallback={<></>}>
                   <Home />
@@ -126,7 +138,7 @@ export function App(): JSX.Element {
               }
             />
             <Route
-              path="/dashboard"
+              path={ROUTER_PATH.Dashboard}
               element={
                 <Suspense fallback={<></>}>
                   <Dashboard />
@@ -134,7 +146,7 @@ export function App(): JSX.Element {
               }
             />
             <Route
-              path="/connections"
+              path={ROUTER_PATH.Connections}
               element={
                 <Suspense fallback={<></>}>
                   <Connections />
@@ -142,7 +154,7 @@ export function App(): JSX.Element {
               }
             />
             <Route
-              path="/logs"
+              path={ROUTER_PATH.Logger}
               element={
                 <Suspense fallback={<></>}>
                   <Logger />
@@ -150,7 +162,7 @@ export function App(): JSX.Element {
               }
             />
             <Route
-              path="/setting"
+              path={ROUTER_PATH.Setting}
               element={
                 <Suspense fallback={<></>}>
                   <Setting />
@@ -158,7 +170,7 @@ export function App(): JSX.Element {
               }
             />
             <Route
-              path="/about"
+              path={ROUTER_PATH.About}
               element={
                 <Suspense fallback={<></>}>
                   <About />

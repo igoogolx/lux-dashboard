@@ -1,0 +1,7 @@
+.container {
+    @apply p-6 flex justify-between items-center;
+}
+
+.navigationBtn {
+    @apply md:hidden;
+}

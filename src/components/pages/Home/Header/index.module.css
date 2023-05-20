@@ -1,6 +1,6 @@
 .wrapper {
   @apply flex h-full w-full items-center justify-end
-    p-4;
+    pb-4;
 
   & .rulesDropdown {
     @apply mr-8 w-36;

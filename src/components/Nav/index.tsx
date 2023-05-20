@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import {
   DataUsageRegular,
   HomeRegular,
@@ -19,6 +18,7 @@ import {
   Text,
 } from "@fluentui/react-components";
 import { tokens } from "@fluentui/react-theme";
+import { ROUTER_NAME, ROUTER_PATH } from "@/utils/constants";
 import styles from "./index.module.css";
 
 const useStyles = makeStyles({
@@ -37,34 +37,38 @@ export function Nav(): JSX.Element {
   const { t } = useTranslation();
   const items = useMemo(() => {
     return [
-      { to: "/", icon: <HomeRegular />, name: t(TRANSLATION_KEY.NAV_HOME) },
       {
-        to: "/dashboard",
+        to: ROUTER_PATH.Home,
+        icon: <HomeRegular />,
+        name: ROUTER_NAME[ROUTER_PATH.Home],
+      },
+      {
+        to: ROUTER_PATH.Dashboard,
         icon: <TopSpeedRegular />,
-        name: t(TRANSLATION_KEY.NAV_DATA),
+        name: ROUTER_NAME[ROUTER_PATH.Dashboard],
       },
       {
-        to: "/connections",
+        to: ROUTER_PATH.Connections,
         icon: <DataUsageRegular />,
-        name: t(TRANSLATION_KEY.NAV_CONNECTION),
+        name: ROUTER_NAME[ROUTER_PATH.Connections],
       },
       {
-        to: "/logs",
+        to: ROUTER_PATH.Logger,
         icon: <NoteRegular />,
-        name: t(TRANSLATION_KEY.LOG),
+        name: ROUTER_NAME[ROUTER_PATH.Logger],
       },
       {
-        to: "/setting",
+        to: ROUTER_PATH.Setting,
         icon: <SettingsRegular />,
-        name: t(TRANSLATION_KEY.NAV_SETTING),
+        name: ROUTER_NAME[ROUTER_PATH.Setting],
       },
       {
-        to: "/about",
+        to: ROUTER_PATH.About,
         icon: <InfoRegular />,
-        name: t(TRANSLATION_KEY.NAV_ABOUT),
+        name: ROUTER_NAME[ROUTER_PATH.About],
       },
     ];
-  }, [t]);
+  }, []);
 
   const inStyles = useStyles();
 
@@ -90,7 +94,7 @@ export function Nav(): JSX.Element {
               return (
                 <>
                   {item.icon}
-                  <Text className={styles.text}>{item.name}</Text>
+                  <Text className={styles.text}>{t(item.name)}</Text>
                 </>
               );
             }}

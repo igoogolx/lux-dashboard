@@ -12,6 +12,7 @@ import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { useTranslation } from "react-i18next";
 import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
 import { EditV2rayPlugin } from "@/components/Modal/Proxy/Plugin/V2ray";
+import { NONE_ID } from "@/components/Modal/Proxy/EditShadowsocksModal/constant";
 import styles from "./index.module.css";
 
 type EditPluginProps = {
@@ -42,6 +43,7 @@ export function EditPlugin(props: EditPluginProps) {
   const typeOption = {
     [PluginTypeEnum.Obfs]: "Obfs",
     [PluginTypeEnum.V2ray]: "v2ray-plugin",
+    [NONE_ID]: "None",
   };
 
   const [currentType, setCurrentType] = useState(type);

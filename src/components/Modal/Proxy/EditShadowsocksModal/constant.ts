@@ -22,6 +22,8 @@ export const ENCRYPTION_METHODS = [
 
 export const SHADOWSOCKS_PLUINS = ["obfs", "v2ray-plugin"];
 
+export const NONE_ID = "none";
+
 export enum PageStepEnum {
   First,
   Second,

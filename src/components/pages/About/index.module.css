@@ -1,5 +1,5 @@
 .container {
-  @apply px-4 py-8 items-center justify-center flex flex-col flex-1 h-full;
+  @apply py-8 items-center justify-center flex flex-col flex-1 h-full;
   & .desc {
     @apply pt-2 flex flex-col;
   }
