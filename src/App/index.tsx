@@ -26,9 +26,10 @@ import Splash from "@/components/Splash";
 import { ServerConfirmModal } from "@/components/Modal/ServerConfirmModal";
 import { managerSlice } from "@/reducers";
 import { APP_CONTAINER_ID, ROUTER_PATH } from "@/utils/constants";
-import { makeStyles, mergeClasses } from "@fluentui/react-components";
+import { makeStyles } from "@fluentui/react-components";
 import { tokens } from "@fluentui/react-theme";
 import { Header } from "@/components/Header";
+import classNames from "classnames";
 import styles from "./index.module.css";
 
 axios.interceptors.response.use(
@@ -62,6 +63,8 @@ export function App(): JSX.Element {
   const pingSubscriber = useRef<WsClient | null>(null);
   const hasDisconnected = useRef(false);
   const [loading, setLoading] = useState(true);
+
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const inlineStyles = useStyles();
 
@@ -119,15 +122,27 @@ export function App(): JSX.Element {
       )}
       <ElevateModal />
       <div className={styles.body}>
-        <div className={mergeClasses(styles.nav, inlineStyles.nav)}>
-          <Nav />
+        <div
+          className={classNames(
+            { [styles.expandedNav]: isNavOpen },
+            styles.nav,
+            inlineStyles.nav
+          )}
+        >
+          <Nav
+            onClick={() => {
+              if (isNavOpen) {
+                setIsNavOpen(false);
+              }
+            }}
+          />
           <div className={styles.themeSwitch}>
             <ThemeSwitch />
           </div>
         </div>
         <div className={styles.content}>
           {loading && <Splash />}
-          <Header />
+          <Header isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
           <Routes>
             <Route
               path={ROUTER_PATH.Home}

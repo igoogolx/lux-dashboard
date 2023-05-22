@@ -9,7 +9,11 @@
 }
 
 .nav {
-  @apply flex w-64 flex-shrink-0 flex-col fixed z-10 h-screen md:relative;
+  @apply w-64 flex-shrink-0 flex-col relative hidden md:flex;
+}
+
+.expandedNav {
+  @apply fixed z-10 h-screen flex;
 }
 
 .themeSwitch {

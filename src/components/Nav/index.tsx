@@ -33,7 +33,12 @@ const useStyles = makeStyles({
   },
 });
 
-export function Nav(): JSX.Element {
+type NavProps = {
+  onClick: () => void;
+};
+export function Nav(props: NavProps): JSX.Element {
+  const { onClick } = props;
+
   const { t } = useTranslation();
   const items = useMemo(() => {
     return [
@@ -89,6 +94,7 @@ export function Nav(): JSX.Element {
             }}
             end
             key={item.to}
+            onClick={onClick}
           >
             {() => {
               return (
