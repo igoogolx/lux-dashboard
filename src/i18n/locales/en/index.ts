@@ -95,7 +95,7 @@ export default {
     "Allow other devices to connect",
   [TRANSLATION_KEY.MODE_SWITCH_LABEL]: "Auto Mode",
   [TRANSLATION_KEY.MODE_SWITCH_TOOLTIP]:
-    "Mode that makes lux decide how to select proxy",
+    "Once it's enabled, Lux will decide the proxy for you automatically according the mode type",
   [TRANSLATION_KEY.SEARCH]: "Search",
   [TRANSLATION_KEY.TESTING_URL_LABEL]: "Testing Url",
   [TRANSLATION_KEY.TESTING_URL_DESC]:
