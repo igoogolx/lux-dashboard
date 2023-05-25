@@ -21,7 +21,7 @@
 }
 
 .content {
-  @apply flex flex-1 overflow-auto flex-col p-4;
+  @apply flex flex-1 overflow-auto flex-col p-6;
 }
 
 

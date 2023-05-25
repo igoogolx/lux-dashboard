@@ -55,6 +55,9 @@ const useStyles = makeStyles({
   nav: {
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  expandedNav: {
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
 });
 
 export function App(): JSX.Element {
@@ -126,7 +129,7 @@ export function App(): JSX.Element {
           className={classNames(
             { [styles.expandedNav]: isNavOpen },
             styles.nav,
-            inlineStyles.nav
+            isNavOpen ? inlineStyles.expandedNav : inlineStyles.nav
           )}
         >
           <Nav
