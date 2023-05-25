@@ -57,10 +57,13 @@ export const EditShadowsocksModal = React.memo(
 
     const initData = initialValue || INIT_DATA;
 
-    const [pluginData, setPluginData] = useState({
+    const initPlugin = {
       plugin: initData.plugin,
       "plugin-opts": initData["plugin-opts"],
-    });
+    };
+
+    const [pluginData, setPluginData] =
+      useState<Partial<typeof initPlugin>>(initPlugin);
 
     const onSubmit = async (value: Shadowsocks) => {
       if (initialValue) {

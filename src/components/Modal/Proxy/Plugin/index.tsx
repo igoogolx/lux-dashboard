@@ -13,13 +13,14 @@ import { useTranslation } from "react-i18next";
 import { EditObfsPlugin } from "@/components/Modal/Proxy/Plugin/Obfs";
 import { EditV2rayPlugin } from "@/components/Modal/Proxy/Plugin/V2ray";
 import { NONE_ID } from "@/components/Modal/Proxy/EditShadowsocksModal/constant";
+import { NonePlugin } from "@/components/Modal/Proxy/Plugin/None";
 import styles from "./index.module.css";
 
 type EditPluginProps = {
   close: () => void;
   type?: PluginTypeEnum;
   initialValue: Pick<Shadowsocks, "plugin" | "plugin-opts">;
-  onSave: (data: Required<Pick<Shadowsocks, "plugin" | "plugin-opts">>) => void;
+  onSave: (data: Partial<Pick<Shadowsocks, "plugin" | "plugin-opts">>) => void;
 };
 
 const INIT_V2RAY_DATA: V2rayObfs = {
@@ -46,7 +47,7 @@ export function EditPlugin(props: EditPluginProps) {
     [NONE_ID]: "None",
   };
 
-  const [currentType, setCurrentType] = useState(type);
+  const [currentType, setCurrentType] = useState<keyof typeof typeOption>(type);
 
   const { t } = useTranslation();
 
@@ -75,6 +76,17 @@ export function EditPlugin(props: EditPluginProps) {
         />
       );
       break;
+    case NONE_ID: {
+      content = (
+        <NonePlugin
+          close={close}
+          onChange={() => {
+            onSave({ plugin: undefined, "plugin-opts": undefined });
+          }}
+        />
+      );
+      break;
+    }
     default: {
       throw new Error(`invalid ${type}`);
     }
