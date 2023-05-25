@@ -1,6 +1,8 @@
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 
 export default {
+  [TRANSLATION_KEY.MODE_SELECT_TIP]:
+    "It's in auto mode. Proxy can't be selected manually",
   [TRANSLATION_KEY.NAV_HOME]: "Home",
   [TRANSLATION_KEY.NAV_DATA]: "Data",
   [TRANSLATION_KEY.NAV_CONNECTION]: "Connection",

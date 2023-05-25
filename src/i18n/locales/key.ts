@@ -1,4 +1,5 @@
 export const TRANSLATION_KEY = {
+  MODE_SELECT_TIP: "mode_select_tip",
   NAV_HOME: "nav.home",
   NAV_DATA: "nav.data",
   NAV_CONNECTION: "nav.connection",

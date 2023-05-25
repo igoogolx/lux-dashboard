@@ -1,6 +1,11 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { getProxies, Proxy, updateSelectedProxyId } from "lux-js-sdk";
+import {
+  getProxies,
+  Proxy,
+  SettingRes,
+  updateSelectedProxyId,
+} from "lux-js-sdk";
 import { useDispatch, useSelector } from "react-redux";
 import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
 import { selectedSlice } from "@/reducers/selected";
@@ -35,7 +40,7 @@ export function Content(): JSX.Element {
 
   const columns: TableColumnDefinition<Proxy>[] = [
     createTableColumn<Proxy>({
-      columnId: "file",
+      columnId: "name",
       renderHeaderCell: () => {
         return "Name";
       },
@@ -98,10 +103,17 @@ export function Content(): JSX.Element {
     [selectedId]
   );
 
+  // TODO:optimize selector
+  const setting = useSelector<RootState, SettingRes>((state) => state.setting);
+
+  const isAutoMode = setting.outbound.mode === "auto";
+
   const handleSelect: DataGridProps["onSelectionChange"] = async (e, data) => {
-    const id = data.selectedItems.values().next().value;
-    await updateSelectedProxyId({ id });
-    dispatch(selectedSlice.actions.setProxy({ id }));
+    if (!isAutoMode) {
+      const id = data.selectedItems.values().next().value;
+      await updateSelectedProxyId({ id });
+      dispatch(selectedSlice.actions.setProxy({ id }));
+    }
   };
 
   return (
@@ -125,7 +137,9 @@ export function Content(): JSX.Element {
           {({ item, rowId }) => (
             <DataGridRow<Proxy>
               key={rowId}
-              selectionCell={{ "aria-label": "Select row" }}
+              selectionCell={
+                !isAutoMode ? { "aria-label": "Select row" } : undefined
+              }
             >
               {({ renderCell }) => (
                 <DataGridCell>{renderCell(item)}</DataGridCell>
