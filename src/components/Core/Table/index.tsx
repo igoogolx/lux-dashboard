@@ -6,6 +6,7 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridRow,
+  TableColumnSizingOptions,
   useFluent,
   useScrollbarWidth,
 } from "@fluentui/react-components";
@@ -15,10 +16,12 @@ import styles from "./index.module.css";
 type TableProps<T> = {
   columns: TableColumnDefinition<T>[];
   data: T[];
+  columnSizingOptions?: TableColumnSizingOptions;
+  resizableColumns?: boolean;
 };
 
 export function Table<T extends { id: string }>(props: TableProps<T>) {
-  const { columns, data } = props;
+  const { columns, data, columnSizingOptions, resizableColumns } = props;
 
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
@@ -27,8 +30,9 @@ export function Table<T extends { id: string }>(props: TableProps<T>) {
     <DataGrid
       items={data}
       columns={columns}
-      focusMode="cell"
       className={styles.container}
+      columnSizingOptions={columnSizingOptions}
+      resizableColumns={resizableColumns}
     >
       <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
         <DataGridRow>

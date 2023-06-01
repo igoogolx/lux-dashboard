@@ -19,14 +19,16 @@ import {
   Input,
   TableCellLayout,
   Button,
+  TableColumnSizingOptions,
 } from "@fluentui/react-components";
 import { SearchRegular } from "@fluentui/react-icons";
+import dayjs from "dayjs";
 import styles from "./index.module.css";
 
 function TimeCell(props: { value: number }) {
   const { value } = props;
   const date = new Date(value);
-  return <div>{date.toLocaleTimeString()}</div>;
+  return <div>{dayjs(date).format("HH:mm:ss")}</div>;
 }
 
 function TypeCell(props: { value: string }) {
@@ -109,6 +111,23 @@ export default function Logger(): JSX.Element {
     });
   }, [logs, searchedValue]);
 
+  const columnSizingOptions: TableColumnSizingOptions = useMemo(() => {
+    return {
+      time: {
+        defaultWidth: 80,
+        minWidth: 80,
+      },
+      type: {
+        defaultWidth: 80,
+        minWidth: 80,
+      },
+      content: {
+        defaultWidth: 720,
+        minWidth: 720,
+      },
+    };
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
@@ -122,7 +141,12 @@ export default function Logger(): JSX.Element {
           {t(TRANSLATION_KEY.OPEN_LOG_DIR)}
         </Button>
       </div>
-      <Table columns={columns} data={data} />
+      <Table
+        columns={columns}
+        data={data}
+        columnSizingOptions={columnSizingOptions}
+        resizableColumns
+      />
     </div>
   );
 }
