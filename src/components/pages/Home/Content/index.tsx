@@ -137,9 +137,7 @@ export function Content(): JSX.Element {
           {({ item, rowId }) => (
             <DataGridRow<Proxy>
               key={rowId}
-              selectionCell={
-                !isAutoMode ? { "aria-label": "Select row" } : undefined
-              }
+              selectionCell={{ "aria-label": "Select row" }}
             >
               {({ renderCell }) => (
                 <DataGridCell>{renderCell(item)}</DataGridCell>
