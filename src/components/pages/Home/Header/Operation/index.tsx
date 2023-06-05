@@ -22,6 +22,7 @@ import {
 import { DeleteAllProxiesConfirmModal } from "@/components/Modal/DeleteAllProxiesConfirmModal";
 import { RuntimeDetailModal } from "@/components/Modal/RuntimeDetailModal";
 import { MoreHorizontalFilled } from "@fluentui/react-icons";
+import splitArrayIntoChunks from "@/utils/splitArrayIntoChunks";
 
 enum OperationTypeEnum {
   RuntimeDetail = "0",
@@ -44,10 +45,12 @@ export function Operation(): JSX.Element {
   const proxies = useSelector<RootState, BaseProxy[]>(
     proxiesSelectors.selectAll
   );
-  const testDelays = () => {
-    proxies.forEach((proxy) => {
-      testDelay(proxy.id);
-    });
+  const testDelays = async () => {
+    const subProxies = splitArrayIntoChunks(proxies);
+    for (let i = 0; i < subProxies.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await Promise.all(subProxies[i].map((proxy) => testDelay(proxy.id)));
+    }
   };
 
   const openRuntimeDetail = () => {
