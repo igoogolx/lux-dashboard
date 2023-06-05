@@ -106,7 +106,7 @@ export function Content(): JSX.Element {
   // TODO:optimize selector
   const setting = useSelector<RootState, SettingRes>((state) => state.setting);
 
-  const isAutoMode = setting.outbound.mode === "auto";
+  const isAutoMode = setting.outbound.autoMode.enabled;
 
   const handleSelect: DataGridProps["onSelectionChange"] = async (e, data) => {
     if (!isAutoMode) {
