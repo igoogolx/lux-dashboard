@@ -8,8 +8,8 @@ const initialState: SettingRes = {
     http: { enabled: false, port: 0 },
   },
   outbound: {
-    mode: "auto",
-    config: {
+    autoMode: {
+      enabled: false,
       url: "https://google.com",
       type: "url-test",
     },

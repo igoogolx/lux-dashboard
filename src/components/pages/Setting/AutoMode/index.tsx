@@ -34,21 +34,11 @@ export default function AutoMode() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (newOutbound: Partial<SettingRes["outbound"]>) => {
+  const onSubmit = async (newAutoMode: SettingRes["outbound"]["autoMode"]) => {
     const newSetting = {
       ...setting,
-      outbound: { ...setting.outbound },
+      outbound: { ...setting.outbound, autoMode: newAutoMode },
     };
-
-    if (newOutbound.mode) {
-      newSetting.outbound.mode = newOutbound.mode;
-    }
-    if (newOutbound.config) {
-      newSetting.outbound.config = {
-        ...newSetting.outbound.config,
-        ...newOutbound.config,
-      };
-    }
 
     await setSetting(newSetting);
     dispatch(settingSlice.actions.setSetting(newSetting));
@@ -65,16 +55,17 @@ export default function AutoMode() {
         </div>
         <Switch
           disabled={isStarted}
-          checked={setting.outbound.mode === "auto"}
+          checked={setting.outbound.autoMode.enabled}
           onChange={(e, data) => {
             onSubmit({
-              mode: data.checked ? "auto" : "select",
+              ...setting.outbound.autoMode,
+              enabled: data.checked,
             });
           }}
         />
       </div>
 
-      {setting.outbound.mode === "auto" && (
+      {setting.outbound.autoMode.enabled && (
         <>
           <div className={styles.cardItem}>
             <div className={styles.desc}>
@@ -83,13 +74,11 @@ export default function AutoMode() {
             </div>
             <Dropdown
               disabled={isStarted}
-              value={setting.outbound.config.type}
+              value={setting.outbound.autoMode.type}
               onOptionSelect={(e, data) => {
                 onSubmit({
-                  config: {
-                    ...setting.outbound.config,
-                    type: data.optionValue as SettingRes["outbound"]["config"]["type"],
-                  },
+                  ...setting.outbound.autoMode,
+                  type: data.optionValue as SettingRes["outbound"]["autoMode"]["type"],
                 });
               }}
             >
@@ -110,14 +99,12 @@ export default function AutoMode() {
               setOpen={setOpenModal}
               onSubmit={(value) => {
                 onSubmit({
-                  config: {
-                    ...setting.outbound.config,
-                    url: value,
-                  },
+                  ...setting.outbound.autoMode,
+                  url: value,
                 });
               }}
               label="Testing url"
-              value={setting.outbound.config.url}
+              value={setting.outbound.autoMode.url}
             />
           </div>
         </>
