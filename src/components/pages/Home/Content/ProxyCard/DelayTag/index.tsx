@@ -2,7 +2,6 @@ import * as React from "react";
 import { useMemo } from "react";
 import classNames from "classnames";
 import { useTestDelay } from "@/hooks";
-import { Spinner } from "@fluentui/react-components";
 import { useSelector } from "react-redux";
 import { DelayInfo, delaysSelectors, RootState } from "@/reducers";
 import styles from "./index.module.css";
