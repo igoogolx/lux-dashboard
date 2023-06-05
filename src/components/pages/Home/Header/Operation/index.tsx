@@ -45,11 +45,26 @@ export function Operation(): JSX.Element {
   const proxies = useSelector<RootState, BaseProxy[]>(
     proxiesSelectors.selectAll
   );
+
+  const [isTestingDealy, setIsTestingDealy] = useState(false);
+
   const testDelays = async () => {
-    const subProxies = splitArrayIntoChunks(proxies);
-    for (let i = 0; i < subProxies.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await Promise.all(subProxies[i].map((proxy) => testDelay(proxy.id)));
+    setIsTestingDealy(true);
+    try {
+      proxies.forEach((item) => {
+        dispatch(
+          proxiesSlice.actions.updateOne({
+            proxy: { id: item.id, delay: undefined },
+          })
+        );
+      });
+      const subProxies = splitArrayIntoChunks(proxies);
+      for (let i = 0; i < subProxies.length; i += 1) {
+        // eslint-disable-next-line no-await-in-loop
+        await Promise.all(subProxies[i].map((proxy) => testDelay(proxy.id)));
+      }
+    } finally {
+      setIsTestingDealy(false);
     }
   };
 
@@ -81,6 +96,7 @@ export function Operation(): JSX.Element {
       {
         id: OperationTypeEnum.TestDelay,
         content: t(TRANSLATION_KEY.CONNECTIVITY_TEST),
+        disabled: isTestingDealy,
       },
       {
         id: OperationTypeEnum.RuntimeDetail,
@@ -94,7 +110,7 @@ export function Operation(): JSX.Element {
         isDanger: true,
       },
     ];
-  }, [isStarted, t]);
+  }, [isStarted, t, isTestingDealy]);
   const onSelect = (id: string) => {
     switch (id) {
       case OperationTypeEnum.TestDelay:
