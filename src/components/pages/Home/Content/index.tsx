@@ -11,18 +11,13 @@ import { proxiesSelectors, proxiesSlice, RootState } from "@/reducers";
 import { selectedSlice } from "@/reducers/selected";
 import {
   createTableColumn,
-  DataGrid,
-  DataGridBody,
-  DataGridCell,
-  DataGridHeader,
-  DataGridHeaderCell,
   DataGridProps,
-  DataGridRow,
   TableCellLayout,
   TableColumnDefinition,
 } from "@fluentui/react-components";
 import { Operation } from "@/components/pages/Home/Content/ProxyCard/Operation";
 import { DelayTag } from "@/components/pages/Home/Content/ProxyCard/DelayTag";
+import { Table } from "@/components/Core";
 import styles from "./index.module.css";
 
 export function Content(): JSX.Element {
@@ -118,34 +113,13 @@ export function Content(): JSX.Element {
 
   return (
     <div className={styles.wrapper}>
-      <DataGrid
-        items={proxies}
+      <Table
         columns={columns}
+        data={proxies}
         selectionMode="single"
-        selectedItems={defaultSelectedItems}
         onSelectionChange={handleSelect}
-        getRowId={(item) => item.id}
-      >
-        <DataGridHeader>
-          <DataGridRow>
-            {({ renderHeaderCell }) => (
-              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-            )}
-          </DataGridRow>
-        </DataGridHeader>
-        <DataGridBody<Proxy>>
-          {({ item, rowId }) => (
-            <DataGridRow<Proxy>
-              key={rowId}
-              selectionCell={{ "aria-label": "Select row" }}
-            >
-              {({ renderCell }) => (
-                <DataGridCell>{renderCell(item)}</DataGridCell>
-              )}
-            </DataGridRow>
-          )}
-        </DataGridBody>
-      </DataGrid>
+        selectedItems={defaultSelectedItems}
+      />
     </div>
   );
 }

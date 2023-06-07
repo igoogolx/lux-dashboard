@@ -5,6 +5,7 @@ import {
   DataGridCell,
   DataGridHeader,
   DataGridHeaderCell,
+  DataGridProps,
   DataGridRow,
   TableColumnSizingOptions,
   useFluent,
@@ -18,10 +19,21 @@ type TableProps<T> = {
   data: T[];
   columnSizingOptions?: TableColumnSizingOptions;
   resizableColumns?: boolean;
+  selectionMode?: DataGridProps["selectionMode"];
+  selectedItems?: DataGridProps["selectedItems"];
+  onSelectionChange?: DataGridProps["onSelectionChange"];
 };
 
 export function Table<T extends { id: string }>(props: TableProps<T>) {
-  const { columns, data, columnSizingOptions, resizableColumns } = props;
+  const {
+    columns,
+    data,
+    columnSizingOptions,
+    resizableColumns,
+    selectionMode,
+    selectedItems,
+    onSelectionChange,
+  } = props;
 
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
@@ -33,6 +45,9 @@ export function Table<T extends { id: string }>(props: TableProps<T>) {
       className={styles.container}
       columnSizingOptions={columnSizingOptions}
       resizableColumns={resizableColumns}
+      selectedItems={selectedItems}
+      selectionMode={selectionMode}
+      onSelectionChange={onSelectionChange}
     >
       <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
         <DataGridRow>
