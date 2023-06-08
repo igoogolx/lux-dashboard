@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/components/pages/Setting/index.module.css";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { Caption1, Card, Subtitle2 } from "@fluentui/react-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, settingSlice } from "@/reducers";
-import { setSetting, SettingRes } from "lux-js-sdk";
-import { notifier } from "@/components/Core";
+import {
+  getRuntimeOS,
+  getSettingInterfaces,
+  setSetting,
+  SettingRes,
+} from "lux-js-sdk";
+import { MenuItemProps, notifier } from "@/components/Core";
 import EditItemWithDialog from "@/components/pages/Setting/EditItemWithDialog";
 
 export default function DefaultInterface() {
@@ -28,6 +33,30 @@ export default function DefaultInterface() {
     notifier.success(t(TRANSLATION_KEY.SAVE_SUCCESS));
   };
 
+  const [networkInterfaces, setNetworkInterfaces] = useState<MenuItemProps[]>(
+    []
+  );
+
+  useEffect(() => {
+    (async function () {
+      const { os } = await getRuntimeOS();
+      // TODO: optimize
+      getSettingInterfaces().then((items) => {
+        const filteredItems = items.filter((item) => {
+          if (os === "darwin") return item.Name.startsWith("en");
+          return true;
+        });
+        const newInterfaces = [{ Name: "Auto" }, ...filteredItems].map(
+          (item) => ({
+            id: item.Name,
+            content: item.Name,
+          })
+        );
+        setNetworkInterfaces(newInterfaces);
+      });
+    })();
+  }, []);
+
   return (
     <Card className={styles.card}>
       <div className={styles.cardItem}>
@@ -45,6 +74,8 @@ export default function DefaultInterface() {
           label="Default interface name"
           value={setting.defaultInterface}
           disabled={isStarted}
+          type="selector"
+          selectorItems={networkInterfaces}
         />
       </div>
     </Card>
