@@ -1,14 +1,12 @@
 .GsNfsjFLpudvPlqiSD2T {
     display: flex;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
     height: 100%;
     flex: 1 1 0%;
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     font-size: 0.875rem;
     line-height: 1.25rem
 }
@@ -16,15 +14,10 @@
     margin-bottom: 0.5rem;
     display: flex;
     width: 100%;
-    justify-content: flex-start;
     justify-content: space-between
 }
   .GsNfsjFLpudvPlqiSD2T .qnlbR8tyn7foo1Csxoh3 .aKGCZGzKFxBcvElaeRcW {
     width: 24rem
-}
-  .GsNfsjFLpudvPlqiSD2T .qnlbR8tyn7foo1Csxoh3 .KVpTMwbTH1UsyGD4Q22N {
-    --tw-text-opacity: 1;
-    color: rgba(209, 213, 219, var(--tw-text-opacity))
 }
   .GsNfsjFLpudvPlqiSD2T .qnlbR8tyn7foo1Csxoh3 .P6selSKvEjKrUBZGMX8H {
     display: flex;
@@ -32,9 +25,7 @@
 }
   .GsNfsjFLpudvPlqiSD2T .qnlbR8tyn7foo1Csxoh3 .P6selSKvEjKrUBZGMX8H .aFuzlT9o5kKPX_keucEr {
     margin-right: 1rem;
-    margin-left: 1rem;
-    height: 1.5rem;
-    width: 1.5rem
+    margin-left: 1rem
 }
   .GsNfsjFLpudvPlqiSD2T .uYUjaIcxUFAms48AlACf {
     margin-top: 0.5rem;

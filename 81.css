@@ -6,7 +6,8 @@
       align-items: center;
       justify-items: center;
       overflow: auto;
-      padding: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       font-size: 0.875rem;
       line-height: 1.25rem;
 }
@@ -14,7 +15,6 @@
       margin-bottom: 0.5rem;
       display: flex;
       width: 100%;
-      justify-content: space-between;
 }
   .nrQNbpXTc6DWET7_gbI2 .bCym_SmeimM9gS_XqCez .VOUHprgJvo_pwa8rsD9K {
       display: none;
