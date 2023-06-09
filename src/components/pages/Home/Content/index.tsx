@@ -119,6 +119,7 @@ export function Content(): JSX.Element {
         selectionMode="single"
         onSelectionChange={handleSelect}
         selectedItems={defaultSelectedItems}
+        getRowId={(item) => item.id}
       />
     </div>
   );
