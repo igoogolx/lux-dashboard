@@ -4040,8 +4040,8 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 lux-js-sdk@igoogolx/lux-js-sdk:
-  version "0.1.6"
-  resolved "https://codeload.github.com/igoogolx/lux-js-sdk/tar.gz/4b2cd2fe29e45ad4fa1c4268a71c19328afd1413"
+  version "0.1.7"
+  resolved "https://codeload.github.com/igoogolx/lux-js-sdk/tar.gz/fff882d654189893072993c34e900e7894f93f5b"
 
 make-dir@^2.1.0:
   version "2.1.0"
