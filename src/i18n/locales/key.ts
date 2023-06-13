@@ -105,6 +105,7 @@ export const TRANSLATION_KEY = {
   HUB_PORT: "hub_port",
   HUB_ADDRESS: "hub_address",
   BOOST_DNS: "boost_dns",
+  PROXY_SERVER: "proxy_server",
   NEW_VERSION_INFO: "new_version_info",
   CHECK_UPDATE: "check_update",
   OPEN_DEV_TOOLS: "open_dev_tools",
