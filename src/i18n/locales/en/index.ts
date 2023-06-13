@@ -102,6 +102,13 @@ export default {
     "Used to determine whether a proxy server is available",
   [TRANSLATION_KEY.PROXY_MODE_TYPE_LABEL]: "Mode Type",
   [TRANSLATION_KEY.PROXY_MODE_TYPE_DESC]: "Same configuration as clash",
+  [TRANSLATION_KEY.BOOST_DNS_LABEL]: "Boost Dns",
+  [TRANSLATION_KEY.BOOST_DNS_DESC]:
+    "Dns server used to lookup doh(dns over https) domains",
+  [TRANSLATION_KEY.REMOTE_DNS_LABEL]: "Remote Dns",
+  [TRANSLATION_KEY.REMOTE_DNS_DESC]: "Dns server used to lookup proxy domains",
+  [TRANSLATION_KEY.LOCAL_DNS_LABEL]: "Local Dns",
+  [TRANSLATION_KEY.LOCAL_DNS_DESC]: "Dns server used to lookup local domains",
   [TRANSLATION_KEY.COMMON_TEST_UDP]: "Test Udp",
   [TRANSLATION_KEY.UDP_FAILED_NOTIFICATION]: "Udp is not supported",
   [TRANSLATION_KEY.UDP_OK_NOTIFICATION]: "Udp is ok",

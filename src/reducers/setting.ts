@@ -7,6 +7,11 @@ const initialState: SettingRes = {
   localServer: {
     http: { enabled: false, port: 0 },
   },
+  dns: {
+    remote: "",
+    local: "",
+    boost: "",
+  },
   outbound: {
     autoMode: {
       enabled: false,
