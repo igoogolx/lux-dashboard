@@ -119,6 +119,7 @@ export default {
   [TRANSLATION_KEY.HUB_PORT]: "Hub Port",
   [TRANSLATION_KEY.HUB_ADDRESS]: "Hub Address",
   [TRANSLATION_KEY.PROXY_SERVER]: "Proxy Server",
+  [TRANSLATION_KEY.SEARCH_LOG_TIP]: "Type a content to search",
   [TRANSLATION_KEY.BOOST_DNS]: "Boost Dns",
   [TRANSLATION_KEY.NEW_VERSION_INFO]: "There is a new available version",
   [TRANSLATION_KEY.CONFIRM]: "Confirm",

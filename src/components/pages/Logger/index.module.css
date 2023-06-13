@@ -5,6 +5,9 @@
     & .logBtn {
       display: none;
     }
+    & .input{
+      @apply w-96;
+    }
   }
   & .payload {
     @apply overflow-hidden text-ellipsis;

@@ -15,14 +15,15 @@ import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { TableColumnDefinition } from "@fluentui/react-table";
 import {
+  Button,
   createTableColumn,
   Input,
   TableCellLayout,
-  Button,
   TableColumnSizingOptions,
 } from "@fluentui/react-components";
 import { SearchRegular } from "@fluentui/react-icons";
 import dayjs from "dayjs";
+import Highlighter from "react-highlight-words";
 import styles from "./index.module.css";
 
 function TimeCell(props: { value: number }) {
@@ -36,11 +37,17 @@ function TypeCell(props: { value: string }) {
   return <Tag type={value as TagTypeEnum} value={value} />;
 }
 
-function PayloadCell(props: { value: string }) {
-  const { value } = props;
+function PayloadCell(props: { value: string; searchedWords: string[] }) {
+  const { value, searchedWords } = props;
   return (
     <Tooltip content={value} placement={PlacementEnum.TopStart}>
-      <div className={styles.payload}>{value}</div>
+      <div className={styles.payload}>
+        <Highlighter
+          searchWords={searchedWords}
+          autoEscape
+          textToHighlight={value}
+        />
+      </div>
     </Tooltip>
   );
 }
@@ -95,13 +102,16 @@ export default function Logger(): JSX.Element {
         renderCell: (item) => {
           return (
             <TableCellLayout>
-              <PayloadCell value={item.payload} />
+              <PayloadCell
+                value={item.payload}
+                searchedWords={[searchedValue]}
+              />
             </TableCellLayout>
           );
         },
       }),
     ];
-  }, [t]);
+  }, [searchedValue, t]);
 
   const data = useMemo(() => {
     return logs.filter((log) => {
@@ -136,6 +146,8 @@ export default function Logger(): JSX.Element {
             setSearchedValue(e.target.value);
           }}
           contentAfter={<SearchRegular />}
+          placeholder={t(TRANSLATION_KEY.SEARCH_LOG_TIP)}
+          className={styles.input}
         />
         <Button onClick={onOpenLogDir} className={styles.logBtn}>
           {t(TRANSLATION_KEY.OPEN_LOG_DIR)}
