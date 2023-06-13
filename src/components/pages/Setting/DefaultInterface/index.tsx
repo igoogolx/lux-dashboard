@@ -46,12 +46,10 @@ export default function DefaultInterface() {
           if (os === "darwin") return item.Name.startsWith("en");
           return true;
         });
-        const newInterfaces = [{ Name: "Auto" }, ...filteredItems].map(
-          (item) => ({
-            id: item.Name,
-            content: item.Name,
-          })
-        );
+        const newInterfaces = [...filteredItems].map((item) => ({
+          id: item.Name,
+          content: item.Name,
+        }));
         setNetworkInterfaces(newInterfaces);
       });
     })();
