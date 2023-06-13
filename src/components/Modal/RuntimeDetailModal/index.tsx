@@ -20,7 +20,7 @@ const TRANSLATION_KEY_MAP = {
   remoteDns: TRANSLATION_KEY.SETTING_SECONDARY_DNS,
   hubAddress: TRANSLATION_KEY.HUB_ADDRESS,
   boostDns: TRANSLATION_KEY.BOOST_DNS,
-  proxyServer: TRANSLATION_KEY.BOOST_DNS,
+  proxyServer: TRANSLATION_KEY.PROXY_SERVER,
 };
 
 export function RuntimeDetailModal(
