@@ -34,10 +34,10 @@ export default function AutoMode() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (newAutoMode: SettingRes["outbound"]["autoMode"]) => {
+  const onSubmit = async (newAutoMode: SettingRes["autoMode"]) => {
     const newSetting = {
       ...setting,
-      outbound: { ...setting.outbound, autoMode: newAutoMode },
+      autoMode: newAutoMode,
     };
 
     await setSetting(newSetting);
@@ -55,17 +55,17 @@ export default function AutoMode() {
         </div>
         <Switch
           disabled={isStarted}
-          checked={setting.outbound.autoMode.enabled}
+          checked={setting.autoMode.enabled}
           onChange={(e, data) => {
             onSubmit({
-              ...setting.outbound.autoMode,
+              ...setting.autoMode,
               enabled: data.checked,
             });
           }}
         />
       </div>
 
-      {setting.outbound.autoMode.enabled && (
+      {setting.autoMode.enabled && (
         <>
           <div className={styles.cardItem}>
             <div className={styles.desc}>
@@ -74,11 +74,11 @@ export default function AutoMode() {
             </div>
             <Dropdown
               disabled={isStarted}
-              value={setting.outbound.autoMode.type}
+              value={setting.autoMode.type}
               onOptionSelect={(e, data) => {
                 onSubmit({
-                  ...setting.outbound.autoMode,
-                  type: data.optionValue as SettingRes["outbound"]["autoMode"]["type"],
+                  ...setting.autoMode,
+                  type: data.optionValue as SettingRes["autoMode"]["type"],
                 });
               }}
             >
@@ -99,12 +99,12 @@ export default function AutoMode() {
               setOpen={setOpenModal}
               onSubmit={(value) => {
                 onSubmit({
-                  ...setting.outbound.autoMode,
+                  ...setting.autoMode,
                   url: value,
                 });
               }}
               label="Testing url"
-              value={setting.outbound.autoMode.url}
+              value={setting.autoMode.url}
             />
           </div>
         </>

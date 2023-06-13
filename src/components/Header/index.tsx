@@ -36,7 +36,7 @@ export function Header(props: HeaderProps) {
       <div className={styles.main}>
         <Title2>{t(ROUTER_NAME[location.pathname as ROUTER_PATH])}</Title2>
         {(location.pathname as ROUTER_PATH) === ROUTER_PATH.Home &&
-          setting.outbound.autoMode.enabled && (
+          setting.autoMode.enabled && (
             <Alert
               appearance="primary"
               intent="warning"

@@ -12,12 +12,10 @@ const initialState: SettingRes = {
     local: "",
     boost: "",
   },
-  outbound: {
-    autoMode: {
-      enabled: false,
-      url: "https://google.com",
-      type: "url-test",
-    },
+  autoMode: {
+    enabled: false,
+    url: "https://google.com",
+    type: "url-test",
   },
 };
 

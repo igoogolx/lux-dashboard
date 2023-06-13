@@ -32,7 +32,7 @@ export function Header(): JSX.Element {
   );
   const [isSettingRule, setIsSettingRule] = useState(false);
   const isProxyValid = useSelector<RootState, boolean>((state) => {
-    if (state.setting.outbound.autoMode.enabled) {
+    if (state.setting.autoMode.enabled) {
       return true;
     }
     if (state.selected.proxy) {
