@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { getHubAddress, stringAddress } from "@/utils/hubAddress";
 import { shellOpenExternal } from "@/clientContext";
 import { getRuntimeDetail, RuntimeDetail } from "lux-js-sdk";
-import { Button, Link, Subtitle2, Subtitle1 } from "@fluentui/react-components";
+import { Button, Link, Subtitle2 } from "@fluentui/react-components";
 import styles from "./index.module.css";
 
 type RuntimeDetailModalProps = {
@@ -19,6 +19,7 @@ const TRANSLATION_KEY_MAP = {
   localDns: TRANSLATION_KEY.SETTING_PRIMARY_DNS,
   remoteDns: TRANSLATION_KEY.SETTING_SECONDARY_DNS,
   hubAddress: TRANSLATION_KEY.HUB_ADDRESS,
+  boostDns: TRANSLATION_KEY.BOOST_DNS,
 };
 
 export function RuntimeDetailModal(

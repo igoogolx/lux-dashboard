@@ -118,6 +118,7 @@ export default {
   [TRANSLATION_KEY.OPEN_LOG_DIR]: "Open Log Dir",
   [TRANSLATION_KEY.HUB_PORT]: "Hub Port",
   [TRANSLATION_KEY.HUB_ADDRESS]: "Hub Address",
+  [TRANSLATION_KEY.BOOST_DNS]: "Boost Dns",
   [TRANSLATION_KEY.NEW_VERSION_INFO]: "There is a new available version",
   [TRANSLATION_KEY.CONFIRM]: "Confirm",
   [TRANSLATION_KEY.CHECK_UPDATE]: "Check for updates",
