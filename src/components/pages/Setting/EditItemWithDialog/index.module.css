@@ -1,0 +1,7 @@
+.selectContainer {
+    @apply flex;
+
+    .btn {
+        @apply ml-4
+    }
+}

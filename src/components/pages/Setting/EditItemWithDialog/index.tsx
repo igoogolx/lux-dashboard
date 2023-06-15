@@ -13,10 +13,10 @@ import {
   Label,
   Option,
 } from "@fluentui/react-components";
-import styles from "@/components/pages/Setting/index.module.css";
 import { useTranslation } from "react-i18next";
 import { TRANSLATION_KEY } from "@/i18n/locales/key";
 import { MenuItemProps } from "@/components/Core";
+import styles from "./index.module.css";
 
 type EditItemWithDialogProps = {
   title: string;
@@ -86,18 +86,28 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
               />
             ) : (
               selectorItems && (
-                <Dropdown
-                  value={editedValue}
-                  onOptionSelect={(e, data) => {
-                    setEditedValue(data.optionValue as string);
-                  }}
-                >
-                  {selectorItems.map((option) => (
-                    <Option key={option.content as string}>
-                      {option.content as string}
-                    </Option>
-                  ))}
-                </Dropdown>
+                <div className={styles.selectContainer}>
+                  <Dropdown
+                    value={editedValue}
+                    onOptionSelect={(e, data) => {
+                      setEditedValue(data.optionValue as string);
+                    }}
+                  >
+                    {selectorItems.map((option) => (
+                      <Option key={option.content as string}>
+                        {option.content as string}
+                      </Option>
+                    ))}
+                  </Dropdown>
+                  <Button
+                    onClick={() => {
+                      setEditedValue("");
+                    }}
+                    className={styles.btn}
+                  >
+                    {t(TRANSLATION_KEY.FORM_RESET)}
+                  </Button>
+                </div>
               )
             )}
           </DialogContent>
