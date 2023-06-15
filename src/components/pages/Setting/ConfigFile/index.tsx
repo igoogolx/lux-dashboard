@@ -21,14 +21,16 @@ export default function ConfigFile() {
     <Card className={styles.card}>
       <div className={styles.cardItem}>
         <div className={styles.desc}>
-          <Subtitle2>{t(TRANSLATION_KEY.MODE_SWITCH_LABEL)}</Subtitle2>
-          <Caption1>{t(TRANSLATION_KEY.MODE_SWITCH_TOOLTIP)}</Caption1>
+          <Subtitle2>{t(TRANSLATION_KEY.CONFIG_FILE)}</Subtitle2>
+          <Caption1>{t(TRANSLATION_KEY.CONFIG_FILE_TIP)}</Caption1>
         </div>
         <Button
           onClick={() => {
             shellOpenPath(fileDir);
           }}
-        />
+        >
+          {t(TRANSLATION_KEY.OPEN_DIR)}
+        </Button>
       </div>
     </Card>
   );

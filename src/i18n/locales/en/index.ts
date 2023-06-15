@@ -94,6 +94,9 @@ export default {
   [TRANSLATION_KEY.HTTP_SERVER_SWITCH_TOOLTIP]:
     "Allow other devices to connect",
   [TRANSLATION_KEY.MODE_SWITCH_LABEL]: "Auto Mode",
+  [TRANSLATION_KEY.CONFIG_FILE]: "Config File",
+  [TRANSLATION_KEY.CONFIG_FILE_TIP]: "You can edit the config file manually",
+  [TRANSLATION_KEY.OPEN_DIR]: "Open Directory",
   [TRANSLATION_KEY.MODE_SWITCH_TOOLTIP]:
     "Once it's enabled, Lux will decide the proxy for you automatically according the mode type",
   [TRANSLATION_KEY.SEARCH]: "Search",
