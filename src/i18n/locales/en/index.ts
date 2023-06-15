@@ -52,6 +52,7 @@ export default {
   [TRANSLATION_KEY.REPOSITORY]: "Repository",
   [TRANSLATION_KEY.VERSION]: "Version",
   [TRANSLATION_KEY.DOWNLOAD]: "Download",
+  [TRANSLATION_KEY.DATA]: "data",
   [TRANSLATION_KEY.UPLOAD]: "Upload",
   [TRANSLATION_KEY.DESTINATION]: "Destination",
   [TRANSLATION_KEY.PROCESS]: "Process",

@@ -191,27 +191,14 @@ export default function Connections(): JSX.Element {
         },
       }),
       createTableColumn<Connection>({
-        columnId: "download",
+        columnId: "data",
         renderHeaderCell: () => {
-          return t(TRANSLATION_KEY.DOWNLOAD);
+          return t(TRANSLATION_KEY.DATA);
         },
         renderCell: (item) => {
           return (
             <TableCellLayout>
-              <LoadTag value={item.download} />
-            </TableCellLayout>
-          );
-        },
-      }),
-      createTableColumn<Connection>({
-        columnId: "upload",
-        renderHeaderCell: () => {
-          return t(TRANSLATION_KEY.UPLOAD);
-        },
-        renderCell: (item) => {
-          return (
-            <TableCellLayout>
-              <LoadTag value={item.upload} />
+              <LoadTag value={item.download + item.upload} />
             </TableCellLayout>
           );
         },

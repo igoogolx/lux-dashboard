@@ -47,6 +47,7 @@ export const TRANSLATION_KEY = {
   VERSION: "version",
   REPOSITORY: "repository",
   DOWNLOAD: "download",
+  DATA: "Data",
   UPLOAD: "upload",
   DESTINATION: "destination",
   PROCESS: "process",

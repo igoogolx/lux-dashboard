@@ -9,7 +9,7 @@
 }
 
 .nav {
-  @apply w-48 flex-shrink-0 flex-col relative hidden md:flex;
+  @apply w-40 flex-shrink-0 flex-col relative hidden md:flex lg:w-60;
 }
 
 .expandedNav {
