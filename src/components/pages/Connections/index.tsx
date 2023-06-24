@@ -20,6 +20,7 @@ import {
   Tooltip,
 } from "@fluentui/react-components";
 import { DeleteRegular, SearchRegular } from "@fluentui/react-icons";
+import useMediaQuery from "beautiful-react-hooks/useMediaQuery";
 import styles from "./index.module.css";
 
 type Connection = {
@@ -206,6 +207,8 @@ export default function Connections(): JSX.Element {
     ];
   }, [t]);
 
+  const isLg = useMediaQuery("(min-width: 1024px)");
+
   const data = useMemo(() => {
     return conns
       .map((conn) => ({
@@ -258,7 +261,7 @@ export default function Connections(): JSX.Element {
           </Tooltip>
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} height={isLg ? 600 : 300} />
       <div className={styles.footer}>
         <div>{`TCP:  ${total.tcp}`}</div>
         <div>{`UDP:  ${total.udp}`}</div>

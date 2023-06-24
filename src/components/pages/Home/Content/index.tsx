@@ -18,6 +18,7 @@ import {
 import { Operation } from "@/components/pages/Home/Content/ProxyCard/Operation";
 import { DelayTag } from "@/components/pages/Home/Content/ProxyCard/DelayTag";
 import { Table } from "@/components/Core";
+import useMediaQuery from "beautiful-react-hooks/useMediaQuery";
 import styles from "./index.module.css";
 
 export function Content(): JSX.Element {
@@ -111,6 +112,8 @@ export function Content(): JSX.Element {
     }
   };
 
+  const isLg = useMediaQuery("(min-width: 1024px)");
+
   return (
     <div className={styles.wrapper}>
       <Table
@@ -120,6 +123,7 @@ export function Content(): JSX.Element {
         onSelectionChange={handleSelect}
         selectedItems={defaultSelectedItems}
         getRowId={(item) => item.id}
+        height={isLg ? 600 : 300}
       />
     </div>
   );

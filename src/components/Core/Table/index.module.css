@@ -1,4 +1,4 @@
 .container {
-  @apply w-full overflow-auto;
+  @apply w-full;
 }
 
