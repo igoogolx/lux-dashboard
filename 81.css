@@ -5,7 +5,7 @@
       flex-direction: column;
       align-items: center;
       justify-items: center;
-      overflow: auto;
+      overflow: hidden;
       padding-top: 1rem;
       padding-bottom: 1rem;
       font-size: 0.875rem;
@@ -25,5 +25,9 @@
   .nrQNbpXTc6DWET7_gbI2 .px1wfdzMY41XFBdlSJVF {
       overflow: hidden;
       text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
