@@ -37,56 +37,23 @@ export function Content(): JSX.Element {
   const columns: TableColumnDefinition<Proxy>[] = [
     createTableColumn<Proxy>({
       columnId: "name",
-      renderHeaderCell: () => {
-        return "Name";
-      },
-      renderCell: (item) => {
-        return <TableCellLayout truncate>{item.name}</TableCellLayout>;
-      },
-    }),
-    createTableColumn<Proxy>({
-      columnId: "server",
-      renderHeaderCell: () => {
-        return "Server";
-      },
-      renderCell: (item) => {
-        return (
-          <TableCellLayout
-            truncate
-          >{`${item.server}:${item.port}`}</TableCellLayout>
-        );
-      },
-    }),
-    createTableColumn<Proxy>({
-      columnId: "type",
-      renderHeaderCell: () => {
-        return "Type";
-      },
-      renderCell: (item) => {
-        return <TableCellLayout truncate>{item.type}</TableCellLayout>;
-      },
-    }),
-    createTableColumn<Proxy>({
-      columnId: "delay",
-      renderHeaderCell: () => {
-        return "Delay";
-      },
       renderCell: (item) => {
         return (
           <TableCellLayout truncate>
-            <DelayTag id={item.id} value={item.delay} />
+            <div className={styles.desc}>
+              <span>{item.name || `${item.server}:${item.port}`}</span>
+              <span className={styles.type}>{item.type}</span>
+            </div>
           </TableCellLayout>
         );
       },
     }),
     createTableColumn<Proxy>({
       columnId: "action",
-      renderHeaderCell: () => {
-        return "Action";
-      },
       renderCell: (item) => {
         return (
           <TableCellLayout truncate>
+            <DelayTag id={item.id} value={item.delay} />
             <Operation proxy={item} />
           </TableCellLayout>
         );

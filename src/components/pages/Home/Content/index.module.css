@@ -6,4 +6,13 @@
   overflow-auto
   align-baseline
   pb-4;
+
+  .desc{
+   @apply flex flex-col;
+
+    .type{
+     @apply text-xs
+    }
+  }
+
 }
