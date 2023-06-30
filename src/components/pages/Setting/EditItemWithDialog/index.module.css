@@ -1,5 +1,9 @@
 .selectContainer {
-    @apply flex;
+    @apply flex mb-8;
+
+    .select{
+        @apply w-full;
+    }
 
     .btn {
         @apply ml-4

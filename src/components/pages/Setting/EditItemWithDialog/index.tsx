@@ -92,6 +92,7 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
                     onOptionSelect={(e, data) => {
                       setEditedValue(data.optionValue as string);
                     }}
+                    className={styles.select}
                   >
                     {selectorItems.map((option) => (
                       <Option key={option.content as string}>
