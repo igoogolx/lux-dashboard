@@ -83,6 +83,7 @@ export default function EditItemWithDialog(props: EditItemWithDialogProps) {
                 onChange={(e) => {
                   setEditedValue(e.target.value);
                 }}
+                className={styles.input}
               />
             ) : (
               selectorItems && (
