@@ -52,9 +52,11 @@ export function Content(): JSX.Element {
       columnId: "action",
       renderCell: (item) => {
         return (
-          <TableCellLayout truncate>
-            <DelayTag id={item.id} value={item.delay} />
-            <Operation proxy={item} />
+          <TableCellLayout truncate className={styles.action}>
+            <div className={styles.content}>
+              <DelayTag id={item.id} value={item.delay} />
+              <Operation proxy={item} />
+            </div>
           </TableCellLayout>
         );
       },

@@ -15,4 +15,12 @@
     }
   }
 
+    .action{
+        @apply flex flex-row justify-end;
+
+        .content{
+            @apply pr-4;
+        }
+    }
+
 }
