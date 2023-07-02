@@ -240,12 +240,47 @@
 }
 
 ._TBifi4dkudWb4MUgm4j {
+
     display: flex;
+
     height: 100%;
+
     flex-direction: column;
+
     align-content: flex-start;
+
     overflow: auto;
+
     padding-bottom: 1rem;
+
     vertical-align: baseline
+}
+
+  ._TBifi4dkudWb4MUgm4j .lLiKx6RKv7vD5Ogf0Tqz {
+
+    display: flex;
+
+    flex-direction: column
+}
+
+  ._TBifi4dkudWb4MUgm4j .lLiKx6RKv7vD5Ogf0Tqz .RZxkksMFLjmuZbuuOBxr {
+
+    font-size: 0.75rem;
+
+    line-height: 1rem
+}
+
+  ._TBifi4dkudWb4MUgm4j .R3CGo1517oKKpilkRZfZ {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: flex-end
+}
+
+  ._TBifi4dkudWb4MUgm4j .R3CGo1517oKKpilkRZfZ .iPSrVRSzKNZksTMl3diy {
+
+    padding-right: 1rem
 }
 
